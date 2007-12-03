@@ -1,0 +1,394 @@
+/*  
+Theme Name: Ahimsa
+Theme URI: http://ahren.org/code/ahimsa
+Description: Ahimsa -- a the that attempts to inflict the least violence on your aesthetics!
+Version: 0.8
+Author: Ravi Sarma
+Author URI: http://ahren.org/code/
+
+	 Ahimsa 0.8
+	 http://ahren.org/code/ahimsa
+
+	Theme built for the Ahren Code site but free for all
+    to use.
+
+	The CSS, XHTML and design is released under GPL:
+	http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+BODY
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #9fc03d;
+    font-size: medium;
+}
+
+A
+{
+    color: #772200;
+    text-decoration: none;
+}
+
+A:hover
+{
+    text-decoration: underline;
+}
+
+IMG
+{
+    border: none 0px;
+}
+
+BLOCKQUOTE
+{
+    background-image: URL('images/quote.gif');
+    background-position: 0px 1px;
+    background-repeat: no-repeat;
+    background-color: #f0f0aa;
+    color: #222277;
+    margin: 15px 60px 15px 40px;
+    padding: 20px 20px 10px 20px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+#bgtop
+{
+    z-index: 1;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 40%;
+    margin: 0;
+    padding: 0;
+    background-color: #333333;
+    border-bottom: 6px solid #cccccc;
+}
+
+#bgtop #rsslinks
+{
+    margin-top: 3px;
+    margin-right: 10px;
+    float: right;
+    color: #ffffff;
+    font: 8pt Arial;
+}
+
+#rsslinks a
+{
+    color: #ffffff;
+}
+
+#main
+{
+    z-index: 2;
+    position: relative;
+    left: 5%;
+    top: 40px;
+    width: 90%;
+    margin-bottom: 80px;
+    background-color: #aaaaaa;
+    border: 3px solid #ffffff;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px; 
+}
+
+#header
+{
+    background-color: #b70100;
+    color: #ffffff;
+    margin: 0;
+    padding: 15px;
+    text-align: left;
+    -webkit-border-top-right-radius: 30px;
+    -webkit-border-top-left-radius: 30px;
+    -moz-border-radius-topleft: 30px; 
+    -moz-border-radius-topright: 30px; 
+}
+
+#header table
+{
+    color: #ffffff;
+    width: 100%;
+}
+
+#header #title
+{
+    height: 20px;
+    width: 180px;
+    font-size:  24pt;
+    font-family: "Trebuchet MS", "Gill Sans", Skia, "Century Gothic";
+    padding-right: 0px;
+    padding-left: 20px;
+    border-right: 2px solid #ffffff;
+}
+
+#header #description
+{
+    padding-left: 20px;
+}
+
+#header a
+{
+    color: #ffffff;
+}
+
+#header #search
+{
+    vertical-align: middle;
+    text-align: right;
+    padding-right: 20px;
+}
+
+#searchform INPUT
+{
+    background-image: URL('images/search.gif');
+    background-position: 2 2;
+    background-repeat: no-repeat;
+    border: 1px solid #aaaaaa;
+    background-color: #333333;
+    padding-left: 18px;
+    color: #ffffff;
+    font-size: 8pt;
+    height: 12px;
+}
+
+#sidebar
+{
+    width: 180px;
+    background-color: #ff9f06;
+    color: #ffffff;
+    padding: 0px;
+    font-family: "Trebuchet MS", Verdana, Helvetica;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomleft: 30px; 
+}
+
+#sidebar fieldset
+{
+    border: none;
+    padding: 0px;
+    margin: 12px 12px;
+    background-color: #ffddaa;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+}
+
+#sidebar legend
+{
+    font-size: 10pt;
+    font-weight: normal;
+    background-color: #846d21;
+    padding: 5px 10px;
+    margin: 0;
+    margin-left: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+}
+
+#sidebar .sidebarlist
+{
+    padding: 5px 20px 5px 6px;
+    font-size: 9pt;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+}
+
+#sidebar .sidebarlist ul, #postaction ul
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+#sidebar .sidebarlist li, #postaction li
+{
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px;
+    margin-left: 20px;
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+#sidebar .sidebarlist li:first-child, #postaction li:first-child
+{
+    border: none;
+}
+
+
+#postaction a
+{
+    color: #ffffff;
+}
+
+.sidebarlist a
+{
+    color: #553333;
+}
+
+#content
+{
+    padding: 20px 40px;
+    padding-top: 30px;
+}
+
+.post
+{
+    margin-bottom: 30px;
+}
+
+.post fieldset
+{
+    background-color: #ffffff;
+    border: 2px solid #444444;
+    border-style: solid none solid none;
+}
+
+.post fieldset legend.title, fieldset.comment legend
+{
+    background-color: #6f900d;
+    border: 0px solid #666666;
+    font-size: 13pt;
+    padding: 4px 20px;
+    margin-left: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+    font-family: "Trebuchet MS", "Gill Sans", Helvetica, Arial;
+}
+
+legend.title a, fieldset.comment legend, fieldset.comment legend a
+{
+    color: #ffffff;
+}
+
+.post fieldset .dateauthor, .commentmeta
+{
+    text-align: right;
+    margin: 0px 20px;
+    border-bottom: 1px dotted #aaaaaa;
+}
+
+.entry
+{
+    padding: 10px 25px;
+    font-family: "Gill Sans", Skia, "Century Gothic", Helvetica, Arial;
+    font-size: medium;
+    color: #333333;
+}
+
+#postaction
+{
+    float: right;
+    padding: 10px 15px 10px 10px;
+    margin: 20px;
+    /* background-color: #ffddaa; */
+    background-color: #b70100;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+}
+
+.postmetadata
+{
+    border-top: 1px dotted #aaaaaa;
+    text-align: right;
+    margin: 5px 20px;
+}
+
+.dateauthor, .postmetadata
+{
+    color: #33aa33;
+}
+
+DIV#comments
+{
+    background-color: #555555;
+    background-color: #ff9f06;
+    padding: 10px 30px 30px 30px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px; 
+}
+
+DIV#replybox
+{
+    background-color: #ffffff;
+    margin-top: 50px;
+    padding: 10px 20px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px; 
+}
+
+fieldset.comment
+{
+    border: none;
+    background-color: #ffffff;
+    margin: 20px 0px;
+    padding: 0px 10px 10px 10px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px; 
+}
+
+fieldset.comment legend
+{
+    font-size: 11pt;
+}
+
+fieldset.comment .commenttext
+{
+    padding-left: 20px;
+}
+
+#comments textarea
+{
+    width: 80% !important;
+}
+
+.post LI, .page LI
+{
+    padding: 8px 0px;
+    margin-right: 50px;
+    border-bottom: 1px dotted #aaaaaa;
+}
+
+.post LI:first-child, .page LI:first-child
+{
+    border-top: 1px dotted #aaaaaa;
+}
+
+.entry > P:first-child:first-letter
+{
+    color: #662222;
+    font-size: xx-large;
+}
+
+#credits
+{
+    position: relative;
+    bottom: 0px;
+    margin: 0px;
+    padding: 5px;
+    border: none 0px;
+    background-color: #6f900d;
+    color: #ffffff;
+    text-align: right;
+    font-family: "Trebuchet MS", Verdana, Helvetica;
+    font-size: 9pt;
+    font-weight; normal;
+}
+
+#credits A
+{
+    color: #ddddff;
+}
+
+#replybox INPUT, #replybox TEXTAREA
+{
+    border: 1px solid #aaaadd;
+    background-color: #ddddff;
+}
+
