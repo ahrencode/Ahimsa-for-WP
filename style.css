@@ -49,7 +49,7 @@ BLOCKQUOTE
     background-repeat: no-repeat;
     background-color: #f0f0aa;
     color: #222277;
-    margin: 15px 60px 15px 40px;
+    margin: 15px 25px 15px 25px;
     padding: 20px 20px 10px 20px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -162,7 +162,7 @@ BLOCKQUOTE
     width: 180px;
     background-color: #ff9f06;
     color: #ffffff;
-    padding: 0px;
+    padding: 10px;
     font-family: "Trebuchet MS", Verdana, Helvetica;
     -webkit-border-bottom-left-radius: 30px;
     -moz-border-radius-bottomleft: 30px; 
@@ -207,7 +207,7 @@ BLOCKQUOTE
 #sidebar .sidebarlist li, #postaction li
 {
     border: none;
-    border-top: 1px solid #aaaaaa;
+    border-top: 1px solid #ffffff;
     padding-top: 5px;
     padding-bottom: 5px;
     margin: 0px;
@@ -224,7 +224,7 @@ BLOCKQUOTE
 
 #postaction a
 {
-    color: #ffffff;
+    color: #553333;
 }
 
 .sidebarlist a
@@ -246,8 +246,9 @@ BLOCKQUOTE
 .post fieldset
 {
     background-color: #ffffff;
-    border: 2px solid #444444;
-    border-style: solid none solid none;
+    border-style: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px; 
 }
 
 .post fieldset legend.title, fieldset.comment legend
@@ -277,7 +278,7 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
 .entry
 {
     padding: 10px 25px;
-    font-family: "Gill Sans", Skia, "Century Gothic", Helvetica, Arial;
+    font-family: "Gill Sans", Verdana, Skia, "Century Gothic", Helvetica, Arial;
     font-size: medium;
     color: #333333;
 }
@@ -287,8 +288,7 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
     float: right;
     padding: 10px 15px 10px 10px;
     margin: 20px;
-    /* background-color: #ffddaa; */
-    background-color: #b70100;
+    background-color: #c9ba90;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
 }
@@ -300,15 +300,14 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
     margin: 5px 20px;
 }
 
-.dateauthor, .postmetadata
+.dateauthor, .postmetadata, .commentmeta
 {
-    color: #33aa33;
+    color: #444466;
 }
 
 DIV#comments
 {
-    background-color: #555555;
-    background-color: #ff9f06;
+    background-color: #c9ba90;
     padding: 10px 30px 30px 30px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
@@ -317,8 +316,9 @@ DIV#comments
 DIV#replybox
 {
     background-color: #ffffff;
+	color: #333333;
     margin-top: 50px;
-    padding: 10px 20px;
+    padding: 10px 30px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
 }
@@ -341,6 +341,7 @@ fieldset.comment legend
 fieldset.comment .commenttext
 {
     padding-left: 20px;
+	color: #333333;
 }
 
 #comments textarea
@@ -348,16 +349,26 @@ fieldset.comment .commenttext
     width: 80% !important;
 }
 
+.entry UL, .page UL
+{
+	margin-left: 0px;
+	padding: 15px;
+	padding-left: 30px;
+	background-color: #d0f0ff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px; 
+}
+
 .post LI, .page LI
 {
-    padding: 8px 0px;
-    margin-right: 50px;
-    border-bottom: 1px dotted #aaaaaa;
+    padding: 4px 0px;
+	margin-left: 0px;
+    /*border-bottom: 1px dotted #aaaaaa;*/
 }
 
 .post LI:first-child, .page LI:first-child
 {
-    border-top: 1px dotted #aaaaaa;
+    /*border-top: 1px dotted #aaaaaa;*/
 }
 
 .entry > P:first-child:first-letter
@@ -386,9 +397,24 @@ fieldset.comment .commenttext
     color: #ddddff;
 }
 
-#replybox INPUT, #replybox TEXTAREA
+#replybox H3#respond
+{
+	padding-bottom: 3px;
+	border-bottom: 2px solid #777777;
+}
+
+#replybox INPUT#submit
+{
+	font-weight: bold;
+    background-color: #6f900d;
+	color: #ffffff;
+	border: none;
+	padding: 3px 10px;
+}
+
+#replybox TEXTAREA, #replybox INPUT
 {
     border: 1px solid #aaaadd;
-    background-color: #ddddff;
+    background-color: #f7ffe0;
 }
 
