@@ -39,14 +39,10 @@ below:
   if there is interest in this theme.
 
 * The theme uses rounded-borders using Mozilla/Gecko and
-  Webcore/KHTML/Safari specific CSS attributes. I could use the CSS3
+  WebKit/KHTML/Safari specific CSS attributes. I could use the CSS3
   border-radius attribute, and I probably will, but it won't help much
-  since IE does not support it anyway.
-
-* Since WordPress does not provide an "Authors" widget by default, the
-  display of an author list is hard-coded into the Sidebar. You can
-  edit the Theme and remove it from the Sidebar, if you disagree that
-  a blog should display its list of authors.
+  since IE does not support it anyway. Rounded borders do work with
+  Google Chrome since it is based on WebKit.
 
 * Which reminds me: this is not fully tested in IE.
 

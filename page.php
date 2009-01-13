@@ -1,45 +1,60 @@
 
 <?php get_header(); ?>
 
-<div id='content'>
+<div id='page'>
 
-	<?php if (have_posts()) : ?>
+<?php if (have_posts()) : ?>
 
-		<?php while (have_posts()) : the_post(); ?>
+    <?php while (have_posts()) : the_post(); ?>
 
-			<div class="post" id="post-<?php the_ID(); ?>">
+        <div class="post" id="post-<?php the_ID(); ?>">
 
-                <fieldset>
+            <fieldset>
 
-                <legend class='title'>
-                    <a href="<?php the_permalink() ?>" rel="bookmark"
-                        title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
-                </legend>
+            <legend class='title'>
+                <a href="<?php the_permalink() ?>" rel="bookmark"
+                    title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
+            </legend>
 
-				<div class='dateauthor'>
-                    <small class='capsule'><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
-                </div>
+            <div class='dateauthor'>
+                <small class='capsule'><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
+            </div>
 
-				<div class="entry">
-					<?php the_content('Read the rest of this entry &raquo;'); ?>
-				</div>
+            <div class="entry">
+                <?php the_content('Read the rest of this entry &raquo;'); ?>
+            </div>
 
-				<p class="postmetadata">
-                    <span class='capsule'><?php edit_post_link('Edit', '', '&nbsp;'); ?></span>
-                    <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
-                            '% Comments &#187;'); ?>
-                </p>
+            <?php if( $user_ID ) : ?>
+            <p class="postmetadata">
+                <span class='capsule'><?php edit_post_link('Edit', '', '&nbsp;'); ?></span>
+                <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
+                        '% Comments &#187;'); ?>
+            </p>
+            <?php endif; ?>
 
-			</div>
+        </div>
 
-		<?php endwhile; ?>
+    <?php endwhile; ?>
 
-	<?php else : ?>
+<?php else : ?>
 
-		<h2 class="center">Not Found</h2>
-		<p class="center">Sorry, but you are looking for something that isn't here.</p>
+    <div class="post">
+        <fieldset>
+            <legend class='title'>Not Found</legend>
+            <br/>
+            <div class='entry'>
+            Sorry, but you are looking for something that isn't here.
+            <br/>
+            <br/>
+            </div>
+        </fieldset>
+    </div>
 
-	<?php endif; ?>
+<?php endif; ?>
+
+<script language='JavaScript'>
+    fadeSideBar();
+</script>
 
 </div>
 

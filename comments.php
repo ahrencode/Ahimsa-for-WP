@@ -35,10 +35,12 @@
                 <small class='capsule'>
                 <?php comment_date('F jS, Y') ?> at <?php comment_time() ?>
                 </small>
+                <?php if( $user_ID ) : ?>
                 &nbsp;&nbsp;
                 <small class='capsule'>
                 <?php edit_comment_link('edit','&nbsp;',''); ?>
                 </small>
+                <?php endif; ?>
             </div>
 
             <?php
@@ -68,7 +70,11 @@
 
 	 <?php else : // comments are closed ?>
 		<!-- If comments are closed. -->
-		<p class="nocomments">Comments are closed.</p>
+        <div class='nocomments'>
+		<span class="capsule">Comments are closed</span>
+        <br/>
+        <br/>
+        </div>
 
 	<?php endif; ?>
 

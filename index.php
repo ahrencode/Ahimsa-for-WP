@@ -1,115 +1,139 @@
 <?php get_header(); ?>
 
-<!-- some preliminary work towards a del.icio.us links section using an existing plugin
+<?php if( $options['showdelic'] && $options['delicid'] ) :
+    $delid = $options['delicid']; ?>
 <div id='recent'>
     <div id='recentheader'>
         <div id='recentclose'
-            onClick='toggleDisplay("recentlist");'>+</div>
+            onClick='toggleDelicious();'>+</div>
         <div id='recentmore' class='capsule'
-            onClick='document.location="http://delicious.com/YOUR_DELICIOUS_ID";'> More </div>
-        Recent News and Links
-        <div id='recentlist'>
-           <! ?php delicious_bookmarks('YOUR_DELICIOUS_ID', 5, true, false); ?>
+            onClick='document.location="http://delicious.com/<?php print $delid; ?>";'> More </div>
+        <?php print $options['delictitle']; ?>
+        <!-- inline style for easy JavaScript mods, without getting computed styles -->
+        <div id='recentlist' style='opacity: 1.0; display: block;'>
+            <?php delicious_bookmarks($delid, 5, true, false); ?>
         </div>
     </div>
 </div>
--->
+<?php endif; ?>
 
-<table cellspacing=0 cellpadding=0 border=0 height='100%'>
+<?php if (have_posts()) : ?>
 
-<tr>
+    <?php while (have_posts()) : the_post(); ?>
 
-    <td
-        onMouseOver='this.style.opacity = 1.0;'
-        onMouseOut='this.style.opacity = 1.0;'
-        id='sidebar' valign='top'> <?php get_sidebar(); ?> </td>
+        <div class="post" id="post-<?php the_ID(); ?>">
 
-    <td id='content' valign='top'>
+            <fieldset>
 
-	<?php if (have_posts()) : ?>
+            <legend class='title'>
+                <a href="<?php the_permalink() ?>" rel="bookmark"
+                    title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
+            </legend>
 
-		<?php while (have_posts()) : the_post(); ?>
+            <div class='dateauthor'>
+                <small class='capsule'><?php the_time('M jS, Y') ?> by
+                    <?php the_author() ?></small>
+            </div>
 
-			<div class="post" id="post-<?php the_ID(); ?>">
+            <div class="entry">
+                <?php the_content('Read the rest of this entry &raquo;'); ?>
+            </div>
 
-                <fieldset>
+            <div class="postmetadata"
+                <?php if( $options["idxfadepmeta"] ) : ?>
+                style='opacity: 0.3;'
+                onMouseOver='this.style.opacity = 1.0;'
+                onMouseOut='this.style.opacity = 0.3;'
+                <?php endif; ?>
+                >
 
-                <legend class='title'>
-                    <a href="<?php the_permalink() ?>" rel="bookmark"
-                        title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
-                </legend>
+                <span id='commentlink' class='capsule'>
+                <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
+                        '% Comments &#187;'); ?>
+                </span>
 
-				<div class='dateauthor'>
-                    <small class='capsule'><?php the_time('M jS, Y') ?> by <?php the_author() ?></small>
-                </div>
+                <input type='button' class='cattrigger capsule'
+                    value='Categories &darr;'
+                    onClick='fadeBlock("postcats-<?php the_ID();?>");'/>
 
-				<div class="entry">
-					<?php the_content('Read the rest of this entry &raquo;'); ?>
-				</div>
+                <?php if( get_the_tags() ) : ?>
+                <input type='button' class='cattrigger capsule'
+                    value='Tags &darr;'
+                    onClick='fadeBlock("posttags-<?php the_ID();?>");'/>
+                <?php endif; ?>
 
-				<div class="postmetadata">
-
-                    <span id='commentlink' class='capsule'>
-                    <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
-                            '% Comments &#187;'); ?>
-                    </span>
-
-                    <input type='button' class='cattrigger capsule'
-                        value='Categories'
-                        onClick='toggleDisplay("postcats-<?php the_ID();?>");'/>
-
-                    <input type='button' class='cattrigger capsule'
-                        value='Tags'
-                        onClick='toggleDisplay("posttags-<?php the_ID();?>");'/>
-
-                    <div id='postcats-<?php the_ID(); ?>' class='postcats'>
-                    CATEGORIES:
-                    <?php
-                        foreach((get_the_category()) as $cat)
-                            print
-                                "<a href='" . get_category_link($cat->cat_ID) . "'>" .
-                                "<span class='capsule'>$cat->cat_name</span></a>\n";
-                    ?>
-                    </div>
-
-                    <div id='posttags-<?php the_ID(); ?>' class='postcats'>
-                    TAGS:
-                    <?php
+                <!-- inline style for easy JavaScript mods, without getting computed styles -->
+                <div id='postcats-<?php the_ID(); ?>' class='postcattags postcats'
+                    style='display: none; opacity: 0;'>
+                <?php
+                    $first = 1;
+                    foreach((get_the_category()) as $cat)
+                    {
+                        if( ! $first )
+                            print ", ";
                         print
-                            get_the_tag_list(
-                                    $before = '<span class="capsule">',
-                                    // leave newlines below... Safari needs them
-                                    // for rounded borders!!!
-                                    $sep = '
-                                            </span><span class="capsule">
-                                           ',
-                                    $after = '</span>');
-                    ?> 
-                    </div>
-
+                            "<a href='" . get_category_link($cat->cat_ID) . "'>" .
+                            "$cat->cat_name</a>";
+                        $first = 0;
+                    }
+                ?>
                 </div>
 
-			</div>
+                <?php if( get_the_tags() ) : ?>
+                <!-- inline style for easy JavaScript mods, without getting computed styles -->
+                <div id='posttags-<?php the_ID(); ?>' class='postcattags posttags'
+                    style='display: none; opacity: 0;'>
+                <?php
+                    print
+                        get_the_tag_list(
+                                $before = '',
+                                // leave newlines below... Safari needs them
+                                // for rounded borders!!!
+                                $sep = ', ',
+                                $after = '</span>');
+                ?> 
+                </div>
+                <?php endif; ?>
 
-		<?php endwhile; ?>
+            </div>
 
-		<div class="navigation">
-			<div><?php next_posts_link('&laquo; Previous Entries') ?></div>
-			<div><?php previous_posts_link('Next Entries &raquo;') ?></div>
-		</div>
+        </div>
 
-	<?php else : ?>
+    <?php endwhile; ?>
 
-		<h2 class="center">Not Found</h2>
-		<p class="center">Sorry, but you are looking for something that isn't here.</p>
+    <div class="navigation">
+        <?php
+            previous_posts_link(
+                "<span class='capsule' style='float: right;'>" .
+                "Newer Entries &raquo;" .
+                "</span>");
+        ?>
+        <?php
+            next_posts_link("<span class='capsule'>&laquo; Older Entries</span>");
+        ?>
+    </div>
 
-	<?php endif; ?>
+<?php else : ?>
 
-    </td>
+    <div class="post">
+        <fieldset>
+            <legend class='title'>Not Found</legend>
+            <br/>
+            <div class='entry'>
+            Sorry, but you are looking for something that isn't here.
+            <br/>
+            <br/>
+            </div>
+        </fieldset>
+    </div>
 
-</tr>
+<?php endif; ?>
 
-</table>
+<?php if( $options['defhidesidebar'] == 1 ): ?>
+    <script language='JavaScript'>
+        fadeSideBar();
+    </script>
+<?php endif; ?>
 
 <?php get_footer(); ?>
 

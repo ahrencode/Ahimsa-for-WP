@@ -1,35 +1,34 @@
-</div>
 
-<div id='bgtop'>
-<br clear='all'/>
-</div>
+</td>
+</tr>
+</table> <!-- end of table main -->
 
-<div id='credits'>
+</td>
+</tr>
 
-<div id='rsslinks'>
-    <a href='feed:<?php bloginfo("rss2_url"); ?>'>
-    <img border=0 valign='middle'
-        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>'>
-    Site
-    </a>
-    &nbsp;&nbsp;
-    <a href='feed:<?php bloginfo('comments_rss2_url'); ?>'>
-    <img border=0 valign='middle'
-        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>'>
-    Comments
-    </a>
-    &nbsp;&nbsp;
-    &raquo;
-    <?php wp_loginout(); ?>
-</div>
+<tr>
+<td id='credits'>
 
+<div style='float: right;'>
 &raquo;&nbsp;
 Substance: <a href='http://wordpress.org/'>WordPress</a>
 &nbsp;
 &raquo;&nbsp;
 Style: <a href='http://ahren.org/code/ahimsa'>Ahren Ahimsa</a>
-
 </div>
 
+<?php
+global $options;
+if( $options['copyright'] != "" )
+    print "&copy; " . $options['copyright'];
+?>
+
+</td> <!-- end of credits -->
+</tr>
+
+</table> <!-- end of table container -->
+
 </body>
+
+</html>
 

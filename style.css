@@ -1,13 +1,13 @@
 /*  
 Theme Name: Ahimsa
 Theme URI: http://ahren.org/code/ahimsa
-Description: Ahimsa -- basic colours, low graphics, minimal distractions, with rounded corners in Firefox, Opera, Safari. Please visit http://ahren.org/code/ahimsa to suggest fixes and enhancements.
-Version: 1.2
+Description: Ahimsa -- basic colours, low graphics, minimal distractions, with rounded corners in Firefox, Opera, Safari, Chrome. Lots of changes for version 2.0 such as a collapsible sidebar.  Please visit http://ahren.org/code/ahimsa-wp-2dot0 for feature list and to suggest fixes and enhancements.
+Version: 2.0
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
 Tags: fluid width, widget ready, 2 columns, left sidebar, gravatars
 
-	 Ahimsa 1.2
+	 Ahimsa 2.0
 	 http://ahren.org/code/ahimsa
 
 	Theme built for the Ahren Code site but free for all
@@ -17,25 +17,21 @@ Tags: fluid width, widget ready, 2 columns, left sidebar, gravatars
     theme uses rounded borders viewable in all browsers
     that support them.
 
-	The CSS, XHTML and design is released under GPL:
+	The CSS, XHTML and design are released under GPL:
 	http://www.opensource.org/licenses/gpl-license.php
-
-    Version 1.2 includes these fixes and features:
-
-    * Fixed: A grey rectangle was overlaid on posts without comments,
-      on blogs that require registration to comment.
-    * Fixed: The actions box on the top right of posts had a bad
-      link for posts with comments disabled.
 
 */
 
 BODY
 {
-    margin: 0;
-    padding: 0;
-    background-color: #9fc03d;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    border-style: none;
+    background-color: #6f900d;
     font-size: medium;
-    font-family: "Gill Sans", "Trebuchet MS", Helvetica;
+    font-family: Futura, Helvetica, Arial;
 }
 
 A
@@ -60,39 +56,60 @@ BLOCKQUOTE
     background-position: 0px 1px;
     background-repeat: no-repeat;
     background-color: #f0f0aa;
-    color: #222277;
+    color: #333355;
     margin: 15px 25px 15px 25px;
     padding: 20px 20px 10px 20px;
+    border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
 }
 
+/* hack to get fieldset background and legend position working right in IE */
+fieldset
+{
+    position: relative;
+    margin: 0 0 1em 0;
+}
+
+fieldset legend
+{
+    position: absolute;
+    top: -15px;
+    left: 3%;
+}
+
 #bgtop
 {
-    z-index: 1;
+    z-index: -1;
     top: 0;
     left: 0;
     position: fixed;
     width: 100%;
-    height: 40%;
+    height: 50%;
     margin: 0;
     padding: 0;
     background-color: #333333;
     border-bottom: 6px solid #cccccc;
 }
 
+#container
+{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-style: none;
+}
+
 #main
 {
-    z-index: 2;
-    position: relative;
-    left: 5%;
-    top: 40px;
-    width: 90%;
-    margin-bottom: 80px;
-    background-color: #aaaaaa;
-    border: 3px solid #ffffff;
+    margin: 60px 40px 60px 20px;
+    border-radius: 30px; 
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px; 
+}
+
+.sidetabs
+{
 }
 
 #header
@@ -100,8 +117,10 @@ BLOCKQUOTE
     background-color: #b70100;
     color: #ffffff;
     margin: 0;
-    padding: 15px;
+    padding: 20px;
     text-align: left;
+    border-radius-topleft: 30px; 
+    border-radius-topright: 30px; 
     -webkit-border-top-right-radius: 30px;
     -webkit-border-top-left-radius: 30px;
     -moz-border-radius-topleft: 30px; 
@@ -117,17 +136,18 @@ BLOCKQUOTE
 #header #title
 {
     height: 20px;
-    width: 180px;
     font-size:  24pt;
     font-family: "Trebuchet MS", "Gill Sans", Skia, "Century Gothic";
-    padding-right: 0px;
-    padding-left: 20px;
-    border-right: 2px solid #ffffff;
+    padding-right: 15px;
+    padding-left: 10px;
+    border-right: 2px solid #ffdd00;
 }
 
 #header #description
 {
     padding-left: 20px;
+    padding-right: 15px;
+    width: 100%;
 }
 
 #header a
@@ -162,8 +182,13 @@ BLOCKQUOTE
 
 #recent
 {
+    margin: 0px 0px 30px 0px;
+    padding: 10px 5px;
     color: #ffffff;
-    background-color: #846d21;
+    background-color: #777777;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
 }
 
 #recentheader
@@ -178,6 +203,7 @@ BLOCKQUOTE
     float: right;
     font-size: small;
     background-color: #b70100;
+    cursor: pointer;
 }
 
 #recentclose
@@ -193,20 +219,14 @@ BLOCKQUOTE
     /* border: 1px solid #ffffff; */
     margin-right: 8px;
     cursor: pointer;
+    border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px;
 }
 
 #recentlist
 {
-    font-family: Futura, "Century Gothic", Helvetica, Arial;
-    padding: 15px 15px 15px 0px;
-    background-color: #555555;
     margin: 10px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
 }
 
 #recentlist ul
@@ -218,14 +238,14 @@ BLOCKQUOTE
 {
     list-style-type: none;
     color: #ffffff;
-    border-bottom: 1px solid #aaaaaa;
+    border-top: 1px solid #cccccc;
     padding: 2px 5px;
     font-size: small;
 }
 
 #recentlist ul li:last-child
 {
-    border-style: none;
+    border-bottom: solid 1px #cccccc;
 }
 
 #recentlist a, #recentlist a:hover
@@ -234,32 +254,57 @@ BLOCKQUOTE
     color: #ffffff;
 }
 
+#sidebartab
+{
+    width: 20px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 7px 0px;
+    font-size: smaller;
+    background-color: #b70100;
+    background-color: #111111;
+    color: #cccccc;
+    cursor: pointer;
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-topleft: 8px;
+    opacity: 0.8;
+}
+
+#tdsidebar,
 #sidebar
 {
-    width: 180px;
     background-color: #ff9f06;
-    color: #111111;
-    padding: 10px;
-    /*opacity: 0.7;*/
-    font-family: "Trebuchet MS", Verdana, Helvetica;
+    border-radius-bottomleft: 30px; 
     -webkit-border-bottom-left-radius: 30px;
     -moz-border-radius-bottomleft: 30px; 
 }
 
+#sidebar
+{
+    color: #111111;
+    padding: 10px;
+    padding-top: 15px;
+}
+
 #sidebar fieldset.sidebarlist
 {
-    font-size: 9pt;
+    font-size: small;
     border: none;
     padding: 0px;
-    margin: 12px 12px 25px 12px;
-    padding: 5px 20px 5px 6px;
+    margin: 20px 12px 40px 12px;
+    padding: 10px 20px 5px 6px;
     background-color: #ffdd99;
+    border-radius: 10px; 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
 }
 
 #sidebar legend
 {
+    font-family: "Trebuchet MS", Verdana, Helvetica;
     font-size: 10pt;
     font-weight: normal;
     color: #ffffff;
@@ -267,6 +312,7 @@ BLOCKQUOTE
     padding: 5px 10px;
     margin: 0;
     margin-left: 5px;
+    border-radius: 10px; 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
 }
@@ -300,43 +346,72 @@ BLOCKQUOTE
     text-align: center;
     margin-left: 5%;
     margin-right: 5%;
-}
-
-#sidebar #calendar_wrap
-{
     margin-bottom: 10px;
 }
 
 #sidebar #wp-calendar
 {
+    margin-left: auto;
+    margin-right: auto;
     border-spacing: 0px;
 }
 
 #sidebar #wp-calendar caption
 {
-    font-size: larger;
     margin-bottom: 5px;
     letter-spacing: 0.1em;
     color: #222222;
-}
-
-#sidebar #wp-calendar thead,tfoot
-{
-    background-color: #ff9f06;
 }
 
 #sidebar #wp-calendar thead th
 {
     padding: 3px 5px;
     color: #ffffff;
+    background-color: #ff9f06;
 }
 
 #sidebar #wp-calendar tbody td
 {
-    color: #224499;
+    color: #a08050;
     padding: 2px 3px;
-    border: 1px dotted #ffffff;
-    border-style: none dotted dotted none;
+    border-width: 0px;
+    border-style: none;
+}
+
+#sidebar #wp-calendar tfoot td.pad
+{
+    background-color: #ff9f06;
+}
+
+#sidebar #wp-calendar tfoot td#next,
+#sidebar #wp-calendar tfoot td#prev
+{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #dd6f06;
+}
+
+#sidebar #wp-calendar thead th:first-child,
+#sidebar #wp-calendar tfoot td#prev
+{
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-topleft: 5px;
+}
+
+#sidebar #wp-calendar thead th:last-child,
+#sidebar #wp-calendar tfoot td#next
+{
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-topright: 5px;
+}
+
+#sidebar #wp-calendar tfoot a
+{
+    color: #ffffff;
 }
 
 #sidebar .textwidget
@@ -353,8 +428,13 @@ BLOCKQUOTE
 #content
 {
     margin: 0px;
-    padding: 20px 40px;
+    padding: 20px 30px;
     padding-top: 30px;
+    width: 100%;
+    background-color: #aaaaaa;
+    border-radius-bottomright: 30px; 
+    -webkit-border-bottom-right-radius: 30px;
+    -moz-border-radius-bottomright: 30px; 
 }
 
 .post
@@ -365,7 +445,12 @@ BLOCKQUOTE
 .post fieldset
 {
     background-color: #ffffff;
+    padding: 0px;
+    padding-top: 20px;
+    /* Firefox uses padding-left to determine Fieldset Legend margin!!! */
+    padding-left: 15px;
     border-style: none;
+    border-radius: 20px; 
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px; 
 }
@@ -374,17 +459,23 @@ BLOCKQUOTE
 {
     background-color: #6f900d;
     border: 0px solid #666666;
-    font-size: 13pt;
+    font-size: large;
     padding: 4px 20px;
-    margin-left: 20px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px; 
+    margin-left: 15px; /* doesn't work for Firefox -- see comment above in .post fieldset */
+    border-radius: 8px; 
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px; 
     font-family: "Trebuchet MS", "Gill Sans", Helvetica, Arial;
 }
 
-legend.title a, fieldset.comment legend, fieldset.comment legend a
+legend, legend a
 {
     color: #ffffff;
+}
+
+.dateauthor
+{
+    float: right;
 }
 
 .post fieldset .dateauthor, .commentmeta
@@ -393,12 +484,9 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
     margin: 0px 20px;
 }
 
-.post fieldset .dateauthor
-{
-    margin-top: 5px;
-}
-
-.post fieldset .dateauthor .capsule
+.post fieldset .dateauthor .capsule,
+.nocomments .capsule,
+.commentmeta .capsule
 {
     background-color: #cc9900;
 }
@@ -406,9 +494,12 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
 .entry
 {
     padding: 10px 25px;
-    font-family: Futura, "Century Gothic", Helvetica, Arial;
-    font-size: medium;
     color: #111111;
+}
+
+.entry, .commenttext
+{
+    font-size: small;
 }
 
 .entry A:hover
@@ -417,13 +508,14 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
     border-bottom: 1px dotted #aaaaaa;
 }
 
-
 #postaction
 {
     float: right;
+    clear: right;
     padding: 10px 15px 10px 10px;
     margin: 20px;
     background-color: #dd6f06;
+    border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
 }
@@ -436,10 +528,15 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
 .postmetadata
 {
     text-align: left;
-    padding: 12px 12px 30px 12px;
-    border-top: 2px solid #6f900d;
-    margin: 0px 10px;
+    padding: 8px 10px 32px 10px;
+    background-color: #eeeeee;
+    margin: 0px;
+    margin-left: -15px; /* see hack for Firefox in .post frameset above */
     clear: both;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    -moz-border-radius-bottomright: 20px;
 }
 
 .postmetadata #commentlink
@@ -453,40 +550,87 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
 {
     cursor: pointer;
     float: left;
+    /*
     background-image: URL('images/down_arrow.png');
     background-position: 85% 50%;
-    padding-right: 35px;
+    padding: 3px 35px 3px 10px;
     background-repeat: no-repeat;
+    */
+    padding: 3px 10px;
     margin-right: 10px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 8px; /* webkit can't render larger radius for smaller height */
     border-width: 0px;
+}
+
+.postcattags
+{
+    padding: 4px 10px 8px 10px;
+    margin: 4px 10px 0px 10px;
+    background-color: #ffffff;
+    color: #442222;
+    border-radius: 12px; 
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px; 
+    clear: both;
+    text-align: left;
+}
+
+.postcattags .capsule
+{
+    font-size: small;
+    padding: 1px 4px;
+    margin-right: 5px;
+    line-height: 20px;
+    -webkit-border-radius: 8px; /* see comment above for .cattriger */
+}
+
+#single .postmetadata .cattrigger,
+{
+    font-size: medium !important;
 }
 
 .postcats
 {
-    display: none;
-    padding: 5px 10px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px; 
-    border-radius: 20px; 
-    background-color: #ffdd99;
-    margin-top: 10px;
-    float: left;
-    clear: both;
-    text-align: left;
-    line-height: 30px;
-    color: #442222;
+    background-image: URL('images/cat2.png');
+    background-position: 3% 50%;
+    padding: 5px 35px 5px 45px;
+    background-repeat: no-repeat;
 }
 
-.postcats .capsule
+.posttags
 {
-    font-size: smaller;
-    margin-right: 5px;
+    margin-top: 15px;
+    background-image: URL('images/tag2.png');
+    background-position: 3% 50%;
+    padding: 5px 35px 5px 45px;
+    background-repeat: no-repeat;
+}
+
+#single .postcattags
+{
+    border-style: none;
+}
+
+#single .postcattags .capsule
+{
+    background-color: #ffddaa;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    float: left;
+}
+
+#single .postcattags .capsule a
+{
+    color: #772200;
 }
 
 DIV#comments
 {
     background-color: #c9ba90;
     padding: 10px 30px 30px 30px;
+    margin-bottom: 20px;
+    border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
 }
@@ -497,6 +641,7 @@ DIV#replybox
 	color: #333333;
     margin-top: 50px;
     padding: 10px 30px;
+    border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
 }
@@ -505,15 +650,16 @@ fieldset.comment
 {
     border: none;
     background-color: #ffffff;
-    margin: 20px 0px;
-    padding: 0px 10px 10px 10px;
+    margin: 40px 0px;
+    padding: 10px;
+    border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px; 
 }
 
 fieldset.comment legend
 {
-    font-size: 11pt;
+    font-size: medium;
 }
 
 fieldset.comment .commenttext
@@ -527,12 +673,13 @@ fieldset.comment .commenttext
     width: 80% !important;
 }
 
-.entry UL, .page UL
+.entry UL, .page UL, .entry OL, .page OL
 {
 	margin-left: 0px;
 	padding: 15px;
 	padding-left: 30px;
 	background-color: #d0f0ff;
+    border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px; 
 }
@@ -555,38 +702,62 @@ fieldset.comment .commenttext
     font-size: larger;
 }
 
-#credits
+.navigation
 {
-    position: fixed;
-    z-index: 15;
-    bottom: 0;
-    width: 97%;
-    margin: 0px;
-    padding: 4px 20px;
-    background-color: #333333;
-    color: #ffffff;
-    font-family: "Trebuchet MS", Verdana, Helvetica;
-    font-size: 9pt;
-    font-weight; normal;
-    text-align: right;
-    opacity: 0.8;
-    border: none 0px;
-}
-
-#credits A
-{
-    color: #ddddff;
+    font-size: larger;
 }
 
 #rsslinks
 {
-    margin-right: 10px;
-    float: left;
+    position: fixed;
+    z-index: 15;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 4px 10px;
+    margin: 0px;
+    font-family: Helvetica;
+    font-size: 8pt;
+    background-color: #333333;
     color: #ffffff;
-    font: 8pt;
+    font-size: 9pt;
+    font-weight: bold;
+    text-align: right;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+    border-style: none;
+}
+
+#rsslinks .capsule
+{
+    /* firefox likes padding here */
+    float: right;
+    margin-right: 5px;
+    padding: 2px 10px !important;
+    background-color: #000000;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
 }
 
 #rsslinks a
+{
+    color: #ffffff;
+}
+
+#credits
+{
+    margin: 0px;
+    font-family: "Trebuchet MS", Verdana, Helvetica;
+    padding: 5px;
+    padding-right: 10px;
+    background-color: #333333;
+    color: #ddcc33;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+}
+
+#credits A
 {
     color: #ffffff;
 }
@@ -619,9 +790,9 @@ fieldset.comment .commenttext
     font-family: Optima, Verdana, Helvetica;
     color: #ffffff;
     background-color: #dd6f06;
+    border-radius: 10px; 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
-    border-radius: 10px; 
 }
 
 .capsule a
@@ -633,9 +804,9 @@ img.avatar
 {
     float: left;
     margin: 5px 20px 20px 15px;
+    border-radius: 10px; 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
-    border-radius: 10px; 
 }
 
 /* required as per wordpress.org */
@@ -665,10 +836,10 @@ img.avatar
    padding-top: 4px;
    margin: 10px;
    /* optional rounded corners for browsers that support it */
+   border-radius: 3px;
    -moz-border-radius: 3px;
    -khtml-border-radius: 3px;
    -webkit-border-radius: 3px;
-   border-radius: 3px;
 }
 
 .wp-caption img
