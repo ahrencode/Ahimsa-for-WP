@@ -1,19 +1,31 @@
 /*  
 Theme Name: Ahimsa
 Theme URI: http://ahren.org/code/ahimsa
-Description: Ahimsa -- a the that attempts to inflict the least violence on your aesthetics!
-Version: 0.8
+Description: Ahimsa -- basic colours, low graphics, minimal distractions, with rounded corners in Firefox, Opera, Safari. Please visit http://ahren.org/code/ahimsa to suggest fixes and enhancements.
+Version: 1.2
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
+Tags: fluid width, widget ready, 2 columns, left sidebar, gravatars
 
-	 Ahimsa 0.8
+	 Ahimsa 1.2
 	 http://ahren.org/code/ahimsa
 
 	Theme built for the Ahren Code site but free for all
-    to use.
+    to use. The aim of this theme is to minimise the
+    distractions to the reader through the use of clean
+    (mostly) primary colours, low graphics, etc. This
+    theme uses rounded borders viewable in all browsers
+    that support them.
 
 	The CSS, XHTML and design is released under GPL:
 	http://www.opensource.org/licenses/gpl-license.php
+
+    Version 1.2 includes these fixes and features:
+
+    * Fixed: A grey rectangle was overlaid on posts without comments,
+      on blogs that require registration to comment.
+    * Fixed: The actions box on the top right of posts had a bad
+      link for posts with comments disabled.
 
 */
 
@@ -21,9 +33,9 @@ BODY
 {
     margin: 0;
     padding: 0;
-    width: 100%;
     background-color: #9fc03d;
     font-size: medium;
+    font-family: "Gill Sans", "Trebuchet MS", Helvetica;
 }
 
 A
@@ -34,7 +46,7 @@ A
 
 A:hover
 {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 IMG
@@ -67,20 +79,6 @@ BLOCKQUOTE
     padding: 0;
     background-color: #333333;
     border-bottom: 6px solid #cccccc;
-}
-
-#bgtop #rsslinks
-{
-    margin-top: 3px;
-    margin-right: 10px;
-    float: right;
-    color: #ffffff;
-    font: 8pt Arial;
-}
-
-#rsslinks a
-{
-    color: #ffffff;
 }
 
 #main
@@ -147,33 +145,115 @@ BLOCKQUOTE
 #searchform INPUT
 {
     background-image: URL('images/search.gif');
-    background-position: 2 2;
+    background-position: 3% 50%;
     background-repeat: no-repeat;
-    border: 1px solid #aaaaaa;
-    background-color: #333333;
+    border: 0px solid #aaaaaa;
+    margin: 0px;
+    margin-top: 5px;
+    background-color: #000000;
     padding-left: 18px;
     color: #ffffff;
     font-size: 8pt;
-    height: 12px;
+    height: 20px;
+    border-radius: 11px;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+}
+
+#recent
+{
+    color: #ffffff;
+    background-color: #846d21;
+}
+
+#recentheader
+{
+    padding: 5px 10px;
+    font-size: large;
+    font-family: "Trebuchet MS", "Gill Sans", Skia, "Century Gothic";
+}
+
+#recentmore
+{
+    float: right;
+    font-size: small;
+    background-color: #b70100;
+}
+
+#recentclose
+{
+    background-color: #b70100;
+    color: #ffffff;
+    float: left;
+    clear: left;
+    padding: 1px 3px 3px 3px;
+    font-family: Verdana;
+    font-size: xx-small;
+    font-weight: bold;
+    /* border: 1px solid #ffffff; */
+    margin-right: 8px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#recentlist
+{
+    font-family: Futura, "Century Gothic", Helvetica, Arial;
+    padding: 15px 15px 15px 0px;
+    background-color: #555555;
+    margin: 10px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+#recentlist ul
+{
+    margin: 0px 0px 0px -20px;
+}
+
+#recentlist ul li
+{
+    list-style-type: none;
+    color: #ffffff;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 2px 5px;
+    font-size: small;
+}
+
+#recentlist ul li:last-child
+{
+    border-style: none;
+}
+
+#recentlist a, #recentlist a:hover
+{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 #sidebar
 {
     width: 180px;
     background-color: #ff9f06;
-    color: #ffffff;
+    color: #111111;
     padding: 10px;
+    /*opacity: 0.7;*/
     font-family: "Trebuchet MS", Verdana, Helvetica;
     -webkit-border-bottom-left-radius: 30px;
     -moz-border-radius-bottomleft: 30px; 
 }
 
-#sidebar fieldset
+#sidebar fieldset.sidebarlist
 {
+    font-size: 9pt;
     border: none;
     padding: 0px;
-    margin: 12px 12px;
-    background-color: #ffddaa;
+    margin: 12px 12px 25px 12px;
+    padding: 5px 20px 5px 6px;
+    background-color: #ffdd99;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
 }
@@ -182,18 +262,11 @@ BLOCKQUOTE
 {
     font-size: 10pt;
     font-weight: normal;
+    color: #ffffff;
     background-color: #846d21;
     padding: 5px 10px;
     margin: 0;
     margin-left: 5px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px; 
-}
-
-#sidebar .sidebarlist
-{
-    padding: 5px 20px 5px 6px;
-    font-size: 9pt;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
 }
@@ -211,9 +284,9 @@ BLOCKQUOTE
     padding-top: 5px;
     padding-bottom: 5px;
     margin: 0px;
-    margin-left: 20px;
+    margin-left: 15px;
     margin-right: 10px;
-    color: #ffffff;
+    list-style-type: none;
 }
 
 #sidebar .sidebarlist li:first-child, #postaction li:first-child
@@ -221,10 +294,55 @@ BLOCKQUOTE
     border: none;
 }
 
-
-#postaction a
+#sidebar #calendar_wrap
 {
-    color: #553333;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#sidebar #calendar_wrap
+{
+    margin-bottom: 10px;
+}
+
+#sidebar #wp-calendar
+{
+    border-spacing: 0px;
+}
+
+#sidebar #wp-calendar caption
+{
+    font-size: larger;
+    margin-bottom: 5px;
+    letter-spacing: 0.1em;
+    color: #222222;
+}
+
+#sidebar #wp-calendar thead,tfoot
+{
+    background-color: #ff9f06;
+}
+
+#sidebar #wp-calendar thead th
+{
+    padding: 3px 5px;
+    color: #ffffff;
+}
+
+#sidebar #wp-calendar tbody td
+{
+    color: #224499;
+    padding: 2px 3px;
+    border: 1px dotted #ffffff;
+    border-style: none dotted dotted none;
+}
+
+#sidebar .textwidget
+{
+    padding: 5px 8px;
+    color: #334400;
 }
 
 .sidebarlist a
@@ -234,13 +352,14 @@ BLOCKQUOTE
 
 #content
 {
+    margin: 0px;
     padding: 20px 40px;
     padding-top: 30px;
 }
 
 .post
 {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .post fieldset
@@ -272,37 +391,96 @@ legend.title a, fieldset.comment legend, fieldset.comment legend a
 {
     text-align: right;
     margin: 0px 20px;
-    border-bottom: 1px dotted #aaaaaa;
+}
+
+.post fieldset .dateauthor
+{
+    margin-top: 5px;
+}
+
+.post fieldset .dateauthor .capsule
+{
+    background-color: #cc9900;
 }
 
 .entry
 {
     padding: 10px 25px;
-    font-family: "Gill Sans", Verdana, Skia, "Century Gothic", Helvetica, Arial;
+    font-family: Futura, "Century Gothic", Helvetica, Arial;
     font-size: medium;
-    color: #333333;
+    color: #111111;
 }
+
+.entry A:hover
+{
+    text-decoration: none;
+    border-bottom: 1px dotted #aaaaaa;
+}
+
 
 #postaction
 {
     float: right;
     padding: 10px 15px 10px 10px;
     margin: 20px;
-    background-color: #c9ba90;
+    background-color: #dd6f06;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
 }
 
-.postmetadata
+#postaction a
 {
-    border-top: 1px dotted #aaaaaa;
-    text-align: right;
-    margin: 5px 20px;
+    color: #ffffff;
 }
 
-.dateauthor, .postmetadata, .commentmeta
+.postmetadata
 {
-    color: #444466;
+    text-align: left;
+    padding: 12px 12px 30px 12px;
+    border-top: 2px solid #6f900d;
+    margin: 0px 10px;
+    clear: both;
+}
+
+.postmetadata #commentlink
+{
+    background-color: #dd6f06;
+    float: right;
+    padding: 3px 8px;
+}
+
+.postmetadata .cattrigger
+{
+    cursor: pointer;
+    float: left;
+    background-image: URL('images/down_arrow.png');
+    background-position: 85% 50%;
+    padding-right: 35px;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    border-width: 0px;
+}
+
+.postcats
+{
+    display: none;
+    padding: 5px 10px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px; 
+    border-radius: 20px; 
+    background-color: #ffdd99;
+    margin-top: 10px;
+    float: left;
+    clear: both;
+    text-align: left;
+    line-height: 30px;
+    color: #442222;
+}
+
+.postcats .capsule
+{
+    font-size: smaller;
+    margin-right: 5px;
 }
 
 DIV#comments
@@ -374,27 +552,43 @@ fieldset.comment .commenttext
 .entry > P:first-child:first-letter
 {
     color: #662222;
-    font-size: xx-large;
+    font-size: larger;
 }
 
 #credits
 {
-    position: relative;
-    bottom: 0px;
+    position: fixed;
+    z-index: 15;
+    bottom: 0;
+    width: 97%;
     margin: 0px;
-    padding: 5px;
-    border: none 0px;
-    background-color: #6f900d;
+    padding: 4px 20px;
+    background-color: #333333;
     color: #ffffff;
-    text-align: right;
     font-family: "Trebuchet MS", Verdana, Helvetica;
     font-size: 9pt;
     font-weight; normal;
+    text-align: right;
+    opacity: 0.8;
+    border: none 0px;
 }
 
 #credits A
 {
     color: #ddddff;
+}
+
+#rsslinks
+{
+    margin-right: 10px;
+    float: left;
+    color: #ffffff;
+    font: 8pt;
+}
+
+#rsslinks a
+{
+    color: #ffffff;
 }
 
 #replybox H3#respond
@@ -416,5 +610,79 @@ fieldset.comment .commenttext
 {
     border: 1px solid #aaaadd;
     background-color: #f7ffe0;
+}
+
+.capsule
+{
+    text-align: center;
+    padding: 4px 10px;
+    font-family: Optima, Verdana, Helvetica;
+    color: #ffffff;
+    background-color: #dd6f06;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+    border-radius: 10px; 
+}
+
+.capsule a
+{
+    color: #ffffff;
+}
+
+img.avatar
+{
+    float: left;
+    margin: 5px 20px 20px 15px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+    border-radius: 10px; 
+}
+
+/* required as per wordpress.org */
+
+.aligncenter, div.aligncenter
+{
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft
+{
+   float: left;
+}
+
+.alignright
+{
+   float: right;
+}
+
+.wp-caption
+{
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+   /* optional rounded corners for browsers that support it */
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+}
+
+.wp-caption img
+{
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text
+{
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
 }
 

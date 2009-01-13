@@ -1,21 +1,26 @@
-
-<fieldset>
-    <legend>&sect; Software Bits</legend>
-    <div class='sidebarlist'>
+<fieldset class='sidebarlist'>
+    <legend>&sect; Authors</legend>
     <ul>
-    <?php wp_list_pages('title_li='); ?>
+    <?php wp_list_authors("optioncount=0&exclude_admin=0&feed=1&feed_image=wp-content/themes/ahimsa/images/rss-icon.gif"); ?> 
     </ul>
-    </div>
-    <br/>
 </fieldset>
 
-<fieldset>
+<?php if ( !function_exists('dynamic_sidebar')
+        || !dynamic_sidebar() ) : ?>
+
+<fieldset class='sidebarlist'>
+    <legend>&sect; Categories</legend>
+    <ul>
+    <?php wp_list_categories('title_li=&hierarchical=0'); ?>
+    </ul>
+</fieldset>
+
+<fieldset class='sidebarlist'>
     <legend>&sect; Archives</legend>
-    <div class='sidebarlist'>
     <ul>
     <?php wp_get_archives('type=monthly'); ?>
     </ul>
-    </div>
-    <br/>
 </fieldset>
+
+<?php endif; ?>
 

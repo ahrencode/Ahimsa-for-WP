@@ -32,13 +32,6 @@ This is by no means a "best practices", complete or feature-rich theme.
 At some point, I hope it will be. In particular, you may wish to note the
 below:
 
-* Edit (using the WP interface) the Sidebar to change the heading for the
-  pages listing. The current heading for that section is inherited from
-  the Ahren Code site.
-
-* The theme is not "widget-aware". That's the next thing I am attacking,
-  so keep your eyes open.
-
 * The theme is intended to be bold yet pleasing. YMMV! ;-) It was built,
   like many other themes, by hacking the default. A cursory look at the
   contents will demonstrate the rather shallow understanding of the CSS
@@ -50,7 +43,12 @@ below:
   border-radius attribute, and I probably will, but it won't help much
   since IE does not support it anyway.
 
-* Which reminds me: this is entirely untested in IE.
+* Since WordPress does not provide an "Authors" widget by default, the
+  display of an author list is hard-coded into the Sidebar. You can
+  edit the Theme and remove it from the Sidebar, if you disagree that
+  a blog should display its list of authors.
 
-* Ahimsa can be taken to mean "non-violence".
+* Which reminds me: this is not fully tested in IE.
+
+* The word "ahimsa" can be taken to mean "non-violence".
 

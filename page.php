@@ -17,7 +17,7 @@
                 </legend>
 
 				<div class='dateauthor'>
-                    <small><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
+                    <small class='capsule'><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
                 </div>
 
 				<div class="entry">
@@ -25,7 +25,7 @@
 				</div>
 
 				<p class="postmetadata">
-                    <?php edit_post_link('Edit', '', ' | '); ?>
+                    <span class='capsule'><?php edit_post_link('Edit', '', '&nbsp;'); ?></span>
                     <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
                             '% Comments &#187;'); ?>
                 </p>

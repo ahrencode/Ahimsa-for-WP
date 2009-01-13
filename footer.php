@@ -1,6 +1,11 @@
 </div>
 
 <div id='bgtop'>
+<br clear='all'/>
+</div>
+
+<div id='credits'>
+
 <div id='rsslinks'>
     <a href='feed:<?php bloginfo("rss2_url"); ?>'>
     <img border=0 valign='middle'
@@ -13,18 +18,18 @@
         src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>'>
     Comments
     </a>
-</div>
-<br clear='all'/>
+    &nbsp;&nbsp;
+    &raquo;
+    <?php wp_loginout(); ?>
 </div>
 
-<div id='credits'>
 &raquo;&nbsp;
 Substance: <a href='http://wordpress.org/'>WordPress</a>
 &nbsp;
 &raquo;&nbsp;
 Style: <a href='http://ahren.org/code/ahimsa'>Ahren Ahimsa</a>
+
 </div>
 
 </body>
-
 
