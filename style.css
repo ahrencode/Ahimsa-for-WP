@@ -455,7 +455,10 @@ fieldset legend
     -moz-border-radius: 20px; 
 }
 
-.post fieldset legend.title, fieldset.comment legend
+.post fieldset legend.title,
+fieldset#comments legend,
+fieldset.comment legend,
+fieldset#responsebox legend
 {
     background-color: #6f900d;
     border: 0px solid #666666;
@@ -625,22 +628,25 @@ legend, legend a
     color: #772200;
 }
 
-DIV#comments
+FIELDSET#comments
 {
     background-color: #c9ba90;
-    padding: 10px 30px 30px 30px;
+    padding: 0px;
+    padding-left: 15px;
     margin-bottom: 20px;
+    border-style: none;
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
 }
 
-DIV#replybox
+fieldset#responsebox
 {
     background-color: #ffffff;
 	color: #333333;
     margin-top: 50px;
     padding: 10px 30px;
+    border-style: none;
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
@@ -650,8 +656,10 @@ fieldset.comment
 {
     border: none;
     background-color: #ffffff;
-    margin: 40px 0px;
-    padding: 10px;
+    margin: 30px 0px;
+    margin-right: 50px;
+    padding: 0px;
+    padding-left: 15px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px; 
@@ -659,18 +667,13 @@ fieldset.comment
 
 fieldset.comment legend
 {
-    font-size: medium;
+    font-size: medium !important;
 }
 
 fieldset.comment .commenttext
 {
     padding-left: 20px;
 	color: #333333;
-}
-
-#comments textarea
-{
-    width: 80% !important;
 }
 
 .entry UL, .page UL, .entry OL, .page OL
@@ -762,25 +765,27 @@ fieldset.comment .commenttext
     color: #ffffff;
 }
 
-#replybox H3#respond
-{
-	padding-bottom: 3px;
-	border-bottom: 2px solid #777777;
-}
-
-#replybox INPUT#submit
+#respond INPUT#submit
 {
 	font-weight: bold;
-    background-color: #6f900d;
-	color: #ffffff;
+    font-size: medium;
+    cursor: pointer;
 	border: none;
 	padding: 3px 10px;
 }
 
-#replybox TEXTAREA, #replybox INPUT
+#respond TEXTAREA, #respond INPUT.inptext
 {
     border: 1px solid #aaaadd;
-    background-color: #f7ffe0;
+    background-color: #eeeeee;
+    width: 80% !important;
+}
+
+fieldset#comments .postmetadata,
+.replybuttonbox
+{
+    padding: 10px 25px;
+    text-align: right;
 }
 
 .capsule

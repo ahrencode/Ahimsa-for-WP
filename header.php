@@ -37,7 +37,10 @@
 
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
-    <?php wp_head(); ?>
+    <?php
+        if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
+        wp_head();
+    ?>
 
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/ahimsa.js'; ?>"></script>
 
@@ -58,6 +61,8 @@
 
 <body onload='recalcBlocks(); initSBMargin();' onresize='recalcBlocks();'>
 
+<?php global $options; ?>
+
 <div id='bgtop'>
 <br clear='all'/>
 </div>
@@ -77,7 +82,7 @@
     <span title='Subscribe to the RSS feed for the posts on this site'>Site</span>
     </a>
     </div>
-    <?php global $options; if( $options['showloginout'] == 1 ) { ?>
+    <?php if( $options['showloginout'] == 1 ) { ?>
     <div class='capsule'>
     <?php wp_loginout(); ?>
     </div>

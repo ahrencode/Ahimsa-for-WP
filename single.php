@@ -1,10 +1,6 @@
 
 <?php get_header(); ?>
 
-<script language='JavaScript'>
-    fadeSideBar();
-</script>
-
 <div id='single' style='width: 100%;'>
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -131,6 +127,12 @@
 <?php endif; ?>
 
 </div>
+
+<?php if( $options['defhidesbpages'] == 1 ): ?>
+    <script language='JavaScript'>
+        fadeSideBar();
+    </script>
+<?php endif; ?>
 
 <?php get_footer(); ?>
 
