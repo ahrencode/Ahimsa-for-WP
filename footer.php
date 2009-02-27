@@ -28,6 +28,8 @@ if( $options['copyright'] != "" )
 
 </table> <!-- end of table container -->
 
+<?php wp_footer(); ?>
+
 </body>
 
 </html>
