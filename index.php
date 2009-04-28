@@ -90,7 +90,7 @@
                                 // leave newlines below... Safari needs them
                                 // for rounded borders!!!
                                 $sep = ', ',
-                                $after = '</span>');
+                                $after = '');
                 ?> 
                 </div>
                 <?php endif; ?>

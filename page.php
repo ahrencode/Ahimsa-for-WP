@@ -26,17 +26,17 @@
                 <?php the_content('Read the rest of this entry &raquo;'); ?>
             </div>
 
-            <?php if( $user_ID ) : ?>
             <p class="postmetadata">
+                <?php if( $user_ID ) : ?>
                 <span class='capsule'><?php edit_post_link('Edit', '', '&nbsp;'); ?></span>
-                <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
-                        '% Comments &#187;'); ?>
+                <?php endif; ?>
             </p>
-            <?php endif; ?>
 
         </div>
 
     <?php endwhile; ?>
+
+<?php comments_template(); ?>
 
 <?php else : ?>
 

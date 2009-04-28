@@ -1,0 +1,231 @@
+
+            #bgtop
+            {
+                background-color: #333333;
+            }
+        
+            #bgtop
+            {
+                border-bottom-color: #ffffff;
+            }
+        
+            BODY
+            {
+                background-color: #1240ab;
+            }
+        
+            A
+            {
+                color: #002266;
+            }
+        
+            .capsule
+            {
+                background-color: #3050a0;
+            }
+        
+            .capsule, .capsule a
+            {
+                color: #ffffff;
+            }
+        
+            #header
+            {
+                background-color: #dd8800;
+            }
+        
+            #header, #header table, #header a
+            {
+                color: #ffffff;
+            }
+        
+            #header #title
+            {
+                border-right-color: #ffeeaa;
+            }
+        
+            #sidebar, #tdsidebar
+            {
+                background-color: #70a0ff;
+            }
+        
+            #sidebar fieldset.sidebarlist
+            {
+                background-color: #ddeeff;
+            }
+        
+            #sidebar fieldset.sidebarlist
+            {
+                color: #000000;
+            }
+        
+            #sidebar legend
+            {
+                background-color: #dd8800;
+            }
+        
+            #sidebar legend
+            {
+                color: #ffffff;
+            }
+        
+            #sidebar .sidebarlist li, #postaction li
+            {
+                border-top-color: #a0c0ff;
+            }
+        
+            .sidebarlist a
+            {
+                color: #002266;
+            }
+        
+            #sidebar #wp-calendar caption
+            {
+                color: #000000;
+            }
+        
+            #sidebar #wp-calendar thead th, #sidebar #wp-calendar tfoot td.pad
+            {
+                background-color: #bbccee;
+            }
+        
+            #sidebar #wp-calendar thead th
+            {
+                color: #000000;
+            }
+        
+            #sidebar #wp-calendar tbody td
+            {
+                color: #333333;
+            }
+        
+            #sidebar #wp-calendar tfoot td#next, #sidebar #wp-calendar tfoot td#prev
+            {
+                background-color: #bbccee;
+            }
+        
+            #sidebar #wp-calendar tfoot td#next, #sidebar #wp-calendar tfoot td#prev, #sidebar #wp-calendar tfoot a
+            {
+                color: #002266;
+            }
+        
+            #sidebar .textwidget
+            {
+                color: #000000;
+            }
+        
+            #content
+            {
+                background-color: #aaaaaa;
+            }
+        
+            .post fieldset
+            {
+                background-color: #ddeeff;
+            }
+        
+            .entry
+            {
+                color: #000000;
+            }
+        
+            .post fieldset legend.title, fieldset#comments legend, fieldset.comment legend, fieldset#responsebox legend
+            {
+                background-color: #dd9900;
+            }
+        
+            .post fieldset legend.title, .post fieldset legend.title a, fieldset#comments legend, fieldset.comment legend, fieldset#responsebox legend
+            {
+                color: #ffffff;
+            }
+        
+            .dateauthor .capsule, .nocomments .capsule
+            {
+                background-color: #99aadd;
+            }
+        
+            .dateauthor .capsule, .nocomments .capsule
+            {
+                color: #ffffff;
+            }
+        
+            .postmetadata
+            {
+                background-color: #ccddff;
+            }
+        
+            .postcattags
+            {
+                background-color: #1240ab;
+            }
+        
+            .postcattags, .postcattags a
+            {
+                color: #ffffff;
+            }
+        
+            #single .postcattags .capsule
+            {
+                background-color: #aabbee;
+            }
+        
+            #single .postcattags .capsule, #single .postcattags .capsule a
+            {
+                color: #002266;
+            }
+        
+            blockquote
+            {
+                background-color: #ffffff;
+            }
+        
+            blockquote
+            {
+                color: #222222;
+            }
+        
+            .entry UL, .page UL, .entry OL, .page OL
+            {
+                background-color: #ffffff;
+            }
+        
+            .entry UL, .page UL, .entry OL, .page OL
+            {
+                color: #222222;
+            }
+        
+            .entry > P:first-child:first-letter
+            {
+                color: #000000;
+            }
+        
+            #postaction, .postmetadata #commentlink, .postmetadata .cattrigger, .replybuttonbox .capsule, #respond INPUT#submit
+            {
+                background-color: #99aadd;
+            }
+        
+            #postaction, .postmetadata #commentlink, .postmetadata .cattrigger, #postaction a, replybuttonbox .capsule, #respond INPUT#submit
+            {
+                color: #002266;
+            }
+        
+            fieldset#comments
+            {
+                background-color: #7799bb;
+            }
+        
+            fieldset.comment, fieldset.comment .commenttext
+            {
+                background-color: #ddeeff;
+            }
+        
+            fieldset.comment .commenttext
+            {
+                color: #111111;
+            }
+        
+            fieldset#responsebox
+            {
+                background-color: #99aadd;
+            }
+        

@@ -25,6 +25,14 @@ have already done, since you are reading this file!) and copying the
 directory ("ahimsa") into your WordPress installation directory under
 wp-contents/themes.
 
+Installing Ahimsa Skins
+-----------------------
+
+The Ahimsa scheme supports customisation of the colour (and soon font)
+scheme, and such customisations can even be shared. A preliminary
+version of this feature is being introduced in Ahimsa for WP 2.2 and
+it will be fully fleshed out in a future release.
+
 Notes
 -----
 
@@ -43,8 +51,6 @@ below:
   border-radius attribute, and I probably will, but it won't help much
   since IE does not support it anyway. Rounded borders do work with
   Google Chrome since it is based on WebKit.
-
-* Which reminds me: this is not fully tested in IE.
 
 * The word "ahimsa" can be taken to mean "non-violence".
 

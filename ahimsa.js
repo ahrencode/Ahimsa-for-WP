@@ -53,8 +53,14 @@ function fadeSideBar()
     sb = document.getElementById('sidebar');
     divcont = document.getElementById('content');
 
+    // I am not sure how the below works to toggle the background on and off
+    // for the container cell. tdsbBackground, as set below, doesn't work!!!
+    // It's empty, I guess because sb.style.backgroundColor is computer and
+    // not available here. But the below logic, to toggle the background from
+    // transparent to colour and back works magically!!!
+
     if( tdsbBackground == "" )
-        tdsbBackground = tdsb.style.backgroundColor;
+        tdsbBackground = sb.style.backgroundColor;
 
     if( sb.style.display == 'none' )
     {

@@ -1,13 +1,13 @@
 /*  
 Theme Name: Ahimsa
 Theme URI: http://ahren.org/code/ahimsa
-Description: Ahimsa -- basic colours, low graphics, minimal distractions, collapsible sidebar, with rounded corners in Firefox, Safari, Chrome. New for version 2.1: support for WP 2.7 comment system, more consistent look for comments section, many new configurable options (including default visibility of sidebar on posts and pages). Please visit http://ahren.org/code/ahimsa-wp-2dot1 for feature list and to suggest fixes and enhancements.
-Version: 2.1
+Description: Ahimsa -- customisable colours, low graphics, minimal distractions, collapsible sidebar, with rounded corners in Firefox, Safari, Chrome. New for version 2.2: IE 6/7/8 fixes, first cut of colour scheme support, many other fixes. Please visit http://ahren.org/code/bit/ahimsa-wp-2dot2 for feature and fixes list and to suggest fixes and enhancements.
+Version: 2.2.1
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
-Tags: green, orange, red, white, yellow, two-columns, flexible-width, left-sidebar, theme-options, threaded-comments
+Tags: two-columns, flexible-width, left-sidebar, theme-options, threaded-comments
 
-	 Ahimsa 2.1
+	 Ahimsa 2.2
 	 http://ahren.org/code/ahimsa
 
 	Theme built for the Ahren Code site but free for all
@@ -17,7 +17,8 @@ Tags: green, orange, red, white, yellow, two-columns, flexible-width, left-sideb
     theme uses rounded borders viewable in all browsers
     that support them.
 
-	The CSS, XHTML and design are released under GPL:
+	The CSS, XHTML and design are released under the
+    latest GPL (at time of use):
 	http://www.opensource.org/licenses/gpl-license.php
 
 */
@@ -90,6 +91,10 @@ fieldset legend
     padding: 0;
     background-color: #333333;
     border-bottom: 6px solid #cccccc;
+    /* for IE */
+    _position:absolute;
+    _top:expression(eval(document.body.scrollTop));
+    
 }
 
 #container
@@ -262,7 +267,6 @@ fieldset legend
     margin-bottom: 100px;
     padding: 7px 0px;
     font-size: smaller;
-    background-color: #b70100;
     background-color: #111111;
     color: #cccccc;
     cursor: pointer;
@@ -271,6 +275,7 @@ fieldset legend
     -moz-border-radius-bottomleft: 8px;
     -moz-border-radius-topleft: 8px;
     opacity: 0.8;
+    filter: alpha(opacity = 80);
 }
 
 #tdsidebar,
@@ -287,6 +292,7 @@ fieldset legend
     color: #111111;
     padding: 10px;
     padding-top: 15px;
+    height: 100%;
 }
 
 #sidebar fieldset.sidebarlist
@@ -479,17 +485,12 @@ legend, legend a
 .dateauthor
 {
     float: right;
-}
-
-.post fieldset .dateauthor, .commentmeta
-{
-    text-align: right;
     margin: 0px 20px;
+    font-size: small;
 }
 
-.post fieldset .dateauthor .capsule,
-.nocomments .capsule,
-.commentmeta .capsule
+.dateauthor .capsule,
+.nocomments .capsule
 {
     background-color: #cc9900;
 }
@@ -518,6 +519,7 @@ legend, legend a
     padding: 10px 15px 10px 10px;
     margin: 20px;
     background-color: #dd6f06;
+    font-size: small;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
@@ -588,9 +590,9 @@ legend, legend a
     -webkit-border-radius: 8px; /* see comment above for .cattriger */
 }
 
-#single .postmetadata .cattrigger,
+#single .postmetadata .cattrigger
 {
-    font-size: medium !important;
+    font-weight: bold;
 }
 
 .postcats
@@ -656,9 +658,9 @@ fieldset.comment
 {
     border: none;
     background-color: #ffffff;
-    margin: 30px 0px;
-    margin-right: 50px;
+    margin: 30px 40px 30px 25px;
     padding: 0px;
+    padding-top: 10px;
     padding-left: 15px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -670,9 +672,16 @@ fieldset.comment legend
     font-size: medium !important;
 }
 
+fieldset.comment IMG.avatar,
 fieldset.comment .commenttext
 {
-    padding-left: 20px;
+    padding-top: 5px;
+}
+
+fieldset.comment .commenttext
+{
+    padding-right: 30px;
+    padding-left: 30px;
 	color: #333333;
 }
 
@@ -705,9 +714,9 @@ fieldset.comment .commenttext
     font-size: larger;
 }
 
-.navigation
+.navigation .capsule
 {
-    font-size: larger;
+    font-size: large;
 }
 
 #rsslinks
@@ -793,6 +802,7 @@ fieldset#comments .postmetadata,
     text-align: center;
     padding: 4px 10px;
     font-family: Optima, Verdana, Helvetica;
+    font-size: small;
     color: #ffffff;
     background-color: #dd6f06;
     border-radius: 10px; 

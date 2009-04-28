@@ -29,10 +29,10 @@ if ( function_exists('wp_list_comments') ) :
                 The &nbsp; below is to workaround what seems to be a bug in Safari.
                 Without it, the 'comments' container fieldset (above) is overlapped
                 by the first comment fieldset.
-            --!>
+            -->
             &nbsp;
 
-            <?php wp_list_comments('type=comment&callback=custom_comment'); ?>
+            <?php wp_list_comments('type=all&callback=custom_comment'); ?>
 
             <div class="postmetadata">
                 <?php
