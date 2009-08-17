@@ -746,16 +746,8 @@ function custom_comment($comment, $args, $depth)
 
         <legend> <?php comment_author_link() ?> writes: </legend>
 
-        <div class="dateauthor">
-            <small class='capsule'>
-            <?php comment_date('F jS, Y') ?> at <?php comment_time() ?>
-            </small>
-            <?php if( $user_ID ) : ?>
-            &nbsp;&nbsp;
-            <small class='capsule'>
-            <?php edit_comment_link('edit','&nbsp;',''); ?>
-            </small>
-            <?php endif; ?>
+        <div class="dateauthor capsule">
+            <small><?php comment_date('F jS, Y') ?> at <?php comment_time() ?></small>
         </div>
 
         <?php
@@ -774,17 +766,32 @@ function custom_comment($comment, $args, $depth)
 
         </div>
 
-        <?php if( get_option('thread_comments') ) : ?>
-        <div class='postmetadata replybuttonbox'>
-        <span class="capsule">
-            <!-- spaces needed for Safari to render rounded corners! -->
-            &nbsp;
-            <?php comment_reply_link(
-                    array_merge( $args, array('depth' => $depth,
-                                'max_depth' => $args['max_depth']))) ?>
-            &nbsp;
-        </span>
-        </div>
+        <?php global $user_ID; if( $user_ID || get_option('thread_comments') ) : ?>
+
+            <div class='postmetadata replybuttonbox'>
+
+                <?php global $user_ID; if( $user_ID ) : ?>
+                    &nbsp;&nbsp;
+                    <span class='capsule'>
+                        <?php edit_comment_link('edit','&nbsp;',''); ?>
+                    </span>
+                <?php endif; ?>
+
+                &nbsp; &nbsp;
+
+               <?php if( get_option('thread_comments') ) : ?>
+                    <span class="capsule">
+                        <!-- spaces needed for Safari to render rounded corners! -->
+                        &nbsp;
+                        <?php comment_reply_link(
+                                array_merge( $args, array('depth' => $depth,
+                                            'max_depth' => $args['max_depth']))) ?>
+                        &nbsp;
+                    </span>
+                <?php endif; ?>
+
+            </div>
+
         <?php endif; ?>
 
     </fieldset>

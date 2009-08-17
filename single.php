@@ -14,8 +14,8 @@
                 title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
         </legend>
 
-        <div class='dateauthor'>
-            <small class='capsule'><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
+        <div class='dateauthor capsule'>
+            <?php the_time('F jS, Y') ?> by <?php the_author() ?>
         </div>
 
         <div id='postaction'>

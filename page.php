@@ -17,8 +17,8 @@
                 </legend>
 
                 <?php if( $options['showpagemeta'] == 1 ) : ?>
-                    <div class='dateauthor'>
-                        <small class='capsule'><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
+                    <div class='dateauthor capsule'>
+                        <?php the_time('F jS, Y') ?> by <?php the_author() ?>
                     </div>
                 <?php endif; ?>
 

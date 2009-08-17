@@ -485,14 +485,14 @@ legend, legend a
 .dateauthor
 {
     float: right;
-    margin: 0px 20px;
+    margin: 0px 30px;
     font-size: small;
 }
 
-.dateauthor .capsule,
-.nocomments .capsule
+.dateauthor,
+.nocomments
 {
-    background-color: #cc9900;
+    background-color: #cc9900 !important;
 }
 
 .entry
@@ -628,6 +628,11 @@ legend, legend a
 #single .postcattags .capsule a
 {
     color: #772200;
+}
+
+.nocomments
+{
+    font-size: large !important;
 }
 
 #comments
