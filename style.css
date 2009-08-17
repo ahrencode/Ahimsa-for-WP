@@ -630,6 +630,18 @@ legend, legend a
     color: #772200;
 }
 
+#subpagelinks
+{
+    float: right;
+    margin-right: 15px;
+    font-size: medium;
+}
+
+#subpagelinks A
+{
+    font-size: small;
+}
+
 .nocomments
 {
     font-size: large !important;
