@@ -630,7 +630,7 @@ legend, legend a
     color: #772200;
 }
 
-FIELDSET#comments
+#comments
 {
     background-color: #c9ba90;
     padding: 0px;
@@ -642,7 +642,15 @@ FIELDSET#comments
     -moz-border-radius: 25px; 
 }
 
-fieldset#responsebox
+#comments > UL,
+#comments > UL > LI
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#responsebox
 {
     background-color: #ffffff;
 	color: #333333;
@@ -652,6 +660,11 @@ fieldset#responsebox
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
+}
+
+#comments #responsebox
+{
+    margin: 0px 30px;
 }
 
 fieldset.comment
@@ -805,6 +818,12 @@ fieldset#comments .postmetadata,
 {
     padding: 10px 25px;
     text-align: right;
+}
+
+#cancel-comment-reply
+{
+    display: inline;
+    padding-left: 15px;
 }
 
 .capsule

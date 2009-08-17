@@ -740,7 +740,7 @@ function custom_comment($comment, $args, $depth)
     ?>
 
     <!-- WP automatically closes this tag below in wp_list_comments -->
-    <li>
+    <li  <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
 
     <fieldset class='comment'>
 

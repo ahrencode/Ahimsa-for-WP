@@ -157,11 +157,11 @@ else : // old WP < 2.7
 
 <?php if('open' == $post->comment_status) : ?>
 
+    <div id='respond'>
+
     <fieldset id='responsebox'>
 
     <legend>Leave a Reply</legend>
-
-    <div id='respond'>
 
     <?php if( get_option('comment_registration') && !$user_ID ) : ?>
 
@@ -230,9 +230,9 @@ else : // old WP < 2.7
 
     <?php endif; // If registration required and not logged in ?>
 
-    </div>
-
     </fieldset>
+
+    </div>
 
 <?php endif; // if you delete this the sky will fall on your head ?>
 
