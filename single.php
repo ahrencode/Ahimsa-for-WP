@@ -41,8 +41,8 @@
             ?>
 
             <li>
-                <img border=0 valign='middle'
-                    src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>'>
+                <img border='0' align='middle' alt='Comments Feed'
+                    src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
                 <?php comments_rss_link('Comments Feed'); ?>
             </li>
 
@@ -62,12 +62,12 @@
 
             <input type='button' class='cattrigger capsule'
                 value='Categories &darr;'
-                onClick='fadeBlock("postcats");'/>
+                onclick='fadeBlock("postcats");'/>
 
             <?php if( get_the_tags() ) : ?>
             <input type='button' class='cattrigger capsule'
                 value='Tags &darr;'
-                onClick='fadeBlock("posttags");'/>
+                onclick='fadeBlock("posttags");'/>
             <?php endif; ?>
 
             </div>

@@ -32,7 +32,11 @@ if ( function_exists('wp_list_comments') ) :
             -->
             &nbsp;
 
-            <?php wp_list_comments('type=all&callback=custom_comment'); ?>
+            <ul>
+                <?php wp_list_comments('type=all&style=ul&callback=custom_comment'); ?>
+            </ul>
+
+            <br clear='all' />
 
             <div class="postmetadata">
                 <?php
@@ -201,8 +205,6 @@ else : // old WP < 2.7
 
         <p><textarea name="comment" id="comment" cols="60%" rows="10" tabindex="4"></textarea></p>
 
-        <p>
-
         <input name="submit" type="submit" id="submit" class='capsule'
              tabindex="5" value="Submit Comment" />
             
@@ -213,7 +215,8 @@ else : // old WP < 2.7
                 comment_id_fields();
             ?>
                 <div id="cancel-comment-reply">
-	            <small><?php cancel_comment_reply_link() ?></small></div>
+	                <small><?php cancel_comment_reply_link() ?></small>
+                </div>
 
             <?php else : ?>
 

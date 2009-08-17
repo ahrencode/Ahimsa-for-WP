@@ -11,26 +11,28 @@
 
             <fieldset>
 
-            <legend class='title'>
-                <a href="<?php the_permalink() ?>" rel="bookmark"
-                    title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
-            </legend>
+                <legend class='title'>
+                    <a href="<?php the_permalink() ?>" rel="bookmark"
+                        title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
+                </legend>
 
-            <?php if( $options['showpagemeta'] == 1 ) : ?>
-            <div class='dateauthor'>
-                <small class='capsule'><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
-            </div>
-            <?php endif; ?>
-
-            <div class="entry">
-                <?php the_content('Read the rest of this entry &raquo;'); ?>
-            </div>
-
-            <p class="postmetadata">
-                <?php if( $user_ID ) : ?>
-                <span class='capsule'><?php edit_post_link('Edit', '', '&nbsp;'); ?></span>
+                <?php if( $options['showpagemeta'] == 1 ) : ?>
+                    <div class='dateauthor'>
+                        <small class='capsule'><?php the_time('F jS, Y') ?> by <?php the_author() ?></small>
+                    </div>
                 <?php endif; ?>
-            </p>
+
+                <div class="entry">
+                    <?php the_content('Read the rest of this entry &raquo;'); ?>
+                </div>
+
+                <p class="postmetadata">
+                    <?php if( $user_ID ) : ?>
+                    <span class='capsule'><?php edit_post_link('Edit', '', '&nbsp;'); ?></span>
+                    <?php endif; ?>
+                </p>
+
+            </fieldset>
 
         </div>
 

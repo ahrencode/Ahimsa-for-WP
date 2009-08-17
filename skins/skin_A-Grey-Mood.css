@@ -199,12 +199,12 @@
                 color: #000000;
             }
         
-            #postaction, .postmetadata #commentlink, .postmetadata .cattrigger, .replybuttonbox .capsule, #respond INPUT#submit
+            #postaction, .postmetadata .commentlink, .postmetadata .cattrigger, .replybuttonbox .capsule, #respond INPUT#submit
             {
                 background-color: #999999;
             }
         
-            #postaction, .postmetadata #commentlink, .postmetadata .cattrigger, #postaction a, replybuttonbox .capsule, #respond INPUT#submit
+            #postaction, .postmetadata .commentlink, .postmetadata .cattrigger, #postaction a, replybuttonbox .capsule, #respond INPUT#submit
             {
                 color: #000000;
             }

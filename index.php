@@ -2,12 +2,13 @@
 
 <?php if( $options['showdelic'] && $options['delicid'] ) :
     $delid = $options['delicid']; ?>
+
 <div id='recent'>
     <div id='recentheader'>
         <div id='recentclose'
-            onClick='toggleDelicious();'>+</div>
+            onclick='toggleDelicious();'>+</div>
         <div id='recentmore' class='capsule'
-            onClick='document.location="http://delicious.com/<?php print $delid; ?>";'> More </div>
+            onclick='document.location="http://delicious.com/<?php print $delid; ?>";'> More </div>
         <?php print $options['delictitle']; ?>
         <!-- inline style for easy JavaScript mods, without getting computed styles -->
         <div id='recentlist' style='opacity: 1.0; display: block;'>
@@ -15,6 +16,7 @@
         </div>
     </div>
 </div>
+
 <?php endif; ?>
 
 <?php if (have_posts()) : ?>
@@ -25,79 +27,81 @@
 
             <fieldset>
 
-            <legend class='title'>
-                <a href="<?php the_permalink() ?>" rel="bookmark"
-                    title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
-            </legend>
+                <legend class='title'>
+                    <a href="<?php the_permalink() ?>" rel="bookmark"
+                        title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
+                </legend>
 
-            <div class='dateauthor'>
-                <small class='capsule'><?php the_time('M jS, Y') ?> by
-                    <?php the_author() ?></small>
-            </div>
-
-            <div class="entry">
-                <?php the_content('Read the rest of this entry &raquo;'); ?>
-            </div>
-
-            <div class="postmetadata"
-                <?php if( $options["idxfadepmeta"] ) : ?>
-                style='opacity: 0.3;'
-                onMouseOver='this.style.opacity = 1.0;'
-                onMouseOut='this.style.opacity = 0.3;'
-                <?php endif; ?>
-                >
-
-                <span id='commentlink' class='capsule'>
-                <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
-                        '% Comments &#187;'); ?>
-                </span>
-
-                <input type='button' class='cattrigger capsule'
-                    value='Categories &darr;'
-                    onClick='fadeBlock("postcats-<?php the_ID();?>");'/>
-
-                <?php if( get_the_tags() ) : ?>
-                <input type='button' class='cattrigger capsule'
-                    value='Tags &darr;'
-                    onClick='fadeBlock("posttags-<?php the_ID();?>");'/>
-                <?php endif; ?>
-
-                <!-- inline style for easy JavaScript mods, without getting computed styles -->
-                <div id='postcats-<?php the_ID(); ?>' class='postcattags postcats'
-                    style='display: none; opacity: 0;'>
-                <?php
-                    $first = 1;
-                    foreach((get_the_category()) as $cat)
-                    {
-                        if( ! $first )
-                            print ", ";
-                        print
-                            "<a href='" . get_category_link($cat->cat_ID) . "'>" .
-                            "$cat->cat_name</a>";
-                        $first = 0;
-                    }
-                ?>
+                <div class='dateauthor'>
+                    <small class='capsule'><?php the_time('M jS, Y') ?> by
+                        <?php the_author() ?></small>
                 </div>
 
-                <?php if( get_the_tags() ) : ?>
-                <!-- inline style for easy JavaScript mods, without getting computed styles -->
-                <div id='posttags-<?php the_ID(); ?>' class='postcattags posttags'
-                    style='display: none; opacity: 0;'>
-                <?php
-                    print
-                        get_the_tag_list(
-                                $before = '',
-                                // leave newlines below... Safari needs them
-                                // for rounded borders!!!
-                                $sep = ', ',
-                                $after = '');
-                ?> 
+                <div class="entry">
+                    <?php the_content('Read the rest of this entry &raquo;'); ?>
                 </div>
-                <?php endif; ?>
 
-            </div>
+                <div class="postmetadata"
+                    <?php if( $options["idxfadepmeta"] ) : ?>
+                    style='opacity: 0.3;'
+                    onmouseover='this.style.opacity = 1.0;'
+                    onmouseout='this.style.opacity = 0.3;'
+                    <?php endif; ?>
+                    >
 
-        </div>
+                    <span class='commentlink capsule'>
+                        <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
+                                '% Comments &#187;'); ?>
+                    </span>
+
+                    <input type='button' class='cattrigger capsule'
+                        value='Categories &darr;'
+                        onclick='fadeBlock("postcats-<?php the_ID();?>");'/>
+
+                    <?php if( get_the_tags() ) : ?>
+                        <input type='button' class='cattrigger capsule'
+                            value='Tags &darr;'
+                            onclick='fadeBlock("posttags-<?php the_ID();?>");'/>
+                    <?php endif; ?>
+
+                    <!-- inline style for easy JavaScript mods, without getting computed styles -->
+                    <div id='postcats-<?php the_ID(); ?>' class='postcattags postcats'
+                        style='display: none; opacity: 0;'>
+                        <?php
+                            $first = 1;
+                            foreach((get_the_category()) as $cat)
+                            {
+                                if( ! $first )
+                                    print ", ";
+                                print
+                                    "<a href='" . get_category_link($cat->cat_ID) . "'>" .
+                                    "$cat->cat_name</a>";
+                                $first = 0;
+                            }
+                        ?>
+                    </div>
+
+                    <?php if( get_the_tags() ) : ?>
+                        <!-- inline style for easy JavaScript mods, without getting computed styles -->
+                        <div id='posttags-<?php the_ID(); ?>' class='postcattags posttags'
+                            style='display: none; opacity: 0;'>
+                            <?php
+                                print
+                                    get_the_tag_list(
+                                            $before = '',
+                                            // leave newlines below... Safari needs them
+                                            // for rounded borders!!!
+                                            $sep = ', ',
+                                            $after = '');
+                            ?> 
+                        </div>
+                    <?php endif; ?>
+
+                </div> <!-- postmetadata -->
+
+            </fieldset>
+
+        </div> <!-- post -->
 
     <?php endwhile; ?>
 
@@ -108,9 +112,7 @@
                 "Newer Entries &raquo;" .
                 "</span>");
         ?>
-        <?php
-            next_posts_link("<span class='capsule'>&laquo; Older Entries</span>");
-        ?>
+        <?php next_posts_link("<span class='capsule'>&laquo; Older Entries</span>"); ?>
     </div>
 
 <?php else : ?>
@@ -120,9 +122,9 @@
             <legend class='title'>Not Found</legend>
             <br/>
             <div class='entry'>
-            Sorry, but you are looking for something that isn't here.
-            <br/>
-            <br/>
+                Sorry, but you are looking for something that isn't here.
+                <br/>
+                <br/>
             </div>
         </fieldset>
     </div>

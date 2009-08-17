@@ -479,7 +479,7 @@ array
     (
         name    => "skinactionbg",
         desc    => "Action Bubbles (Edit, Reply, etc) Background",
-        csssel  => "#postaction, .postmetadata #commentlink, .postmetadata .cattrigger, " .
+        csssel  => "#postaction, .postmetadata .commentlink, .postmetadata .cattrigger, " .
                     ".replybuttonbox .capsule, #respond INPUT#submit",
         attr    => "background-color"
     ),
@@ -487,7 +487,7 @@ array
     (
         name    => "skinactionfg",
         desc    => "Action Bubbles (Edit, Reply, etc) Text Colour",
-        csssel  => "#postaction, .postmetadata #commentlink, .postmetadata .cattrigger, " .
+        csssel  => "#postaction, .postmetadata .commentlink, .postmetadata .cattrigger, " .
                     "#postaction a, replybuttonbox .capsule, #respond INPUT#submit",
         attr    => "color"
     ),
@@ -738,6 +738,9 @@ function custom_comment($comment, $args, $depth)
     $GLOBALS['comment'] = $comment;
 
     ?>
+
+    <!-- WP automatically closes this tag below in wp_list_comments -->
+    <li>
 
     <fieldset class='comment'>
 

@@ -544,7 +544,7 @@ legend, legend a
     -moz-border-radius-bottomright: 20px;
 }
 
-.postmetadata #commentlink
+.postmetadata .commentlink
 {
     background-color: #dd6f06;
     float: right;
@@ -685,7 +685,10 @@ fieldset.comment .commenttext
 	color: #333333;
 }
 
-.entry UL, .page UL, .entry OL, .page OL
+.entry UL,
+.page UL,
+.entry OL,
+.page OL
 {
 	margin-left: 0px;
 	padding: 15px;
@@ -694,6 +697,13 @@ fieldset.comment .commenttext
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px; 
+}
+
+BLOCKQUOTE UL,
+BLOCKQUOTE OL
+{
+    background-color: inherit !important;
+    border-style: none !important;
 }
 
 .post LI, .page LI

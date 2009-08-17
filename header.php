@@ -42,6 +42,7 @@
         wp_head();
     ?>
 
+    <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery-min.js'; ?>"></script>
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/ahimsa.js'; ?>"></script>
 
 <!-- browser specific CSS -->
@@ -101,7 +102,7 @@
 
 <?php
 
-    // Load custom skin stylesheet
+    // Load custom skin stylesheet and then the final custom stylesheet
 
     global $options, $current_user;
     $skin = $options['skin'];
@@ -115,8 +116,31 @@
             <link
                 rel='stylesheet'
                 href='" . get_bloginfo('template_url') . "/skins/skin_$skin.css'
-                type='text/css' media='screen'>
+                type='text/css' media='screen' />
         ";
+
+    if( file_exists(TEMPLATEPATH . "/custom.css") )
+    {
+        $customstylesheet = get_bloginfo('template_url') . "/custom.css";
+        print "<link rel='stylesheet' href='$customstylesheet' type='text/css' media='screen' />\n";
+    }
+
+    // finally, if we are in skin edit mode, then load up the JavaScript for customisation
+    if( isset($current_user)
+            && $current_user->user_level == 10
+            && $_GET['ahimsaskin'] != ""
+            && $_GET['skinedit'] == 1 )
+    {
+        print
+        "
+            <script
+                type='text/javascript'
+                src='" .
+                get_bloginfo('template_url').'/skinedit.js' .
+                "'>
+            </script>
+        ";
+    }
 
 ?>
 
@@ -132,16 +156,16 @@
 
 <div id='rsslinks'>
     <div class='capsule'>
-    <a href='feed:<?php bloginfo('comments_rss2_url'); ?>'>
+    <a href='<?php bloginfo('comments_rss2_url'); ?>'>
     <img border='0' align='top' alt='Comments RSS'
-        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>'>
+        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
     <span title='Subscribe to the RSS feed for the comments on this site'>Comments</span>
     </a>
     </div>
     <div class='capsule'>
-    <a href='feed:<?php bloginfo("rss2_url"); ?>'>
+    <a href='<?php bloginfo("rss2_url"); ?>'>
     <img border='0' align='top' alt='Site RSS'
-        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>'>
+        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
     <span title='Subscribe to the RSS feed for the posts on this site'>Site</span>
     </a>
     </div>
@@ -152,10 +176,10 @@
     <?php } ?>
 </div>
 
-<table id='container' cellpadding=0 cellspacing=0>
+<table id='container' cellpadding='0' cellspacing='0'>
 
 <tr>
-<td style='height: 100%; width: 100%;'>
+<td id='maincontainer' style='height: 100%; width: 100%;'>
 
 <table id='main' cellpadding='0' cellspacing='0'>
 
@@ -165,12 +189,12 @@
 
 <td colspan='2' id='header'>
 
-<table border=0 cellpadding=0 cellspacing=0>
+<table border='0' cellpadding='0' cellspacing='0'>
 
     <tr>
     <td id='title'><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></td>
     <td id='description'><?php bloginfo('description'); ?></td>
-    <td id='search' valign='middle'> <?php include (TEMPLATEPATH . "/searchform.php"); ?> </td>
+    <td id='search' valign='middle'><?php include (TEMPLATEPATH . "/searchform.php"); ?> </td>
     </tr>
 
 </table>
@@ -181,14 +205,14 @@
 <tr>
 
     <td valign='top' class='sidetabs'>
-    <div id='sidebartab' onClick='fadeSideBar();'>
+    <div id='sidebartab' onclick='fadeSideBar();'>
     <font color='#22bb00'>&raquo;</font><br/>S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R<br/><font color='#22bb00'>&laquo;</font>
     </div>
     </td>
 
     <td id='tdsidebar' valign='top'>
         <!-- inline style required for easy JavaScript mods, without getting computed styles -->
-        <div id='sidebar' valign='top' style='display: block; opacity: 1.0;'>
+        <div id='sidebar' style='display: block; opacity: 1.0;'>
             <?php get_sidebar(); ?>
         </div>
     </td>
