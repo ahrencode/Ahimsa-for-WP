@@ -64,19 +64,15 @@ function ahimsa_options()
         >
             <h3>Keep up with Ahimsa For WordPress</h3>
 
-            <p>Follow on Tumblr or Twitter, or join the Facebook Page or the mailing list.
-            The mailing list will be very low volume. The other forums will have at most
-            a post or two a day.</p>
+            <p>
+                Follow on Twitter, or join the Facebook Page. Subscribe to the blog.
+                Create bug/feature requests, download the latest code, and more!
+            </p>
 
             <ul>
             <li style='list-style-type: circle; margin-left: 10px;'>
-                Tumblr:
-                <a href='http://ahrencode.tumblr.com/tagged/ahimsa-wp'>Ahimsa for WP</a> |
-                <a href='http://ahrencode.tumblr.com'>Ahren Code</a>
-            </li>
-            <li style='list-style-type: circle; margin-left: 10px;'>
                 Twitter:
-                <a href='http://search.twitter.com/search?q=%23ahimsa-wp'>Ahimsa for WP</a> |
+                <a href='http://search.twitter.com/search?q=%23ahimsa-wp'>Ahimsa</a> |
                 <a href='http://twitter.com/ahrencode/'>Ahren Code</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
@@ -87,10 +83,9 @@ function ahimsa_options()
                 <a href='http://ahren.org/code/tag/ahimsa'>Blog</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://ahren.org/mailman/listinfo/ac-ahimsa-wp_ahren.org'>Mailing list</a>
-            </li>
-            <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://ahrencode.16bugs.com/projects/3703'>Bugs and Features</a>
+                GitHub:
+                <a href='http://github.com/ahrencode/Ahimsa-for-WP/'>Home</a> |
+                <a href='http://github.com/ahrencode/Ahimsa-for-WP/issues'>Issues</a>
             </li>
             </ul>
         </div>
@@ -773,7 +768,7 @@ function custom_comment($comment, $args, $depth)
                 <?php global $user_ID; if( $user_ID ) : ?>
                     &nbsp;&nbsp;
                     <span class='capsule'>
-                        <?php edit_comment_link('edit','&nbsp;',''); ?>
+                        <?php edit_comment_link('Edit','&nbsp;',''); ?>
                     </span>
                 <?php endif; ?>
 
