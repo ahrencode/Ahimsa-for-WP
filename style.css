@@ -499,6 +499,7 @@ legend, legend a
 {
     padding: 10px 25px;
     color: #111111;
+    line-height: 150%;
 }
 
 .entry, .commenttext
