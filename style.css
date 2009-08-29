@@ -854,12 +854,15 @@ BLOCKQUOTE OL
 	padding: 3px 10px;
 }
 
-#respond TEXTAREA,
+#respond TEXTAREA
+{
+    width: 80% !important;
+}
+
 #respond INPUT.inptext
 {
-    border: 1px solid #aaaadd;
+    border: 1px solid #999999;
     background-color: #eeeeee;
-    width: 80% !important;
 }
 
 #comments .postmetadata,
