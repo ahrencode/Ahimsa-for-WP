@@ -171,6 +171,19 @@ function ahimsa_options()
 
             <h3>Ahimsa Skins</h3>
 
+            <div style='
+                    background-color: #fff3cc;
+                    color: #000000;
+                    padding: 10px;
+                    border: 1px solid #ddc055;
+                    margin: 20px 30px;
+                    '>
+                Know your CSS and want to do more detailed customisations? That's easy!
+                Just create a file called <code>custom.css</code> in the theme directory,
+                and add your custom styling in there. That's it! All customisations in
+                this file are retained even if you upgrade the theme.
+            </div>
+
             <input type='checkbox' name='skinupdate' id='skinupdate' />
             <label style='margin-left: 5px;' for='skinupdate'>Update Skins</label>
             (PLEASE backup your skin before you attempt this)
@@ -179,6 +192,17 @@ function ahimsa_options()
             <br />
 
             " . skins_menu() . "
+
+            <div style='
+                    background-color: #fff3cc;
+                    color: #000000;
+                    padding: 10px;
+                    border: 1px solid #ddc055;
+                    margin: 20px 30px;
+                    '>
+                Want to share your skin with others? Look up the instructions on the
+                <a href='http://ahren.org/code/ahimsa/'>Ahimsa Page</a>.
+            </div>
 
             <br />
             <br />

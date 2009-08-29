@@ -25,13 +25,28 @@ have already done, since you are reading this file!) and copying the
 directory ("ahimsa") into your WordPress installation directory under
 wp-contents/themes.
 
-Installing Ahimsa Skins
------------------------
+Customisation
+-------------
 
-The Ahimsa scheme supports customisation of the colour (and soon font)
-scheme, and such customisations can even be shared. A preliminary
-version of this feature is being introduced in Ahimsa for WP 2.2 and
-it will be fully fleshed out in a future release.
+Skins
+-----
+
+Ahimsa supports "skins" -- CSS stylesheets that can be created and
+modified using the Ahimsa Options page of the Admin section of your
+blog. Skins can be used to customise the colour scheme of the theme
+to your liking. You can even share your skins with other users. See
+the Customisation section of the Ahimsa page:
+
+http://ahren.org/code/ahimsa/
+
+Custom Styling
+--------------
+
+If a skin doesn't go far enough for you, and you are a CSS ninja who
+wants more control and detail, all you need to do is create a file
+called "custom.css" in the theme directory, in which you can add any
+styles you desire. And when you upgrade Ahimsa, this file is left
+alone, so your customisations are safe.
 
 Notes
 -----
