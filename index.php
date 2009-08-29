@@ -32,7 +32,7 @@
                         title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
                 </legend>
 
-                <div class='dateauthor capsule'>
+                <div class='capsule dateauthor'>
                     <?php the_time('M jS, Y') ?> by <?php the_author() ?>
                 </div>
 
@@ -48,17 +48,17 @@
                     <?php endif; ?>
                     >
 
-                    <span class='commentlink capsule'>
+                    <span class='capsule commentlink actbubble'>
                         <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
                                 '% Comments &#187;'); ?>
                     </span>
 
-                    <input type='button' class='cattrigger capsule'
+                    <input type='button' class='capsule actbubble cattrigger'
                         value='Categories &darr;'
                         onclick='fadeBlock("postcats-<?php the_ID();?>");'/>
 
                     <?php if( get_the_tags() ) : ?>
-                        <input type='button' class='cattrigger capsule'
+                        <input type='button' class='capsule actbubble cattrigger'
                             value='Tags &darr;'
                             onclick='fadeBlock("posttags-<?php the_ID();?>");'/>
                     <?php endif; ?>

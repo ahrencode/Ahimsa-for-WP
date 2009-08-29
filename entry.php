@@ -11,12 +11,12 @@
         </legend>
 
         <?php if( is_single() || $options['showpagemeta'] == 1 ) : ?>
-            <div class='dateauthor capsule'>
+            <div class='capsule dateauthor'>
                 <?php the_time('F jS, Y') ?> by <?php the_author() ?>
             </div>
         <?php endif; ?>
 
-        <div id='postaction'>
+        <div id='postaction' class='actbubble'>
 
             <ul>
 
@@ -60,7 +60,7 @@
                 wp_link_pages(
                         array
                         (
-                            'before' => '<div id="subpagelinks" class="capsule"><span>Pages:</span> ',
+                            'before' => '<div id="subpagelinks" class="capsule actbubble"><span>Pages:</span> ',
                             'after' => '</div>',
                             'next_or_number' => 'number'
                         )
@@ -69,12 +69,12 @@
 
             <div>
 
-                <input type='button' class='cattrigger capsule'
+                <input type='button' class='capsule actbubble cattrigger'
                     value='Categories &darr;'
                     onclick='fadeBlock("postcats");'/>
 
                 <?php if( get_the_tags() ) : ?>
-                <input type='button' class='cattrigger capsule'
+                <input type='button' class='capsule actbubble cattrigger'
                     value='Tags &darr;'
                     onclick='fadeBlock("posttags");'/>
                 <?php endif; ?>

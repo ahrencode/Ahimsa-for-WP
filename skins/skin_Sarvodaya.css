@@ -1,7 +1,7 @@
 
             #bgtop
             {
-                background-color: #000000;
+                background-color: #7D735C;
             }
         
             #bgtop
@@ -11,7 +11,7 @@
         
             BODY
             {
-                background-color: #dd4422;
+                background-color: #BDAD8C;
             }
         
             A
@@ -21,37 +21,37 @@
         
             .capsule
             {
-                background-color: #999999;
+                background-color: #FCE8BB;
             }
         
             .capsule
             {
-                color: #664422;
+                color: #534018;
             }
         
             #header
             {
-                background-color: #dd4422;
+                background-color: #FCE8BB;
             }
         
             #header, #header table, #header a
             {
-                color: #ffffff;
+                color: #883300;
             }
         
             #title
             {
-                border-right-color: #333333;
+                border-right-color: #883300;
             }
         
             #sidebar, #tdsidebar
             {
-                background-color: #555555;
+                background-color: #FCE8BB;
             }
         
             .sidebarlist
             {
-                background-color: #cccccc;
+                background-color: #E3D0A8;
             }
         
             .sidebarlist
@@ -61,17 +61,17 @@
         
             .sidebarlist > legend
             {
-                background-color: #333333;
+                background-color: #7D735C;
             }
         
             .sidebarlist > legend
             {
-                color: #dd4422;
+                color: #ffffff;
             }
         
             .sidebarlist li, #postaction li
             {
-                border-top-color: #aaaaaa;
+                border-top-color: #BDAD8C;
             }
         
             .sidebarlist a
@@ -86,12 +86,12 @@
         
             #wp-calendar thead th, #wp-calendar tfoot td.pad
             {
-                background-color: #aaaaaa;
+                background-color: inherit;
             }
         
             #wp-calendar thead th
             {
-                color: #000000;
+                color: #333333;
             }
         
             #wp-calendar tbody td
@@ -101,52 +101,52 @@
         
             #wp-calendar #next, #wp-calendar #prev
             {
-                background-color: #aaaaaa;
+                background-color: inherit;
             }
         
             #wp-calendar #next, #wp-calendar #prev, #wp-calendar tfoot a
             {
-                color: #664422;
+                color: inherit;
             }
         
             .textwidget
             {
-                color: #000000;
+                color: #442200;
             }
         
             #content
             {
-                background-color: #777777;
+                background-color: #FCE8BB;
             }
         
             .post > fieldset
             {
-                background-color: #cccccc;
+                background-color: #E3D0A8;
             }
         
             .entry
             {
-                color: #000000;
+                color: #442200;
             }
         
             .post .title, #comments > legend, .comment > legend, #responsebox > legend
             {
-                background-color: #333333;
+                background-color: #7D735C;
             }
         
             .post .title, .post .title a, #comments > legend, .comment > legend, #responsebox > legend
             {
-                color: #dd4422;
+                color: #ffffff;
             }
         
             .postmetadata
             {
-                background-color: #555555;
+                background-color: #E3D0A8;
             }
         
             .postcattags
             {
-                background-color: #aaaaaa;
+                background-color: inherit;
             }
         
             .postcattags, .postcattags a
@@ -166,7 +166,7 @@
         
             blockquote
             {
-                background-color: #ffffff;
+                background-color: #BDAD8C;
             }
         
             blockquote
@@ -176,7 +176,7 @@
         
             .entry UL, .page UL, .entry OL, .page OL
             {
-                background-color: #ffffff;
+                background-color: inherit;
             }
         
             .entry UL, .page UL, .entry OL, .page OL
@@ -191,22 +191,22 @@
         
             .actbubble
             {
-                background-color: #999999;
+                background-color: #FCE8BB;
             }
         
             .actbubble, .actbubble a
             {
-                color: #000000;
+                color: #883300;
             }
         
             #comments
             {
-                background-color: #999999;
+                background-color: #BDAD8C;
             }
         
             fieldset.comment, fieldset.comment .commenttext
             {
-                background-color: #cccccc;
+                background-color: #E3D0A8;
             }
         
             fieldset.comment .commenttext
@@ -216,6 +216,6 @@
         
             #responsebox
             {
-                background-color: #aaaaaa;
+                background-color: #BDAD8C;
             }
         

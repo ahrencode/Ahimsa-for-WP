@@ -32,7 +32,7 @@ BODY
     border-style: none;
     background-color: #6f900d;
     font-size: medium;
-    font-family: Futura, Helvetica, Arial;
+    font-family: Futura, Helvetica, sans-serif;
 }
 
 A
@@ -66,17 +66,50 @@ BLOCKQUOTE
 }
 
 /* hack to get fieldset background and legend position working right in IE */
-fieldset
+FIELDSET
 {
     position: relative;
     margin: 0 0 1em 0;
 }
 
-fieldset legend
+FIELDSET LEGEND
 {
     position: absolute;
     top: -15px;
     left: 3%;
+}
+
+/*
+ * this should come here towards the beginning since there are some elements
+ * that have both class capsule and some other second class, and that second
+ * class setting should trump this one.
+ *
+ */
+.capsule
+{
+    text-align: center;
+    padding: 4px 10px;
+    font-family: Optima, Verdana, Helvetica;
+    font-size: small;
+    border-radius: 10px; 
+    background-color: #cc9900;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px; 
+}
+
+.capsule
+{
+    color: #ffffff;
+}
+
+.actbubble
+{
+    background-color: #dd6f06;
+}
+
+.actbubble a
+{
+    color: #ffffff;
 }
 
 #bgtop
@@ -132,13 +165,13 @@ fieldset legend
     -moz-border-radius-topright: 30px; 
 }
 
-#header table
+#header TABLE
 {
     color: #ffffff;
     width: 100%;
 }
 
-#header #title
+#title
 {
     height: 20px;
     font-size:  24pt;
@@ -148,19 +181,19 @@ fieldset legend
     border-right: 2px solid #ffdd00;
 }
 
-#header #description
+#description
 {
     padding-left: 20px;
     padding-right: 15px;
     width: 100%;
 }
 
-#header a
+#header A
 {
     color: #ffffff;
 }
 
-#header #search
+#search
 {
     vertical-align: middle;
     text-align: right;
@@ -234,12 +267,12 @@ fieldset legend
     margin: 10px;
 }
 
-#recentlist ul
+#recentlist UL
 {
     margin: 0px 0px 0px -20px;
 }
 
-#recentlist ul li
+#recentlist UL LI
 {
     list-style-type: none;
     color: #ffffff;
@@ -248,12 +281,13 @@ fieldset legend
     font-size: small;
 }
 
-#recentlist ul li:last-child
+#recentlist UL LI:last-child
 {
     border-bottom: solid 1px #cccccc;
 }
 
-#recentlist a, #recentlist a:hover
+#recentlist A,
+#recentlist A:hover
 {
     text-decoration: none;
     color: #ffffff;
@@ -295,7 +329,7 @@ fieldset legend
     height: 100%;
 }
 
-#sidebar fieldset.sidebarlist
+.sidebarlist
 {
     font-size: small;
     border: none;
@@ -308,7 +342,7 @@ fieldset legend
     -moz-border-radius: 10px; 
 }
 
-#sidebar legend
+.sidebarlist > LEGEND
 {
     font-family: "Trebuchet MS", Verdana, Helvetica;
     font-size: 10pt;
@@ -323,13 +357,20 @@ fieldset legend
     -moz-border-radius: 10px; 
 }
 
-#sidebar .sidebarlist ul, #postaction ul
+.sidebarlist A
+{
+    color: #553333;
+}
+
+.sidebarlist UL,
+#postaction UL
 {
     margin: 0px;
     padding: 0px;
 }
 
-#sidebar .sidebarlist li, #postaction li
+.sidebarlist LI,
+#postaction LI
 {
     border: none;
     border-top: 1px solid #ffffff;
@@ -341,12 +382,13 @@ fieldset legend
     list-style-type: none;
 }
 
-#sidebar .sidebarlist li:first-child, #postaction li:first-child
+.sidebarlist LI:first-child,
+#postaction LI:first-child
 {
     border: none;
 }
 
-#sidebar #calendar_wrap
+#calendar_wrap
 {
     width: 90%;
     text-align: center;
@@ -355,28 +397,28 @@ fieldset legend
     margin-bottom: 10px;
 }
 
-#sidebar #wp-calendar
+#wp-calendar
 {
     margin-left: auto;
     margin-right: auto;
     border-spacing: 0px;
 }
 
-#sidebar #wp-calendar caption
+#wp-calendar CAPTION
 {
     margin-bottom: 5px;
     letter-spacing: 0.1em;
     color: #222222;
 }
 
-#sidebar #wp-calendar thead th
+#wp-calendar THEAD TH
 {
     padding: 3px 5px;
     color: #ffffff;
     background-color: #ff9f06;
 }
 
-#sidebar #wp-calendar tbody td
+#wp-calendar TBODY TD
 {
     color: #a08050;
     padding: 2px 3px;
@@ -384,21 +426,21 @@ fieldset legend
     border-style: none;
 }
 
-#sidebar #wp-calendar tfoot td.pad
+#wp-calendar TFOOT TD.pad
 {
     background-color: #ff9f06;
 }
 
-#sidebar #wp-calendar tfoot td#next,
-#sidebar #wp-calendar tfoot td#prev
+#wp-calendar #next,
+#wp-calendar #prev
 {
     padding-top: 2px;
     padding-bottom: 2px;
     background-color: #dd6f06;
 }
 
-#sidebar #wp-calendar thead th:first-child,
-#sidebar #wp-calendar tfoot td#prev
+#wp-calendar THEAD TH:first-child,
+#wp-calendar #prev
 {
     -webkit-border-bottom-left-radius: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -406,8 +448,8 @@ fieldset legend
     -moz-border-radius-topleft: 5px;
 }
 
-#sidebar #wp-calendar thead th:last-child,
-#sidebar #wp-calendar tfoot td#next
+#wp-calendar THEAD TH:last-child,
+#wp-calendar #next
 {
     -webkit-border-bottom-right-radius: 5px;
     -webkit-border-top-right-radius: 5px;
@@ -415,20 +457,15 @@ fieldset legend
     -moz-border-radius-topright: 5px;
 }
 
-#sidebar #wp-calendar tfoot a
+#wp-calendar TFOOT A
 {
     color: #ffffff;
 }
 
-#sidebar .textwidget
+.textwidget
 {
     padding: 5px 8px;
     color: #334400;
-}
-
-.sidebarlist a
-{
-    color: #553333;
 }
 
 #content
@@ -448,7 +485,7 @@ fieldset legend
     margin-bottom: 50px;
 }
 
-.post fieldset
+.post > FIELDSET
 {
     background-color: #ffffff;
     padding: 0px;
@@ -461,10 +498,10 @@ fieldset legend
     -moz-border-radius: 20px; 
 }
 
-.post fieldset legend.title,
-fieldset#comments legend,
-fieldset.comment legend,
-fieldset#responsebox legend
+.post .title,
+#comments > LEGEND,
+.comment > LEGEND,
+#responsebox > LEGEND
 {
     background-color: #6f900d;
     border: 0px solid #666666;
@@ -477,7 +514,8 @@ fieldset#responsebox legend
     font-family: "Trebuchet MS", "Gill Sans", Helvetica, Arial;
 }
 
-legend, legend a
+LEGEND,
+LEGEND A
 {
     color: #ffffff;
 }
@@ -485,14 +523,8 @@ legend, legend a
 .dateauthor
 {
     float: right;
-    margin: 0px 30px;
+    margin: 0px 25px;
     font-size: small;
-}
-
-.dateauthor,
-.nocomments
-{
-    background-color: #cc9900 !important;
 }
 
 .entry
@@ -502,7 +534,8 @@ legend, legend a
     line-height: 150%;
 }
 
-.entry, .commenttext
+.entry,
+.commenttext
 {
     font-size: small;
 }
@@ -519,16 +552,10 @@ legend, legend a
     clear: right;
     padding: 10px 15px 10px 10px;
     margin: 20px;
-    background-color: #dd6f06;
     font-size: small;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
-}
-
-#postaction a
-{
-    color: #ffffff;
 }
 
 .postmetadata
@@ -547,7 +574,6 @@ legend, legend a
 
 .postmetadata .commentlink
 {
-    background-color: #dd6f06;
     float: right;
     padding: 3px 8px;
 }
@@ -661,11 +687,17 @@ legend, legend a
 }
 
 #comments > UL,
-#comments > UL > LI
+#comments UL.children,
+#comments > LI.comment
 {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+}
+
+#comments UL.children
+{
+    margin-left: 30px;
 }
 
 #responsebox
@@ -673,6 +705,7 @@ legend, legend a
     background-color: #ffffff;
 	color: #333333;
     margin-top: 50px;
+    margin: 30px 30px 0px 30px;
     padding: 10px 30px;
     border-style: none;
     border-radius: 25px;
@@ -680,12 +713,7 @@ legend, legend a
     -moz-border-radius: 25px; 
 }
 
-#comments #responsebox
-{
-    margin: 0px 30px;
-}
-
-fieldset.comment
+FIELDSET.comment
 {
     border: none;
     background-color: #ffffff;
@@ -698,18 +726,18 @@ fieldset.comment
     -moz-border-radius: 20px; 
 }
 
-fieldset.comment legend
+FIELDSET.comment > LEGEND
 {
     font-size: medium !important;
 }
 
-fieldset.comment IMG.avatar,
-fieldset.comment .commenttext
+FIELDSET.comment IMG.avatar,
+FIELDSET.comment .commenttext
 {
     padding-top: 5px;
 }
 
-fieldset.comment .commenttext
+FIELDSET.comment .commenttext
 {
     padding-right: 30px;
     padding-left: 30px;
@@ -737,14 +765,16 @@ BLOCKQUOTE OL
     border-style: none !important;
 }
 
-.post LI, .page LI
+.post LI,
+.page LI
 {
     padding: 4px 0px;
 	margin-left: 0px;
     /*border-bottom: 1px dotted #aaaaaa;*/
 }
 
-.post LI:first-child, .page LI:first-child
+.post LI:first-child,
+.page LI:first-child
 {
     /*border-top: 1px dotted #aaaaaa;*/
 }
@@ -793,7 +823,7 @@ BLOCKQUOTE OL
     -moz-border-radius: 5px;
 }
 
-#rsslinks a
+#rsslinks A
 {
     color: #ffffff;
 }
@@ -824,14 +854,15 @@ BLOCKQUOTE OL
 	padding: 3px 10px;
 }
 
-#respond TEXTAREA, #respond INPUT.inptext
+#respond TEXTAREA,
+#respond INPUT.inptext
 {
     border: 1px solid #aaaadd;
     background-color: #eeeeee;
     width: 80% !important;
 }
 
-fieldset#comments .postmetadata,
+#comments .postmetadata,
 .replybuttonbox
 {
     padding: 10px 25px;
@@ -842,24 +873,6 @@ fieldset#comments .postmetadata,
 {
     display: inline;
     padding-left: 15px;
-}
-
-.capsule
-{
-    text-align: center;
-    padding: 4px 10px;
-    font-family: Optima, Verdana, Helvetica;
-    font-size: small;
-    color: #ffffff;
-    background-color: #dd6f06;
-    border-radius: 10px; 
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px; 
-}
-
-.capsule a
-{
-    color: #ffffff;
 }
 
 img.avatar

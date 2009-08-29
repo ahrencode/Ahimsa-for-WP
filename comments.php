@@ -40,9 +40,9 @@ if ( function_exists('wp_list_comments') ) :
 
             <div class="postmetadata">
                 <?php
-                    previous_comments_link('<span class="capsule" style="float: left;">' .
+                    previous_comments_link('<span class="capsule actbubble" style="float: left;">' .
                                             '&laquo; previous</span>');
-                    next_comments_link('<span class="capsule" style="float: right;">' .
+                    next_comments_link('<span class="capsule actbubble" style="float: right;">' .
                                             'next &raquo;</span>');
                 ?>
                 <br clear='all'/>
@@ -57,7 +57,7 @@ if ( function_exists('wp_list_comments') ) :
 
         else : // comments are closed ?>
             <!-- If comments are closed. -->
-            <span class='nocomments capsule'>Comments are closed</span>
+            <span class='capsule nocomments'>Comments are closed</span>
             <br/>
             <br/>
 
@@ -121,7 +121,7 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
 
         <p><textarea name="comment" id="comment" cols="60%" rows="10" tabindex="4"></textarea></p>
 
-        <input name="submit" type="submit" id="submit" class='capsule'
+        <input name="submit" type="submit" id="submit" class='capsule actbubble'
              tabindex="5" value="Submit Comment" />
             
         <?php

@@ -171,10 +171,17 @@ function ahimsa_options()
 
             <h3>Ahimsa Skins</h3>
 
+            <input type='checkbox' name='skinupdate' id='skinupdate' />
+            <label style='margin-left: 5px;' for='skinupdate'>Update Skins</label>
+            (PLEASE backup your skin before you attempt this)
+
+            <br />
+            <br />
+
             " . skins_menu() . "
 
-            <br/>
-            <br/>
+            <br />
+            <br />
             <hr size='1'/>
 
             <p class='submit'><input type='submit' value='Save Changes' name='save'/></p>
@@ -224,8 +231,8 @@ array
     array
     (
         name    => "skincapsulefg",
-        desc    => "Default Bubble Text/Link Colour",
-        csssel  => ".capsule, .capsule a",
+        desc    => "Default Bubble Text Colour",
+        csssel  => ".capsule",
         attr    => "color"
     ),
     array
@@ -246,7 +253,7 @@ array
     (
         name    => "skinheadersepcolour",
         desc    => "Colour of Separator Bar in Header",
-        csssel  => "#header #title",
+        csssel  => "#title",
         attr    => "border-right-color"
     ),
     array
@@ -260,35 +267,35 @@ array
     (
         name    => "skinsbwidgetbg",
         desc    => "Sidebar Widgets Background",
-        csssel  => "#sidebar fieldset.sidebarlist",
+        csssel  => ".sidebarlist",
         attr    => "background-color"
     ),
     array
     (
         name    => "skinsbwidgetfg",
         desc    => "Sidebar Widgets Text Colour",
-        csssel  => "#sidebar fieldset.sidebarlist",
+        csssel  => ".sidebarlist",
         attr    => "color"
     ),
     array
     (
         name    => "skinsblegendbg",
         desc    => "Sidebar Widget Title Background",
-        csssel  => "#sidebar legend",
+        csssel  => ".sidebarlist > legend",
         attr    => "background-color"
     ),
     array
     (
         name    => "skinsblegendfg",
         desc    => "Sidebar Widget Title Text Colour",
-        csssel  => "#sidebar legend",
+        csssel  => ".sidebarlist > legend",
         attr    => "color"
     ),
     array
     (
         name    => "skinsblistdiv",
         desc    => "Sidebar/Action Lists Divider Colour",
-        csssel  => "#sidebar .sidebarlist li, #postaction li",
+        csssel  => ".sidebarlist li, #postaction li",
         attr    => "border-top-color"
     ),
     array
@@ -302,50 +309,49 @@ array
     (
         name    => "skincalcaption",
         desc    => "Sidebar Calendar Caption Colour",
-        csssel  => "#sidebar #wp-calendar caption",
+        csssel  => "#wp-calendar caption",
         attr    => "color"
     ),
     array
     (
         name    => "skincalheaderbg",
         desc    => "Sidebar Calendar Column Header Background",
-        csssel  => "#sidebar #wp-calendar thead th, #sidebar #wp-calendar tfoot td.pad",
+        csssel  => "#wp-calendar thead th, #wp-calendar tfoot td.pad",
         attr    => "background-color"
     ),
     array
     (
         name    => "skincalheaderfg",
         desc    => "Sidebar Calendar Column Header Text Colour",
-        csssel  => "#sidebar #wp-calendar thead th",
+        csssel  => "#wp-calendar thead th",
         attr    => "color"
     ),
     array
     (
         name    => "skincalcellfg",
         desc    => "Sidebar Calendar Entries Text Colour",
-        csssel  => "#sidebar #wp-calendar tbody td",
+        csssel  => "#wp-calendar tbody td",
         attr    => "color"
     ),
     array
     (
         name    => "skincalnpbg",
         desc    => "Sidebar Calendar Next/Prev Links Background",
-        csssel  => "#sidebar #wp-calendar tfoot td#next, #sidebar #wp-calendar tfoot td#prev",
+        csssel  => "#wp-calendar #next, #wp-calendar #prev",
         attr    => "background-color"
     ),
     array
     (
         name    => "skincalnpfg",
         desc    => "Sidebar Calendar Next/Prev Links Text Colour",
-        csssel  => "#sidebar #wp-calendar tfoot td#next, #sidebar #wp-calendar tfoot td#prev, " .
-                    "#sidebar #wp-calendar tfoot a",
+        csssel  => "#wp-calendar #next, #wp-calendar #prev, #wp-calendar tfoot a",
         attr    => "color"
     ),
     array
     (
         name    => "skintextwdgtfg",
         desc    => "Sidebar Text Widget Text Colour",
-        csssel  => "#sidebar .textwidget",
+        csssel  => ".textwidget",
         attr    => "color"
     ),
     array
@@ -359,7 +365,7 @@ array
     (
         name    => "skinpostpagebg",
         desc    => "Post or Page Entry Background",
-        csssel  => ".post fieldset",
+        csssel  => ".post > fieldset",
         attr    => "background-color"
     ),
     array
@@ -373,31 +379,15 @@ array
     (
         name    => "skinpptitlebg",
         desc    => "Post, Page, Comments Title Background",
-        csssel  => ".post fieldset legend.title, fieldset#comments legend, " .
-                    "fieldset.comment legend, fieldset#responsebox legend",
+        csssel  => ".post .title, #comments > legend, .comment > legend, #responsebox > legend",
         attr    => "background-color"
     ),
     array
     (
         name    => "skinpptitlefg",
         desc    => "Post, Page, Comments Title Text Colour",
-        csssel  => ".post fieldset legend.title, .post fieldset legend.title a, " .
-                    "fieldset#comments legend, fieldset.comment legend, " .
-                    "fieldset#responsebox legend",
-        attr    => "color"
-    ),
-    array
-    (
-        name    => "skindatebg",
-        desc    => "Post/Page/Comment Date Bubble Background",
-        csssel  => ".dateauthor .capsule, .nocomments .capsule",
-        attr    => "background-color"
-    ),
-    array
-    (
-        name    => "skindatefg",
-        desc    => "Post/Page/Comment Date Bubble Text Colour",
-        csssel  => ".dateauthor .capsule, .nocomments .capsule",
+        csssel  => ".post .title, .post .title a, " .
+                    "#comments > legend, .comment > legend, #responsebox > legend",
         attr    => "color"
     ),
     array
@@ -474,23 +464,21 @@ array
     (
         name    => "skinactionbg",
         desc    => "Action Bubbles (Edit, Reply, etc) Background",
-        csssel  => "#postaction, .postmetadata .commentlink, .postmetadata .cattrigger, " .
-                    ".replybuttonbox .capsule, #respond INPUT#submit",
+        csssel  => ".actbubble",
         attr    => "background-color"
     ),
     array
     (
         name    => "skinactionfg",
         desc    => "Action Bubbles (Edit, Reply, etc) Text Colour",
-        csssel  => "#postaction, .postmetadata .commentlink, .postmetadata .cattrigger, " .
-                    "#postaction a, replybuttonbox .capsule, #respond INPUT#submit",
+        csssel  => ".actbubble, .actbubble a",
         attr    => "color"
     ),
     array
     (
         name    => "skincommentsbg",
         desc    => "Comments Block Background",
-        csssel  => "fieldset#comments",
+        csssel  => "#comments",
         attr    => "background-color"
     ),
     array
@@ -511,7 +499,7 @@ array
     (
         name    => "skinresponsebg",
         desc    => "Response Box Background",
-        csssel  => "fieldset#responsebox",
+        csssel  => "#responsebox",
         attr    => "background-color"
     )
 );
@@ -532,16 +520,15 @@ function skins_menu()
         return($html);
     }
 
-    if( ! $skindir = opendir($skindir) )
+    if( ! $skinfd = opendir($skindir) )
     {
         $html .= "Unable to read skins from $skindir. <br/>";
         return($html);
     }
 
-
     $checked = ($options['skin'] == 'none') ? 'checked' : "";
     $html .= "<input type=radio name=skin value=none $checked> None <br/>\n";
-    while ( ($skinfile = readdir($skindir)) !== false )
+    while ( ($skinfile = readdir($skinfd)) !== false )
     {
         if( ! preg_match("/^skin_(.+)\.css$/", $skinfile, $matches) )
             continue;
@@ -554,7 +541,12 @@ function skins_menu()
         ";
     }
 
-    closedir($skindir);
+    closedir($skinfd);
+
+    if( $options['skin'] != 'none' )
+        $skinfile_array = read_skin_file("$skindir/skin_$options[skin].css");
+    else
+        $skinfile_array = array();
 
     $html .=
     "
@@ -567,13 +559,14 @@ function skins_menu()
                     document.getElementById(\"skindo\").value = \"1\";
                     exit;
                     '>
-        Create New Ahimsa Skin</a>
+        Edit Current or Create New Skin</a>
 
         <div id='skinedit' style='display: none;'>
 
         <h4>Enter Skin Details</h4>
 
-        Skin name: <input type=text name=skinname size=20>
+        <p>(hint: change the name below to create a new skin)</p>
+        Skin name: <input type=text name=skinname size=20 value='" . $options['skin'] . "'>
         &nbsp;&nbsp;&nbsp;
         <a href='javascript:
                     document.getElementById(\"skinedit\").style.display = \"none\";
@@ -587,31 +580,36 @@ function skins_menu()
 
     ";
 
-    foreach( $skin_fields as $field )
-        $html .= get_skin_field($field['name'], $field['desc']);
+    foreach( $skin_fields as $style )
+        $html .= get_skin_field_html($style, $skinfile_array);
 
     $html .= "</table>\n</div>\n";
 
     return($html);
 }
 
-function get_skin_field($name, $title)
+function get_skin_field_html($style, $skinfile_array)
 {
+    if( isset($skinfile_array[$style['csssel']][$style['attr']]) )
+        $value = $skinfile_array[$style['csssel']][$style['attr']];
+    else
+        $value = "";
+
     return
     ("
         <tr>
         <td style='text-align: right; padding: 1px 4px;'>
-        $title:
+        $style[desc]:
         </td>
         <td style='padding: 1px 4px;'>
-        <input id='$name' size='7'  name='$name'
-            onBlur='document.getElementById(\"".$name."clr\").style.backgroundColor = this.value;'>
+        <input id='$style[name]' size='7'  name='$style[name]' value='$value'
+            onBlur='document.getElementById(\"".$style['name']."clr\").style.backgroundColor = this.value;'>
         </td>
         <td>
-        <span id='".$name."clr' style='border: 1px solid #777777;'>&nbsp;&nbsp;&nbsp;</span>
+        <span id='".$style['name']."clr' style='border: 1px solid #777777;'>&nbsp;&nbsp;&nbsp;</span>
         <script language='JavaScript'>
-            document.getElementById(\"".$name."clr\").style.backgroundColor =
-                document.getElementById(\"$name\").value;
+            document.getElementById(\"".$style['name']."clr\").style.backgroundColor =
+                document.getElementById(\"$style[name]\").value;
         </script>
         </td>
         </tr>
@@ -621,6 +619,10 @@ function get_skin_field($name, $title)
 function save_options()
 {
     global $_POST, $options;
+
+    if( $_POST['skinupdate'] == 'on' )
+        if( ! update_skins() )
+            return;
 
     if( $_POST['skindo'] == '1' )
         if( ! save_skin() )
@@ -690,23 +692,167 @@ function save_skin()
         ";
     }
 
-    if( !$skinfile = fopen(TEMPLATEPATH . "/skins/skin_$skinname.css", 'w') )
+    return(write_skin_file(TEMPLATEPATH . "/skins/skin_$skinname.css", $skincss));
+}
+
+//------------------------------------------------------------------------------
+function read_skin_file($skinfile)
+{
+    if( ! ($styles = @file("$skindir/$skinfile", FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES)) )
     {
-         ah_admin_error("Could not create skin file: " .
-                        TEMPLATEPATH . "/skins/skin_$skinname.css.");
+        ah_admin_error("Unable to read skin file: $skinfile");
+        return(false);
+    }
+
+    $cssarray = array();
+    $state = "ENDBLOCK";
+    $newskin = "";
+    $ignore = 0;
+    $cursel = "";
+    foreach( $styles as $style )
+    {
+        if( preg_match("/^\s*$/", $style) )
+            continue;
+
+        $style = trim($style);
+
+        if( $state == "ENDBLOCK" )
+        {
+            $cursel = $style;
+            if( ! is_array($cssarray[$cursel]) )
+                $cssarray[$cursel] = array();
+            $state = "STARTBLOCK";
+            continue;
+        }
+
+        if( $state == "STARTBLOCK" && preg_match("/^\{$/", $style) )
+        {
+            $state = "INBLOCK";
+            continue;
+        }
+
+        if( $state == "INBLOCK" && preg_match("/^\}$/", $style) )
+        {
+            $state = "ENDBLOCK";
+            continue;
+        }
+
+        if( $state == "INBLOCK" && preg_match("/^([^:]+):\s*([^;]+);$/", $style, $matches) )
+            $cssarray[$cursel][$matches[1]] = $matches[2];
+    }
+
+    return($cssarray);
+}
+
+//------------------------------------------------------------------------------
+function write_skin_file($filepath, $skincss)
+{
+    if( !$skinfile = fopen($filepath, 'w') )
+    {
+         ah_admin_error("Could not create skin file: $filepath");
          return(false);
     }
 
     if( fwrite($skinfile, $skincss) === FALSE )
     {
-        ah_admin_error("Cannot write to skin file: " .
-                        TEMPLATEPATH . "/skins/skin_$skinname.css.");
+        ah_admin_error("Cannot write to skin file: $filepath");
         return(false);
     }
 
     fclose($skinfile);
 
     return(true);
+}
+
+//------------------------------------------------------------------------------
+function update_skins()
+{
+    $sel_update_map = array
+    (
+        ".capsule, .capsule a"                      => ".capsule",
+        "#header #title"                            => "#title",
+        "#sidebar fieldset.sidebarlist"             => ".sidebarlist",
+        "#sidebar fieldset.sidebarlist"             => ".sidebarlist",
+        "#sidebar legend"                           => ".sidebarlist > legend",
+        "#sidebar legend"                           => ".sidebarlist > legend",
+        "#sidebar .sidebarlist li, #postaction li"  => ".sidebarlist li, #postaction li",
+        "#sidebar #wp-calendar caption"             => "#wp-calendar caption",
+        "#sidebar #wp-calendar thead th, #sidebar #wp-calendar tfoot td.pad"
+            => "#wp-calendar thead th, #wp-calendar tfoot td.pad",
+        "#sidebar #wp-calendar thead th"            => "#wp-calendar thead th",
+        "#sidebar #wp-calendar tbody td"            => "#wp-calendar tbody td",
+        "#sidebar #wp-calendar tfoot td#next, #sidebar #wp-calendar tfoot td#prev"
+            => "#wp-calendar #next, #wp-calendar #prev",
+        "#sidebar #wp-calendar tfoot td#next, #sidebar #wp-calendar tfoot td#prev, " .
+            "#sidebar #wp-calendar tfoot a"
+            => "#wp-calendar #next, #wp-calendar #prev, #wp-calendar tfoot a",
+        "#sidebar .textwidget"                      => ".textwidget",
+        ".post fieldset"                            => ".post > fieldset",
+        ".post fieldset legend.title, fieldset#comments legend, " .
+            "fieldset.comment legend, fieldset#responsebox legend"
+            => ".post .title, #comments > legend, .comment > legend, #responsebox > legend",
+        ".post fieldset legend.title, .post fieldset legend.title a, " .
+            "fieldset#comments legend, fieldset.comment legend, " .
+            "fieldset#responsebox legend"
+            => ".post .title, .post .title a, " .
+                "#comments > legend, .comment > legend, #responsebox > legend",
+        ".dateauthor .capsule, .nocomments .capsule" => "REMOVE",
+        "#postaction, .postmetadata .commentlink, .postmetadata .cattrigger, " .
+            ".replybuttonbox .capsule, #respond INPUT#submit"
+            => ".actbubble",
+        "#postaction, .postmetadata .commentlink, .postmetadata .cattrigger, " .
+            "#postaction a, replybuttonbox .capsule, #respond INPUT#submit"
+            => ".actbubble, .actbubble a",
+        "fieldset#comments"                         => "#comments",
+        "fieldset#responsebox"                      => "#responsebox"
+    );
+
+    // TODO: some of this code is common to skins_menu() and should be
+    // abstracted rather than duplicated.
+
+    $skindir = TEMPLATEPATH . "/skins";
+
+    if( ! is_dir($skindir) )
+    {
+        ah_admin_error("No skins!");
+        return(false);
+    }
+
+    if( ! $skinfd = opendir($skindir) )
+    {
+        ah_admin_error("Unable to read skins from $skindir");
+        return(false);
+    }
+
+    while( ($skinfile = readdir($skinfd)) !== false )
+    {
+        if( ! preg_match("/^skin_(.+)\.css$/", $skinfile, $matches) )
+            continue;
+
+        if( ($skinfile_array = read_skin_file("$skindir/$skinfile")) == false )
+            return(false);
+
+        $newskin = "";
+        while( list($sel, $props) = each($skinfile_array) )
+        {
+            if( isset($sel_update_map[$sel]) )
+                if( $sel_update_map[$sel] == "REMOVE" )
+                    continue;
+                else
+                    $sel = $sel_update_map[$sel];
+
+            $newskin .= "$sel\n{\n";
+            while( list($prop, $val) = each($props) )
+                $newskin .= "$prop: $val;\n";
+            $newskin .= "}\n";
+        }
+
+        if( ! write_skin_file("$skindir/$skinfile", $newskin) )
+            return(false);
+    }
+
+    closedir($skinfd);
+ 
 }
 
 //------------------------------------------------------------------------------
@@ -741,7 +887,7 @@ function custom_comment($comment, $args, $depth)
 
         <legend> <?php comment_author_link() ?> writes: </legend>
 
-        <div class="dateauthor capsule">
+        <div class="capsule dateauthor">
             <small><?php comment_date('F jS, Y') ?> at <?php comment_time() ?></small>
         </div>
 
@@ -767,7 +913,7 @@ function custom_comment($comment, $args, $depth)
 
                 <?php global $user_ID; if( $user_ID ) : ?>
                     &nbsp;&nbsp;
-                    <span class='capsule'>
+                    <span class='capsule actbubble'>
                         <?php edit_comment_link('Edit','&nbsp;',''); ?>
                     </span>
                 <?php endif; ?>
@@ -775,7 +921,7 @@ function custom_comment($comment, $args, $depth)
                 &nbsp; &nbsp;
 
                <?php if( get_option('thread_comments') ) : ?>
-                    <span class="capsule">
+                    <span class="capsule actbubble">
                         <!-- spaces needed for Safari to render rounded corners! -->
                         &nbsp;
                         <?php comment_reply_link(
