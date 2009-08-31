@@ -55,8 +55,7 @@ function ahimsa_options()
                 '
                     clear: right;
                     float: right;
-                    margin-top: 10px;
-                    margin-right: 10px;
+                    margin: 10px 10px 10px 30px;
                     background-color: #fff3cc;
                     color: #000000;
                     padding: 10px;
@@ -91,6 +90,23 @@ function ahimsa_options()
             </ul>
         </div>
 
+        <div style=
+                '
+                    clear: right;
+                    float: right;
+                    margin: 10px 10px 10px 30px;
+                    background-color: #fff3cc;
+                    color: #000000;
+                    padding: 10px;
+                    border: 1px solid #ddc055; width: 25%;
+                '
+        >
+            Want to add your own funky JavaScript or some such in the footer?
+            Create a file called <code>footer-custom.php</code> in the Ahimsa
+            theme directory and put your code in there. Note that once you
+            create the file, you can edit it using the WordPress theme editor.
+        </div>
+ 
         <form id='settings' action='' method='post' class='themeform'
             style='margin: 20px;'>
 
@@ -173,8 +189,8 @@ function ahimsa_options()
                     <br/>
                 </dd>
 
-            <br/>
-            <hr size='1'/>
+            <br clear='all' />
+            <hr size='1' />
 
             <h3>Ahimsa Skins</h3>
 
@@ -183,12 +199,24 @@ function ahimsa_options()
                     color: #000000;
                     padding: 10px;
                     border: 1px solid #ddc055;
-                    margin: 20px 30px;
+                    margin: 0px 5px 15px 30px;
+                    width: 30%;
+                    float: right;
+                    clear: right;
                     '>
                 Know your CSS and want to do more detailed customisations? That's easy!
                 Just create a file called <code>custom.css</code> in the theme directory,
                 and add your custom styling in there. That's it! All customisations in
                 this file are retained even if you upgrade the theme.
+
+                <br />
+                <br />
+                <hr size='1' />
+                <br />
+
+                Want to share your skin with others? Look up the instructions on the
+                <a href='http://ahren.org/code/ahimsa/'>Ahimsa Page</a>.
+
             </div>
 
             <input type='checkbox' name='skinupdate' id='skinupdate' />
@@ -200,19 +228,8 @@ function ahimsa_options()
 
             " . skins_menu() . "
 
-            <div style='
-                    background-color: #fff3cc;
-                    color: #000000;
-                    padding: 10px;
-                    border: 1px solid #ddc055;
-                    margin: 20px 30px;
-                    '>
-                Want to share your skin with others? Look up the instructions on the
-                <a href='http://ahren.org/code/ahimsa/'>Ahimsa Page</a>.
-            </div>
-
             <br />
-            <br />
+            <br clear='all' />
             <hr size='1'/>
 
             <p class='submit'><input type='submit' value='Save Changes' name='save'/></p>

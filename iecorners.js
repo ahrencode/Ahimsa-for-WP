@@ -1,4 +1,6 @@
-
+// as per jQuery folks, it is quite fine to call $(document).ready() multiple times;
+// in our case here and in ahimsa.js
+//
 $(document).ready
 (
     function()

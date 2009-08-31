@@ -28,6 +28,11 @@ if( $options['copyright'] != "" )
 
 </table> <!-- end of table container -->
 
+<?php
+    if( file_exists(TEMPLATEPATH . "/footer-custom.php") )
+        include_once(TEMPLATEPATH . "/footer-custom.php");
+?>
+
 <?php wp_footer(); ?>
 
 </body>
