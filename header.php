@@ -45,6 +45,18 @@
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery-min.js'; ?>"></script>
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/ahimsa.js'; ?>"></script>
 
+    <?php
+        global $options;
+        if( $options['iecorners'] == 1 ) :
+    ?>
+        <script type="text/javascript"
+            src="<?php print get_bloginfo('template_url').'/jquery.corner.js'; ?>"></script>
+        <script type="text/javascript"
+            src="<?php print get_bloginfo('template_url').'/jquery.corners.min.js'; ?>"></script>
+        <script type="text/javascript"
+            src="<?php print get_bloginfo('template_url').'/iecorners.js'; ?>"></script>
+    <?php endif; ?>
+
 <!-- browser specific CSS -->
 
     <style type='text/css'>

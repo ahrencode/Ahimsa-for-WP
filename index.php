@@ -107,11 +107,11 @@
     <div class="navigation">
         <?php
             previous_posts_link(
-                "<span class='capsule' style='float: right;'>" .
+                "<span class='capsule actbubble' style='float: right;'>" .
                 "Newer Entries &raquo;" .
                 "</span>");
         ?>
-        <?php next_posts_link("<span class='capsule'>&laquo; Older Entries</span>"); ?>
+        <?php next_posts_link("<span class='capsule actbubble'>&laquo; Older Entries</span>"); ?>
     </div>
 
 <?php else : ?>

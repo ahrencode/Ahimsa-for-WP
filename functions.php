@@ -14,6 +14,7 @@ if( ! isset($options['defhidesbpages'   ]) ) $options['defhidesbpages'  ] = 1;
 if( ! isset($options['sectprefix'       ]) ) $options['sectprefix'      ] = 1;
 if( ! isset($options['idxfadepmeta'     ]) ) $options['idxfadepmeta'    ] = 0;
 if( ! isset($options['showpagemeta'     ]) ) $options['showpagemeta'    ] = 1;
+if( ! isset($options['iecorners'        ]) ) $options['iecorners'       ] = 0;
 if( ! isset($options['showdelic'        ]) ) $options['showdelic'       ] = 0;
 if( ! isset($options['delicid'          ]) ) $options['delicid'         ] = "";
 if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = "Recent News and Links";
@@ -127,11 +128,17 @@ function ahimsa_options()
                 In index/home page, fade category, tag, comment links
                 unless hovered over</label> (does not work in IE)</label><br />
 
-
             <input type='checkbox' name='showpagemeta' id='showpagemeta'" .
                 ($options['showpagemeta'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='showpagemeta'>
                 Show author and date information for pages</label><br />
+
+            <input type='checkbox' name='iecorners' id='iecorners'" .
+                ($options['iecorners'] == 1 ? ' checked' : '') .  " />
+            <label style='margin-left: 5px;' for='iecorners'>
+                Turn on <b>experimental</b> and <b>partial</b> support for
+                rounded corners in IE
+            </label><br />
 
             <br />
 
@@ -659,6 +666,7 @@ function save_options()
     $options['sectprefix']      = ( isset($_POST['sectprefix']) ) ? 1 : 0;
     $options['idxfadepmeta']    = ( isset($_POST['idxfadepmeta']) ) ? 1 : 0;
     $options['showpagemeta']    = ( isset($_POST['showpagemeta']) ) ? 1 : 0;
+    $options['iecorners']       = ( isset($_POST['iecorners']) ) ? 1 : 0;
     $options['showdelic']       = ( isset($_POST['showdelic']) ) ? 1 : 0;
     $options['delicid']         = ( isset($_POST['delicid']) ) ? $_POST['delicid'] : "";
     $options['delictitle']      = ( isset($_POST['delictitle']) ) ? $_POST['delictitle']
