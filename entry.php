@@ -1,5 +1,5 @@
-
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : ?>
+<?php while (have_posts()) : the_post(); ?>
 
 <div class="post" id="post-<?php the_ID(); ?>">
 
@@ -16,37 +16,41 @@
             </div>
         <?php endif; ?>
 
-        <div id='postaction' class='actbubble'>
+        <?php if( is_single() || $options['showpageactions'] == 1 ) : ?>
 
-            <ul>
+            <div id='postaction' class='actbubble'>
 
-                <?php edit_post_link('Edit Entry', '<li>', '</li>'); ?>
+                <ul>
 
-                <?php
-                            
-                    if (('open' == $post-> comment_status) && ('open' == $post->ping_status))
-                    {
-                        print "
-                            <li> <a href='#respond'>Add Comment</a> </li>
-                            <li> <a href='" . trackback_url(false) . "' rel='trackback'>Trackback</a> </li>
-                            ";
-                    }
-                    elseif (!('open' == $post-> comment_status) && ('open' == $post->ping_status))
-                    {
-                        print "<li> <a href='" . trackback_url(false) . "' rel='trackback'>Trackback</a> </li>";
-                    }
+                    <?php edit_post_link('Edit Entry', '<li>', '</li>'); ?>
 
-                ?>
+                    <?php
+                                
+                        if (('open' == $post-> comment_status) && ('open' == $post->ping_status))
+                        {
+                            print "
+                                <li> <a href='#respond'>Add Comment</a> </li>
+                                <li> <a href='" . trackback_url(false) . "' rel='trackback'>Trackback</a> </li>
+                                ";
+                        }
+                        elseif (!('open' == $post-> comment_status) && ('open' == $post->ping_status))
+                        {
+                            print "<li> <a href='" . trackback_url(false) . "' rel='trackback'>Trackback</a> </li>";
+                        }
 
-                <li>
-                    <img border='0' align='middle' alt='Comments Feed'
-                        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
-                    <?php comments_rss_link('Comments Feed'); ?>
-                </li>
+                    ?>
 
-            </ul>
+                    <li>
+                        <img border='0' align='middle' alt='Comments Feed'
+                            src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
+                        <?php comments_rss_link('Comments Feed'); ?>
+                    </li>
 
-        </div> <!-- end postaction -->
+                </ul>
+
+            </div> <!-- end postaction -->
+
+        <?php endif; ?>
 
         <div class="entry">
             <?php the_content('Read the rest of this entry &raquo;'); ?>
@@ -118,7 +122,8 @@
 
 </div>
 
-<?php endwhile; else: ?>
+<?php endwhile; ?>
+<?php else: ?>
 
 <div class="post">
     <fieldset>
@@ -133,11 +138,10 @@
 
 <?php endif; // have_posts() ?>
 
-</div>
-
 <?php if( $options['defhidesbpages'] == 1 ): ?>
     <script language='JavaScript'>
-        fadeSideBar();
+        fadeSideBar('left');
+        fadeSideBar('right');
     </script>
 <?php endif; ?>
 

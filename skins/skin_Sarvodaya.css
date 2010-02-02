@@ -174,12 +174,12 @@
                 color: #333333;
             }
         
-            .entry UL, .page UL, .entry OL, .page OL
+            .entry UL, .entry OL
             {
                 background-color: inherit;
             }
         
-            .entry UL, .page UL, .entry OL, .page OL
+            .entry UL, .entry OL
             {
                 color: #333333;
             }

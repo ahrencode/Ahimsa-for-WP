@@ -1,4 +1,3 @@
-
 <?php get_header(); ?>
 
 <div id='single' style='width: 100%;'>
@@ -8,4 +7,3 @@
 <?php comments_template(); ?>
 
 <?php get_footer(); ?>
-

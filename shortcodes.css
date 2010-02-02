@@ -1,0 +1,68 @@
+
+/* styles for shortcodes */
+
+/*** qfgallery ***/
+
+.qfcontainer
+{
+    background-color: #cccccc;
+    padding: 20px 20px;
+    overflow: auto;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 5px;
+}
+
+.qfcontainer H2
+{
+    margin: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #999999;
+    font-size: x-large;
+    font-weight: normal;
+    color: #333333;
+    text-align: center;
+}
+
+.qfgallerytnail
+{
+    float: left;
+    margin: 10px;
+    height: 128px;
+    width: 128px;
+    overflow: hidden;
+    padding: 5px;
+    background-color: #333333;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+/*** faqinway ***/
+
+.faqinwaycontainer
+{
+    margin: 10px 0px;
+}
+
+.faqinwayqa
+{
+    border-bottom: 1px solid #cccccc;
+}
+
+.faqinwayq
+{
+    margin: 2px;
+    color: #882200;
+    cursor: pointer;
+    font-size: 11pt;
+}
+
+.faqinwaya
+{
+    display: none;
+    margin: 5px 0px;
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    background-color: #ffee99;
+}
+

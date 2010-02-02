@@ -14,6 +14,7 @@ if( ! isset($options['defhidesbpages'   ]) ) $options['defhidesbpages'  ] = 1;
 if( ! isset($options['sectprefix'       ]) ) $options['sectprefix'      ] = 1;
 if( ! isset($options['idxfadepmeta'     ]) ) $options['idxfadepmeta'    ] = 0;
 if( ! isset($options['showpagemeta'     ]) ) $options['showpagemeta'    ] = 1;
+if( ! isset($options['showpageactions'  ]) ) $options['showpageactions' ] = 1;
 if( ! isset($options['iecorners'        ]) ) $options['iecorners'       ] = 0;
 if( ! isset($options['showdelic'        ]) ) $options['showdelic'       ] = 0;
 if( ! isset($options['delicid'          ]) ) $options['delicid'         ] = "";
@@ -28,12 +29,26 @@ update_option('ahimsa', $options);
 add_action('admin_menu', 'ahimsa_admin_menu');
 
 if ( function_exists('register_sidebar') )
+    add_sidebars();
+
+#-------------------------------------------------------------------------------
+function add_sidebars()
+{
     register_sidebar(array(
+        'name' => 'leftbar',
         'before_widget' => "<fieldset class='sidebarlist'>",
         'after_widget' => "</fieldset>",
         'before_title' => "<legend>$sectprefix",
         'after_title' => "</legend>",
     ));
+    register_sidebar(array(
+        'name' => 'rightbar',
+        'before_widget' => "<fieldset class='sidebarlist'>",
+        'after_widget' => "</fieldset>",
+        'before_title' => "<legend>$sectprefix",
+        'after_title' => "</legend>",
+    ));
+}
 
 #-------------------------------------------------------------------------------
 function ahimsa_admin_menu()
@@ -148,6 +163,11 @@ function ahimsa_options()
                 ($options['showpagemeta'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='showpagemeta'>
                 Show author and date information for pages</label><br />
+
+            <input type='checkbox' name='showpageactions' id='showpageactions'" .
+                ($options['showpageactions'] == 1 ? ' checked' : '') .  " />
+            <label style='margin-left: 5px;' for='showpageactions'>
+                Show actions and comment feed link box for pages</label><br />
 
             <input type='checkbox' name='iecorners' id='iecorners'" .
                 ($options['iecorners'] == 1 ? ' checked' : '') .  " />
@@ -491,14 +511,14 @@ array
     (
         name    => "skinlistbg",
         desc    => "Page/Post Ordered/Unordered List Background",
-        csssel  => ".entry UL, .page UL, .entry OL, .page OL",
+        csssel  => ".entry UL, .entry OL",
         attr    => "background-color"
     ),
     array
     (
         name    => "skinlistfg",
         desc    => "Page/Post Ordered/Unordered Text Colour",
-        csssel  => ".entry UL, .page UL, .entry OL, .page OL",
+        csssel  => ".entry UL, .entry OL",
         attr    => "color"
     ),
     array
@@ -683,6 +703,7 @@ function save_options()
     $options['sectprefix']      = ( isset($_POST['sectprefix']) ) ? 1 : 0;
     $options['idxfadepmeta']    = ( isset($_POST['idxfadepmeta']) ) ? 1 : 0;
     $options['showpagemeta']    = ( isset($_POST['showpagemeta']) ) ? 1 : 0;
+    $options['showpageactions'] = ( isset($_POST['showpageactions']) ) ? 1 : 0;
     $options['iecorners']       = ( isset($_POST['iecorners']) ) ? 1 : 0;
     $options['showdelic']       = ( isset($_POST['showdelic']) ) ? 1 : 0;
     $options['delicid']         = ( isset($_POST['delicid']) ) ? $_POST['delicid'] : "";
@@ -747,7 +768,7 @@ function save_skin()
 //------------------------------------------------------------------------------
 function read_skin_file($skinfile)
 {
-    if( ! ($styles = @file("$skindir/$skinfile", FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES)) )
+    if( ! ($styles = @file("$skinfile", FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES)) )
     {
         ah_admin_error("Unable to read skin file: $skinfile");
         return(false);

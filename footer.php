@@ -1,4 +1,6 @@
 
+<?php if( is_active_sidebar(2) ) get_sidebar('right'); ?>
+
 </td>
 </tr>
 </table> <!-- end of table main -->

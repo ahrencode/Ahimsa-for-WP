@@ -47,15 +47,14 @@ function fadeBlock(id)
 }
 
 var tdsbBackground = "";
-function fadeSideBar()
+function fadeSideBar(side)
 {
-    tdsb = document.getElementById('tdsidebar');
-    sb = document.getElementById('sidebar');
-    divcont = document.getElementById('content');
+    tdsb = document.getElementById('tdsidebar'+side);
+    sb = document.getElementById('sidebar'+side);
 
     // I am not sure how the below works to toggle the background on and off
     // for the container cell. tdsbBackground, as set below, doesn't work!!!
-    // It's empty, I guess because sb.style.backgroundColor is computer and
+    // It's empty, I guess because sb.style.backgroundColor is computed and
     // not available here. But the below logic, to toggle the background from
     // transparent to colour and back works magically!!!
 
@@ -64,20 +63,33 @@ function fadeSideBar()
 
     if( sb.style.display == 'none' )
     {
-        divcont.style.borderRadiusBottomleft = '0px';
-        divcont.style.webkitBorderBottomLeftRadius = '0px';
-        divcont.style.MozBorderRadiusBottomleft = '0px';
+        contentCurve(side, '0px');
         tdsb.style.backgroundColor = tdsbBackground;
     }
     else
     {
-        divcont.style.borderRadiusBottomleft = '30px';
-        divcont.style.webkitBorderBottomLeftRadius = '30px';
-        divcont.style.MozBorderRadiusBottomleft = '30px';
+        contentCurve(side, '30px');
         tdsb.style.backgroundColor = 'transparent';
     }
 
-    fadeBlock('sidebar');
+    fadeBlock('sidebar'+side);
+}
+
+function contentCurve(side, size)
+{
+    divcont = document.getElementById('content');
+    if( side == 'left' )
+    {
+        divcont.style.borderRadiusBottomleft = size;
+        divcont.style.webkitBorderBottomLeftRadius = size;
+        divcont.style.MozBorderRadiusBottomleft = size;
+    }
+    else
+    {
+        divcont.style.borderRadiusBottomright = size;
+        divcont.style.webkitBorderBottomRightRadius = size;
+        divcont.style.MozBorderRadiusBottomright = size;
+    }
 }
 
 function toggleDelicious()

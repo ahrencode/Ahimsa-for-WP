@@ -3,19 +3,19 @@
 <?php if( $options['showdelic'] && $options['delicid'] ) :
     $delid = $options['delicid']; ?>
 
-<div id='recent'>
-    <div id='recentheader'>
-        <div id='recentclose'
-            onclick='toggleDelicious();'>+</div>
-        <div id='recentmore' class='capsule'
-            onclick='document.location="http://delicious.com/<?php print $delid; ?>";'> More </div>
-        <?php print $options['delictitle']; ?>
-        <!-- inline style for easy JavaScript mods, without getting computed styles -->
-        <div id='recentlist' style='opacity: 1.0; display: block;'>
-            <?php delicious_bookmarks($delid, 5, true, false); ?>
+    <div id='recent'>
+        <div id='recentheader'>
+            <div id='recentclose'
+                onclick='toggleDelicious();'>+</div>
+            <div id='recentmore' class='capsule'
+                onclick='document.location="http://delicious.com/<?php print $delid; ?>";'> More </div>
+            <?php print $options['delictitle']; ?>
+            <!-- inline style for easy JavaScript mods, without getting computed styles -->
+            <div id='recentlist' style='opacity: 1.0; display: block;'>
+                <?php delicious_bookmarks($delid, 5, true, false); ?>
+            </div>
         </div>
     </div>
-</div>
 
 <?php endif; ?>
 
@@ -132,9 +132,9 @@
 
 <?php if( $options['defhidesidebar'] == 1 ): ?>
     <script language='JavaScript'>
-        fadeSideBar();
+        fadeSideBar('left');
+        fadeSideBar('right');
     </script>
 <?php endif; ?>
 
 <?php get_footer(); ?>
-

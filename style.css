@@ -32,7 +32,7 @@ BODY
     border-style: none;
     background-color: #6f900d;
     font-size: medium;
-    font-family: Futura, Helvetica, sans-serif;
+    font-family: "Gill Sans", Futura, Helvetica, sans-serif;
 }
 
 A
@@ -63,20 +63,6 @@ BLOCKQUOTE
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
-}
-
-/* hack to get fieldset background and legend position working right in IE */
-FIELDSET
-{
-    position: relative;
-    margin: 0 0 1em 0;
-}
-
-FIELDSET LEGEND
-{
-    position: absolute;
-    top: -15px;
-    left: 3%;
 }
 
 /*
@@ -140,7 +126,8 @@ FIELDSET LEGEND
 
 #main
 {
-    margin: 60px 40px 60px 20px;
+    margin: 60px auto 60px auto;
+    width: 94%;
     border-radius: 30px; 
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px; 
@@ -293,7 +280,7 @@ FIELDSET LEGEND
     color: #ffffff;
 }
 
-#sidebartab
+.sidebartab
 {
     width: 20px;
     text-align: center;
@@ -304,29 +291,54 @@ FIELDSET LEGEND
     background-color: #111111;
     color: #cccccc;
     cursor: pointer;
-    -webkit-border-bottom-left-radius: 8px;
-    -webkit-border-top-left-radius: 8px;
-    -moz-border-radius-bottomleft: 8px;
-    -moz-border-radius-topleft: 8px;
     opacity: 0.8;
     filter: alpha(opacity = 80);
 }
 
-#tdsidebar,
-#sidebar
+#sidebartableft
 {
-    background-color: #ff9f06;
-    border-radius-bottomleft: 30px; 
-    -webkit-border-bottom-left-radius: 30px;
-    -moz-border-radius-bottomleft: 30px; 
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-topleft: 8px;
 }
 
-#sidebar
+#sidebartabright
+{
+    -webkit-border-bottom-right-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    -moz-border-radius-bottomright: 8px;
+    -moz-border-radius-topright: 8px;
+}
+
+.tdsidebar,
+.sidebar
+{
+    background-color: #ff9f06;
+}
+
+.sidebar
 {
     color: #111111;
     padding: 10px;
     padding-top: 15px;
     height: 100%;
+}
+
+#tdsidebarleft,
+#sidebarleft
+{
+    border-radius-bottomleft: 30px; 
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomleft: 30px; 
+}
+
+#tdsidebarright,
+#sidebarright
+{
+    border-radius-bottomright: 30px; 
+    -webkit-border-bottom-right-radius: 30px;
+    -moz-border-radius-bottomright: 30px; 
 }
 
 .sidebarlist
@@ -475,9 +487,20 @@ FIELDSET LEGEND
     padding-top: 30px;
     width: 100%;
     background-color: #aaaaaa;
-    border-radius-bottomright: 30px; 
+}
+
+.contentnoleftsb
+{
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-radius-bottomleft: 30px;
+}
+
+.contentnorightsb
+{
     -webkit-border-bottom-right-radius: 30px;
-    -moz-border-radius-bottomright: 30px; 
+    -moz-border-radius-bottomright: 30px;
+    border-radius-bottomright: 30px;
 }
 
 .post
@@ -564,7 +587,7 @@ LEGEND A
     padding: 8px 10px 32px 10px;
     background-color: #eeeeee;
     margin: 0px;
-    margin-left: -15px; /* see hack for Firefox in .post frameset above */
+    margin-left: -15px; /* see hack for Firefox in .post fieldset above */
     clear: both;
     -webkit-border-bottom-left-radius: 20px;
     -webkit-border-bottom-right-radius: 20px;
@@ -745,9 +768,7 @@ FIELDSET.comment .commenttext
 }
 
 .entry UL,
-.page UL,
-.entry OL,
-.page OL
+.entry OL
 {
 	margin-left: 0px;
 	padding: 15px;
@@ -765,16 +786,14 @@ BLOCKQUOTE OL
     border-style: none !important;
 }
 
-.post LI,
-.page LI
+.post LI
 {
     padding: 4px 0px;
 	margin-left: 0px;
     /*border-bottom: 1px dotted #aaaaaa;*/
 }
 
-.post LI:first-child,
-.page LI:first-child
+.post LI:first-child
 {
     /*border-top: 1px dotted #aaaaaa;*/
 }
