@@ -32,8 +32,12 @@
                         title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
                 </legend>
 
-                <div class='capsule dateauthor'>
-                    <?php the_time('M jS, Y') ?> by <?php the_author() ?>
+                <!-- wrap the date author in a div so that it sits by itself with a bottom margin -->
+                <div>
+                    <div class='capsule dateauthor'>
+                        <?php the_time('M jS, Y') ?> by <?php the_author() ?>
+                    </div>
+                    <br clear='all'/>
                 </div>
 
                 <div class="entry">

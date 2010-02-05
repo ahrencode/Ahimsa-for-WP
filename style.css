@@ -1,7 +1,7 @@
 /*  
 Theme Name: Ahimsa
 Theme URI: http://ahren.org/code/ahimsa
-Description: Ahimsa -- customisable colours, different skins, low graphics, minimal distractions, collapsible sidebar, with rounded corners in Firefox, Safari, Chrome (some support in IE). New for version 3.0: IE6 support dropped, many, many fixes and features, editable colour schemes (skins), custom CSS and footer support, W3C/XHTML 1.0 Standard validation. Please visit http://ahren.org/code/bit/ahimsa-wp-3dot0 for feature and fixes list and to suggest changes.
+Description: Ahimsa -- customisable colours, different skins, low graphics, minimal distractions, collapsible sidebar, with rounded corners in Firefox, Safari, Chrome (some support in IE). New for version 3.1: PLEASE NOTE: minimum PHP 4.3 REQUIRED. IE6 support dropped, many, many fixes and features, editable colour schemes (skins), custom CSS and footer support, W3C/XHTML 1.0 Standard validation. Please visit http://ahren.org/code/bit/ahimsa-wp-3dot0 for feature and fixes list and to suggest changes.
 Version: 3.0
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
@@ -32,7 +32,7 @@ BODY
     border-style: none;
     background-color: #6f900d;
     font-size: medium;
-    font-family: "Gill Sans", Futura, Helvetica, sans-serif;
+    font-family: "Lucida Grande", Futura, Helvetica, sans-serif;
 }
 
 A
@@ -54,10 +54,10 @@ IMG
 BLOCKQUOTE
 {
     background-image: URL('images/quote.gif');
-    background-position: 0px 1px;
+    background-position: 2px 1px;
     background-repeat: no-repeat;
     background-color: #f0f0aa;
-    color: #333355;
+    color: #222222;
     margin: 15px 25px 15px 25px;
     padding: 20px 20px 10px 20px;
     border-radius: 15px;
@@ -75,7 +75,7 @@ BLOCKQUOTE
 {
     text-align: center;
     padding: 4px 10px;
-    font-family: Optima, Verdana, Helvetica;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: small;
     border-radius: 10px; 
     background-color: #cc9900;
@@ -161,8 +161,7 @@ BLOCKQUOTE
 #title
 {
     height: 20px;
-    font-size:  24pt;
-    font-family: "Trebuchet MS", "Gill Sans", Skia, "Century Gothic";
+    font-size: 24pt;
     padding-right: 15px;
     padding-left: 10px;
     border-right: 2px solid #ffdd00;
@@ -220,7 +219,6 @@ BLOCKQUOTE
 {
     padding: 5px 10px;
     font-size: large;
-    font-family: "Trebuchet MS", "Gill Sans", Skia, "Century Gothic";
 }
 
 #recentmore
@@ -356,7 +354,6 @@ BLOCKQUOTE
 
 .sidebarlist > LEGEND
 {
-    font-family: "Trebuchet MS", Verdana, Helvetica;
     font-size: 10pt;
     font-weight: normal;
     color: #ffffff;
@@ -512,7 +509,7 @@ BLOCKQUOTE
 {
     background-color: #ffffff;
     padding: 0px;
-    padding-top: 20px;
+    padding-top: 10px;
     /* Firefox uses padding-left to determine Fieldset Legend margin!!! */
     padding-left: 15px;
     border-style: none;
@@ -528,18 +525,20 @@ BLOCKQUOTE
 {
     background-color: #6f900d;
     border: 0px solid #666666;
-    font-size: large;
+    font-size: 12pt;
     padding: 4px 20px;
     margin-left: 15px; /* doesn't work for Firefox -- see comment above in .post fieldset */
     border-radius: 8px; 
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px; 
-    font-family: "Trebuchet MS", "Gill Sans", Helvetica, Arial;
 }
 
+#title,
 LEGEND,
-LEGEND A
+LEGEND A,
+#recentheader
 {
+    font-family: "Trebuchet MS", Skia, "Century Gothic", sans-serif;
     color: #ffffff;
 }
 
@@ -560,7 +559,7 @@ LEGEND A
 .entry,
 .commenttext
 {
-    font-size: small;
+    font-size: medium;
 }
 
 .entry A:hover
@@ -818,7 +817,6 @@ BLOCKQUOTE OL
     left: 0;
     padding: 4px 10px;
     margin: 0px;
-    font-family: Helvetica;
     font-size: 8pt;
     background-color: #333333;
     color: #ffffff;
@@ -850,7 +848,6 @@ BLOCKQUOTE OL
 #credits
 {
     margin: 0px;
-    font-family: "Trebuchet MS", Verdana, Helvetica;
     padding: 5px;
     padding-right: 10px;
     background-color: #333333;

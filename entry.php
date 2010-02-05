@@ -11,8 +11,12 @@
         </legend>
 
         <?php if( is_single() || $options['showpagemeta'] == 1 ) : ?>
-            <div class='capsule dateauthor'>
-                <?php the_time('F jS, Y') ?> by <?php the_author() ?>
+            <!-- wrap the date author in a div so that it sits by itself with a bottom margin -->
+            <div>
+                <div class='capsule dateauthor'>
+                    <?php the_time('F jS, Y') ?> by <?php the_author() ?>
+                </div>
+                <br clear='all'/>
             </div>
         <?php endif; ?>
 

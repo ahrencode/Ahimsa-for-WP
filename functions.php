@@ -34,6 +34,8 @@ if ( function_exists('register_sidebar') )
 #-------------------------------------------------------------------------------
 function add_sidebars()
 {
+    global $options, $sectprefix;
+
     register_sidebar(array(
         'name' => 'leftbar',
         'before_widget' => "<fieldset class='sidebarlist'>",
@@ -92,7 +94,7 @@ function ahimsa_options()
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
                 <a
-                href='http://www.facebook.com/home.php#/pages/Ahren-Code/64305786260'>Facebook</a>
+                href='http://www.facebook.com/ahrencode'>Facebook</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
                 <a href='http://ahren.org/code/tag/ahimsa'>Blog</a>
@@ -121,7 +123,7 @@ function ahimsa_options()
             theme directory and put your code in there. Note that once you
             create the file, you can edit it using the WordPress theme editor.
         </div>
- 
+
         <form id='settings' action='' method='post' class='themeform'
             style='margin: 20px;'>
 
@@ -241,7 +243,11 @@ function ahimsa_options()
 
             <input type='checkbox' name='skinupdate' id='skinupdate' />
             <label style='margin-left: 5px;' for='skinupdate'>Update Skins</label>
-            (PLEASE backup your skin before you attempt this)
+            <div style='margin-left: 30px; font-size: smaller;'>
+                (PLEASE backup your skin before you attempt this. If you are upgraded
+                 Ahimsa by more than one version then you may have to do this update
+                 multiple times -- one for each intermediate version.)
+            </div>
 
             <br />
             <br />
@@ -579,40 +585,25 @@ function skins_menu()
 
     $html = "";
 
-    $skindir = TEMPLATEPATH . "/skins";
-    if( ! is_dir($skindir) )
-    {
-        if( ! @mkdir($skindir) )
-            $html .= "Failed to create $skindir. Permissions problems? <br/>";
-
-        return($html);
-    }
-
-    if( ! $skinfd = opendir($skindir) )
-    {
-        $html .= "Unable to read skins from $skindir. <br/>";
-        return($html);
-    }
-
     $checked = ($options['skin'] == 'none') ? 'checked' : "";
     $html .= "<input type=radio name=skin value=none $checked> None <br/>\n";
-    while ( ($skinfile = readdir($skinfd)) !== false )
+
+    $ahimsastore = WP_CONTENT_DIR . "/themestore/ahimsa/";
+    foreach( glob("$ahimsastore/skin_*") as $skinfile )
     {
-        if( ! preg_match("/^skin_(.+)\.css$/", $skinfile, $matches) )
-            continue;
-        $checked = ($options['skin'] == $matches[1]) ? 'checked' : "";
+        $filename = basename($skinfile);
+        $checked = ($options['skin'] == $filename) ? 'checked' : "";
+        $skinname = preg_replace("/^skin_
         $html .=
         "
-            <input type=radio name=skin value='$matches[1]' $checked> $matches[1]
-            (<a href='" . get_bloginfo("url") . "?ahimsaskin=$matches[1]' target=_new>Preview</a>)
+            <input type=radio name=skin value='$filename' $checked> $filename
+            (<a href='" . get_bloginfo("url") . "?ahimsaskin=$filename' target=_new>Preview</a>)
             <br/>
         ";
     }
 
-    closedir($skinfd);
-
     if( $options['skin'] != 'none' )
-        $skinfile_array = read_skin_file("$skindir/skin_$options[skin].css");
+        $skinfile_array = read_skin_file("$ahimsastore/skin_$options[skin].css");
     else
         $skinfile_array = array();
 
@@ -874,7 +865,8 @@ function update_skins()
             "#postaction a, replybuttonbox .capsule, #respond INPUT#submit"
             => ".actbubble, .actbubble a",
         "fieldset#comments"                         => "#comments",
-        "fieldset#responsebox"                      => "#responsebox"
+        "fieldset#responsebox"                      => "#responsebox",
+        "#sidebar, #tdsidebar"                      => ".sidebar, .tdsidebar"
     );
 
     // TODO: some of this code is common to skins_menu() and should be
@@ -931,13 +923,16 @@ function ah_admin_error($msg)
         print
         "
             <div
-                style='background-color: #aa4400;
-                        color: #ffffff;
-                        border: 1px solid #660000;
-                        padding: 3px 8px;
-                        width: 300px;
-                        margin-top: 30px;
-                        margin-left: 20px'>
+                style=
+                '
+                    background-color: #aa4400;
+                    color: #ffffff;
+                    border: 1px solid #660000;
+                    padding: 3px 8px;
+                    width: 500px;
+                    margin-top: 30px;
+                    margin-left: 20px
+                '>
             $msg
             </div>
         ";
