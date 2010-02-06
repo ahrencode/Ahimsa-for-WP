@@ -584,26 +584,27 @@ function skins_menu()
     global $skin_fields, $options;
 
     $html = "";
+    $curskin = $options['skin'];
 
-    $checked = ($options['skin'] == 'none') ? 'checked' : "";
+    $checked = ($curskin == 'none') ? 'checked' : "";
     $html .= "<input type=radio name=skin value=none $checked> None <br/>\n";
 
-    $ahimsastore = WP_CONTENT_DIR . "/themestore/ahimsa/";
-    foreach( glob("$ahimsastore/skin_*") as $skinfile )
+    $skinfiles = util_get_skin_files();
+    foreach( $skinfiles as $skinfile )
     {
         $filename = basename($skinfile);
-        $checked = ($options['skin'] == $filename) ? 'checked' : "";
-        $skinname = preg_replace("/^skin_
+        $checked = ($curskin == $filename) ? 'checked' : "";
+        $skinname = preg_replace("/^skin_(.*)\.css/", "$1", $filename);
         $html .=
         "
-            <input type=radio name=skin value='$filename' $checked> $filename
-            (<a href='" . get_bloginfo("url") . "?ahimsaskin=$filename' target=_new>Preview</a>)
+            <input type=radio name=skin value='$filename' $checked> $skinname
+            (<a href='" . get_bloginfo("url") . "?ahimsaskin=$skinname' target=_new>Preview</a>)
             <br/>
         ";
     }
 
-    if( $options['skin'] != 'none' )
-        $skinfile_array = read_skin_file("$ahimsastore/skin_$options[skin].css");
+    if( $curskin != 'none' )
+        $skinfile_array = read_skin_file(util_get_skin_path("skin_$curskin.css"));
     else
         $skinfile_array = array();
 
@@ -625,7 +626,7 @@ function skins_menu()
         <h4>Enter Skin Details</h4>
 
         <p>(hint: change the name below to create a new skin)</p>
-        Skin name: <input type=text name=skinname size=20 value='" . $options['skin'] . "'>
+        Skin name: <input type=text name=skinname size=20 value='$curskin'>
         &nbsp;&nbsp;&nbsp;
         <a href='javascript:
                     document.getElementById(\"skinedit\").style.display = \"none\";
@@ -753,7 +754,7 @@ function save_skin()
         ";
     }
 
-    return(write_skin_file(TEMPLATEPATH . "/skins/skin_$skinname.css", $skincss));
+    return(write_skin_file(WP_CONTENT_DIR . "/themestore/ahimsa/skin_$skinname.css", $skincss));
 }
 
 //------------------------------------------------------------------------------
@@ -872,26 +873,20 @@ function update_skins()
     // TODO: some of this code is common to skins_menu() and should be
     // abstracted rather than duplicated.
 
-    $skindir = TEMPLATEPATH . "/skins";
-
-    if( ! is_dir($skindir) )
+    $skinfiles = util_get_skin_files();
+    if( ! sizeof($skinfiles) )
     {
         ah_admin_error("No skins!");
         return(false);
     }
 
-    if( ! $skinfd = opendir($skindir) )
+    foreach( $skinfiles as $skinfile )
     {
-        ah_admin_error("Unable to read skins from $skindir");
-        return(false);
-    }
-
-    while( ($skinfile = readdir($skinfd)) !== false )
-    {
-        if( ! preg_match("/^skin_(.+)\.css$/", $skinfile, $matches) )
+        $filename = basename($skinfile);
+        if( ! preg_match("/^skin_(.+)\.css$/", $filename, $matches) )
             continue;
 
-        if( ($skinfile_array = read_skin_file("$skindir/$skinfile")) == false )
+        if( ($skinfile_array = read_skin_file($skinfile)) == false )
             return(false);
 
         $newskin = "";
@@ -909,7 +904,7 @@ function update_skins()
             $newskin .= "}\n";
         }
 
-        if( ! write_skin_file("$skindir/$skinfile", $newskin) )
+        if( ! write_skin_file($skinfile, $newskin) )
             return(false);
     }
 

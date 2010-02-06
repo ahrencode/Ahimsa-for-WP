@@ -28,7 +28,7 @@ color: #ffffff;
 {
 border-right-color: #ffeeaa;
 }
-#sidebar, #tdsidebar
+.sidebar, .tdsidebar
 {
 background-color: #70a0ff;
 }

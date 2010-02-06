@@ -44,7 +44,7 @@
                 border-right-color: #333333;
             }
         
-            #sidebar, #tdsidebar
+            .sidebar, .tdsidebar
             {
                 background-color: #555555;
             }
@@ -141,7 +141,7 @@
         
             .postmetadata
             {
-                background-color: #555555;
+                border-top: 1px solid #aaaaaa;
             }
         
             .postcattags
