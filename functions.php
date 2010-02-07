@@ -1,5 +1,7 @@
 <?php
 
+include_once("utils.php");
+
 if( ! is_array(get_option('ahimsa')) )
     add_option('ahimsa', array('init' => 1));
 
@@ -63,6 +65,9 @@ function ahimsa_options()
 {
     global $options;
 
+    // TODO: sneak this in here for now
+    check_store_mksymlinks();
+
     if( $_POST['action'] == 'save' )
         save_options();
 
@@ -119,9 +124,20 @@ function ahimsa_options()
                 '
         >
             Want to add your own funky JavaScript or some such in the footer?
-            Create a file called <code>footer-custom.php</code> in the Ahimsa
-            theme directory and put your code in there. Note that once you
-            create the file, you can edit it using the WordPress theme editor.
+            Create a file <code>" .
+            WP_CONTENT_DIR . "/themestore/ahimsa/footer-custom.php</code>
+            and put your code in there.
+        ";
+        
+        if( file_exists(TEMPLATEPATH . "/footer-custom.php") )
+            print
+            "
+                <b>You can do that by using the Theme Editor</b>
+                (<i>Dashboard->Appearance->Editor</i>).
+            ";
+
+        print
+        "
         </div>
 
         <form id='settings' action='' method='post' class='themeform'
@@ -227,10 +243,21 @@ function ahimsa_options()
                     clear: right;
                     '>
                 Know your CSS and want to do more detailed customisations? That's easy!
-                Just create a file called <code>custom.css</code> in the theme directory,
+                Just create a file called <code>"
+                . WP_CONTENT_DIR . "/themestore/ahimsa/custom.css</code>
                 and add your custom styling in there. That's it! All customisations in
-                this file are retained even if you upgrade the theme.
+                this file should be retained even if you upgrade the theme.
+        ";
+        
+        if( file_exists(TEMPLATEPATH . "/custom.css") )
+            print
+            "
+                <b>You can do that by using the Theme Editor</b>
+                (<i>Dashboard->Appearance->Editor</i>).
+            ";
 
+        print
+        "
                 <br />
                 <br />
                 <hr size='1' />
@@ -334,7 +361,7 @@ array
     (
         name    => "skinsidebarbg",
         desc    => "Sidebar Background",
-        csssel  => "#sidebar, #tdsidebar",
+        csssel  => ".sidebar, .tdsidebar",
         attr    => "background-color"
     ),
     array
@@ -593,18 +620,18 @@ function skins_menu()
     foreach( $skinfiles as $skinfile )
     {
         $filename = basename($skinfile);
-        $checked = ($curskin == $filename) ? 'checked' : "";
-        $skinname = preg_replace("/^skin_(.*)\.css/", "$1", $filename);
+        $skinname = preg_replace("/^skin_([^\.]+)\.css/", "$1", $filename);
+        $checked = ($skinname == $curskin) ? 'checked' : "";
         $html .=
         "
-            <input type=radio name=skin value='$filename' $checked> $skinname
+            <input type=radio name=skin value='$skinname' $checked> $skinname
             (<a href='" . get_bloginfo("url") . "?ahimsaskin=$skinname' target=_new>Preview</a>)
             <br/>
         ";
     }
 
     if( $curskin != 'none' )
-        $skinfile_array = read_skin_file(util_get_skin_path("skin_$curskin.css"));
+        $skinfile_array = read_skin_file(util_get_skin_path($curskin));
     else
         $skinfile_array = array();
 
@@ -622,6 +649,10 @@ function skins_menu()
         Edit Current or Create New Skin</a>
 
         <div id='skinedit' style='display: none;'>
+
+        <br/>
+        Caution: if you edit an Ahimsa supplied skin, you really should rename
+        it and save it as a new skin.
 
         <h4>Enter Skin Details</h4>
 
@@ -907,9 +938,48 @@ function update_skins()
         if( ! write_skin_file($skinfile, $newskin) )
             return(false);
     }
+}
 
-    closedir($skinfd);
- 
+//------------------------------------------------------------------------------
+function check_store_mksymlinks()
+{
+    $themestore = WP_CONTENT_DIR . "/themestore";
+    $ahimsastore = $themestore . "/ahimsa";
+    foreach( array($themestore, $ahimsastore) as $dir )
+    {
+        if( is_dir($dir) )
+            continue;
+        if( ! @mkdir($dir) )
+        {
+            ah_admin_error(
+                "
+                    A bit of a problem has occurred. I could not create: $dir.
+                    This is probably because your WordPress or WebServer (Apache?)
+                    installation is such that the webserver program does not
+                    have write access to this directory. As a consequence, you
+                    cannot use the Skins feature of Ahimsa to create new colour
+                    schemes.
+                    
+                    Don't lose heart entirely. Contact
+                    <a href='mailto:code@ahren.org'>me</a> and we can see if
+                    there is a way around this situation.
+                ");
+            return;
+        }
+    }
+
+
+    // create some symlinks to make editing custom stuff easier
+    foreach( array("custom.css", "footer-custom.php") as $file )
+    {
+        // fail silently
+        if( ! file_exists("$ahimsastore/$file") )
+            if( ! @touch("$ahimsastore/$file") )
+                return;
+        if( ! file_exists(TEMPLATEPATH . "/$file") )
+            if( ! @symlink("$ahimsastore/$file", TEMPLATEPATH . "/$file") )
+                return;
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -920,10 +990,9 @@ function ah_admin_error($msg)
             <div
                 style=
                 '
-                    background-color: #aa4400;
+                    background-color: #bb4400;
                     color: #ffffff;
-                    border: 1px solid #660000;
-                    padding: 3px 8px;
+                    padding: 15px 20px;
                     width: 500px;
                     margin-top: 30px;
                     margin-left: 20px

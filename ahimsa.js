@@ -8,42 +8,14 @@ function toggleDisplay(id)
         el.style.display = 'block';
 }
 
-
-var fadingBlocks = new Array();
-
 function fadeBlock(id)
 {
-    if( fadingBlocks[id] )
-        return;
+    if( $('#'+id).is(':visible') )
+        $('#'+id).fadeOut(1200);
+    else
+        $('#'+id).fadeIn(1200);
 
-    ctr = 0;
-
-    function doFade()
-    {
-        ctr++;
-
-        opacity = el.style.opacity;
-        //alert("Fading... opacity = " + opacity + ", delta = " + delta);
-        opacity = parseFloat(opacity) + delta;
-
-        if( opacity > 0.9  || opacity < 0.1 || ctr > 10 )
-        {
-            clearInterval(intervalId);
-            opacity = Math.round(opacity, 0);
-            if( delta < 0 )
-                toggleDisplay(id);
-            fadingBlocks[id] = 0;
-        }
-
-        el.style.opacity = opacity;
-    }
-
-    fadingBlocks[id] = 1;
-    el = document.getElementById(id);
-    delta = ( el.style.display != 'none' ) ? -0.1 : 0.1;
-    if( delta > 0 )
-        toggleDisplay(id);
-    intervalId = setInterval(doFade, 50);
+    return;
 }
 
 var tdsbBackground = "";

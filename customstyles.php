@@ -11,7 +11,6 @@
         $skin = $_GET['ahimsaskin'];
 
     if( $skin != "none" )
-    {
         print
         "
             <link
@@ -24,12 +23,12 @@
         print "<link rel='stylesheet' href='$customstylesheet' type='text/css' media='screen' />\n";
 
     // finally, if we are in skin edit mode, then load up the JavaScript for customisation
+    /* TODO: this is not there yet
     if( isset($current_user)
             && $current_user->user_level == 10
             && $_GET['ahimsaskin'] != ""
             && $_GET['skinedit'] == 1 )
     {
-        /* TODO: this is not there yet
         print
         "
             <script
@@ -39,7 +38,7 @@
                 "'>
             </script>
         ";
-        */
     }
+    */
 
 ?>

@@ -90,7 +90,7 @@
             </div>
 
             <!-- inline style for easy JavaScript mods, without getting computed styles -->
-            <div id='postcats' class='postcattags postcats' style='display: none; opacity: 0;'>
+            <div id='postcats' class='postcattags postcats' style='display: none;'>
             <?php
                 foreach((get_the_category()) as $cat)
                     print
@@ -104,7 +104,7 @@
 
             <?php if( get_the_tags() ) : ?>
             <!-- inline style for easy JavaScript mods, without getting computed styles -->
-            <div id='posttags' class='postcattags posttags' style='display: none; opacity: 0;'>
+            <div id='posttags' class='postcattags posttags' style='display: none;'>
             <?php
                 print
                     get_the_tag_list(
@@ -141,11 +141,3 @@
 </div>
 
 <?php endif; // have_posts() ?>
-
-<?php if( $options['defhidesbpages'] == 1 ): ?>
-    <script language='JavaScript'>
-        fadeSideBar('left');
-        fadeSideBar('right');
-    </script>
-<?php endif; ?>
-

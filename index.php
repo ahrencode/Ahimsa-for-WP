@@ -10,8 +10,7 @@
             <div id='recentmore' class='capsule'
                 onclick='document.location="http://delicious.com/<?php print $delid; ?>";'> More </div>
             <?php print $options['delictitle']; ?>
-            <!-- inline style for easy JavaScript mods, without getting computed styles -->
-            <div id='recentlist' style='opacity: 1.0; display: block;'>
+            <div id='recentlist'>
                 <?php delicious_bookmarks($delid, 5, true, false); ?>
             </div>
         </div>
@@ -69,7 +68,7 @@
 
                     <!-- inline style for easy JavaScript mods, without getting computed styles -->
                     <div id='postcats-<?php the_ID(); ?>' class='postcattags postcats'
-                        style='display: none; opacity: 0;'>
+                        style='display: none;'>
                         <?php
                             $first = 1;
                             foreach((get_the_category()) as $cat)
@@ -87,7 +86,7 @@
                     <?php if( get_the_tags() ) : ?>
                         <!-- inline style for easy JavaScript mods, without getting computed styles -->
                         <div id='posttags-<?php the_ID(); ?>' class='postcattags posttags'
-                            style='display: none; opacity: 0;'>
+                            style='display: none;'>
                             <?php
                                 print
                                     get_the_tag_list(
