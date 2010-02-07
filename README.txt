@@ -44,9 +44,11 @@ Custom Styling
 
 If a skin doesn't go far enough for you, and you are a CSS ninja who
 wants more control and detail, all you need to do is create a file
-called "custom.css" in the theme directory, in which you can add any
-styles you desire. And when you upgrade Ahimsa, this file is left
-alone, so your customisations are safe.
+called "custom.css" in the themestore directory, in which you can
+add any styles you desire. And when you upgrade Ahimsa, this file is
+left alone, so your customisations should be safe. The themestore is
+typically under WP_ROOT/wp-content/themestore/ahimsa, where WP_ROOT
+is the root directory of your blog's WordPress installation.
 
 Notes
 -----
