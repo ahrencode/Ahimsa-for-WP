@@ -21,6 +21,9 @@ function fadeBlock(id)
 var tdsbBackground = "";
 function fadeSideBar(side)
 {
+    if( ! document.getElementById('sidebar'+side) )
+        return;
+
     tdsb = document.getElementById('tdsidebar'+side);
     sb = document.getElementById('sidebar'+side);
 

@@ -133,6 +133,8 @@
 
 <?php endif; ?>
 
+<?php get_footer(); ?>
+
 <?php if( $options['defhidesidebar'] == 1 ): ?>
     <script language='JavaScript'>
         fadeSideBar('left');
@@ -140,4 +142,3 @@
     </script>
 <?php endif; ?>
 
-<?php get_footer(); ?>
