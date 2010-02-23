@@ -10,7 +10,7 @@
     if( isset($current_user) && $current_user->user_level == 10 && $_GET['ahimsaskin'] != "" )
         $skin = $_GET['ahimsaskin'];
 
-    if( $skin != "none" )
+    if( $skin != "none" && preg_match("/^[a-zA-Z0-9]+(\-[a-zA-Z0-9]+)*$/", $skin) )
         print
         "
             <link

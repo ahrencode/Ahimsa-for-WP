@@ -977,7 +977,7 @@ function check_store_mksymlinks()
             if( ! @touch("$ahimsastore/$file") )
                 return;
         if( ! file_exists(TEMPLATEPATH . "/$file") )
-            if( ! @symlink("$ahimsastore/$file", TEMPLATEPATH . "/$file") )
+            if( function_exists('symlink') && ! @symlink("$ahimsastore/$file", TEMPLATEPATH . "/$file") )
                 return;
     }
 }
