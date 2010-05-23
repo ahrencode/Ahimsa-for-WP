@@ -4,7 +4,7 @@
 
     <?php if( preg_match("/Firefox/", $_SERVER['HTTP_USER_AGENT']) ) : ?>
 
-        #sidebar fieldset.sidebarlist
+        fieldset.sidebarlist
         {
             margin-bottom: 15px !important;
         }
@@ -33,9 +33,28 @@
         }
         /* end hack */
 
-        #sidebar
+        .sidebar
         {
             padding-top: 30px;
+        }
+
+        .sidebartab
+        {
+            font-family: Arial;
+            padding: 5px 10px;
+            /* width needs to be set for rotate to work in IE! */
+            width: 80px;
+        }
+
+        #sidebartableft
+        {
+            margin-left: 0px;
+            margin-right: -75px;
+        }
+
+        #sidebartabright
+        {
+            margin-right: -75px;
         }
 
         .post fieldset legend.title,

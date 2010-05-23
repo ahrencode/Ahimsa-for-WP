@@ -8,7 +8,9 @@
             <div id='recentclose'
                 onclick='toggleDelicious();'>+</div>
             <div id='recentmore' class='capsule'
-                onclick='document.location="http://delicious.com/<?php print $delid; ?>";'> More </div>
+                onclick='document.location="http://delicious.com/<?php print $delid; ?>";'>
+                <?php _e('More', 'ahimsa'); ?>
+            </div>
             <?php print $options['delictitle']; ?>
             <div id='recentlist'>
                 <?php delicious_bookmarks($delid, 5, true, false); ?>
@@ -28,19 +30,21 @@
 
                 <legend class='title'>
                     <a href="<?php the_permalink() ?>" rel="bookmark"
-                        title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a>
+                        title="<?php _e('Permanent Link to', 'ahimsa'); ?> <?php the_title(); ?>">
+                        <?php the_title(); ?></a>
                 </legend>
 
                 <!-- wrap the date author in a div so that it sits by itself with a bottom margin -->
                 <div>
                     <div class='capsule dateauthor'>
-                        <?php the_time('M jS, Y') ?> by <?php the_author() ?>
+                        <?php the_time(__('M jS, Y', 'ahimsa')) ?>
+                        <?php _e('by', 'ahimsa'); ?> <?php the_author() ?>
                     </div>
                     <br clear='all'/>
                 </div>
 
                 <div class="entry">
-                    <?php the_content('Read the rest of this entry &raquo;'); ?>
+                    <?php the_content(__('Read the rest of this entry', 'ahimsa') . ' &raquo;'); ?>
                 </div>
 
                 <div class="postmetadata"
@@ -52,18 +56,20 @@
                     >
 
                     <span class='capsule commentlink actbubble'>
-                        <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;',
-                                '% Comments &#187;'); ?>
+                        <?php comments_popup_link(
+                                    __('No Comments', 'ahimsa') . ' &#187;',
+                                    __('1 Comment', 'ahimsa') . ' &#187;',
+                                    __('% Comments', 'ahimsa') . ' &#187;'); ?>
                     </span>
 
                     <input type='button' class='capsule actbubble cattrigger'
-                        value='Categories &darr;'
-                        onclick='fadeBlock("postcats-<?php the_ID();?>");'/>
+                        value='<?php _e('Categories', 'ahimsa'); ?> &darr;'
+                        onclick='fadeBlock("#postcats-<?php the_ID();?>");'/>
 
                     <?php if( get_the_tags() ) : ?>
                         <input type='button' class='capsule actbubble cattrigger'
-                            value='Tags &darr;'
-                            onclick='fadeBlock("posttags-<?php the_ID();?>");'/>
+                            value='<?php _e('Tags'); ?> &darr;'
+                            onclick='fadeBlock("#posttags-<?php the_ID();?>");'/>
                     <?php endif; ?>
 
                     <!-- inline style for easy JavaScript mods, without getting computed styles -->
@@ -111,20 +117,23 @@
         <?php
             previous_posts_link(
                 "<span class='capsule actbubble' style='float: right;'>" .
-                "Newer Entries &raquo;" .
+                __("Newer Entries", "ahimsa") . " &raquo;" .
                 "</span>");
         ?>
-        <?php next_posts_link("<span class='capsule actbubble'>&laquo; Older Entries</span>"); ?>
+        <?php next_posts_link(
+                "<span class='capsule actbubble'>&laquo; " .
+                __("Older Entries", "ahimsa") .
+                "</span>"); ?>
     </div>
 
 <?php else : ?>
 
     <div class="post">
         <fieldset>
-            <legend class='title'>Not Found</legend>
+            <legend class='title'><?php _e('Not Found', 'ahimsa'); ?></legend>
             <br/>
             <div class='entry'>
-                Sorry, but you are looking for something that isn't here.
+                <?php _e("Sorry, but you are looking for something that isn't here.", 'ahimsa'); ?>
                 <br/>
                 <br/>
             </div>

@@ -2,6 +2,10 @@
 
 include_once("utils.php");
 
+// i18n
+load_theme_textdomain('ahimsa');
+
+
 if( ! is_array(get_option('ahimsa')) )
     add_option('ahimsa', array('init' => 1));
 
@@ -20,7 +24,7 @@ if( ! isset($options['showpageactions'  ]) ) $options['showpageactions' ] = 1;
 if( ! isset($options['iecorners'        ]) ) $options['iecorners'       ] = 0;
 if( ! isset($options['showdelic'        ]) ) $options['showdelic'       ] = 0;
 if( ! isset($options['delicid'          ]) ) $options['delicid'         ] = "";
-if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = "Recent News and Links";
+if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = __("Recent News and Links", "ahimsa");
 if( ! isset($options['copyright'        ]) ) $options['copyright'       ] = "";
 if( ! isset($options['skin'             ]) ) $options['skin'            ] = "none";
 # end defaults
@@ -731,7 +735,7 @@ function save_options()
     $options['showdelic']       = ( isset($_POST['showdelic']) ) ? 1 : 0;
     $options['delicid']         = ( isset($_POST['delicid']) ) ? $_POST['delicid'] : "";
     $options['delictitle']      = ( isset($_POST['delictitle']) ) ? $_POST['delictitle']
-                                    : "Recent News and Links";
+                                    : __("Recent News and Links", "ahimsa");
     $options['copyright']       = ( isset($_POST['copyright']) ) ? $_POST['copyright'] : "";
     $options['skin']            = ( isset($_POST['skin']) ) ? $_POST['skin'] : "none";
 
@@ -1014,10 +1018,10 @@ function custom_comment($comment, $args, $depth)
 
     <fieldset class='comment'>
 
-        <legend> <?php comment_author_link() ?> writes: </legend>
+        <legend> <?php comment_author_link() ?> <?php _e("writes:", "ahimsa"); ?> </legend>
 
         <div class="capsule dateauthor">
-            <small><?php comment_date('F jS, Y') ?> at <?php comment_time() ?></small>
+            <small><?php comment_date(__('F jS, Y', 'ahimsa')) ?> at <?php comment_time() ?></small>
         </div>
 
         <?php
@@ -1028,7 +1032,7 @@ function custom_comment($comment, $args, $depth)
         <div class='commenttext'>
 
         <?php if($comment->comment_approved == '0') : ?>
-            <span class='capsule'>Your comment is awaiting moderation.</span>
+            <span class='capsule'><?php _e("Your comment is awaiting moderation.", "ahimsa"); ?></span>
             <br />
         <?php endif; ?>
 
@@ -1043,7 +1047,7 @@ function custom_comment($comment, $args, $depth)
                 <?php global $user_ID; if( $user_ID ) : ?>
                     &nbsp;&nbsp;
                     <span class='capsule actbubble'>
-                        <?php edit_comment_link('Edit','&nbsp;',''); ?>
+                        <?php edit_comment_link(__('Edit', "ahimsa"),'&nbsp;',''); ?>
                     </span>
                 <?php endif; ?>
 

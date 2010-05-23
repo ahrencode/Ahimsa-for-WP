@@ -13,10 +13,10 @@
 
 <div style='float: right;'>
 &raquo;&nbsp;
-Substance: <a href='http://wordpress.org/'>WordPress</a>
+<?php _e('Substance', 'ahimsa'); ?>: <a href='http://wordpress.org/'>WordPress</a>
 &nbsp;
 &raquo;&nbsp;
-Style: <a href='http://ahren.org/code/ahimsa'>Ahren Ahimsa</a>
+<?php _e('Style', 'ahimsa'); ?>: <a href='http://ahren.org/code/ahimsa'>Ahren Ahimsa</a>
 </div>
 
 <?php

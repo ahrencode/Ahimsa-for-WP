@@ -37,20 +37,27 @@
 
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
+    <!-- inlude jQuery before we call wp_head(); -->
+    <?php wp_enqueue_script("jquery"); ?>
+
     <?php
-        if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
+        if ( is_singular() )
+            wp_enqueue_script( 'comment-reply' );
         wp_head();
     ?>
 
-    <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery-min.js'; ?>"></script>
+    <script
+        type="text/javascript"
+        src="<?php print get_bloginfo('template_url').'/lib/jquery-ui/jquery-ui.min.js'; ?>"></script>
+
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/ahimsa.js'; ?>"></script>
 
     <!-- render some corners in IE using jQuery plugins -->
     <?php global $options; if( $options['iecorners'] == 1 ) : ?>
         <script type="text/javascript"
-            src="<?php print get_bloginfo('template_url').'/jquery.corner.js'; ?>"></script>
+            src="<?php print get_bloginfo('template_url').'/lib/jquery.corner.js'; ?>"></script>
         <script type="text/javascript"
-            src="<?php print get_bloginfo('template_url').'/jquery.corners.min.js'; ?>"></script>
+            src="<?php print get_bloginfo('template_url').'/lib/jquery.corners.min.js'; ?>"></script>
         <script type="text/javascript"
             src="<?php print get_bloginfo('template_url').'/iecorners.js'; ?>"></script>
     <?php endif; ?>
@@ -71,18 +78,22 @@
 
 <div id='rsslinks'>
     <div class='capsule'>
-    <a href='<?php bloginfo('comments_rss2_url'); ?>'>
-    <img border='0' align='top' alt='Comments RSS'
-        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
-    <span title='Subscribe to the RSS feed for the comments on this site'>Comments</span>
-    </a>
+        <a href='<?php bloginfo('comments_rss2_url'); ?>'>
+        <img border='0' align='top' alt='<?php _e('Comments RSS', 'ahimsa'); ?>'
+            src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
+        <span title='<?php _e('Subscribe to the RSS feed for the comments on this site', 'ahimsa'); ?>'>
+            <?php _e("Comments", "ahimsa"); ?>
+        </span>
+        </a>
     </div>
     <div class='capsule'>
-    <a href='<?php bloginfo("rss2_url"); ?>'>
-    <img border='0' align='top' alt='Site RSS'
-        src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
-    <span title='Subscribe to the RSS feed for the posts on this site'>Site</span>
-    </a>
+        <a href='<?php bloginfo("rss2_url"); ?>'>
+        <img border='0' align='top' alt='<?php _e('Site RSS', 'ahimsa'); ?>'
+            src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
+        <span title='<?php _e('Subscribe to the RSS feed for the posts on this site', 'ahimsa'); ?>'>
+            <?php _e('Site', 'ahimsa'); ?>
+        </span>
+        </a>
     </div>
     <?php if( $options['showloginout'] == 1 ) { ?>
     <div class='capsule'>
@@ -101,7 +112,7 @@
 <tr>
 
 <?php if( is_active_sidebar(1) ) : ?>
-<td class='sidetabs'>&nbsp;</td>
+<td class='tdsidetabs'>&nbsp;</td>
 <?php endif; ?>
 
 <td colspan='<?php print (is_active_sidebar(1)?1:0)+(is_active_sidebar(2)?1:0)+1; ?>' id='header'>
@@ -118,7 +129,7 @@
 </td>
 
 <?php if( is_active_sidebar(2) ) : ?>
-<td class='sidetabs'>&nbsp;</td>
+<td class='tdsidetabs'>&nbsp;</td>
 <?php endif; ?>
 
 </tr>

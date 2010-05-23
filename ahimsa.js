@@ -1,22 +1,24 @@
 
-function toggleDisplay(id)
-{
-    el = document.getElementById(id);
-    if( el.style.display != 'none' )
-        el.style.display = 'none';
-    else
-        el.style.display = 'block';
-}
-
 function fadeBlock(id)
 {
-    if( $('#'+id).is(':visible') )
-        $('#'+id).fadeOut(1200);
+    if( jQuery(id).is(':visible') )
+        jQuery(id).fadeOut(500);
     else
-        $('#'+id).fadeIn(1200);
+        jQuery(id).fadeIn(500);
 
     return;
 }
+
+function slideBlock(id, side)
+{
+    if( jQuery(id).is(':visible') )
+        jQuery(id).hide("slide", { direction: side }, 600);
+    else
+        jQuery(id).show("slide", { direction: side }, 600);
+
+    return;
+}
+
 
 var tdsbBackground = "";
 function fadeSideBar(side)
@@ -47,7 +49,7 @@ function fadeSideBar(side)
         tdsb.style.backgroundColor = 'transparent';
     }
 
-    fadeBlock('sidebar'+side);
+    slideBlock('#sidebar'+side, side);
 }
 
 function contentCurve(side, size)
@@ -142,3 +144,11 @@ function getWinWidth()
     return(myWidth);
 }
 
+jQuery(document).ready
+(
+    function()
+    {
+        jQuery('#replytext').focus(function() { jQuery('#commenthint').fadeIn(); });
+        jQuery('#replytext').blur(function() { jQuery('#commenthint').fadeOut(); });
+    }
+);

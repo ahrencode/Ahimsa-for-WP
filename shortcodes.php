@@ -16,18 +16,18 @@ add_shortcode('qfgallery', 'qfgallery_handler');
 
 <link
     rel='stylesheet'
-    href='<?php bloginfo('template_url'); ?>/jquery.fancybox/jquery.fancybox.css'
+    href='<?php bloginfo('template_url'); ?>/lib/jquery.fancybox/jquery.fancybox.css'
     type='text/css'
     media='screen' />
 
 <script
     type="text/javascript"
-    src="<?php bloginfo('template_url'); ?>/jquery.fancybox/jquery.easing.1.3.js">
+    src="<?php bloginfo('template_url'); ?>/lib/jquery.fancybox/jquery.easing.1.3.js">
 </script>
 
 <script
     type="text/javascript"
-    src="<?php bloginfo('template_url'); ?>/jquery.fancybox/jquery.fancybox-1.2.1.js">
+    src="<?php bloginfo('template_url'); ?>/lib/jquery.fancybox/jquery.fancybox-1.2.1.js">
 </script>
 
 <?php
@@ -107,10 +107,10 @@ function qfgallery_handler($atts, $content)
 
 <script language='JavaScript'>
 
-$(document).ready(
+jQuery(document).ready(
     function()
     {
-	    $("a.qfgallery").
+	    jQuery("a.qfgallery").
             fancybox
             ({
                 'imageScale':   true,
@@ -124,7 +124,6 @@ $(document).ready(
 );
 
 </script>
-
 
 <?php
 

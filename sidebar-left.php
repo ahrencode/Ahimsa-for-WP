@@ -1,8 +1,11 @@
 <?php global $options, $sectprefix; ?>
 
-<td valign='top' class='sidetabs'>
+<td valign='top' class='tdsidetabs'>
     <div id='sidebartableft' class='sidebartab' onclick='fadeSideBar("left");'>
-    <font color='#22bb00'>&raquo;</font><br/>S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R<br/><font color='#22bb00'>&laquo;</font>
+    <!--
+    <font color='#22bb00'>&raquo;</font><br/><?php _e('S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R', 'ahimsa'); ?><br/><font color='#22bb00'>&laquo;</font>
+    -->
+    SIDEBAR
     </div>
 </td>
 

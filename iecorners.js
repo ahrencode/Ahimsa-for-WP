@@ -1,7 +1,5 @@
-// as per jQuery folks, it is quite fine to call $(document).ready() multiple times;
-// in our case here and in ahimsa.js
-//
-$(document).ready
+
+jQuery(document).ready
 (
     function()
     {
@@ -11,28 +9,28 @@ $(document).ready
             // using two different jQuery extensions here since each of them does some
             // things better than the other.
 
-            $('#main').corners('30px bottom-right');
-            $('.post > fieldset').corners('15px');
-            $('blockquote').corners('15px');
-            $('ul').corners('15px');
-            $('ol').corners('15px');
-            $('.postcattags').corners('10px');
+            jQuery('#main').corners('30px bottom-right');
+            jQuery('.post > fieldset').corners('15px');
+            jQuery('blockquote').corners('15px');
+            jQuery('ul').corners('15px');
+            jQuery('ol').corners('15px');
+            jQuery('.postcattags').corners('10px');
 
-            var bgtopcolour = $('#bgtop').css('background-color');
-            $('#header').corner('top 30px cc:' + bgtopcolour);
+            var bgtopcolour = jQuery('#bgtop').css('background-color');
+            jQuery('#header').corner('top 30px cc:' + bgtopcolour);
 
             //
             /*
-            $('#main').css('background-color', $('#bgtop').css('background-color'));
-            $('.sidebarlist').corner('15px');
-            //$('#sidebar').corner('bl 30px');
-            //$('#content').corner('br 30px');
-            //$('blockquote').corner('15px');
-            //$('ul').corner('15px');
-            //$('ol').corner('15px');
-            //$('fieldset').corner('15px');
-            //$('.capsule').corner('6px');
-            //$('.actbubble').corner('6px');
+            jQuery('#main').css('background-color', jQuery('#bgtop').css('background-color'));
+            jQuery('.sidebarlist').corner('15px');
+            //jQuery('#sidebar').corner('bl 30px');
+            //jQuery('#content').corner('br 30px');
+            //jQuery('blockquote').corner('15px');
+            //jQuery('ul').corner('15px');
+            //jQuery('ol').corner('15px');
+            //jQuery('fieldset').corner('15px');
+            //jQuery('.capsule').corner('6px');
+            //jQuery('.actbubble').corner('6px');
             */
         }
     }

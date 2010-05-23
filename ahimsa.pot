@@ -1,0 +1,274 @@
+# Translation of the WordPress theme Ahimsa 3.1.1 by Ravi Sarma.
+# Copyright (C) 2010 Ravi Sarma
+# This file is distributed under the same license as the Ahimsa package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ahimsa 3.1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/ahimsa\n"
+"POT-Creation-Date: 2010-05-22 11:32-0400\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: comments.php:10
+msgid "Please do not load this page directly. Thanks!"
+msgstr ""
+
+#: comments.php:15
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:26
+msgid "No Responses"
+msgstr ""
+
+#: comments.php:27
+msgid "One Response"
+msgstr ""
+
+#: comments.php:28
+msgid "Responses"
+msgstr ""
+
+#: comments.php:47
+msgid "previous"
+msgstr ""
+
+#: comments.php:49
+msgid "next"
+msgstr ""
+
+#: comments.php:63
+msgid "Comments are closed"
+msgstr ""
+
+#: comments.php:83
+msgid "Leave a Reply"
+msgstr ""
+
+#: comments.php:90
+#, php-format
+msgid "You must be <a href='%s'>logged in</a> to post a comment.</p>"
+msgstr ""
+
+#: comments.php:100
+msgid "Logged in as "
+msgstr ""
+
+#: comments.php:104
+msgid "Log out of this account"
+msgstr ""
+
+#: comments.php:105
+msgid "Logout"
+msgstr ""
+
+#: comments.php:114
+msgid "Name"
+msgstr ""
+
+#: comments.php:115 comments.php:125
+msgid "(required)"
+msgstr ""
+
+#: comments.php:124
+msgid "Mail (will not be published)"
+msgstr ""
+
+#: comments.php:132
+msgid "Website"
+msgstr ""
+
+#: comments.php:140
+msgid "XHTML"
+msgstr ""
+
+#: comments.php:141
+msgid "You can use these tags:"
+msgstr ""
+
+#: comments.php:147
+msgid "Submit Comment"
+msgstr ""
+
+#: entry.php:10 index.php:33
+msgid "Permanent Link to"
+msgstr ""
+
+#: entry.php:18 functions.php:1024
+msgid "F jS, Y"
+msgstr ""
+
+#: entry.php:18
+msgid " by "
+msgstr ""
+
+#: entry.php:30
+msgid "Edit Entry"
+msgstr ""
+
+#: entry.php:37
+msgid "Add Comment"
+msgstr ""
+
+#: entry.php:39 entry.php:45
+msgid "Trackback"
+msgstr ""
+
+#: entry.php:51 entry.php:53
+msgid "Comments Feed"
+msgstr ""
+
+#: entry.php:63 index.php:47
+msgid "Read the rest of this entry"
+msgstr ""
+
+#: entry.php:75
+msgid "Pages:"
+msgstr ""
+
+#: entry.php:85 index.php:66
+msgid "Categories"
+msgstr ""
+
+#: entry.php:90 index.php:71
+msgid "Tags"
+msgstr ""
+
+#: entry.php:140
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: footer.php:16
+msgid "Substance"
+msgstr ""
+
+#: footer.php:19
+msgid "Style"
+msgstr ""
+
+#: functions.php:27 functions.php:738
+msgid "Recent News and Links"
+msgstr ""
+
+#: functions.php:1021
+msgid "writes:"
+msgstr ""
+
+#: functions.php:1035
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions.php:1050
+msgid "Edit"
+msgstr ""
+
+#: header.php:82
+msgid "Comments RSS"
+msgstr ""
+
+#: header.php:84
+msgid "Subscribe to the RSS feed for the comments on this site"
+msgstr ""
+
+#: header.php:85
+msgid "Comments"
+msgstr ""
+
+#: header.php:91
+msgid "Site RSS"
+msgstr ""
+
+#: header.php:93
+msgid "Subscribe to the RSS feed for the posts on this site"
+msgstr ""
+
+#: header.php:94
+msgid "Site"
+msgstr ""
+
+#: index.php:12
+msgid "More"
+msgstr ""
+
+#: index.php:40
+msgid "M jS, Y"
+msgstr ""
+
+#: index.php:41
+msgid "by"
+msgstr ""
+
+#: index.php:60
+msgid "No Comments"
+msgstr ""
+
+#: index.php:61
+msgid "1 Comment"
+msgstr ""
+
+#: index.php:62
+msgid "% Comments"
+msgstr ""
+
+#: index.php:120
+msgid "Newer Entries"
+msgstr ""
+
+#: index.php:125
+msgid "Older Entries"
+msgstr ""
+
+#: index.php:133
+msgid "Not Found"
+msgstr ""
+
+#: index.php:136
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr ""
+
+#: sidebar-left.php:6
+msgid "S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Ahimsa"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://ahren.org/code/ahimsa"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Ahimsa -- customisable collapsible sidebars, skinnable colour schemes, "
+"custom CSS and footer, low graphics, minimal distractions, with rounded "
+"corners in Firefox, Safari, Chrome (some support in IE). New for version "
+"3.1: PLEASE NOTE: You may need to run a custom plugin with this update. "
+"Please, please visit <a href='http://ahren.org/code/bit/ahimsa-wp-"
+"3dot1'>http://ahren.org/code/bit/ahimsa-wp-3dot1</a> for details on that and "
+"other issues (including a comprehensive list of changes). If you are not "
+"going to install and use the plugin, and you have created custom skins or "
+"used a custom stylesheet or footer, <b>PLEASE backup your theme files</b> "
+"before you upgrade."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ravi Sarma"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://ahren.org/code/"
+msgstr ""
+
+#. Tags of the plugin/theme
+msgid ""
+"one-column, two-columns, three-columns, flexible-width, left-sidebar, right-"
+"sidebar, theme-options, threaded-comments"
+msgstr ""

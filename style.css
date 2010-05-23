@@ -2,12 +2,12 @@
 Theme Name: Ahimsa
 Theme URI: http://ahren.org/code/ahimsa
 Description: Ahimsa -- customisable collapsible sidebars, skinnable colour schemes, custom CSS and footer, low graphics, minimal distractions, with rounded corners in Firefox, Safari, Chrome (some support in IE). New for version 3.1: PLEASE NOTE: You may need to run a custom plugin with this update. Please, please visit <a href='http://ahren.org/code/bit/ahimsa-wp-3dot1'>http://ahren.org/code/bit/ahimsa-wp-3dot1</a> for details on that and other issues (including a comprehensive list of changes). If you are not going to install and use the plugin, and you have created custom skins or used a custom stylesheet or footer, <b>PLEASE backup your theme files</b> before you upgrade.
-Version: 3.1
+Version: 3.1.1
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
-Tags: two-columns, three-column, flexible-width, left-sidebar, right-sidebar, theme-options, threaded-comments
+Tags: one-column, two-columns, three-columns, flexible-width, left-sidebar, right-sidebar, theme-options, threaded-comments
 
-	 Ahimsa 3.1
+	 Ahimsa 3.1.1
 	 http://ahren.org/code/ahimsa
 
 	Theme built for the Ahren Code site but free for all
@@ -131,10 +131,6 @@ BLOCKQUOTE
     border-radius: 30px; 
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px; 
-}
-
-.sidetabs
-{
 }
 
 #header
@@ -278,6 +274,26 @@ BLOCKQUOTE
     color: #ffffff;
 }
 
+.tdsidetabs
+{
+}
+
+.sidebartab
+{
+    display: block !important;
+    text-align: center;
+    padding: 7px 0px;
+    background-color: #111111;
+    color: #cccccc;
+    font-size: 8pt;
+    cursor: pointer;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+    letter-spacing: 0.2em;
+
+}
+
+/*
 .sidebartab
 {
     width: 20px;
@@ -292,21 +308,38 @@ BLOCKQUOTE
     opacity: 0.8;
     filter: alpha(opacity = 80);
 }
+*/
 
 #sidebartableft
 {
-    -webkit-border-bottom-left-radius: 8px;
+    margin-left: -80px;
     -webkit-border-top-left-radius: 8px;
-    -moz-border-radius-bottomleft: 8px;
+    -webkit-border-top-right-radius: 8px;
     -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin: bottom right;
+    -moz-transform: rotate(-90deg);
+    -moz-transform-origin: bottom right;
+    -o-transform: rotate(-90deg);
+    -o-transform-origin: bottom right;
+    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
 #sidebartabright
 {
-    -webkit-border-bottom-right-radius: 8px;
+    margin-right: -80px;
     -webkit-border-top-right-radius: 8px;
-    -moz-border-radius-bottomright: 8px;
+    -webkit-border-top-left-radius: 8px;
     -moz-border-radius-topright: 8px;
+    -moz-border-radius-topleft: 8px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: bottom left;
+    -moz-transform: rotate(90deg);
+    -moz-transform-origin: bottom left;
+    -o-transform: rotate(90deg);
+    -o-transform-origin: bottom left;
+    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
 }
 
 .tdsidebar,
@@ -892,6 +925,12 @@ BLOCKQUOTE OL
 {
     display: inline;
     padding-left: 15px;
+}
+
+#commenthint
+{
+    display: none;
+    margin-bottom: 10px;
 }
 
 img.avatar

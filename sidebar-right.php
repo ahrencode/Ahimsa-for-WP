@@ -9,9 +9,12 @@
     </div>
 </td>
 
-<td valign='top' class='sidetabs'>
+<td valign='top' class='tdsidetabs'>
     <div id='sidebartabright' class='sidebartab' onclick='fadeSideBar("right");'>
+    <!--
     <font color='#22bb00'>&raquo;</font><br/>S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R<br/><font color='#22bb00'>&laquo;</font>
+    -->
+    SIDEBAR
     </div>
 </td>
 

@@ -7,13 +7,13 @@ if ( function_exists('wp_list_comments') ) :
     // password check
     if (!empty($_SERVER['SCRIPT_FILENAME']) &&
             'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-        die ('Please do not load this page directly. Thanks!');
+        die (__('Please do not load this page directly. Thanks!', 'ahimsa'));
     if ( post_password_required() )
     {
         print '
-            <p class="nocomments">This post is password protected.
-            Enter the password to view comments.</p>
-            ';
+            <p class="nocomments">' .
+            __('This post is password protected. Enter the password to view comments.', 'ahimsa') .
+            '</p>';
         return;
     }
 
@@ -22,7 +22,10 @@ if ( function_exists('wp_list_comments') ) :
         <fieldset id='comments'>
 
             <legend>
-            <?php comments_number('No Responses', 'One Response', '% Responses' );?>
+            <?php comments_number(
+                    __('No Responses', 'ahimsa'),
+                    __('One Response', 'ahimsa'),
+                    '% ' . __('Responses', 'ahimsa'));?>
             </legend>
 
             <!--
@@ -41,9 +44,9 @@ if ( function_exists('wp_list_comments') ) :
             <div class="postmetadata">
                 <?php
                     previous_comments_link('<span class="capsule actbubble" style="float: left;">' .
-                                            '&laquo; previous</span>');
+                                            '&laquo; ' . __('previous', 'ahimsa') . '</span>');
                     next_comments_link('<span class="capsule actbubble" style="float: right;">' .
-                                            'next &raquo;</span>');
+                                            __('next', 'ahimsa') . ' &raquo;</span>');
                 ?>
                 <br clear='all'/>
             </div>
@@ -57,7 +60,7 @@ if ( function_exists('wp_list_comments') ) :
 
         else : // comments are closed ?>
             <!-- If comments are closed. -->
-            <span class='capsule nocomments'>Comments are closed</span>
+            <span class='capsule nocomments'><?php _e('Comments are closed'); ?></span>
             <br/>
             <br/>
 
@@ -77,12 +80,16 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
 
     <fieldset id='responsebox'>
 
-    <legend>Leave a Reply</legend>
+    <legend><?php _e('Leave a Reply', 'ahimsa'); ?></legend>
 
     <?php if( get_option('comment_registration') && !$user_ID ) : ?>
 
-        <p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php the_permalink(); ?>">logged in</a> to post a comment.</p>
-        
+        <p>
+        <?php
+            $loginlink = get_option('siteurl') . '/wp-login.php?redirect_to=' . the_permalink();
+            printf(__("You must be <a href='%s'>logged in</a> to post a comment.</p>", 'ahimsa'), $loginlink);
+        ?>
+
     <?php else : ?>
 
         <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
@@ -90,10 +97,12 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
         <?php if( $user_ID ) : ?>
 
             <p>
-            Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php">
-                <?php echo $user_identity; ?></a>.
+            <?php _e("Logged in as ", 'ahimsa'); ?>
+            <a href='<?php print get_option('siteurl'); ?>/wp-admin/profile.php'>
+            <?php print $user_identity; ?></a>.
             <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout"
-                title="Log out of this account">Logout &raquo;</a>
+                title="<?php _e('Log out of this account', 'ahimsa'); ?>">
+                <?php _e('Logout', 'ahimsa'); ?> &raquo;</a>
             </p>
 
         <?php else : ?>
@@ -101,28 +110,41 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
             <p>
             <input type="text" name="author" id="author" class='inptext'
                    value="<?php echo $comment_author; ?>" size="22" tabindex="1" />
-            <label for="author"><small>Name <?php if($req) echo "(required)"; ?></small></label>
+            <label for="author"><small>
+                <?php _e('Name', 'ahimsa'); ?>
+                <?php if($req) _e("(required)", 'ahimsa'); ?>
+            </small>
+            </label>
             </p>
 
             <p>
             <input type="text" name="email" id="email" class='inptext'
                    value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
-            <label for="email"><small>Mail (will not be published) <?php if($req) echo "(required)"; ?>
-                </small></label></p>
+            <label for="email"><small>
+                <?php _e('Mail (will not be published)', 'ahimsa'); ?>
+                <?php if($req) _e("(required)", 'ahimsa'); ?>
+                </small></label>
+            </p>
 
             <p>
             <input type="text" name="url" id="url" class='inptext'
                    value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-            <label for="url"><small>Website</small></label></p>
+            <label for="url"><small><?php _e('Website', 'ahimsa'); ?></small></label></p>
 
         <?php endif; ?>
 
-        <!--<p><small><strong>XHTML:</strong> You can use these tags: <code><?php echo allowed_tags(); ?></code></small></p>-->
+        <p><textarea name="comment" id="replytext" rows="20" tabindex="4"></textarea></p>
 
-        <p><textarea name="comment" id="comment" cols="60%" rows="10" tabindex="4"></textarea></p>
+        <div id='commenthint'>
+        <small>
+            <strong><?php _e('XHTML', 'ahimsa'); ?>:</strong>
+            <?php _e('You can use these tags:', 'ahimsa'); ?>
+            <code><?php echo allowed_tags(); ?></code>
+        </small>
+        </div>
 
         <input name="submit" type="submit" id="submit" class='capsule actbubble'
-             tabindex="5" value="Submit Comment" />
+             tabindex="5" value="<?php _e("Submit Comment", 'ahimsa'); ?>" />
             
         <?php
             if ( function_exists('comment_id_fields') ) :
