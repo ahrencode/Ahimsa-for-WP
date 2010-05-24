@@ -1,11 +1,14 @@
+<?php include_once("utils.php"); ?>
 <?php global $options, $sectprefix; ?>
 
 <td valign='top' class='tdsidetabs'>
-    <div id='sidebartableft' class='sidebartab' onclick='fadeSideBar("left");'>
-    <!--
-    <font color='#22bb00'>&raquo;</font><br/><?php _e('S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R', 'ahimsa'); ?><br/><font color='#22bb00'>&laquo;</font>
-    -->
-    SIDEBAR
+    <div id='sidebartableft' class='sidebartab' onclick='slideSideBar("left");'>
+        <div class='sidebartabrotatedtext'>SIDEBAR</div>
+        <div class='sidebartabnorotatetext'>
+            <font color='#22bb00'>&raquo;</font><br/>
+            <?php _e('S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R', 'ahimsa'); ?><br/>
+            <font color='#22bb00'>&laquo;</font>
+        </div>
     </div>
 </td>
 

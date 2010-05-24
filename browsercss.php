@@ -46,13 +46,13 @@
             width: 80px;
         }
 
-        #sidebartableft
+        #sidebartableftrotated
         {
             margin-left: 0px;
             margin-right: -75px;
         }
 
-        #sidebartabright
+        #sidebartabrightrotated
         {
             margin-right: -75px;
         }

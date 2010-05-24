@@ -21,7 +21,7 @@ function slideBlock(id, side)
 
 
 var tdsbBackground = "";
-function fadeSideBar(side)
+function slideSideBar(side)
 {
     if( ! document.getElementById('sidebar'+side) )
         return;
@@ -148,6 +148,35 @@ jQuery(document).ready
 (
     function()
     {
+        // display vertical or rotated text depending on browser support
+        // test in the order of browser popularity to save a few cycles ;-)
+        if(
+            (jQuery('#sidebartableft').css('filter') != ''
+                && jQuery('#tstdiv').css('filter') != 'none') ||
+            (jQuery('#sidebartableft').css('-moz-transform') != ''
+                && jQuery('#tstdiv').css('-moz-transform') != 'none') ||
+            (jQuery('#sidebartableft').css('-webkit-transform') != ''
+                && jQuery('#tstdiv').css('-webkit-transform') != 'none') ||
+            (jQuery('#sidebartableft').css('-o-transform') != ''
+                && jQuery('#tstdiv').css('-o-transform') != 'none') )
+        {
+            jQuery('#sidebartableft').addClass('sidebartableftrotated');
+            jQuery('#sidebartabright').addClass('sidebartabrightrotated');
+            jQuery('.sidebartabnorotatetext').hide();
+            jQuery('.sidebartabrotatedtext').show();
+        }
+        else
+        {
+            jQuery('.sidebartab').addClass('sidebartabnorotate');
+            jQuery('#sidebartableft').addClass('sidebartableftnorotate');
+            jQuery('#sidebartabright').addClass('sidebartabrightnorotate');
+            jQuery('.sidebartabrotatedtext').hide();
+            jQuery('.sidebartabnorotatetext').show();
+        }
+        jQuery('.sidebartab').show();
+        
+
+        // display tags permitted in comments when focus is on response box
         jQuery('#replytext').focus(function() { jQuery('#commenthint').fadeIn(); });
         jQuery('#replytext').blur(function() { jQuery('#commenthint').fadeOut(); });
     }

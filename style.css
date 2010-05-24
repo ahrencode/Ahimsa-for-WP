@@ -274,13 +274,9 @@ BLOCKQUOTE
     color: #ffffff;
 }
 
-.tdsidetabs
-{
-}
-
 .sidebartab
 {
-    display: block !important;
+    display: none;
     text-align: center;
     padding: 7px 0px;
     background-color: #111111;
@@ -293,53 +289,72 @@ BLOCKQUOTE
 
 }
 
-/*
-.sidebartab
+.sidebartabnorotate
 {
     width: 20px;
-    text-align: center;
     margin-top: 50px;
     margin-bottom: 100px;
-    padding: 7px 0px;
-    font-size: smaller;
-    background-color: #111111;
-    color: #cccccc;
-    cursor: pointer;
-    opacity: 0.8;
-    filter: alpha(opacity = 80);
 }
-*/
 
+/* we are adding the rotation right here (rather than to #sidebartableftrotated)
+ * since we want to check this property in ahimsa.js to find out if rotation
+ * is supported by the current browser. Hacky? You decide!
+ */
 #sidebartableft
 {
-    margin-left: -80px;
-    -webkit-border-top-left-radius: 8px;
-    -webkit-border-top-right-radius: 8px;
-    -moz-border-radius-topleft: 8px;
-    -moz-border-radius-topright: 8px;
     -webkit-transform: rotate(-90deg);
     -webkit-transform-origin: bottom right;
     -moz-transform: rotate(-90deg);
     -moz-transform-origin: bottom right;
     -o-transform: rotate(-90deg);
     -o-transform-origin: bottom right;
-    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
+.sidebartableftrotated
+{
+    margin-left: -80px;
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+}
+
+.sidebartableftnorotate
+{
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-bottomleft: 8px;
+}
+
+/* see comment on #sidebartableft above */
 #sidebartabright
 {
-    margin-right: -80px;
-    -webkit-border-top-right-radius: 8px;
-    -webkit-border-top-left-radius: 8px;
-    -moz-border-radius-topright: 8px;
-    -moz-border-radius-topleft: 8px;
     -webkit-transform: rotate(90deg);
     -webkit-transform-origin: bottom left;
     -moz-transform: rotate(90deg);
     -moz-transform-origin: bottom left;
     -o-transform: rotate(90deg);
     -o-transform-origin: bottom left;
-    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+.sidebartabrightrotated
+{
+    margin-right: -80px;
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-topleft: 8px;
+}
+
+.sidebartabrightnorotate
+{
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomright: 8px;
 }
 
 .tdsidebar,
