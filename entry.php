@@ -7,7 +7,7 @@
 
         <legend class='title'>
             <a href="<?php the_permalink() ?>" rel="bookmark"
-                title="<?php _e('Permanent Link to', 'ahimsa'); ?> <?php the_title(); ?>">
+                title="<?php printf(__('Permanent Link to %s', 'ahimsa'), get_the_title()); ?>">
                 <?php the_title(); ?></a>
         </legend>
 
@@ -15,7 +15,12 @@
             <!-- wrap the date author in a div so that it sits by itself with a bottom margin -->
             <div>
                 <div class='capsule dateauthor'>
-                    <?php the_time(__('F jS, Y', 'ahimsa')); _e(' by ', 'ahimsa'); the_author(); ?>
+                <?php
+                    /* translators: this is the post/page date format */
+                    $post_time = the_time(__('F jS, Y', 'ahimsa'));
+                    /* translators: this is the post/page date bubble: 'date' by 'author' */
+                    printf(__('%1$s by %2$s', 'ahimsa'), $post_time, get_the_author());
+                ?>
                 </div>
                 <br clear='all'/>
             </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ahimsa 3.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/ahimsa\n"
-"POT-Creation-Date: 2010-05-22 11:32-0400\n"
+"POT-Creation-Date: 2010-05-24 21:25-0400\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,184 +57,230 @@ msgstr ""
 msgid "You must be <a href='%s'>logged in</a> to post a comment.</p>"
 msgstr ""
 
-#: comments.php:100
-msgid "Logged in as "
-msgstr ""
-
-#: comments.php:104
-msgid "Log out of this account"
+#: comments.php:102
+#, php-format
+msgid "Logged in as <a href='%s'>%s</a>"
 msgstr ""
 
 #: comments.php:105
+msgid "Log out of this account"
+msgstr ""
+
+#: comments.php:106
 msgid "Logout"
 msgstr ""
 
-#: comments.php:114
+#: comments.php:116
 msgid "Name"
 msgstr ""
 
-#: comments.php:115 comments.php:125
+#: comments.php:117 comments.php:129
 msgid "(required)"
 msgstr ""
 
-#: comments.php:124
+#: comments.php:128
 msgid "Mail (will not be published)"
 msgstr ""
 
-#: comments.php:132
+#: comments.php:137
 msgid "Website"
 msgstr ""
 
-#: comments.php:140
-msgid "XHTML"
+#: comments.php:145
+msgid "<strong>XHTML</strong>: You can use these tags:"
 msgstr ""
 
-#: comments.php:141
-msgid "You can use these tags:"
-msgstr ""
-
-#: comments.php:147
+#: comments.php:151
 msgid "Submit Comment"
 msgstr ""
 
-#: entry.php:10 index.php:33
-msgid "Permanent Link to"
+#: entry.php:10 index.php:36
+#, php-format
+msgid "Permanent Link to %s"
 msgstr ""
 
-#: entry.php:18 functions.php:1024
+#. translators: this is the post/page date format
+#. translators: this is the comment date/time format. See http://php.net/date
+#: entry.php:20 functions.php:1037
 msgid "F jS, Y"
 msgstr ""
 
-#: entry.php:18
-msgid " by "
+#. translators: this is the post/page date bubble: 'date' by 'author'
+#. translators: this is the post date/author bubble in the main page
+#: entry.php:22 index.php:47
+#, php-format
+msgid "%1$s by %2$s"
 msgstr ""
 
-#: entry.php:30
+#: entry.php:35
 msgid "Edit Entry"
 msgstr ""
 
-#: entry.php:37
+#: entry.php:42
 msgid "Add Comment"
 msgstr ""
 
-#: entry.php:39 entry.php:45
+#: entry.php:44 entry.php:50
 msgid "Trackback"
 msgstr ""
 
-#: entry.php:51 entry.php:53
+#: entry.php:56 entry.php:58
 msgid "Comments Feed"
 msgstr ""
 
-#: entry.php:63 index.php:47
+#: entry.php:68 index.php:54
 msgid "Read the rest of this entry"
 msgstr ""
 
-#: entry.php:75
+#: entry.php:80
 msgid "Pages:"
 msgstr ""
 
-#: entry.php:85 index.php:66
+#: entry.php:90 index.php:73 sidebar-left.php:36
 msgid "Categories"
 msgstr ""
 
-#: entry.php:90 index.php:71
+#: entry.php:95 index.php:78
 msgid "Tags"
 msgstr ""
 
-#: entry.php:140
+#: entry.php:145
 msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
 #: footer.php:16
-msgid "Substance"
+msgid "Substance:"
 msgstr ""
 
-#: footer.php:19
-msgid "Style"
+#: footer.php:17
+msgid "WordPress"
 msgstr ""
 
-#: functions.php:27 functions.php:738
+#: footer.php:20
+msgid "Style:"
+msgstr ""
+
+#: footer.php:21
+msgid "Ahren Ahimsa"
+msgstr ""
+
+#: functions.php:27 functions.php:747
 msgid "Recent News and Links"
 msgstr ""
 
-#: functions.php:1021
-msgid "writes:"
+#: functions.php:1031
+#, php-format
+msgid "%s writes:"
 msgstr ""
 
-#: functions.php:1035
+#: functions.php:1052
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: functions.php:1050
+#. translators: this is the comment edit button/link
+#: functions.php:1069
 msgid "Edit"
 msgstr ""
 
-#: header.php:82
+#: header.php:16
+msgid "Blog Archive"
+msgstr ""
+
+#: header.php:35
+msgid "RSS Feed"
+msgstr ""
+
+#: header.php:83
 msgid "Comments RSS"
 msgstr ""
 
-#: header.php:84
+#: header.php:85
 msgid "Subscribe to the RSS feed for the comments on this site"
 msgstr ""
 
-#: header.php:85
+#. translators: this is the text of the comments RSS link at top right
+#: header.php:88
 msgid "Comments"
 msgstr ""
 
-#: header.php:91
+#: header.php:95
 msgid "Site RSS"
 msgstr ""
 
-#: header.php:93
+#: header.php:97
 msgid "Subscribe to the RSS feed for the posts on this site"
 msgstr ""
 
-#: header.php:94
+#. translators: this is the text of the site RSS link at top right
+#: header.php:100
 msgid "Site"
 msgstr ""
 
-#: index.php:12
+#: i18n/pomo/sample/app.php:56
+#, php-format
+msgid "Welcome %s!"
+msgstr ""
+
+#: i18n/pomo/sample/app.php:60
+msgid "A string with low priority!"
+msgstr ""
+
+#: i18n/pomo/sample/app.php:62
+msgid "Bye\n"
+msgstr ""
+
+#. translators: this is the 'More' link for the Delicious box
+#: index.php:14
 msgid "More"
 msgstr ""
 
-#: index.php:40
+#. translators: this is the date format for posts. See http://php.net/date
+#: index.php:45
 msgid "M jS, Y"
 msgstr ""
 
-#: index.php:41
-msgid "by"
-msgstr ""
-
-#: index.php:60
+#: index.php:67
 msgid "No Comments"
 msgstr ""
 
-#: index.php:61
+#: index.php:68
 msgid "1 Comment"
 msgstr ""
 
-#: index.php:62
+#: index.php:69
 msgid "% Comments"
 msgstr ""
 
-#: index.php:120
+#: index.php:127
 msgid "Newer Entries"
 msgstr ""
 
-#: index.php:125
+#: index.php:132
 msgid "Older Entries"
 msgstr ""
 
-#: index.php:133
+#: index.php:140
 msgid "Not Found"
 msgstr ""
 
-#: index.php:136
+#: index.php:143
 msgid "Sorry, but you are looking for something that isn't here."
 msgstr ""
 
-#: sidebar-left.php:6
+#: sidebar-left.php:6 sidebar-right.php:14
+msgid "SIDEBAR"
+msgstr ""
+
+#: sidebar-left.php:9 sidebar-right.php:17
 msgid "S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R"
+msgstr ""
+
+#: sidebar-left.php:23
+msgid "Authors"
+msgstr ""
+
+#: sidebar-left.php:43
+msgid "Archives"
 msgstr ""
 
 #. Theme Name of the plugin/theme

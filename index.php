@@ -9,7 +9,10 @@
                 onclick='toggleDelicious();'>+</div>
             <div id='recentmore' class='capsule'
                 onclick='document.location="http://delicious.com/<?php print $delid; ?>";'>
-                <?php _e('More', 'ahimsa'); ?>
+                <?php
+                    /* translators: this is the 'More' link for the Delicious box */
+                    _e('More', 'ahimsa');
+                ?>
             </div>
             <?php print $options['delictitle']; ?>
             <div id='recentlist'>
@@ -30,15 +33,19 @@
 
                 <legend class='title'>
                     <a href="<?php the_permalink() ?>" rel="bookmark"
-                        title="<?php _e('Permanent Link to', 'ahimsa'); ?> <?php the_title(); ?>">
+                        title="<?php printf(__('Permanent Link to %s', 'ahimsa'), get_the_title()); ?>">
                         <?php the_title(); ?></a>
                 </legend>
 
                 <!-- wrap the date author in a div so that it sits by itself with a bottom margin -->
                 <div>
                     <div class='capsule dateauthor'>
-                        <?php the_time(__('M jS, Y', 'ahimsa')) ?>
-                        <?php _e('by', 'ahimsa'); ?> <?php the_author() ?>
+                        <?php
+                            /* translators: this is the date format for posts. See http://php.net/date */
+                            $post_time = the_time(__('M jS, Y', 'ahimsa'));
+                            /* translators: this is the post date/author bubble in the main page */
+                            printf(__('%1$s by %2$s', 'ahimsa'), $post_time, get_the_author());
+                        ?>
                     </div>
                     <br clear='all'/>
                 </div>
@@ -68,7 +75,7 @@
 
                     <?php if( get_the_tags() ) : ?>
                         <input type='button' class='capsule actbubble cattrigger'
-                            value='<?php _e('Tags'); ?> &darr;'
+                            value='<?php _e('Tags', 'ahimsa'); ?> &darr;'
                             onclick='fadeBlock("#posttags-<?php the_ID();?>");'/>
                     <?php endif; ?>
 
@@ -146,8 +153,8 @@
 
 <?php if( $options['defhidesidebar'] == 1 ): ?>
     <script language='JavaScript'>
-        fadeSideBar('left');
-        fadeSideBar('right');
+        slideSideBar('left');
+        slideSideBar('right');
     </script>
 <?php endif; ?>
 

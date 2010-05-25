@@ -3,7 +3,7 @@
 
 <td valign='top' class='tdsidetabs'>
     <div id='sidebartableft' class='sidebartab' onclick='slideSideBar("left");'>
-        <div class='sidebartabrotatedtext'>SIDEBAR</div>
+        <div class='sidebartabrotatedtext'><?php _e('SIDEBAR', 'ahimsa'); ?></div>
         <div class='sidebartabnorotatetext'>
             <font color='#22bb00'>&raquo;</font><br/>
             <?php _e('S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R', 'ahimsa'); ?><br/>
@@ -20,7 +20,7 @@
         <?php if( $options['showauthors'] == 1 ) : ?>
 
             <fieldset class='sidebarlist'>
-                <legend><?php print $sectprefix; ?>Authors</legend>
+                <legend><?php print $sectprefix; ?><?php _e('Authors', 'ahimsa'); ?></legend>
                 <ul>
                 <?php wp_list_authors("optioncount=0&exclude_admin=0&feed=1&feed_image=" .
                                         get_bloginfo('template_url').
@@ -33,14 +33,14 @@
         <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('leftbar') ) : ?>
 
             <fieldset class='sidebarlist'>
-                <legend><?php print $sectprefix; ?>Categories</legend>
+                <legend><?php print $sectprefix; ?><?php _e('Categories', 'ahimsa'); ?></legend>
                 <ul>
                 <?php wp_list_categories('title_li=&hierarchical=0'); ?>
                 </ul>
             </fieldset>
 
             <fieldset class='sidebarlist'>
-                <legend><?php print $sectprefix; ?>Archives</legend>
+                <legend><?php print $sectprefix; ?><?php _e('Archives', 'ahimsa'); ?></legend>
                 <ul>
                 <?php wp_get_archives('type=monthly'); ?>
                 </ul>

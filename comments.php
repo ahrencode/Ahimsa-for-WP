@@ -60,7 +60,7 @@ if ( function_exists('wp_list_comments') ) :
 
         else : // comments are closed ?>
             <!-- If comments are closed. -->
-            <span class='capsule nocomments'><?php _e('Comments are closed'); ?></span>
+            <span class='capsule nocomments'><?php _e('Comments are closed', 'ahimsa'); ?></span>
             <br/>
             <br/>
 
@@ -97,9 +97,10 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
         <?php if( $user_ID ) : ?>
 
             <p>
-            <?php _e("Logged in as ", 'ahimsa'); ?>
-            <a href='<?php print get_option('siteurl'); ?>/wp-admin/profile.php'>
-            <?php print $user_identity; ?></a>.
+            <?php
+                $profile_url = get_option('siteurl') . '/wp-admin/profile.php';
+                printf(__("Logged in as <a href='%s'>%s</a>", 'ahimsa'), $profile_url, $user_identity);
+            ?>
             <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout"
                 title="<?php _e('Log out of this account', 'ahimsa'); ?>">
                 <?php _e('Logout', 'ahimsa'); ?> &raquo;</a>
@@ -111,8 +112,10 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
             <input type="text" name="author" id="author" class='inptext'
                    value="<?php echo $comment_author; ?>" size="22" tabindex="1" />
             <label for="author"><small>
-                <?php _e('Name', 'ahimsa'); ?>
-                <?php if($req) _e("(required)", 'ahimsa'); ?>
+                <?php
+                    _e('Name', 'ahimsa');
+                    if($req) _e("(required)", 'ahimsa');
+                ?>
             </small>
             </label>
             </p>
@@ -121,8 +124,10 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
             <input type="text" name="email" id="email" class='inptext'
                    value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
             <label for="email"><small>
-                <?php _e('Mail (will not be published)', 'ahimsa'); ?>
-                <?php if($req) _e("(required)", 'ahimsa'); ?>
+                <?php
+                    _e('Mail (will not be published)', 'ahimsa');
+                    if($req) _e("(required)", 'ahimsa');
+                ?>
                 </small></label>
             </p>
 
@@ -137,15 +142,14 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
 
         <div id='commenthint'>
         <small>
-            <strong><?php _e('XHTML', 'ahimsa'); ?>:</strong>
-            <?php _e('You can use these tags:', 'ahimsa'); ?>
+            <?php _e('<strong>XHTML</strong>: You can use these tags:', 'ahimsa'); ?>
             <code><?php echo allowed_tags(); ?></code>
         </small>
         </div>
 
         <input name="submit" type="submit" id="submit" class='capsule actbubble'
-             tabindex="5" value="<?php _e("Submit Comment", 'ahimsa'); ?>" />
-            
+             tabindex="5" value="<?php _e('Submit Comment', 'ahimsa'); ?>" />
+
         <?php
             if ( function_exists('comment_id_fields') ) :
 

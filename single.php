@@ -10,8 +10,8 @@
 
 <?php if( $options['defhidesbpages'] == 1 ): ?>
     <script language='JavaScript'>
-        fadeSideBar('left');
-        fadeSideBar('right');
+        slideSideBar('left');
+        slideSideBar('right');
     </script>
 <?php endif; ?>
 

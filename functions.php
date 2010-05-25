@@ -27,6 +27,7 @@ if( ! isset($options['delicid'          ]) ) $options['delicid'         ] = "";
 if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = __("Recent News and Links", "ahimsa");
 if( ! isset($options['copyright'        ]) ) $options['copyright'       ] = "";
 if( ! isset($options['skin'             ]) ) $options['skin'            ] = "none";
+if( ! isset($options['logourl'          ]) ) $options['logourl'         ] = "";
 # end defaults
 
 update_option('ahimsa', $options);
@@ -205,6 +206,14 @@ function ahimsa_options()
             </label>
             <input type='text' size='50' name='copyright' id='copyright'
                 value='$options[copyright]' />
+
+            <br />
+
+            <label style='margin-left: 5px;' for='logourl'>
+                URL for logo:
+            </label>
+            <input type='text' size='50' name='logourl' id='logourl'
+                value='$options[logourl]' />
 
             <br/>
             <br/>
@@ -738,6 +747,7 @@ function save_options()
                                     : __("Recent News and Links", "ahimsa");
     $options['copyright']       = ( isset($_POST['copyright']) ) ? $_POST['copyright'] : "";
     $options['skin']            = ( isset($_POST['skin']) ) ? $_POST['skin'] : "none";
+    $options['logourl']         = ( isset($_POST['logourl']) ) ? $_POST['logourl'] : "";
 
     update_option('ahimsa', $options);
 
@@ -1018,10 +1028,17 @@ function custom_comment($comment, $args, $depth)
 
     <fieldset class='comment'>
 
-        <legend> <?php comment_author_link() ?> <?php _e("writes:", "ahimsa"); ?> </legend>
+        <legend><?php printf(__("%s writes:", "ahimsa"), comment_author_link()); ?></legend>
 
         <div class="capsule dateauthor">
-            <small><?php comment_date(__('F jS, Y', 'ahimsa')) ?> at <?php comment_time() ?></small>
+            <small>
+            <?php
+                /* translators: this is the comment date/time format. See http://php.net/date */
+                $comment_date_format = __('F jS, Y');
+                /* translators: this is the comment date bubble */
+                printf(__("%1$s at %2$s", 'ahimsa'), comment_date($comment_date_format), comment_time());
+            ?>
+            </small>
         </div>
 
         <?php
@@ -1047,7 +1064,10 @@ function custom_comment($comment, $args, $depth)
                 <?php global $user_ID; if( $user_ID ) : ?>
                     &nbsp;&nbsp;
                     <span class='capsule actbubble'>
-                        <?php edit_comment_link(__('Edit', "ahimsa"),'&nbsp;',''); ?>
+                        <?php
+                            /* translators: this is the comment edit button/link */
+                            edit_comment_link(__('Edit', "ahimsa"),'&nbsp;','');
+                        ?>
                     </span>
                 <?php endif; ?>
 

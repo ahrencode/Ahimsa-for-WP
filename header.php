@@ -10,11 +10,12 @@
     />
 
     <title>
-        <?php bloginfo('name'); ?>
-        <?php if ( is_single() ) { ?>
-            &raquo; Blog Archive
-        <?php } ?>
-        <?php wp_title(); ?>
+        <?php
+            bloginfo('name');
+            if ( is_single() )
+                print '&raquo; ' . __('Blog Archive', 'ahimsa');
+            wp_title();
+        ?>
     </title>
 
     <meta
@@ -31,7 +32,7 @@
     <link
         rel="alternate"
         type="application/rss+xml"
-        title="<?php bloginfo('name'); ?> RSS Feed"
+        title="<?php bloginfo('name'); _e('RSS Feed', 'ahimsa'); ?>"
         href="<?php bloginfo('rss2_url'); ?>"
     />
 
@@ -42,7 +43,7 @@
 
     <?php
         if ( is_singular() )
-            wp_enqueue_script( 'comment-reply' );
+            wp_enqueue_script('comment-reply');
         wp_head();
     ?>
 
@@ -82,7 +83,10 @@
         <img border='0' align='top' alt='<?php _e('Comments RSS', 'ahimsa'); ?>'
             src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
         <span title='<?php _e('Subscribe to the RSS feed for the comments on this site', 'ahimsa'); ?>'>
-            <?php _e("Comments", "ahimsa"); ?>
+            <?php
+                /* translators: this is the text of the comments RSS link at top right */
+                _e('Comments', 'ahimsa');
+            ?>
         </span>
         </a>
     </div>
@@ -91,7 +95,10 @@
         <img border='0' align='top' alt='<?php _e('Site RSS', 'ahimsa'); ?>'
             src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
         <span title='<?php _e('Subscribe to the RSS feed for the posts on this site', 'ahimsa'); ?>'>
-            <?php _e('Site', 'ahimsa'); ?>
+            <?php
+                /* translators: this is the text of the site RSS link at top right */
+                _e('Site', 'ahimsa');
+            ?>
         </span>
         </a>
     </div>
@@ -112,7 +119,7 @@
 <tr>
 
 <?php if( is_active_sidebar(1) ) : ?>
-<td class='tdsidetabs'>&nbsp;</td>
+    <td class='tdsidetabs'>&nbsp;</td>
 <?php endif; ?>
 
 <td colspan='<?php print (is_active_sidebar(1)?1:0)+(is_active_sidebar(2)?1:0)+1; ?>' id='header'>
@@ -120,7 +127,14 @@
 <table border='0' cellpadding='0' cellspacing='0'>
 
     <tr>
-    <td id='title'><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></td>
+    <td id='title'>
+        <a href="<?php print get_option('home'); ?>/">
+            <?php if( $options['logourl'] != "" ) : ?>
+                <img id='logo' alt='' title='' src='<?php print $options['logourl']; ?>' />
+            <?php endif; ?>
+            <?php bloginfo('name'); ?>
+        </a>
+    </td>
     <td id='description'><?php bloginfo('description'); ?></td>
     <td id='search' valign='middle'><?php include (TEMPLATEPATH . "/searchform.php"); ?> </td>
     </tr>
@@ -129,7 +143,7 @@
 </td>
 
 <?php if( is_active_sidebar(2) ) : ?>
-<td class='tdsidetabs'>&nbsp;</td>
+    <td class='tdsidetabs'>&nbsp;</td>
 <?php endif; ?>
 
 </tr>

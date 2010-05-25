@@ -13,10 +13,12 @@
 
 <div style='float: right;'>
 &raquo;&nbsp;
-<?php _e('Substance', 'ahimsa'); ?>: <a href='http://wordpress.org/'>WordPress</a>
+<?php _e('Substance:', 'ahimsa'); ?>
+<a href='http://wordpress.org/'><?php _e('WordPress', 'ahimsa'); ?></a>
 &nbsp;
 &raquo;&nbsp;
-<?php _e('Style', 'ahimsa'); ?>: <a href='http://ahren.org/code/ahimsa'>Ahren Ahimsa</a>
+<?php _e('Style:', 'ahimsa'); ?>
+<a href='http://ahren.org/code/ahimsa'><?php _e('Ahren Ahimsa', 'ahimsa'); ?></a>
 </div>
 
 <?php

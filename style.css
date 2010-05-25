@@ -154,6 +154,11 @@ BLOCKQUOTE
     width: 100%;
 }
 
+#header TABLE TD
+{
+    vertical-align: middle;
+}
+
 #title
 {
     height: 20px;
@@ -161,6 +166,12 @@ BLOCKQUOTE
     padding-right: 15px;
     padding-left: 10px;
     border-right: 2px solid #ffdd00;
+}
+
+#logo
+{
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 #description
@@ -177,7 +188,6 @@ BLOCKQUOTE
 
 #search
 {
-    vertical-align: middle;
     text-align: right;
     padding-right: 20px;
 }

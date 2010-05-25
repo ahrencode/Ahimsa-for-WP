@@ -150,30 +150,44 @@ jQuery(document).ready
     {
         // display vertical or rotated text depending on browser support
         // test in the order of browser popularity to save a few cycles ;-)
-        if(
-            (jQuery('#sidebartableft').css('filter') != ''
-                && jQuery('#tstdiv').css('filter') != 'none') ||
-            (jQuery('#sidebartableft').css('-moz-transform') != ''
-                && jQuery('#tstdiv').css('-moz-transform') != 'none') ||
-            (jQuery('#sidebartableft').css('-webkit-transform') != ''
-                && jQuery('#tstdiv').css('-webkit-transform') != 'none') ||
-            (jQuery('#sidebartableft').css('-o-transform') != ''
-                && jQuery('#tstdiv').css('-o-transform') != 'none') )
-        {
-            jQuery('#sidebartableft').addClass('sidebartableftrotated');
-            jQuery('#sidebartabright').addClass('sidebartabrightrotated');
-            jQuery('.sidebartabnorotatetext').hide();
-            jQuery('.sidebartabrotatedtext').show();
-        }
+        if( jQuery('#sidebartableft').length > 0 )
+            tab = '#sidebartableft';
         else
+        if( jQuery('#sidebartabright').length > 0 )
+            tab = '#sidebartabright';
+        else
+            tab = "";
+        if( tab != "" )
         {
-            jQuery('.sidebartab').addClass('sidebartabnorotate');
-            jQuery('#sidebartableft').addClass('sidebartableftnorotate');
-            jQuery('#sidebartabright').addClass('sidebartabrightnorotate');
-            jQuery('.sidebartabrotatedtext').hide();
-            jQuery('.sidebartabnorotatetext').show();
+            // safari returns the CSS property even if it doesn't implement it
+            // so we have a special check below for safari3 which does not
+            // support CSS transform
+            var safari3re = /Version\/3\.0.*Safari/;
+            if( !safari3re.test(navigator.appVersion) &&
+                ((jQuery(tab).css('filter') != '' &&
+                    jQuery(tab).css('filter') != 'none') ||
+                (jQuery(tab).css('-moz-transform') != '' &&
+                    jQuery(tab).css('-moz-transform') != 'none') ||
+                (jQuery(tab).css('-webkit-transform') != '' &&
+                    jQuery(tab).css('-webkit-transform') != 'none') ||
+                (jQuery(tab).css('-o-transform') != '' &&
+                    jQuery(tab).css('-o-transform') != 'none')) )
+            {
+                jQuery('#sidebartableft').addClass('sidebartableftrotated');
+                jQuery('#sidebartabright').addClass('sidebartabrightrotated');
+                jQuery('.sidebartabnorotatetext').hide();
+                jQuery('.sidebartabrotatedtext').show();
+            }
+            else
+            {
+                jQuery('.sidebartab').addClass('sidebartabnorotate');
+                jQuery('#sidebartableft').addClass('sidebartableftnorotate');
+                jQuery('#sidebartabright').addClass('sidebartabrightnorotate');
+                jQuery('.sidebartabrotatedtext').hide();
+                jQuery('.sidebartabnorotatetext').show();
+            }
+            jQuery('.sidebartab').show();
         }
-        jQuery('.sidebartab').show();
         
 
         // display tags permitted in comments when focus is on response box
