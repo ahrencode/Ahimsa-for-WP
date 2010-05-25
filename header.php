@@ -123,23 +123,22 @@
 <?php endif; ?>
 
 <td colspan='<?php print (is_active_sidebar(1)?1:0)+(is_active_sidebar(2)?1:0)+1; ?>' id='header'>
-
-<table border='0' cellpadding='0' cellspacing='0'>
-
-    <tr>
-    <td id='title'>
-        <a href="<?php print get_option('home'); ?>/">
+    <table border='0' cellpadding='0' cellspacing='0'>
+        <tr>
             <?php if( $options['logourl'] != "" ) : ?>
-                <img id='logo' alt='' title='' src='<?php print $options['logourl']; ?>' />
+                <td id='tdlogo'>
+                    <img id='logo' alt='' title='' src='<?php print $options['logourl']; ?>' />
+                </td>
             <?php endif; ?>
-            <?php bloginfo('name'); ?>
-        </a>
-    </td>
-    <td id='description'><?php bloginfo('description'); ?></td>
-    <td id='search' valign='middle'><?php include (TEMPLATEPATH . "/searchform.php"); ?> </td>
-    </tr>
-
-</table>
+            <td id='title'>
+                <a href="<?php print get_option('home'); ?>/">
+                    <?php bloginfo('name'); ?>
+                </a>
+            </td>
+            <td id='description'><?php bloginfo('description'); ?></td>
+            <td id='search' valign='middle'><?php include (TEMPLATEPATH . "/searchform.php"); ?> </td>
+        </tr>
+    </table>
 </td>
 
 <?php if( is_active_sidebar(2) ) : ?>

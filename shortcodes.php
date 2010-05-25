@@ -75,11 +75,10 @@ function qfgallery_handler($atts, $content)
     if( $title != "" ) $newcontent .= "<h2>$title</h2>\n";
     foreach( explode("\n", $content) as $line )
     {
-        // strip the <br /> tag added by wpautop et al
-        $line = preg_replace("/\s*\<br.*/", "", $line);
-
+        // strip all HTML tags (such as <br>, <p> and other stuff inserted by wp_autop()
+        $line = preg_replace("/\s*<[^>]*>\s*/", "", $line);
         $matches = preg_split("/\s*\|\s*/", $line);
-        if( sizeof($matches) <= 1 )
+        if( sizeof($matches) < 1 || preg_match("/^\s*$/", $matches[0]) )
             continue;
 
         $newcontent .=
