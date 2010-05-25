@@ -1,13 +1,13 @@
 /*  
 Theme Name: Ahimsa
 Theme URI: http://ahren.org/code/ahimsa
-Description: Ahimsa -- customisable collapsible sidebars, skinnable colour schemes, custom CSS and footer, low graphics, minimal distractions, with rounded corners in Firefox, Safari, Chrome (some support in IE). New for version 3.1: PLEASE NOTE: You may need to run a custom plugin with this update. Please, please visit <a href='http://ahren.org/code/bit/ahimsa-wp-3dot1'>http://ahren.org/code/bit/ahimsa-wp-3dot1</a> for details on that and other issues (including a comprehensive list of changes). If you are not going to install and use the plugin, and you have created custom skins or used a custom stylesheet or footer, <b>PLEASE backup your theme files</b> before you upgrade.
-Version: 3.1.1
+Description: Ahimsa -- customisable collapsible sidebars, skinnable colour schemes, custom CSS and footer, low graphics, minimal distractions, with rounded corners in Firefox, Safari, Chrome (some support in IE). New for version 3.2: Internationalisation support, header logo, sidebar tab rotated text, much more. See: <a href='http://ahren.org/code/bit/ahimsa-wp-3dot2'>http://ahren.org/code/bit/ahimsa-wp-3dot2</a>. (If you are upgrading from Ahimsa versions before 3.1 please visit <a href='http://ahren.org/code/bit/ahimsa-wp-3dot1'>http://ahren.org/code/bit/ahimsa-wp-3dot1</a> for details on saving your theme skins and customisations). Always backup any theme files you have changed or added before you upgrade.
+Version: 3.2
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
-Tags: one-column, two-columns, three-columns, flexible-width, left-sidebar, right-sidebar, theme-options, threaded-comments
+Tags: one-column, two-columns, three-columns, flexible-width, left-sidebar, right-sidebar, theme-options, threaded-comments, orange, red, white, yellow, custom-colors, translation-ready
 
-	 Ahimsa 3.1.1
+	 Ahimsa 3.2
 	 http://ahren.org/code/ahimsa
 
 	Theme built for the Ahren Code site but free for all
@@ -17,9 +17,8 @@ Tags: one-column, two-columns, three-columns, flexible-width, left-sidebar, righ
     theme uses rounded borders viewable in all browsers
     that support them.
 
-	The CSS, XHTML and design are released under the
-    latest GPL (at time of use):
-	http://www.opensource.org/licenses/gpl-license.php
+	The CSS, XHTML and design are released under the GNU GPL:
+    http://www.gnu.org/licenses/gpl.html
 
 */
 
