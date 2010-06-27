@@ -1028,7 +1028,7 @@ function custom_comment($comment, $args, $depth)
 
     <fieldset class='comment'>
 
-        <legend><?php printf(__("%s writes:", "ahimsa"), comment_author_link()); ?></legend>
+        <legend><?php printf(__('%s writes:', "ahimsa"), comment_author_link()); ?></legend>
 
         <div class="capsule dateauthor">
             <small>
@@ -1036,7 +1036,7 @@ function custom_comment($comment, $args, $depth)
                 /* translators: this is the comment date/time format. See http://php.net/date */
                 $comment_date_format = __('F jS, Y');
                 /* translators: this is the comment date bubble */
-                printf(__("%1$s at %2$s", 'ahimsa'), comment_date($comment_date_format), comment_time());
+                printf(__('%1$s at %2$s', 'ahimsa'), get_comment_date($comment_date_format), get_comment_time());
             ?>
             </small>
         </div>

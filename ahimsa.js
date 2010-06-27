@@ -189,9 +189,27 @@ jQuery(document).ready
             jQuery('.sidebartab').show();
         }
         
+        // support for faded bottom bar in index page
+        jQuery('.fadedbottombar').hover(
+                function() { jQuery(this).css('opacity', '1.0'); },
+                function() { jQuery(this).css('opacity', '0.3'); }
+        );
 
         // display tags permitted in comments when focus is on response box
         jQuery('#replytext').focus(function() { jQuery('#commenthint').fadeIn(); });
         jQuery('#replytext').blur(function() { jQuery('#commenthint').fadeOut(); });
+
+        // display Comment edit/reply bottombar on hover
+        jQuery('.comment').hover(
+                function() { jQuery(this).children('.replybuttonbox').css('visibility', 'visible'); },
+                function() { jQuery(this).children('.replybuttonbox').css('visibility', 'hidden'); }
+        );
+
+        // if user has declared a DIV of type "download" then make the whole thing clickable
+        // We could have used a shortcode for this, but shortcodes are not expanded for RSS feeds.
+        jQuery('.downloadbox').click
+        (
+            function() { document.location = jQuery(this).find('.downlink').attr('href'); }
+        );
     }
 );

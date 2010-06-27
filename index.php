@@ -54,13 +54,11 @@
                     <?php the_content(__('Read the rest of this entry', 'ahimsa') . ' &raquo;'); ?>
                 </div>
 
-                <div class="postmetadata"
-                    <?php if( $options["idxfadepmeta"] ) : ?>
-                    style='opacity: 0.3;'
-                    onmouseover='this.style.opacity = 1.0;'
-                    onmouseout='this.style.opacity = 0.3;'
-                    <?php endif; ?>
-                    >
+                <div class="postmetadata
+                        <?php if( $options["idxfadepmeta"] ) : ?>
+                            fadedbottombar
+                        <?php endif; ?>
+                        ">
 
                     <span class='capsule commentlink actbubble'>
                         <?php comments_popup_link(
