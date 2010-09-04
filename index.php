@@ -131,6 +131,8 @@
                 "</span>"); ?>
     </div>
 
+    <br clear='all' />
+
 <?php else : ?>
 
     <div class="post">
