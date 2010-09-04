@@ -31,7 +31,7 @@ BODY
     border-style: none;
     background-color: #6f900d;
     font-size: medium;
-    font-family: "Lucida Grande", Futura, Helvetica, sans-serif;
+    font-family: "Lucida Grande", Helvetica, sans-serif;
 }
 
 A
@@ -114,7 +114,7 @@ BLOCKQUOTE OL
 {
     text-align: center;
     padding: 4px 10px;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: small;
     background-color: #cc9900;
     border-radius: 10px; 
@@ -634,7 +634,7 @@ BLOCKQUOTE OL
 {
     background-color: #6f900d;
     border: 0px solid #666666;
-    font-size: 12pt;
+    font-size: 14pt;
     padding: 4px 20px;
     margin-left: 15px; /* doesn't work for Firefox -- see comment above in .post fieldset */
     border-radius: 8px; 
@@ -647,7 +647,7 @@ LEGEND,
 LEGEND A,
 #recentheader
 {
-    font-family: "Trebuchet MS", Skia, "Century Gothic", sans-serif;
+    font-family: "Trebuchet MS", "Droid Sans", sans-serif;
     color: #ffffff;
 }
 
@@ -754,11 +754,6 @@ LEGEND A,
     margin-right: 5px;
     line-height: 20px;
     -webkit-border-radius: 8px; /* see comment above for .cattriger */
-}
-
-#single .postmetadata .cattrigger
-{
-    font-weight: bold;
 }
 
 .postcats
@@ -896,6 +891,27 @@ FIELDSET.comment .commenttext
     visibility: hidden;
 }
 
+#commentguide
+{
+    float: right;
+    width: 16%;
+    font-size: 9pt;
+    padding: 30px;
+    text-align: center;
+    background-color: #cccccc;
+    color: #333333;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#replytext
+{
+    width: 70% !important;
+    border-color: #d0d0d0;
+    background-color: #eeeeee;
+}
+
 .navigation .capsule
 {
     font-size: large;
@@ -956,16 +972,10 @@ FIELDSET.comment .commenttext
 
 #respond INPUT#submit
 {
-	font-weight: bold;
     font-size: medium;
     cursor: pointer;
 	border: none;
 	padding: 3px 10px;
-}
-
-#respond TEXTAREA
-{
-    width: 80% !important;
 }
 
 #respond INPUT.inptext

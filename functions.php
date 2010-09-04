@@ -28,6 +28,7 @@ if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = __("
 if( ! isset($options['copyright'        ]) ) $options['copyright'       ] = "";
 if( ! isset($options['skin'             ]) ) $options['skin'            ] = "none";
 if( ! isset($options['logourl'          ]) ) $options['logourl'         ] = "";
+if( ! isset($options['commentguide'     ]) ) $options['commentguide'    ] = "";
 # end defaults
 
 update_option('ahimsa', $options);
@@ -214,6 +215,13 @@ function ahimsa_options()
             </label>
             <input type='text' size='50' name='logourl' id='logourl'
                 value='$options[logourl]' />
+
+            <br />
+            <br />
+
+            Custom text (instructions) to display above comment box: <br />
+            <textarea name='commentguide' id='commentguide'
+            rows=5 cols=60>" . stripslashes($options[commentguide]) . "</textarea>
 
             <br/>
             <br/>
@@ -748,6 +756,7 @@ function save_options()
     $options['copyright']       = ( isset($_POST['copyright']) ) ? $_POST['copyright'] : "";
     $options['skin']            = ( isset($_POST['skin']) ) ? $_POST['skin'] : "none";
     $options['logourl']         = ( isset($_POST['logourl']) ) ? $_POST['logourl'] : "";
+    $options['commentguide']    = ( isset($_POST['commentguide']) ) ? $_POST['commentguide'] : "";
 
     update_option('ahimsa', $options);
 

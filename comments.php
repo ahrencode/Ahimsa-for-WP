@@ -1,5 +1,7 @@
 <?php
 
+global $options;
+
 if ( function_exists('wp_list_comments') ) :
 
 // new comments.php stuff
@@ -138,7 +140,15 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
 
         <?php endif; ?>
 
-        <p><textarea name="comment" id="replytext" rows="20" tabindex="4"></textarea></p>
+        <br />
+
+        <?php if( $options['commentguide'] != "" ) : ?>
+            <div id='commentguide'>
+                <?php print stripslashes($options['commentguide']); ?>
+            </div>
+        <?php endif; ?>
+
+        <textarea name="comment" id="replytext" rows="20" tabindex="4"></textarea>
 
         <div id='commenthint'>
         <small>
@@ -147,8 +157,14 @@ endif; // WP 2.7 check (old vs new style of comments) ?>
         </small>
         </div>
 
+        <br />
+        <br />
+
         <input name="submit" type="submit" id="submit" class='capsule actbubble'
              tabindex="5" value="<?php _e('Submit Comment', 'ahimsa'); ?>" />
+
+        <br />
+        <br />
 
         <?php
             if ( function_exists('comment_id_fields') ) :

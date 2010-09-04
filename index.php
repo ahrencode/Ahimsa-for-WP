@@ -15,9 +15,9 @@
                 ?>
             </div>
             <?php print $options['delictitle']; ?>
-            <div id='recentlist'>
-                <?php delicious_bookmarks($delid, 5, true, false); ?>
-            </div>
+        </div>
+        <div id='recentlist'>
+            <?php delicious_bookmarks($delid, 5, true, false); ?>
         </div>
     </div>
 
