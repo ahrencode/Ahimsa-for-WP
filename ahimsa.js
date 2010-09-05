@@ -9,12 +9,12 @@ function fadeBlock(id)
     return;
 }
 
-function slideBlock(id, side)
+function slideBlock(id, side, cb)
 {
     if( jQuery(id).is(':visible') )
-        jQuery(id).hide("slide", { direction: side }, 600);
+        jQuery(id).hide("slide", { direction: side }, 600, cb);
     else
-        jQuery(id).show("slide", { direction: side }, 600);
+        jQuery(id).show("slide", { direction: side }, 600, cb);
 
     return;
 }
@@ -29,27 +29,23 @@ function slideSideBar(side)
     tdsb = document.getElementById('tdsidebar'+side);
     sb = document.getElementById('sidebar'+side);
 
-    // I am not sure how the below works to toggle the background on and off
-    // for the container cell. tdsbBackground, as set below, doesn't work!!!
-    // It's empty, I guess because sb.style.backgroundColor is computed and
-    // not available here. But the below logic, to toggle the background from
-    // transparent to colour and back works magically!!!
+    tdsb.style.backgroundColor = jQuery('#content').css('background-color');
 
-    if( tdsbBackground == "" )
-        tdsbBackground = sb.style.backgroundColor;
+    curstatus = sb.style.display;
 
-    if( sb.style.display == 'none' )
+    if( curstatus == 'none' )
     {
         contentCurve(side, '0px');
-        tdsb.style.backgroundColor = tdsbBackground;
+        jQuery('#tdsidebar'+side).show();
+        cb = function() { };
     }
     else
     {
         contentCurve(side, '30px');
-        tdsb.style.backgroundColor = 'transparent';
+        cb = function() { jQuery('#tdsidebar'+side).hide(); }
     }
 
-    slideBlock('#sidebar'+side, side);
+    slideBlock('#sidebar'+side, side, cb);
 }
 
 function contentCurve(side, size)

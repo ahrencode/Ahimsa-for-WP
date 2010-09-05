@@ -84,52 +84,48 @@
                 );
             ?>
 
-            <div>
+            <input type='button' class='capsule actbubble cattrigger'
+                value='<?php _e('Categories', 'ahimsa'); ?> &darr;'
+                onclick='fadeBlock(".postcats");'/>
 
-                <input type='button' class='capsule actbubble cattrigger'
-                    value='<?php _e('Categories', 'ahimsa'); ?> &darr;'
-                    onclick='fadeBlock(".postcats");'/>
+            <?php if( get_the_tags() ) : ?>
+            <input type='button' class='capsule actbubble cattrigger'
+                value='<?php _e('Tags', 'ahimsa'); ?> &darr;'
+                onclick='fadeBlock(".posttags");'/>
+            <?php endif; ?>
 
-                <?php if( get_the_tags() ) : ?>
-                <input type='button' class='capsule actbubble cattrigger'
-                    value='<?php _e('Tags', 'ahimsa'); ?> &darr;'
-                    onclick='fadeBlock(".posttags");'/>
-                <?php endif; ?>
-
-            </div>
-
-            <!-- inline style for easy JavaScript mods, without getting computed styles -->
             <div id='postcats' class='postcattags postcats' style='display: none;'>
-            <?php
-                foreach((get_the_category()) as $cat)
-                    print
-                        "<div class='capsule'>
-                            <a href='" . get_category_link($cat->cat_ID) . "'>" .
-                            $cat->cat_name . "</a>
-                        </div>\n";
-            ?>
-            <br clear='all'/>
+                <?php
+                    foreach((get_the_category()) as $cat)
+                        print
+                            "<div class='capsule'>
+                                <a href='" . get_category_link($cat->cat_ID) . "'>" .
+                                $cat->cat_name . "</a>
+                            </div>\n";
+                ?>
+                <div style='clear: both; height: 1px !important;'></div>
             </div>
 
             <?php if( get_the_tags() ) : ?>
-            <!-- inline style for easy JavaScript mods, without getting computed styles -->
-            <div id='posttags' class='postcattags posttags' style='display: none;'>
-            <?php
-                print
-                    get_the_tag_list(
-                            $before = '<div class="capsule">',
-                            // leave newlines below... Safari needs them
-                            // for rounded borders!!!
-                            $sep = '
-                                    </div><div class="capsule">
-                                   ',
-                            $after = '</div>');
-            ?> 
-            <br clear='all'/>
-            </div>
+                <div id='posttags' class='postcattags posttags' style='display: none;'>
+                    <?php
+                        print
+                            get_the_tag_list(
+                                    $before = '<div class="capsule">',
+                                    // leave newlines below... Safari needs them
+                                    // for rounded borders!!!
+                                    $sep = '
+                                            </div><div class="capsule">
+                                           ',
+                                    $after = '</div>');
+                    ?> 
+                    <div style='clear: both; height: 1px !important;'></div>
+                </div>
             <?php endif; ?>
 
-        </div>
+            <div style='clear: both; height: 1px !important;'></div>
+
+        </div> <!-- end postmetadata -->
 
     </fieldset>
 

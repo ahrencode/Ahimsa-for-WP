@@ -77,7 +77,6 @@
                             onclick='fadeBlock("#posttags-<?php the_ID();?>");'/>
                     <?php endif; ?>
 
-                    <!-- inline style for easy JavaScript mods, without getting computed styles -->
                     <div id='postcats-<?php the_ID(); ?>' class='postcattags postcats'
                         style='display: none;'>
                         <?php
@@ -95,7 +94,6 @@
                     </div>
 
                     <?php if( get_the_tags() ) : ?>
-                        <!-- inline style for easy JavaScript mods, without getting computed styles -->
                         <div id='posttags-<?php the_ID(); ?>' class='postcattags posttags'
                             style='display: none;'>
                             <?php
@@ -109,6 +107,8 @@
                             ?> 
                         </div>
                     <?php endif; ?>
+
+                    <div style='clear: both; height: 1px !important;'></div>
 
                 </div> <!-- postmetadata -->
 
