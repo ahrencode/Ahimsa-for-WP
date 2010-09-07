@@ -20,7 +20,6 @@ function slideBlock(id, side, cb)
 }
 
 
-var tdsbBackground = "";
 function slideSideBar(side)
 {
     if( ! document.getElementById('sidebar'+side) )
@@ -36,13 +35,14 @@ function slideSideBar(side)
     if( curstatus == 'none' )
     {
         contentCurve(side, '0px');
-        jQuery('#tdsidebar'+side).show();
+        //jQuery('#tdsidebar'+side).show();
         cb = function() { };
     }
     else
     {
         contentCurve(side, '30px');
-        cb = function() { jQuery('#tdsidebar'+side).hide(); }
+        // cb = function() { jQuery('#tdsidebar'+side).hide(); }
+        cb = function() { };
     }
 
     slideBlock('#sidebar'+side, side, cb);
@@ -146,6 +146,7 @@ jQuery(document).ready
     {
         // display vertical or rotated text depending on browser support
         // test in the order of browser popularity to save a few cycles ;-)
+        // checking to see if at least one sidebar is active/defined...
         if( jQuery('#sidebartableft').length > 0 )
             tab = '#sidebartableft';
         else
