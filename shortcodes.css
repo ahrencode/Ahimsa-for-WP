@@ -5,10 +5,10 @@
 
 .qfcontainer
 {
-    background-color: #cccccc;
+    background-color: #999999;
     padding: 20px 20px;
     overflow: auto;
-    -moz-border-radius: 10px;
+    -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
 
@@ -27,12 +27,14 @@
 .qfgallerytnail
 {
     float: left;
-    margin: 10px;
+    /*margin: 10px;*/
     height: 128px;
     width: 128px;
     overflow: hidden;
+    /*
     padding: 5px;
     background-color: #333333;
+    */
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
 }

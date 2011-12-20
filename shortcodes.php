@@ -77,15 +77,25 @@ function qfgallery_handler($atts, $content)
     {
         // strip all HTML tags (such as <br>, <p> and other stuff inserted by wp_autop()
         $line = preg_replace("/\s*<[^>]*>\s*/", "", $line);
+        
+        // now get per-image options:
+        // arg1 = URL [required]
+        // arg2 = alt and title value
+        // arg3 = top/left point in image: X
+        // arg4 = top/left point in image: Y
         $matches = preg_split("/\s*\|\s*/", $line);
         if( sizeof($matches) < 1 || preg_match("/^\s*$/", $matches[0]) )
             continue;
+
+        $x = $matches[2] or $x = 0;
+        $y = $matches[3] or $y = 0;
 
         $newcontent .=
         "
             <div class='qfgallerytnail'>
             <a class='qfgallery' rel='qfgallery$galleryctr' href='$matches[0]' title='$matches[1]'>
             <img
+                style='margin-left: -${x}px; margin-top: -${y}px;'
                 src='$matches[0]' " . ($scale == 1 ? "width='128' height='128' " : "") . "
                 alt='$matches[1]' />
             </a>

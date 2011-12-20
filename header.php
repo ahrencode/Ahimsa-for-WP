@@ -71,7 +71,7 @@
 
 </head>
 
-<body onload='recalcBlocks();' onresize='recalcBlocks();'>
+<body onload='recalcBlocks();' onresize='recalcBlocks();' <?php body_class(); ?>>
 
 <?php global $options; ?>
 

@@ -31,7 +31,7 @@ BODY
     border-style: none;
     background-color: #6f900d;
     font-size: 9pt;
-    font-family: "Lucida Grande", Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
 A
@@ -117,14 +117,10 @@ BLOCKQUOTE OL
     font-family: Helvetica, Arial, sans-serif;
     font-size: 8pt;
     background-color: #cc9900;
+    color: #ffffff;
     border-radius: 10px; 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
-}
-
-.capsule
-{
-    color: #ffffff;
 }
 
 .actbubble
@@ -610,14 +606,8 @@ BLOCKQUOTE OL
 
 .post
 {
-    margin-top: 70px;
-    margin-bottom: 100px;
-}
-
-#single .post
-{
     margin-top: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 70px;
 }
 
 .post > FIELDSET
@@ -666,15 +656,15 @@ LEGEND A,
 
 .entry
 {
-    padding: 10px 40px;
+    padding: 10px 50px;
     padding-bottom: 40px;
-    line-height: 200%;
+    line-height: 180%;
+    font-size: 10pt;
 }
 
 .entry,
 .commenttext
 {
-    font-size: 9pt;
     color: #444444;
 }
 
@@ -804,26 +794,23 @@ LEGEND A,
     font-size: 9pt;
 }
 
+/*--- COMMENTS RELATED -------------------------------------------------------------- */
+
 .nocomments
 {
     font-size: 14pt !important;
 }
 
+/*--- container ---*/
 #comments
 {
     background-color: #c9ba90;
-    padding: 0px;
-    padding-left: 15px;
+    padding: 0px 40px;
     margin-bottom: 20px;
     border-style: none;
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
-}
-
-.commenttext
-{
-    line-height: 150%;
 }
 
 #comments > UL,
@@ -837,27 +824,14 @@ LEGEND A,
 
 #comments UL.children
 {
-    margin-left: 30px;
-}
-
-#responsebox
-{
-    background-color: #ffffff;
-	color: #333333;
-    margin-top: 50px;
-    margin: 30px 30px 0px 30px;
-    padding: 10px 30px;
-    border-style: none;
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px; 
+    margin-left: 40px;
 }
 
 FIELDSET.comment
 {
     border: none;
     background-color: #ffffff;
-    margin: 30px 40px 30px 25px;
+    margin: 30px 0px;
     padding: 0px;
     padding-top: 10px;
     padding-left: 15px;
@@ -881,6 +855,8 @@ FIELDSET.comment .commenttext
 {
     padding-right: 30px;
     padding-left: 30px;
+    line-height: 150%;
+    font-size: 9pt;
 }
 
 #comments .postmetadata,
@@ -891,13 +867,111 @@ FIELDSET.comment .commenttext
     visibility: hidden;
 }
 
+/*--- Comment Form Related ---------------------*/
+
+/*--- Comment Form Container ---*/
+#responsebox
+{
+    background-color: #ddd;
+	color: #333;
+    margin: 50px 0px 30px 0px;
+    padding: 10px 30px;
+    border-style: none;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px; 
+}
+
+/* hide the WP inserted form title, etc */
+#reply-title
+{
+    display: none !important;
+}
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url,
+.comment-form-comment
+{
+    width: 70%;
+    background-color: #eee;
+    padding: 2px 0px;
+    border: 1px inset #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+#commentform LABEL
+{
+    width: 20%;
+    text-transform: uppercase;
+    font-family: Helvetica, "Century Gothic", sans-serif;
+    font-size: 12px;
+}
+
+#commentform LABEL,
+#commentform .required
+{
+    margin: 0;
+    color: #666;
+    padding: 1px 3px;
+}
+
+#commentform #author,
+#commentform #email,
+#commentform #url,
+#comment
+{
+    border: 0px;
+    background-color: #eee;
+    width: 80%;
+}
+
+#comment
+{
+    display: block;
+    clear: left;
+    width: 98%;
+}
+
+#respond INPUT#submit
+{
+    font-size: 11pt;
+    cursor: pointer;
+	border: none !important;
+	padding: 4px 15px;
+}
+
+#cancel-comment-reply-link
+{
+    display: inline;
+    padding-left: 15px;
+}
+
+.form-allowed-tags
+{
+    display: none;
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.form-allowed-tags CODE
+{
+    font-size: 12px;
+    color: #884;
+}
+
 #commentguide
 {
     float: right;
     width: 16%;
     font-size: 9pt;
+    margin-top: 30px;
     padding: 30px;
-    text-align: center;
+    text-align: left;
     background-color: #cccccc;
     color: #555555;
     -moz-border-radius: 10px;
@@ -905,12 +979,8 @@ FIELDSET.comment .commenttext
     border-radius: 10px;
 }
 
-#replytext
-{
-    width: 70% !important;
-    border-color: #d0d0d0;
-    background-color: #eeeeee;
-}
+/*--- END: Comment Form Related ----------------*/
+/*--- END: Comment Related ------------------------------------------------*/
 
 .navigation .capsule
 {
@@ -969,38 +1039,6 @@ FIELDSET.comment .commenttext
     color: #ffffff;
 }
 
-#respond
-{
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-
-#respond INPUT#submit
-{
-    font-size: 11pt;
-    cursor: pointer;
-	border: none;
-	padding: 4px 15px;
-}
-
-#respond INPUT.inptext
-{
-    border: 1px solid #999999;
-    background-color: #eeeeee;
-}
-
-#cancel-comment-reply
-{
-    display: inline;
-    padding-left: 15px;
-}
-
-#commenthint
-{
-    display: none;
-    margin-bottom: 10px;
-}
-
 img.avatar
 {
     float: left;
@@ -1035,6 +1073,43 @@ img.avatar
     color: inherit !important; 
     text-decoration: none !important;
     border-style: none !important;
+}
+
+.sourcelinkbox
+{
+    overflow: hidden;
+    background-color: #ddf3ff;
+    color: #005588;
+    padding-left: 0px;
+    margin-top: 30px;
+    margin-bottom: -25px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.sourcelinkbox .sourcemarker
+{
+    font-size: 14pt;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #88aac0;
+    padding: 3px 8px;
+    margin-right: 10px;
+}
+
+.sourcelinkbox .sourceboxtext
+{
+    padding: 5px 10px;
+    line-height: 150%;
+}
+
+.sourcelinkbox .sourcemarker,
+.sourcelinkbox .sourceboxtext
+{
+    float: left;
+    padding-bottom: 2000px;
+    margin-bottom: -2000px;
 }
 
 /* required as per wordpress.org */

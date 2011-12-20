@@ -5,6 +5,8 @@ include_once("utils.php");
 // i18n
 load_theme_textdomain('ahimsa');
 
+// required by WP
+add_theme_support('automatic-feed-links');
 
 if( ! is_array(get_option('ahimsa')) )
     add_option('ahimsa', array('init' => 1));
@@ -38,6 +40,7 @@ add_action('admin_menu', 'ahimsa_admin_menu');
 
 if ( function_exists('register_sidebar') )
     add_sidebars();
+
 
 #-------------------------------------------------------------------------------
 function add_sidebars()
@@ -74,7 +77,7 @@ function ahimsa_options()
     // TODO: sneak this in here for now
     check_store_mksymlinks();
 
-    if( $_POST['action'] == 'save' )
+    if( isset($_POST['action']) && $_POST['action'] == 'save' )
         save_options();
 
     print
@@ -219,7 +222,7 @@ function ahimsa_options()
             <br />
             <br />
 
-            Custom text (instructions) to display above comment box: <br />
+            Custom text (instructions) to display next to comment box: <br />
             <textarea name='commentguide' id='commentguide'
             rows=5 cols=60>" . stripslashes($options[commentguide]) . "</textarea>
 
@@ -317,312 +320,312 @@ array
 (
     array
     (
-        name    => "skinpagebgtopbg",
-        desc    => "Page Background Top",
-        csssel  => "#bgtop",
-        attr    => "background-color"
+        'name'      => "skinpagebgtopbg",
+        'desc'      => "Page Background Top",
+        'csssel'    => "#bgtop",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinpagediv",
-        desc    => "Page Background Divider Colour",
-        csssel  => "#bgtop",
-        attr    => "border-bottom-color"
+        'name'      => "skinpagediv",
+        'desc'      => "Page Background Divider Colour",
+        'csssel'    => "#bgtop",
+        'attr'      => "border-bottom-color"
     ),
     array
     (
-        name    => "skinpagebgbotbg",
-        desc    => "Page Background Bottom",
-        csssel  => "BODY",
-        attr    => "background-color"
+        'name'      => "skinpagebgbotbg",
+        'desc'      => "Page Background Bottom",
+        'csssel'    => "BODY",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinhyperlinks",
-        desc    => "Hyperlinks",
-        csssel  => "A",
-        attr    => "color"
+        'name'      => "skinhyperlinks",
+        'desc'      => "Hyperlinks",
+        'csssel'    => "A",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skincapsulebg",
-        desc    => "Default Bubble Background",
-        csssel  => ".capsule",
-        attr    => "background-color"
+        'name'      => "skincapsulebg",
+        'desc'      => "Default Bubble Background",
+        'csssel'    => ".capsule",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skincapsulefg",
-        desc    => "Default Bubble Text Colour",
-        csssel  => ".capsule",
-        attr    => "color"
+        'name'      => "skincapsulefg",
+        'desc'      => "Default Bubble Text Colour",
+        'csssel'    => ".capsule",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinheaderbg",
-        desc    => "Header Background",
-        csssel  => "#header",
-        attr    => "background-color"
+        'name'      => "skinheaderbg",
+        'desc'      => "Header Background",
+        'csssel'    => "#header",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinheaderfg",
-        desc    => "Header Text Colour",
-        csssel  => "#header, #header table, #header a",
-        attr    => "color"
+        'name'      => "skinheaderfg",
+        'desc'      => "Header Text Colour",
+        'csssel'    => "#header, #header table, #header a",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinheadersepcolour",
-        desc    => "Colour of Separator Bar in Header",
-        csssel  => "#title",
-        attr    => "border-right-color"
+        'name'      => "skinheadersepcolour",
+        'desc'      => "Colour of Separator Bar in Header",
+        'csssel'    => "#title",
+        'attr'      => "border-right-color"
     ),
     array
     (
-        name    => "skinsidebarbg",
-        desc    => "Sidebar Background",
-        csssel  => ".sidebar, .tdsidebar",
-        attr    => "background-color"
+        'name'      => "skinsidebarbg",
+        'desc'      => "Sidebar Background",
+        'csssel'    => ".sidebar, .tdsidebar",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinsbwidgetbg",
-        desc    => "Sidebar Widgets Background",
-        csssel  => ".sidebarlist",
-        attr    => "background-color"
+        'name'      => "skinsbwidgetbg",
+        'desc'      => "Sidebar Widgets Background",
+        'csssel'    => ".sidebarlist",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinsbwidgetfg",
-        desc    => "Sidebar Widgets Text Colour",
-        csssel  => ".sidebarlist",
-        attr    => "color"
+        'name'      => "skinsbwidgetfg",
+        'desc'      => "Sidebar Widgets Text Colour",
+        'csssel'    => ".sidebarlist",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinsblegendbg",
-        desc    => "Sidebar Widget Title Background",
-        csssel  => ".sidebarlist > legend",
-        attr    => "background-color"
+        'name'      => "skinsblegendbg",
+        'desc'      => "Sidebar Widget Title Background",
+        'csssel'    => ".sidebarlist > legend",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinsblegendfg",
-        desc    => "Sidebar Widget Title Text Colour",
-        csssel  => ".sidebarlist > legend",
-        attr    => "color"
+        'name'      => "skinsblegendfg",
+        'desc'      => "Sidebar Widget Title Text Colour",
+        'csssel'    => ".sidebarlist > legend",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinsblistdiv",
-        desc    => "Sidebar/Action Lists Divider Colour",
-        csssel  => ".sidebarlist li, #postaction li",
-        attr    => "border-top-color"
+        'name'      => "skinsblistdiv",
+        'desc'      => "Sidebar/Action Lists Divider Colour",
+        'csssel'    => ".sidebarlist li, #postaction li",
+        'attr'      => "border-top-color"
     ),
     array
     (
-        name    => "skinsblink",
-        desc    => "Sidebar Widget Hyperlinks",
-        csssel  => ".sidebarlist a",
-        attr    => "color"
+        'name'      => "skinsblink",
+        'desc'      => "Sidebar Widget Hyperlinks",
+        'csssel'    => ".sidebarlist a",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skincalcaption",
-        desc    => "Sidebar Calendar Caption Colour",
-        csssel  => "#wp-calendar caption",
-        attr    => "color"
+        'name'      => "skincalcaption",
+        'desc'      => "Sidebar Calendar Caption Colour",
+        'csssel'    => "#wp-calendar caption",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skincalheaderbg",
-        desc    => "Sidebar Calendar Column Header Background",
-        csssel  => "#wp-calendar thead th, #wp-calendar tfoot td.pad",
-        attr    => "background-color"
+        'name'      => "skincalheaderbg",
+        'desc'      => "Sidebar Calendar Column Header Background",
+        'csssel'    => "#wp-calendar thead th, #wp-calendar tfoot td.pad",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skincalheaderfg",
-        desc    => "Sidebar Calendar Column Header Text Colour",
-        csssel  => "#wp-calendar thead th",
-        attr    => "color"
+        'name'      => "skincalheaderfg",
+        'desc'      => "Sidebar Calendar Column Header Text Colour",
+        'csssel'    => "#wp-calendar thead th",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skincalcellfg",
-        desc    => "Sidebar Calendar Entries Text Colour",
-        csssel  => "#wp-calendar tbody td",
-        attr    => "color"
+        'name'      => "skincalcellfg",
+        'desc'      => "Sidebar Calendar Entries Text Colour",
+        'csssel'    => "#wp-calendar tbody td",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skincalnpbg",
-        desc    => "Sidebar Calendar Next/Prev Links Background",
-        csssel  => "#wp-calendar #next, #wp-calendar #prev",
-        attr    => "background-color"
+        'name'      => "skincalnpbg",
+        'desc'      => "Sidebar Calendar Next/Prev Links Background",
+        'csssel'    => "#wp-calendar #next, #wp-calendar #prev",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skincalnpfg",
-        desc    => "Sidebar Calendar Next/Prev Links Text Colour",
-        csssel  => "#wp-calendar #next, #wp-calendar #prev, #wp-calendar tfoot a",
-        attr    => "color"
+        'name'      => "skincalnpfg",
+        'desc'      => "Sidebar Calendar Next/Prev Links Text Colour",
+        'csssel'    => "#wp-calendar #next, #wp-calendar #prev, #wp-calendar tfoot a",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skintextwdgtfg",
-        desc    => "Sidebar Text Widget Text Colour",
-        csssel  => ".textwidget",
-        attr    => "color"
+        'name'      => "skintextwdgtfg",
+        'desc'      => "Sidebar Text Widget Text Colour",
+        'csssel'    => ".textwidget",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skincontentbg",
-        desc    => "Main Content Background",
-        csssel  => "#content",
-        attr    => "background-color"
+        'name'      => "skincontentbg",
+        'desc'      => "Main Content Background",
+        'csssel'    => "#content",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinpostpagebg",
-        desc    => "Post or Page Entry Background",
-        csssel  => ".post > fieldset",
-        attr    => "background-color"
+        'name'      => "skinpostpagebg",
+        'desc'      => "Post or Page Entry Background",
+        'csssel'    => ".post > fieldset",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinpostpagefg",
-        desc    => "Post or Page Entry Text Colour",
-        csssel  => ".entry",
-        attr    => "color"
+        'name'      => "skinpostpagefg",
+        'desc'      => "Post or Page Entry Text Colour",
+        'csssel'    => ".entry",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinpptitlebg",
-        desc    => "Post, Page, Comments Title Background",
-        csssel  => ".post .title, #comments > legend, .comment > legend, #responsebox > legend",
-        attr    => "background-color"
+        'name'      => "skinpptitlebg",
+        'desc'      => "Post, Page, Comments Title Background",
+        'csssel'    => ".post .title, #comments > legend, .comment > legend, #responsebox > legend",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinpptitlefg",
-        desc    => "Post, Page, Comments Title Text Colour",
-        csssel  => ".post .title, .post .title a, " .
+        'name'      => "skinpptitlefg",
+        'desc'      => "Post, Page, Comments Title Text Colour",
+        'csssel'    => ".post .title, .post .title a, " .
                     "#comments > legend, .comment > legend, #responsebox > legend",
-        attr    => "color"
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinmetabarbg",
-        desc    => "Post/Page/Comment Bottom Bar Background",
-        csssel  => ".postmetadata",
-        attr    => "background-color"
+        'name'      => "skinmetabarbg",
+        'desc'      => "Post/Page/Comment Bottom Bar Background",
+        'csssel'    => ".postmetadata",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skincattagbg",
-        desc    => "Category/Tag Lists Background",
-        csssel  => ".postcattags",
-        attr    => "background-color"
+        'name'      => "skincattagbg",
+        'desc'      => "Category/Tag Lists Background",
+        'csssel'    => ".postcattags",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skincattagfg",
-        desc    => "Category/Tag Lists Text/Link Colour",
-        csssel  => ".postcattags, .postcattags a",
-        attr    => "color"
+        'name'      => "skincattagfg",
+        'desc'      => "Category/Tag Lists Text/Link Colour",
+        'csssel'    => ".postcattags, .postcattags a",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skin1cattagbubblebg",
-        desc    => "Single Post Cat/Tag Bubble Background",
-        csssel  => "#single .postcattags .capsule",
-        attr    => "background-color"
+        'name'      => "skin1cattagbubblebg",
+        'desc'      => "Single Post Cat/Tag Bubble Background",
+        'csssel'    => "#single .postcattags .capsule",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skin1cattagbubblefg",
-        desc    => "Single Post Cat/Tag Bubble Text/Link Colour",
-        csssel  => "#single .postcattags .capsule, #single .postcattags .capsule a",
-        attr    => "color"
+        'name'      => "skin1cattagbubblefg",
+        'desc'      => "Single Post Cat/Tag Bubble Text/Link Colour",
+        'csssel'    => "#single .postcattags .capsule, #single .postcattags .capsule a",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinbqbg",
-        desc    => "Blockquote Background",
-        csssel  => "blockquote",
-        attr    => "background-color"
+        'name'      => "skinbqbg",
+        'desc'      => "Blockquote Background",
+        'csssel'    => "blockquote",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinbqfg",
-        desc    => "Blockquote Text Colour",
-        csssel  => "blockquote",
-        attr    => "color"
+        'name'      => "skinbqfg",
+        'desc'      => "Blockquote Text Colour",
+        'csssel'    => "blockquote",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinlistbg",
-        desc    => "Page/Post Ordered/Unordered List Background",
-        csssel  => ".entry UL, .entry OL",
-        attr    => "background-color"
+        'name'      => "skinlistbg",
+        'desc'      => "Page/Post Ordered/Unordered List Background",
+        'csssel'    => ".entry UL, .entry OL",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinlistfg",
-        desc    => "Page/Post Ordered/Unordered Text Colour",
-        csssel  => ".entry UL, .entry OL",
-        attr    => "color"
+        'name'      => "skinlistfg",
+        'desc'      => "Page/Post Ordered/Unordered Text Colour",
+        'csssel'    => ".entry UL, .entry OL",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinpost1stletterfg",
-        desc    => "Post First Letter Colour",
-        csssel  => ".entry > P:first-child:first-letter",
-        attr    => "color"
+        'name'      => "skinpost1stletterfg",
+        'desc'      => "Post First Letter Colour",
+        'csssel'    => ".entry > P:first-child:first-letter",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinactionbg",
-        desc    => "Action Bubbles (Edit, Reply, etc) Background",
-        csssel  => ".actbubble",
-        attr    => "background-color"
+        'name'      => "skinactionbg",
+        'desc'      => "Action Bubbles (Edit, Reply, etc) Background",
+        'csssel'    => ".actbubble",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skinactionfg",
-        desc    => "Action Bubbles (Edit, Reply, etc) Text Colour",
-        csssel  => ".actbubble, .actbubble a",
-        attr    => "color"
+        'name'      => "skinactionfg",
+        'desc'      => "Action Bubbles (Edit, Reply, etc) Text Colour",
+        'csssel'    => ".actbubble, .actbubble a",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skincommentsbg",
-        desc    => "Comments Block Background",
-        csssel  => "#comments",
-        attr    => "background-color"
+        'name'      => "skincommentsbg",
+        'desc'      => "Comments Block Background",
+        'csssel'    => "#comments",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skincommentbg",
-        desc    => "Comment Background",
-        csssel  => "fieldset.comment, fieldset.comment .commenttext",
-        attr    => "background-color"
+        'name'      => "skincommentbg",
+        'desc'      => "Comment Background",
+        'csssel'    => "fieldset.comment, fieldset.comment .commenttext",
+        'attr'      => "background-color"
     ),
     array
     (
-        name    => "skincommentfg",
-        desc    => "Comment Text Colour",
-        csssel  => "fieldset.comment .commenttext",
-        attr    => "color"
+        'name'      => "skincommentfg",
+        'desc'      => "Comment Text Colour",
+        'csssel'    => "fieldset.comment .commenttext",
+        'attr'      => "color"
     ),
     array
     (
-        name    => "skinresponsebg",
-        desc    => "Response Box Background",
-        csssel  => "#responsebox",
-        attr    => "background-color"
+        'name'      => "skinresponsebg",
+        'desc'      => "Response Box Background",
+        'csssel'    => "#responsebox",
+        'attr'      => "background-color"
     )
 );
 
@@ -732,7 +735,7 @@ function save_options()
 {
     global $_POST, $options;
 
-    if( $_POST['skinupdate'] == 'on' )
+    if( isset($_POST['skinupdate']) && $_POST['skinupdate'] == 'on' )
         if( ! update_skins() )
             return;
 
@@ -921,7 +924,8 @@ function update_skins()
             => ".actbubble, .actbubble a",
         "fieldset#comments"                         => "#comments",
         "fieldset#responsebox"                      => "#responsebox",
-        "#sidebar, #tdsidebar"                      => ".sidebar, .tdsidebar"
+        "#sidebar, #tdsidebar"                      => ".sidebar, .tdsidebar",
+        "#replytext"                                => "#comment"
     );
 
     // TODO: some of this code is common to skins_menu() and should be

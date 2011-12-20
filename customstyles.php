@@ -7,7 +7,8 @@
     global $options, $current_user;
     $skin = $options['skin'];
     get_currentuserinfo();
-    if( isset($current_user) && $current_user->user_level == 10 && $_GET['ahimsaskin'] != "" )
+    if( isset($current_user) && $current_user->user_level == 10 && 
+            isset($_GET['ahimsaskin']) && $_GET['ahimsaskin'] != "" )
         $skin = $_GET['ahimsaskin'];
 
     if( $skin != "none" && preg_match("/^[a-zA-Z0-9]+(\-[a-zA-Z0-9]+)*$/", $skin) )

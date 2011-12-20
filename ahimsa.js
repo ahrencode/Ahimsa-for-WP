@@ -9,43 +9,28 @@ function fadeBlock(id)
     return;
 }
 
-function slideBlock(id, side, cb)
-{
-    if( jQuery(id).is(':visible') )
-        jQuery(id).hide("slide", { direction: side }, 600, cb);
-    else
-        jQuery(id).show("slide", { direction: side }, 600, cb);
-
-    return;
-}
-
-
 function slideSideBar(side)
 {
     if( ! document.getElementById('sidebar'+side) )
         return;
 
-    tdsb = document.getElementById('tdsidebar'+side);
-    sb = document.getElementById('sidebar'+side);
+    var tdid = '#tdsidebar'+side;
+    var sbid = '#sidebar'+side;
 
-    tdsb.style.backgroundColor = jQuery('#content').css('background-color');
-
-    curstatus = sb.style.display;
-
-    if( curstatus == 'none' )
+    if( jQuery(sbid).is(':visible') )
     {
-        contentCurve(side, '0px');
-        //jQuery('#tdsidebar'+side).show();
-        cb = function() { };
+        contentCurve(side, '30px');
+        //jQuery(tdid).css('background-color', jQuery('#content').css('background-color'));
+        jQuery(sbid).hide("slide", { direction: side }, 600, function() { jQuery(tdid).hide(); });
+
     }
     else
     {
-        contentCurve(side, '30px');
-        // cb = function() { jQuery('#tdsidebar'+side).hide(); }
-        cb = function() { };
+        contentCurve(side, '0px');
+        jQuery(tdid).show();
+        //jQuery(tdid).css('background-color', jQuery(sbid).css('background-color'));
+        jQuery(sbid).show("slide", { direction: side }, 600);
     }
-
-    slideBlock('#sidebar'+side, side, cb);
 }
 
 function contentCurve(side, size)
@@ -144,47 +129,13 @@ jQuery(document).ready
 (
     function()
     {
+        // add our classes to WP generated elements
+        reclass_wp_elements();
+
         // display vertical or rotated text depending on browser support
         // test in the order of browser popularity to save a few cycles ;-)
         // checking to see if at least one sidebar is active/defined...
-        if( jQuery('#sidebartableft').length > 0 )
-            tab = '#sidebartableft';
-        else
-        if( jQuery('#sidebartabright').length > 0 )
-            tab = '#sidebartabright';
-        else
-            tab = "";
-        if( tab != "" )
-        {
-            // safari returns the CSS property even if it doesn't implement it
-            // so we have a special check below for safari3 which does not
-            // support CSS transform
-            var safari3re = /Version\/3\.0.*Safari/;
-            if( !safari3re.test(navigator.appVersion) &&
-                ((jQuery(tab).css('filter') != '' &&
-                    jQuery(tab).css('filter') != 'none') ||
-                (jQuery(tab).css('-moz-transform') != '' &&
-                    jQuery(tab).css('-moz-transform') != 'none') ||
-                (jQuery(tab).css('-webkit-transform') != '' &&
-                    jQuery(tab).css('-webkit-transform') != 'none') ||
-                (jQuery(tab).css('-o-transform') != '' &&
-                    jQuery(tab).css('-o-transform') != 'none')) )
-            {
-                jQuery('#sidebartableft').addClass('sidebartableftrotated');
-                jQuery('#sidebartabright').addClass('sidebartabrightrotated');
-                jQuery('.sidebartabnorotatetext').hide();
-                jQuery('.sidebartabrotatedtext').show();
-            }
-            else
-            {
-                jQuery('.sidebartab').addClass('sidebartabnorotate');
-                jQuery('#sidebartableft').addClass('sidebartableftnorotate');
-                jQuery('#sidebartabright').addClass('sidebartabrightnorotate');
-                jQuery('.sidebartabrotatedtext').hide();
-                jQuery('.sidebartabnorotatetext').show();
-            }
-            jQuery('.sidebartab').show();
-        }
+        sidebartab_setup();
         
         // support for faded bottom bar in index page
         jQuery('.fadedbottombar').hover(
@@ -192,15 +143,15 @@ jQuery(document).ready
                 function() { jQuery(this).css('opacity', '0.3'); }
         );
 
-        // display tags permitted in comments when focus is on response box
-        jQuery('#replytext').focus(function() { jQuery('#commenthint').fadeIn(); });
-        jQuery('#replytext').blur(function() { jQuery('#commenthint').fadeOut(); });
-
         // display Comment edit/reply bottombar on hover
         jQuery('.comment').hover(
                 function() { jQuery(this).children('.replybuttonbox').css('visibility', 'visible'); },
                 function() { jQuery(this).children('.replybuttonbox').css('visibility', 'hidden'); }
         );
+
+        // display tags permitted in comments when focus is on response box
+        jQuery('#comment').focus(function() { jQuery('.form-allowed-tags').fadeIn(); });
+        jQuery('#comment').blur(function() { jQuery('.form-allowed-tags').fadeOut(); });
 
         // if user has declared a DIV of type "download" then make the whole thing clickable
         // We could have used a shortcode for this, but shortcodes are not expanded for RSS feeds.
@@ -208,5 +159,83 @@ jQuery(document).ready
         (
             function() { document.location = jQuery(this).find('.downlink').attr('href'); }
         );
+
+        // style and add prefix text for sourcelink
+        sourcelink_setup();
     }
 );
+
+
+function reclass_wp_elements()
+{
+    // add classes to the comment submit button
+    if( jQuery('#submit').length )
+    {
+        jQuery('#submit').addClass('capsule');
+        jQuery('#submit').addClass('actbubble');
+    }
+
+    // move the WP inserted comment form container outside ours for custom styling reasons
+    if( jQuery('#respond').length )
+    {
+        var responsebox = jQuery('#responsebox').detach();
+        jQuery('#respond').wrapInner(responsebox);
+
+        var cancel = jQuery('#cancel-comment-reply-link').detach();
+        jQuery('#submit').after(cancel);
+        jQuery('#cancel-comment-reply').show();
+    }
+}
+
+
+function sidebartab_setup()
+{
+    if( jQuery('#sidebartableft').length > 0 )
+        tab = '#sidebartableft';
+    else
+    if( jQuery('#sidebartabright').length > 0 )
+        tab = '#sidebartabright';
+    else
+        tab = "";
+    if( tab != "" )
+    {
+        // safari returns the CSS property even if it doesn't implement it
+        // so we have a special check below for safari3 which does not
+        // support CSS transform
+        var safari3re = /Version\/3\.0.*Safari/;
+        if( !safari3re.test(navigator.appVersion) &&
+            ((jQuery(tab).css('filter') != '' &&
+                jQuery(tab).css('filter') != 'none') ||
+            (jQuery(tab).css('-moz-transform') != '' &&
+                jQuery(tab).css('-moz-transform') != 'none') ||
+            (jQuery(tab).css('-webkit-transform') != '' &&
+                jQuery(tab).css('-webkit-transform') != 'none') ||
+            (jQuery(tab).css('-o-transform') != '' &&
+                jQuery(tab).css('-o-transform') != 'none')) )
+        {
+            jQuery('#sidebartableft').addClass('sidebartableftrotated');
+            jQuery('#sidebartabright').addClass('sidebartabrightrotated');
+            jQuery('.sidebartabnorotatetext').hide();
+            jQuery('.sidebartabrotatedtext').show();
+        }
+        else
+        {
+            jQuery('.sidebartab').addClass('sidebartabnorotate');
+            jQuery('#sidebartableft').addClass('sidebartableftnorotate');
+            jQuery('#sidebartabright').addClass('sidebartabrightnorotate');
+            jQuery('.sidebartabrotatedtext').hide();
+            jQuery('.sidebartabnorotatetext').show();
+        }
+        jQuery('.sidebartab').show();
+    }
+}
+
+function sourcelink_setup()
+{
+    jQuery('.sourcelink').wrap('<div class="sourceboxtext" />');
+    jQuery('.sourceboxtext').prepend('This post includes content from, and/or is a response to ');
+    jQuery('.sourceboxtext').wrap('<div class="sourcelinkbox" />');
+    jQuery('.sourcelinkbox').prepend('<div class="sourcemarker">&rarr;</div>');
+    jQuery('.sourcelinkbox').append('<div style="height: 1px; clear: both;"></div>');
+}
+
