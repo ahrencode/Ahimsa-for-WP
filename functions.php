@@ -8,44 +8,57 @@ load_theme_textdomain('ahimsa');
 // required by WP
 add_theme_support('automatic-feed-links');
 
-if( ! is_array(get_option('ahimsa')) )
-    add_option('ahimsa', array('init' => 1));
+// support for post formats -- not ready yet!
+//add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'video', 'chat'));
 
-$options = get_option('ahimsa');
-$sectprefix = $options['sectprefix'] ? "&sect;&nbsp;" : "";
+read_init_options();
 
-# defaults
-if( ! isset($options['showloginout'     ]) ) $options['showloginout'    ] = 1;
-if( ! isset($options['showauthors'      ]) ) $options['showauthors'     ] = 1;
-if( ! isset($options['defhidesidebar'   ]) ) $options['defhidesidebar'  ] = 0;
-if( ! isset($options['defhidesbpages'   ]) ) $options['defhidesbpages'  ] = 1;
-if( ! isset($options['sectprefix'       ]) ) $options['sectprefix'      ] = 1;
-if( ! isset($options['idxfadepmeta'     ]) ) $options['idxfadepmeta'    ] = 0;
-if( ! isset($options['showpagemeta'     ]) ) $options['showpagemeta'    ] = 1;
-if( ! isset($options['showpageactions'  ]) ) $options['showpageactions' ] = 1;
-if( ! isset($options['iecorners'        ]) ) $options['iecorners'       ] = 0;
-if( ! isset($options['showdelic'        ]) ) $options['showdelic'       ] = 0;
-if( ! isset($options['delicid'          ]) ) $options['delicid'         ] = "";
-if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = __("Recent News and Links", "ahimsa");
-if( ! isset($options['copyright'        ]) ) $options['copyright'       ] = "";
-if( ! isset($options['skin'             ]) ) $options['skin'            ] = "none";
-if( ! isset($options['logourl'          ]) ) $options['logourl'         ] = "";
-if( ! isset($options['commentguide'     ]) ) $options['commentguide'    ] = "";
-# end defaults
-
-update_option('ahimsa', $options);
-
-# setup admin menu
+// setup admin menu
 add_action('admin_menu', 'ahimsa_admin_menu');
 
+// add sidebars
 if ( function_exists('register_sidebar') )
     add_sidebars();
 
+#-------------------------------------------------------------------------------
+function read_init_options()
+{
+    global $options;
+
+    if( ! is_array(get_option('ahimsa')) )
+        add_option('ahimsa', array('init' => 1));
+
+    $options = get_option('ahimsa');
+
+    # defaults
+    if( ! isset($options['showloginout'     ]) ) $options['showloginout'    ] = 1;
+    if( ! isset($options['showauthors'      ]) ) $options['showauthors'     ] = 1;
+    if( ! isset($options['defhidesidebar'   ]) ) $options['defhidesidebar'  ] = 0;
+    if( ! isset($options['defhidesbpages'   ]) ) $options['defhidesbpages'  ] = 1;
+    if( ! isset($options['sectprefix'       ]) ) $options['sectprefix'      ] = 1;
+    if( ! isset($options['idxfadepmeta'     ]) ) $options['idxfadepmeta'    ] = 0;
+    if( ! isset($options['showpagemeta'     ]) ) $options['showpagemeta'    ] = 1;
+    if( ! isset($options['showpageactions'  ]) ) $options['showpageactions' ] = 1;
+    if( ! isset($options['iecorners'        ]) ) $options['iecorners'       ] = 0;
+    if( ! isset($options['showdelic'        ]) ) $options['showdelic'       ] = 0;
+    if( ! isset($options['delicid'          ]) ) $options['delicid'         ] = "";
+    if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = __("Recent News and Links", "ahimsa");
+    if( ! isset($options['googlefonts'      ]) ) $options['googlefonts'     ] = "";
+    if( ! isset($options['copyright'        ]) ) $options['copyright'       ] = "";
+    if( ! isset($options['skin'             ]) ) $options['skin'            ] = "none";
+    if( ! isset($options['logourl'          ]) ) $options['logourl'         ] = "";
+    if( ! isset($options['commentguide'     ]) ) $options['commentguide'    ] = "";
+    # end defaults
+
+    update_option('ahimsa', $options);
+}
 
 #-------------------------------------------------------------------------------
 function add_sidebars()
 {
-    global $options, $sectprefix;
+    global $options;
+
+    $sectprefix = $options['sectprefix'] ? "&sect;&nbsp;" : "";
 
     register_sidebar(array(
         'name' => 'leftbar',
@@ -72,7 +85,7 @@ function ahimsa_admin_menu()
 #-------------------------------------------------------------------------------
 function ahimsa_options()
 {
-    global $options;
+    global $options, $sectprefix;
 
     // TODO: sneak this in here for now
     check_store_mksymlinks();
@@ -82,15 +95,18 @@ function ahimsa_options()
 
     print
     "
+        <form id='settings' action='' method='post' class='themeform' style='margin: 20px;'>
+
         <div style=
                 '
                     clear: right;
                     float: right;
-                    margin: 10px 10px 10px 30px;
+                    margin: 30px;
                     background-color: #fff3cc;
                     color: #000000;
-                    padding: 10px;
-                    border: 1px solid #ddc055; width: 25%;
+                    padding: 10px 20px;
+                    border: 1px solid #ddc055;
+                    width: 250px;
                 '
         >
             <h3>Keep up with Ahimsa For WordPress</h3>
@@ -103,7 +119,6 @@ function ahimsa_options()
             <ul>
             <li style='list-style-type: circle; margin-left: 10px;'>
                 Twitter:
-                <a href='http://search.twitter.com/search?q=%23ahimsa-wp'>Ahimsa</a> |
                 <a href='http://twitter.com/ahrencode/'>Ahren Code</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
@@ -111,7 +126,7 @@ function ahimsa_options()
                 href='http://www.facebook.com/ahrencode'>Facebook</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://ahren.org/code/tag/ahimsa'>Blog</a>
+                <a href='http://code.ahren.org/tag/ahimsa'>Blog</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
                 GitHub:
@@ -125,11 +140,12 @@ function ahimsa_options()
                 '
                     clear: right;
                     float: right;
-                    margin: 10px 10px 10px 30px;
+                    margin: 30px;
                     background-color: #fff3cc;
                     color: #000000;
-                    padding: 10px;
-                    border: 1px solid #ddc055; width: 25%;
+                    padding: 10px 20px;
+                    border: 1px solid #ddc055;
+                    width: 250px;
                 '
         >
             Want to add your own funky JavaScript or some such in the footer?
@@ -149,9 +165,6 @@ function ahimsa_options()
         "
         </div>
 
-        <form id='settings' action='' method='post' class='themeform'
-            style='margin: 20px;'>
-
             <h3>General</h3>
 
             <input type='hidden' id='action' name='action' value='save'>
@@ -160,6 +173,47 @@ function ahimsa_options()
                 ($options['showloginout'] == 1 ? ' checked' : '') . " />
             <label style='margin-left: 5px;' for='showloginout'>
                 Show Login/Logout option in Top Menu</label><br />
+
+            <input type='checkbox' name='idxfadepmeta' id='idxfadepmeta'" .
+                ($options['idxfadepmeta'] == 1 ? ' checked' : '') .  " />
+            <label style='margin-left: 5px;' for='idxfadepmeta'>
+                In index/home page, fade category, tag, comment links
+                unless hovered over</label> (does not work in IE)</label><br />
+
+            <input type='checkbox' name='iecorners' id='iecorners'" .
+                ($options['iecorners'] == 1 ? ' checked' : '') .  " />
+            <label style='margin-left: 5px;' for='iecorners'>
+                Turn on <b>experimental</b> and <b>partial</b> support for
+                rounded corners in IE
+            </label><br />
+
+            <br />
+
+            <label style='margin-left: 5px;' for='googlefonts'>
+                Comma separated list of
+                <a href='http://www.google.com/webfonts'>Google Fonts</a>
+                (use them in your <code>custom.css</code>):
+            </label><br />
+            <input type='text' size='50' name='googlefonts' id='googlefonts'
+                value='$options[googlefonts]' />
+
+            <br />
+
+            <label style='margin-left: 5px;' for='copyright'>
+                Copyright text:
+            </label><br />
+            <input type='text' size='50' name='copyright' id='copyright'
+                value='$options[copyright]' />
+
+            <br />
+
+            <label style='margin-left: 5px;' for='logourl'>
+                URL for logo:
+            </label><br />
+            <input type='text' size='50' name='logourl' id='logourl'
+                value='$options[logourl]' />
+
+            <h3>Sidebar</h3>
 
             <input type='checkbox' name='showauthors' id='showauthors'" .
                 ($options['showauthors'] == 1 ? ' checked' : '') . " />
@@ -180,11 +234,11 @@ function ahimsa_options()
             <label style='margin-left: 5px;' for='sectprefix'>
                 Show &sect; symbol as prefix for section headers in sidebar</label><br />
 
-            <input type='checkbox' name='idxfadepmeta' id='idxfadepmeta'" .
-                ($options['idxfadepmeta'] == 1 ? ' checked' : '') .  " />
-            <label style='margin-left: 5px;' for='idxfadepmeta'>
-                In index/home page, fade category, tag, comment links
-                unless hovered over</label> (does not work in IE)</label><br />
+            <h3>Pages</h3>
+
+            (also see Sidebar section above)
+            <br />
+            <br />
 
             <input type='checkbox' name='showpagemeta' id='showpagemeta'" .
                 ($options['showpagemeta'] == 1 ? ' checked' : '') .  " />
@@ -196,35 +250,11 @@ function ahimsa_options()
             <label style='margin-left: 5px;' for='showpageactions'>
                 Show actions and comment feed link box for pages</label><br />
 
-            <input type='checkbox' name='iecorners' id='iecorners'" .
-                ($options['iecorners'] == 1 ? ' checked' : '') .  " />
-            <label style='margin-left: 5px;' for='iecorners'>
-                Turn on <b>experimental</b> and <b>partial</b> support for
-                rounded corners in IE
-            </label><br />
-
-            <br />
-
-            <label style='margin-left: 5px;' for='copyright'>
-                Copyright text:
-            </label>
-            <input type='text' size='50' name='copyright' id='copyright'
-                value='$options[copyright]' />
-
-            <br />
-
-            <label style='margin-left: 5px;' for='logourl'>
-                URL for logo:
-            </label>
-            <input type='text' size='50' name='logourl' id='logourl'
-                value='$options[logourl]' />
-
-            <br />
-            <br />
+            <h3>Comments</h3>
 
             Custom text (instructions) to display next to comment box: <br />
-            <textarea name='commentguide' id='commentguide'
-            rows=5 cols=60>" . stripslashes($options[commentguide]) . "</textarea>
+            <textarea name='commentguide' id='commentguide' rows=5 cols=60>" .
+                stripslashes($options['commentguide']) . "</textarea>
 
             <br/>
             <br/>
@@ -254,15 +284,13 @@ function ahimsa_options()
             <br clear='all' />
             <hr size='1' />
 
-            <h3>Ahimsa Skins</h3>
-
             <div style='
                     background-color: #fff3cc;
                     color: #000000;
-                    padding: 10px;
+                    padding: 10px 20px;
                     border: 1px solid #ddc055;
-                    margin: 0px 5px 15px 30px;
-                    width: 30%;
+                    margin: 20px 30px;
+                    width: 250px;
                     float: right;
                     clear: right;
                     '>
@@ -288,9 +316,11 @@ function ahimsa_options()
                 <br />
 
                 Want to share your skin with others? Look up the instructions on the
-                <a href='http://ahren.org/code/ahimsa/'>Ahimsa Page</a>.
+                <a href='http://code.ahren.org/ahimsa/'>Ahimsa Page</a>.
 
             </div>
+
+            <h3>Ahimsa Skins</h3>
 
             <input type='checkbox' name='skinupdate' id='skinupdate' />
             <label style='margin-left: 5px;' for='skinupdate'>Update Skins</label>
@@ -757,6 +787,7 @@ function save_options()
     $options['delictitle']      = ( isset($_POST['delictitle']) ) ? $_POST['delictitle']
                                     : __("Recent News and Links", "ahimsa");
     $options['copyright']       = ( isset($_POST['copyright']) ) ? $_POST['copyright'] : "";
+    $options['googlefonts']     = ( isset($_POST['googlefonts']) ) ? $_POST['googlefonts'] : "";
     $options['skin']            = ( isset($_POST['skin']) ) ? $_POST['skin'] : "none";
     $options['logourl']         = ( isset($_POST['logourl']) ) ? $_POST['logourl'] : "";
     $options['commentguide']    = ( isset($_POST['commentguide']) ) ? $_POST['commentguide'] : "";

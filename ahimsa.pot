@@ -288,7 +288,7 @@ msgid "Ahimsa"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://ahren.org/code/ahimsa"
+msgid "http://code.ahren.org/ahimsa"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -297,8 +297,8 @@ msgid ""
 "custom CSS and footer, low graphics, minimal distractions, with rounded "
 "corners in Firefox, Safari, Chrome (some support in IE). New for version "
 "3.1: PLEASE NOTE: You may need to run a custom plugin with this update. "
-"Please, please visit <a href='http://ahren.org/code/bit/ahimsa-wp-"
-"3dot1'>http://ahren.org/code/bit/ahimsa-wp-3dot1</a> for details on that and "
+"Please, please visit <a href='http://code.ahren.org/bit/ahimsa-wp-"
+"3dot1'>http://code.ahren.org/bit/ahimsa-wp-3dot1</a> for details on that and "
 "other issues (including a comprehensive list of changes). If you are not "
 "going to install and use the plugin, and you have created custom skins or "
 "used a custom stylesheet or footer, <b>PLEASE backup your theme files</b> "
@@ -310,7 +310,7 @@ msgid "Ravi Sarma"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://ahren.org/code/"
+msgid "http://code.ahren.org/"
 msgstr ""
 
 #. Tags of the plugin/theme

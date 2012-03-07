@@ -37,7 +37,7 @@ blog. Skins can be used to customise the colour scheme of the theme
 to your liking. You can even share your skins with other users. See
 the Customisation section of the Ahimsa page:
 
-http://ahren.org/code/ahimsa/
+http://code.ahren.org/ahimsa
 
 Custom Styling
 --------------

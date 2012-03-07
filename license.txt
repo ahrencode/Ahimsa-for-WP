@@ -1,5 +1,5 @@
 /*
-   Copyright 2009-2010  Ahren Code, code@ahren.org, http://ahren.org/code
+   Copyright 2009-2012  Ahren Code, code@ahren.org, http://code.ahren.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License version 2,

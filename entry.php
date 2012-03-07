@@ -36,7 +36,7 @@
 
                     <?php
                                 
-                        if (('open' == $post-> comment_status) && ('open' == $post->ping_status))
+                        if (('open' == $post->comment_status) && ('open' == $post->ping_status))
                         {
                             print "
                                 <li> <a href='#respond'>" . __('Add Comment', 'ahimsa') . "</a> </li>

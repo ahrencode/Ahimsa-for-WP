@@ -23,7 +23,20 @@
         content="WordPress <?php bloginfo('version'); ?>"
     /> <!-- leave this for stats -->
 
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <?php 
+        global $options;
+        if( $options['googlefonts'] != "" )
+        {
+            foreach( preg_split('/,[ ]*/', $options['googlefonts']) as $gfont )
+            {
+                $gfont = str_replace(' ', '+', $gfont);
+    ?>
+        <link href='http://fonts.googleapis.com/css?family=<?php print $gfont; ?>'
+            rel='stylesheet' type='text/css'>
+    <?
+            }
+        }
+    ?>
 
     <link
         rel="stylesheet"

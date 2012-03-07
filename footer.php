@@ -18,7 +18,7 @@
 &nbsp;
 &raquo;&nbsp;
 <?php _e('Style:', 'ahimsa'); ?>
-<a href='http://ahren.org/code/ahimsa'><?php _e('Ahren Ahimsa', 'ahimsa'); ?></a>
+<a href='http://code.ahren.org/ahimsa'><?php _e('Ahren Ahimsa', 'ahimsa'); ?></a>
 </div>
 
 <?php

@@ -1,14 +1,14 @@
 /*  
 Theme Name: Ahimsa
-Theme URI: http://ahren.org/code/ahimsa
+Theme URI: http://code.ahren.org/ahimsa
 Description: Ahimsa -- customisable collapsible sidebars, skinnable colour schemes, custom CSS and footer, low graphics, minimal distractions, with rounded corners in Firefox, Safari, Chrome (some support in IE). Built-in shortcodes for Fancybox image galleries and simple FAQ posts/pages.
 Version: 3.3
 Author: Ravi Sarma
-Author URI: http://ahren.org/code/
+Author URI: http://code.ahren.org/
 Tags: one-column, two-columns, three-columns, flexible-width, left-sidebar, right-sidebar, theme-options, threaded-comments, orange, red, white, yellow, custom-colors, translation-ready
 
 	 Ahimsa 3.3
-	 http://ahren.org/code/ahimsa
+	 http://code.ahren.org/ahimsa
 
 	Theme built for the Ahren Code site but free for all
     to use. The aim of this theme is to minimise the
@@ -52,11 +52,7 @@ IMG
 
 BLOCKQUOTE
 {
-    background-image: URL('images/quote.gif');
-    background-position: 2px 1px;
-    background-repeat: no-repeat;
-    background-color: #f0f0aa;
-    background-color: #fffccc;
+    background: url(images/quote.png) 0px 0px no-repeat #fffccc;
     color: #222222;
 }
 
@@ -643,7 +639,7 @@ LEGEND,
 LEGEND A,
 #recentheader
 {
-    font-family: "Trebuchet MS", "Droid Sans", sans-serif;
+    font-family: "Trebuchet MS", sans-serif;
     color: #ffffff;
 }
 
@@ -659,7 +655,7 @@ LEGEND A,
     padding: 10px 50px;
     padding-bottom: 40px;
     line-height: 180%;
-    font-size: 10pt;
+    font-size: 13px;
 }
 
 .entry,

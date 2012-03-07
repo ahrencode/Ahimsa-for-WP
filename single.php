@@ -1,10 +1,18 @@
 <?php get_header(); ?>
 
-<div id='single' style='width: 100%;'>
-    <?php include_once("entry.php"); ?>
-</div>
+<?php if( is_page() ) : ?>
+<div class='singlepage'>
+<?php elseif( is_single() ) : ?>
+<div class='singlepost'>
+<?php endif; ?>
 
-<?php comments_template(); ?>
+    <div id='single' style='width: 100%;'>
+        <?php include_once("entry.php"); ?>
+    </div>
+
+    <?php comments_template(); ?>
+
+</div> <!-- single page or post wrapper -->
 
 <?php get_footer(); ?>
 
