@@ -1,1 +1,1 @@
-<?php include_once("single.php"); ?>
+<?php include_once("singular.php"); ?>
