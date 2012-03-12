@@ -33,6 +33,18 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
         -->
         &nbsp;
 
+        <?php if( $comments_rss_url = get_post_comments_feed_link() ) : ?>
+            <div style='float: right; clear: right;' class='capsule actbubble'>
+                <a href='<?php print $comments_rss_url; ?>'><?php _e('Comments Feed', 'ahimsa'); ?></a>
+            </div>
+        <?php endif; ?>
+
+        <?php if( 'open' == $post->comment_status ) : ?>
+            <div style='float: right; margin-right: 10px;' class='capsule actbubble'>
+                <a href='#respond'><?php _e('Add Comment', 'ahimsa'); ?></a>
+            </div>
+        <?php endif ?>
+
         <ul>
             <?php wp_list_comments('type=all&style=ul&callback=custom_comment'); ?>
         </ul>
@@ -56,14 +68,19 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
 
 <?php endif; ?>
 
-<?php if ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
+<?php
+    if( comments_open() && ! post_password_required()
+        && post_type_supports(get_post_type(), 'comments') ) :
 
-    <!-- If comments are closed. -->
-    <span class='capsule nocomments'><?php _e('Comments are closed', 'ahimsa'); ?></span>
+    // below we use the WP generated reply template form by calling
+    // the WP function comment_form(). In our JS (currently ahimsa.js)
+    // this WP generated form is then moved into our responsebox
+    // fielset below. See relevant comments in ahimsa.js. This is a
+    // hack but I cannot think of any other way to style the reply form.
+ 
+    comment_form();
+ ?>
 
-<?php else : ?>
-
-    <?php comment_form(); ?>
     <fieldset id='responsebox'>
         <legend><?php _e('Leave a Reply', 'ahimsa'); ?></legend>
         <?php if( $options['commentguide'] != "" ) : ?>
@@ -73,5 +90,10 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
         <?php endif; ?>
     </fieldset>
 
-<?php endif; ?>
+<?php else : ?>
 
+    <!-- If comments are closed. -->
+    <div class='capsule nocomments'><?php _e('Comments are closed', 'ahimsa'); ?></div>
+    <div style='height: 1px; clear: both;'></div>
+
+<?php endif; ?>

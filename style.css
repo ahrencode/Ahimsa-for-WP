@@ -30,13 +30,13 @@ BODY
     width: 100%;
     border-style: none;
     background-color: #6f900d;
-    font-size: 9pt;
+    font-size: 90%;
     font-family: Helvetica, sans-serif;
 }
 
 A
 {
-    color: #772200;
+    color: #27a;
     text-decoration: none;
 }
 
@@ -70,8 +70,8 @@ BLOCKQUOTE,
 .entry UL,
 .entry OL
 {
-    margin: 15px 35px 25px 35px;
-    padding: 20px 40px 20px 40px;
+    margin: 20px 0px;
+    padding: 30px 40px;
     overflow: auto;
     border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -94,7 +94,7 @@ BLOCKQUOTE OL
     padding: 0px 30px !important;
 }
 
-.post LI
+.entry LI
 {
     padding: 4px 0px;
 	margin-left: 0px;
@@ -110,10 +110,8 @@ BLOCKQUOTE OL
 {
     text-align: center;
     padding: 4px 10px;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 8pt;
-    background-color: #cc9900;
-    color: #ffffff;
+    background-color: #c90;
+    color: #fff;
     border-radius: 10px; 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px; 
@@ -126,7 +124,7 @@ BLOCKQUOTE OL
 
 .actbubble a
 {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 #bgtop
@@ -170,7 +168,6 @@ BLOCKQUOTE OL
     background-color: #b70100;
     color: #ffffff;
     margin: 0;
-    padding: 20px;
     text-align: left;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
@@ -183,6 +180,7 @@ BLOCKQUOTE OL
 #header TABLE
 {
     color: #ffffff;
+    padding: 40px 30px;
     width: 100%;
 }
 
@@ -191,10 +189,18 @@ BLOCKQUOTE OL
     vertical-align: middle;
 }
 
+#title,
+LEGEND,
+LEGEND A
+{
+    font-family: "Trebuchet MS", sans-serif;
+    color: #ffffff;
+}
+
 #title
 {
     height: 20px;
-    font-size: 24pt;
+    font-size: 3.5em;
     padding-right: 15px;
     padding-left: 10px;
     border-right: 2px solid #ffdd00;
@@ -235,84 +241,88 @@ BLOCKQUOTE OL
     background-color: #000000;
     padding-left: 18px;
     color: #ffffff;
-    font-size: 8pt;
     height: 20px;
     border-radius: 11px;
     -moz-border-radius: 11px;
     -webkit-border-radius: 11px;
 }
 
-#recent
+/*--- HEADER MENU ---------------------------------------------------------*/
+
+#headermenu
 {
-    margin: 0px 0px 30px 0px;
-    padding: 10px 5px;
-    color: #ffffff;
-    background-color: #777777;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
+	clear: both;
+    background-color: #ddd;
+    padding: 0px 30px;
+	font-size: 1.2em;
 }
 
-#recentheader
+#headermenu UL
 {
-    padding: 5px 10px;
-    font-size: 13pt;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+    border: 0px none;
 }
 
-#recentmore
+#headermenu LI
 {
-    float: right;
-    font-size: 8pt;
-    background-color: #b70100;
-    cursor: pointer;
+	float: left;
+	position: relative;
+    line-height: 2.1em;
+    padding: 0px;
+    border: 0px none;
 }
 
-#recentclose
+#headermenu LI:hover
 {
-    background-color: #b70100;
-    color: #ffffff;
-    float: left;
-    clear: left;
-    padding: 1px 3px 3px 3px;
-    font-family: Verdana;
-    font-size: 11pt;
-    font-weight: bold;
-    margin-right: 8px;
-    cursor: pointer;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+    background-color: #fff;
 }
 
-#recentlist
+#headermenu A
 {
-    margin: 10px;
+    display: block;
+    color: #555;
+	padding: 0px 10px;
 }
 
-#recentlist UL
+#headermenu UL UL
 {
-    margin: 0px 0px 0px -20px;
+	display: none;
+	float: left;
+	position: absolute;
+	top: 2.1em; /* match #headermenu LI above */
+	left: 0;
+	width: 200px;
+    background-color: #ddd;
+    padding: 0;
+	z-index: 99999;
+    box-shadow: 2px 3px 4px #333;
+    -o-box-shadow: 2px 3px 4px #333;
+    -moz-box-shadow: 2px 3px 4px #333;
+    -webkit-box-shadow: 2px 3px 4px #333;
 }
 
-#recentlist UL LI
-{
-    list-style-type: none;
-    border-top: 1px solid #aaaaaa;
-    padding: 2px 5px;
-    font-size: 9pt;
+#headermenu UL UL UL {
+	top: 0;
+	left: 200px;
 }
 
-#recentlist UL LI:last-child
-{
-    border-bottom: solid 1px #aaaaaa;
+#headermenu UL UL A {
+	height: auto;
+	width: 180px;   /* expand to occupy width of enclosing LI/UL so hover works */
+                    /* 180px + 10px + 10px (padding) = 200px */
 }
 
-#recentlist A,
-#recentlist A:hover
+/* finally display submenus on hover */
+#headermenu UL LI:hover > UL
 {
-    text-decoration: none;
-    color: #dddddd;
+      display: block;
 }
+
+/*--- END HEADER MENU -----------------------------------------------------*/
+
+/*--- SIDEBAR RELATED -----------------------------------------------------*/
 
 .sidebartab
 {
@@ -467,15 +477,13 @@ BLOCKQUOTE OL
     color: #553333;
 }
 
-.sidebarlist UL,
-#postaction UL
+.sidebarlist UL
 {
     margin: 0px;
     padding: 0px;
 }
 
-.sidebarlist LI,
-#postaction LI
+.sidebarlist LI
 {
     border: none;
     border-top: 1px solid #ffffff;
@@ -487,8 +495,7 @@ BLOCKQUOTE OL
     list-style-type: none;
 }
 
-.sidebarlist LI:first-child,
-#postaction LI:first-child
+.sidebarlist LI:first-child
 {
     border: none;
 }
@@ -577,11 +584,12 @@ BLOCKQUOTE OL
     color: #334400;
 }
 
+/*--- END SIDEBAR RELATED -------------------------------------------------*/
+
 #content
 {
     margin: 0px;
-    padding: 20px 30px;
-    padding-top: 30px;
+    padding: 50px 40px;
     width: 100%;
     background-color: #aaaaaa;
 }
@@ -600,62 +608,51 @@ BLOCKQUOTE OL
     -moz-border-radius-bottomright: 30px;
 }
 
-.post
-{
-    margin-top: 30px;
-    margin-bottom: 70px;
-}
-
-.post > FIELDSET
+.entrybox
 {
     background-color: #ffffff;
-    padding: 0px;
-    padding-top: 10px;
-    /* Firefox uses padding-left to determine Fieldset Legend margin!!! */
-    padding-left: 15px;
+    margin-bottom: 60px;
+    padding: 0px 50px;
+    padding-top: 20px;
     border-style: none;
     border-radius: 20px; 
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px; 
 }
 
-.post .title,
+.title,
 #comments > LEGEND,
 .comment > LEGEND,
 #responsebox > LEGEND
 {
     background-color: #6f900d;
     border: 0px solid #666666;
-    font-size: 14pt;
+    font-size: 1.6em;
     padding: 4px 20px;
-    margin-left: 15px; /* doesn't work for Firefox -- see comment above in .post fieldset */
     border-radius: 8px; 
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px; 
 }
 
-#title,
-LEGEND,
-LEGEND A,
-#recentheader
+.title
 {
-    font-family: "Trebuchet MS", sans-serif;
-    color: #ffffff;
+    padding: 4px 20px;
+    /* TODO: Firefox uses padding-left to determine Fieldset Legend margin!!! */
 }
 
 .dateauthor
 {
     float: right;
-    margin: 0px 25px;
-    font-size: 8pt;
+    margin: 0px;
+    font-size: 9pt;
 }
 
 .entry
 {
-    padding: 10px 50px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     line-height: 180%;
-    font-size: 13px;
+    font-size: 1.3em;
 }
 
 .entry,
@@ -664,32 +661,47 @@ LEGEND A,
     color: #444444;
 }
 
+.entry A
+{
+    text-decoration: none;
+}
+
 .entry A:hover
 {
     text-decoration: none;
-    border-bottom: 1px dotted #aaaaaa;
+    color: #b20;
 }
 
-#postaction
+#subpagelinks
 {
-    float: right;
-    clear: right;
-    padding: 10px 15px 10px 10px;
-    margin: 20px;
-    font-size: 8pt;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px; 
+    float: left;
+    margin: 40px 0px;
+    padding: 8px 15px;
+    font-size: 1.2em;
+}
+
+#subpagelinks SPAN
+{
+    margin-right: 10px;
+}
+
+#subpagelinks A
+{
+    background-color: #fff;
+    padding: 1px 5px;
+    margin: 0px 2px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
 }
 
 .postmetadata
 {
-    text-align: left;
-    padding: 8px 10px 0px 10px;
-    background-color: #eeeeee;
-    margin: 0px;
-    margin-left: -15px; /* see hack for Firefox in .post fieldset above */
     clear: both;
+    padding: 15px 30px;
+    background-color: #eeeeee;
+    margin: 0px -50px;
+    font-size: 1.1em;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     -webkit-border-bottom-left-radius: 20px;
@@ -715,44 +727,27 @@ LEGEND A,
 {
     cursor: pointer;
     float: left;
-    font-size: 9pt;
-    padding: 5px 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    -webkit-border-radius: 8px; /* webkit can't render larger radius for smaller height */
-    border-width: 0px;
-}
-
-.postcattags
-{
-    padding: 4px 10px 8px 10px;
-    margin: 4px 10px 15px 10px;
-    background-color: #ffffff;
-    color: #442222;
-    border-radius: 12px; 
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px; 
-    clear: both;
-    text-align: left;
-}
-
-.postcattags .capsule
-{
-    font-size: 9pt;
-    padding: 1px 4px;
     margin-right: 5px;
-    line-height: 20px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+}
+
+.cattagsbox
+{
+    display: none;
+    clear: both;
+    margin: 20px 0px;
+    border-bottom: 1px dashed #ccc;
 }
 
 .postcats,
 .posttags
 {
-    background-position: 3% 50%;
-    padding: 5px 35px 5px 45px;
+    display: none;
+    clear: both;
+    background-position: 1% 80%;
+    padding: 5px 0px 5px 40px;
     background-repeat: no-repeat;
+    border-top: 1px dashed #ccc;
+    font-size: 0.9em;
 }
 
 .postcats
@@ -765,35 +760,11 @@ LEGEND A,
     background-image: URL('images/tag2.png');
 }
 
-#single .postcattags
-{
-    border-style: none;
-}
-
-#single .postcattags .capsule
-{
-    background-color: #ffddaa;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    float: left;
-}
-
-#single .postcattags .capsule a
-{
-    color: #772200;
-}
-
-#subpagelinks
-{
-    float: right;
-    margin-right: 15px;
-    font-size: 9pt;
-}
-
 /*--- COMMENTS RELATED -------------------------------------------------------------- */
 
 .nocomments
 {
+    float: left;
     font-size: 14pt !important;
 }
 
@@ -870,7 +841,7 @@ FIELDSET.comment .commenttext
 {
     background-color: #ddd;
 	color: #333;
-    margin: 50px 0px 30px 0px;
+    margin: 50px 0px 30px 0px !important;
     padding: 10px 30px;
     border-style: none;
     border-radius: 25px;
@@ -929,6 +900,9 @@ FIELDSET.comment .commenttext
     display: block;
     clear: left;
     width: 98%;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
 }
 
 #respond INPUT#submit
@@ -964,12 +938,13 @@ FIELDSET.comment .commenttext
 {
     float: right;
     width: 16%;
-    font-size: 9pt;
+    font-size: 1em;
     margin-top: 30px;
     padding: 30px;
     text-align: left;
-    background-color: #cccccc;
-    color: #555555;
+    background-color: #eee;
+    color: #555;
+    line-height: 150%;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -994,7 +969,7 @@ FIELDSET.comment .commenttext
     margin: 0px;
     background-color: #333333;
     color: #ffffff;
-    font-size: 9pt;
+    font-size: 0.9em;
     font-weight: bold;
     text-align: right;
     opacity: 0.8;
@@ -1044,6 +1019,25 @@ img.avatar
     -moz-border-radius: 10px; 
 }
 
+/*--- custom classes for styled elements ------------------------------------*/
+
+.nostyle
+{
+    margin: 0px !important;
+    padding: 0px !important;
+    background-color: inherit !important;
+    color: inherit !important;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+}
+
+UL.nostyle,
+OL.nostyle
+{
+    padding-left: 40px !important;
+}
+
 .downloadbox
 {
     float: left;
@@ -1051,7 +1045,7 @@ img.avatar
     background: url(images/download.png) 15px center no-repeat;
     background-color: #cccccc;
     color: #000000;
-    font-size: 13pt;
+    font-size: 1.1em;
     padding: 10px 18px;
     padding-left: 50px;
     cursor: pointer;
@@ -1074,11 +1068,11 @@ img.avatar
 .sourcelinkbox
 {
     overflow: hidden;
-    background-color: #ddf3ff;
+    background-color: #e6e6e6;
     color: #005588;
     padding-left: 0px;
     margin-top: 30px;
-    margin-bottom: -25px;
+    margin-bottom: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -1086,7 +1080,7 @@ img.avatar
 
 .sourcelinkbox .sourcemarker
 {
-    font-size: 14pt;
+    font-size: 1.1em;
     font-weight: bold;
     color: #ffffff;
     background-color: #88aac0;
@@ -1107,6 +1101,21 @@ img.avatar
     padding-bottom: 2000px;
     margin-bottom: -2000px;
 }
+
+.rounded
+{
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+
+.rounded-small
+{
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
 
 /* required as per wordpress.org */
 
@@ -1149,7 +1158,6 @@ img.avatar
 
 .wp-caption p.wp-caption-text
 {
-   font-size: 11px;
    line-height: 17px;
    padding: 0 4px 5px;
    margin: 0;

@@ -20,6 +20,15 @@ add_action('admin_menu', 'ahimsa_admin_menu');
 if ( function_exists('register_sidebar') )
     add_sidebars();
 
+// if you can't win 'em...! nav menus!
+add_action( 'init', 'add_menus' );
+
+// expose options to JavaScript
+// let's not do this for now... not sure about json_encode()
+// support across sites...
+//options_js();
+
+
 #-------------------------------------------------------------------------------
 function read_init_options()
 {
@@ -30,6 +39,12 @@ function read_init_options()
 
     $options = get_option('ahimsa');
 
+    # Ahimsa 3.4 only. TODO: remove for Ahimsa 3.5? (what about non-sequential updaters?)
+    if( isset($options['showdelic'          ]) ) delete_option('showdelic');
+    if( isset($options['delicid'            ]) ) delete_option('delicid');
+    if( isset($options['delictitle'         ]) ) delete_option('delictitle');
+    if( isset($options['showpageactions'    ]) ) delete_option('showpageactions');
+
     # defaults
     if( ! isset($options['showloginout'     ]) ) $options['showloginout'    ] = 1;
     if( ! isset($options['showauthors'      ]) ) $options['showauthors'     ] = 1;
@@ -38,11 +53,7 @@ function read_init_options()
     if( ! isset($options['sectprefix'       ]) ) $options['sectprefix'      ] = 1;
     if( ! isset($options['idxfadepmeta'     ]) ) $options['idxfadepmeta'    ] = 0;
     if( ! isset($options['showpagemeta'     ]) ) $options['showpagemeta'    ] = 1;
-    if( ! isset($options['showpageactions'  ]) ) $options['showpageactions' ] = 1;
     if( ! isset($options['iecorners'        ]) ) $options['iecorners'       ] = 0;
-    if( ! isset($options['showdelic'        ]) ) $options['showdelic'       ] = 0;
-    if( ! isset($options['delicid'          ]) ) $options['delicid'         ] = "";
-    if( ! isset($options['delictitle'       ]) ) $options['delictitle'      ] = __("Recent News and Links", "ahimsa");
     if( ! isset($options['googlefonts'      ]) ) $options['googlefonts'     ] = "";
     if( ! isset($options['copyright'        ]) ) $options['copyright'       ] = "";
     if( ! isset($options['skin'             ]) ) $options['skin'            ] = "none";
@@ -51,6 +62,22 @@ function read_init_options()
     # end defaults
 
     update_option('ahimsa', $options);
+}
+
+#-------------------------------------------------------------------------------
+# populate a JavaScript object with the options for use
+# in browser side implementation of user preferences
+function options_js()
+{
+    global $options;
+
+    print
+    "
+        <script type='text/javascript'>
+            var options = " . json_encode($options) . ";
+            console.log(options);
+        </script>
+    ";
 }
 
 #-------------------------------------------------------------------------------
@@ -74,6 +101,13 @@ function add_sidebars()
         'before_title' => "<legend>$sectprefix",
         'after_title' => "</legend>",
     ));
+}
+
+#-------------------------------------------------------------------------------
+function add_menus()
+{
+    // let's start with one for now
+    register_nav_menus(array('header-menu' => __('Header Menu', 'ahimsa')));
 }
 
 #-------------------------------------------------------------------------------
@@ -245,11 +279,6 @@ function ahimsa_options()
             <label style='margin-left: 5px;' for='showpagemeta'>
                 Show author and date information for pages</label><br />
 
-            <input type='checkbox' name='showpageactions' id='showpageactions'" .
-                ($options['showpageactions'] == 1 ? ' checked' : '') .  " />
-            <label style='margin-left: 5px;' for='showpageactions'>
-                Show actions and comment feed link box for pages</label><br />
-
             <h3>Comments</h3>
 
             Custom text (instructions) to display next to comment box: <br />
@@ -259,30 +288,6 @@ function ahimsa_options()
             <br/>
             <br/>
             <hr size='1'/>
-
-            <h3>Delicious</h3>
-                (requires the <a
-                 href='http://wordpress.org/extend/plugins/delicious-for-wordpress/'>del.icio.us
-                 for Wordpress</a> plugin.)
-
-            <br/>
-            <br/>
-
-            <input type='checkbox' name='showdelic' id='showdelic'" .
-                ($options['showdelic'] == 1 ? ' checked' : '') .  " />
-            <label style='margin-left: 5px;' for='showdelic'>
-                Show 5 recent del.icio.us links for user: </label>
-                <input type='text' name='delicid' value='$options[delicid]' />
-                <br />
-                <dd>
-                    <label style='margin-left: 5px;' for='delictitle'>
-                    Title for Delicious Links section: </label>
-                    <input type='text' name='delictitle' value='$options[delictitle]' />
-                    <br/>
-                </dd>
-
-            <br clear='all' />
-            <hr size='1' />
 
             <div style='
                     background-color: #fff3cc;
@@ -449,8 +454,8 @@ array
     array
     (
         'name'      => "skinsblistdiv",
-        'desc'      => "Sidebar/Action Lists Divider Colour",
-        'csssel'    => ".sidebarlist li, #postaction li",
+        'desc'      => "Sidebar Lists Divider Colour",
+        'csssel'    => ".sidebarlist li",
         'attr'      => "border-top-color"
     ),
     array
@@ -780,12 +785,7 @@ function save_options()
     $options['sectprefix']      = ( isset($_POST['sectprefix']) ) ? 1 : 0;
     $options['idxfadepmeta']    = ( isset($_POST['idxfadepmeta']) ) ? 1 : 0;
     $options['showpagemeta']    = ( isset($_POST['showpagemeta']) ) ? 1 : 0;
-    $options['showpageactions'] = ( isset($_POST['showpageactions']) ) ? 1 : 0;
     $options['iecorners']       = ( isset($_POST['iecorners']) ) ? 1 : 0;
-    $options['showdelic']       = ( isset($_POST['showdelic']) ) ? 1 : 0;
-    $options['delicid']         = ( isset($_POST['delicid']) ) ? $_POST['delicid'] : "";
-    $options['delictitle']      = ( isset($_POST['delictitle']) ) ? $_POST['delictitle']
-                                    : __("Recent News and Links", "ahimsa");
     $options['copyright']       = ( isset($_POST['copyright']) ) ? $_POST['copyright'] : "";
     $options['googlefonts']     = ( isset($_POST['googlefonts']) ) ? $_POST['googlefonts'] : "";
     $options['skin']            = ( isset($_POST['skin']) ) ? $_POST['skin'] : "none";
@@ -926,6 +926,7 @@ function update_skins()
         "#sidebar legend"                           => ".sidebarlist > legend",
         "#sidebar legend"                           => ".sidebarlist > legend",
         "#sidebar .sidebarlist li, #postaction li"  => ".sidebarlist li, #postaction li",
+        ".sidebarlist li, #postaction li"           => ".sidebarlist li",
         "#sidebar #wp-calendar caption"             => "#wp-calendar caption",
         "#sidebar #wp-calendar thead th, #sidebar #wp-calendar tfoot td.pad"
             => "#wp-calendar thead th, #wp-calendar tfoot td.pad",
@@ -956,7 +957,13 @@ function update_skins()
         "fieldset#comments"                         => "#comments",
         "fieldset#responsebox"                      => "#responsebox",
         "#sidebar, #tdsidebar"                      => ".sidebar, .tdsidebar",
-        "#replytext"                                => "#comment"
+        "#replytext"                                => "#comment",
+        // Ahimsa 4.0
+        ".post > fieldset"                          => ".entrybox",
+        ".post .title"                              => ".title",
+        ".post .title, .post .title a,"             => ".title, .title a",
+        ".post .title, #comments > legend, .comment > legend, #responsebox > legend"
+            => ".title, #comments > legend, .comment > legend, #responsebox > legend"
     );
 
     // TODO: some of this code is common to skins_menu() and should be

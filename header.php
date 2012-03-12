@@ -138,6 +138,7 @@
 <?php endif; ?>
 
 <td colspan='<?php print (is_active_sidebar(1)?1:0)+(is_active_sidebar(2)?1:0)+1; ?>' id='header'>
+
     <table border='0' cellpadding='0' cellspacing='0'>
         <tr>
             <?php if( $options['logourl'] != "" ) : ?>
@@ -154,6 +155,12 @@
             <td id='search' valign='middle'><?php include (TEMPLATEPATH . "/searchform.php"); ?> </td>
         </tr>
     </table>
+
+    <div id='headermenu'>
+        <?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>
+        <div style='height: 1px; clear: both;'></div>
+    </div>
+
 </td>
 
 <?php if( is_active_sidebar(2) ) : ?>

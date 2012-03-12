@@ -14,7 +14,6 @@ jQuery(document).ready
             jQuery('blockquote').corners('15px');
             jQuery('ul').corners('15px');
             jQuery('ol').corners('15px');
-            jQuery('.postcattags').corners('10px');
 
             var bgtopcolour = jQuery('#bgtop').css('background-color');
             jQuery('#header').corner('top 30px cc:' + bgtopcolour);

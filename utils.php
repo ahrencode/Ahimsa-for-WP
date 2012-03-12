@@ -37,6 +37,8 @@ function util_get_customss_url()
 {
     if( file_exists(WP_CONTENT_DIR . "/themestore/ahimsa/custom.css") )
         return(WP_CONTENT_URL . "/themestore/ahimsa/custom.css");
+    elseif( file_exists(TEMPLATEPATH . "/custom.css") )
+        return(TEMPLATEPATH . "/custom.css");
     else
         return("");
 }
