@@ -1,5 +1,5 @@
 <div class="postmetadata
-        <?php if( is_home() && $options["idxfadepmeta"] ) : ?>
+        <?php if( is_home() && $ahimsa_options["idxfadepmeta"] ) : ?>
             fadedbottombar
         <?php endif; ?>
         ">
@@ -16,7 +16,7 @@
         <?php if( 'open' == $post->ping_status ) : ?>
 
             <div style='float: right; margin-right: 10px;' class='capsule actbubble'>
-                <a href='<?php trackback_url(false); ?>' rel='trackback'>
+                <a href='<?php trackback_url(); ?>' rel='trackback'>
                     <?php _e('Trackback', 'ahimsa'); ?></a>
             </div>
 
@@ -39,13 +39,13 @@
     ?> 
 
     <?php if( $the_cats ) : ?>
-        <div class='capsule actbubble cattrigger' onclick='toggleCatTags(<?php the_ID(); ?>, "cats");'>
+        <div class='capsule actbubble cattrigger' onclick='ahimsa_toggle_cattags(<?php the_ID(); ?>, "cats");'>
             <?php _e('Categories', 'ahimsa'); ?> &darr;
         </div>
     <?php endif; ?>
 
     <?php if( $the_tags ) : ?>
-        <div class='capsule actbubble cattrigger' onclick='toggleCatTags(<?php the_ID(); ?>, "tags");'>
+        <div class='capsule actbubble cattrigger' onclick='ahimsa_toggle_cattags(<?php the_ID(); ?>, "tags");'>
             <?php _e('Tags', 'ahimsa'); ?> &darr;
         </div>
     <?php endif; ?>

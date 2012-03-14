@@ -4,12 +4,12 @@ jQuery(document).ready
     function()
     {
         // add our classes to WP generated elements
-        reclass_wp_elements();
+        ahimsa_reclass_wp_elements();
 
         // display vertical or rotated text depending on browser support
         // test in the order of browser popularity to save a few cycles ;-)
         // checking to see if at least one sidebar is active/defined...
-        sidebartab_setup();
+        ahimsa_sidebartab_setup();
         
         // support for faded bottom bar in index page
         jQuery('.fadedbottombar').hover(
@@ -19,8 +19,12 @@ jQuery(document).ready
 
         // display Comment edit/reply bottombar on hover
         jQuery('.comment').hover(
-                function() { jQuery(this).children('.replybuttonbox').css('visibility', 'visible'); },
-                function() { jQuery(this).children('.replybuttonbox').css('visibility', 'hidden'); }
+                function()
+                {
+                    jQuery('.replybuttonbox').css('visibility', 'hidden');
+                    jQuery(this).children('.replybuttonbox').css('visibility', 'visible');
+                },
+                function() { jQuery('.replybuttonbux').css('visibility', 'hidden'); }
         );
 
         // display tags permitted in comments when focus is on response box
@@ -35,12 +39,12 @@ jQuery(document).ready
         );
 
         // style and add prefix text for sourcelink
-        sourcelink_setup();
+        ahimsa_sourcelink_setup();
     }
 );
 
-
-function reclass_wp_elements()
+//------------------------------------------------------------------------------
+function ahimsa_reclass_wp_elements()
 {
     // add classes to the comment submit button
     if( jQuery('#submit').length )
@@ -61,8 +65,8 @@ function reclass_wp_elements()
     }
 }
 
-
-function sidebartab_setup()
+//------------------------------------------------------------------------------
+function ahimsa_sidebartab_setup()
 {
     if( jQuery('#sidebartableft').length > 0 )
         tab = '#sidebartableft';
@@ -104,7 +108,8 @@ function sidebartab_setup()
     }
 }
 
-function sourcelink_setup()
+//------------------------------------------------------------------------------
+function ahimsa_sourcelink_setup()
 {
     jQuery('.sourcelink').wrap('<div class="sourceboxtext" />');
     jQuery('.sourceboxtext').prepend('This post includes content from, and/or is a response to ');
@@ -113,9 +118,8 @@ function sourcelink_setup()
     jQuery('.sourcelinkbox').append('<div style="height: 1px; clear: both;"></div>');
 }
 
-
-
-function slideSideBar(side)
+//------------------------------------------------------------------------------
+function ahimsa_slide_sidebar(side)
 {
     if( ! document.getElementById('sidebar'+side) )
         return;
@@ -125,21 +129,22 @@ function slideSideBar(side)
 
     if( jQuery(sbid).is(':visible') )
     {
-        contentCurve(side, '30px');
+        ahimsa_content_curve(side, '30px');
         //jQuery(tdid).css('background-color', jQuery('#content').css('background-color'));
         jQuery(sbid).hide("slide", { direction: side }, 600, function() { jQuery(tdid).hide(); });
 
     }
     else
     {
-        contentCurve(side, '0px');
+        ahimsa_content_curve(side, '0px');
         jQuery(tdid).show();
         //jQuery(tdid).css('background-color', jQuery(sbid).css('background-color'));
         jQuery(sbid).show("slide", { direction: side }, 600);
     }
 }
 
-function contentCurve(side, size)
+//------------------------------------------------------------------------------
+function ahimsa_content_curve(side, size)
 {
     divcont = document.getElementById('content');
     if( side == 'left' )
@@ -156,14 +161,15 @@ function contentCurve(side, size)
     }
 }
 
-function recalcBlocks()
+//------------------------------------------------------------------------------
+function ahimsa_recalc_block()
 {
-    document.getElementById("container").style.height = getWinHeight() + "px";
+    document.getElementById("container").style.height = ahimsa_get_win_height() + "px";
 }
 
-
+//------------------------------------------------------------------------------
 // code borrowed from: http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
-function getWinHeight()
+function ahimsa_get_win_height()
 {
     var myHeight = 0;
     if( typeof( window.innerHeight ) == 'number' )
@@ -187,39 +193,14 @@ function getWinHeight()
     return(myHeight);
 }
 
-function getWinWidth()
-{
-    var myWidth = 0;
-    if( typeof( window.innerWidth ) == 'number' )
-    {
-        //Non-IE
-        myWidth = window.innerWidth;
-    }
-    else
-    if( document.documentElement && document.documentElement.clientWidth )
-    {
-        //IE 6+ in 'standards compliant mode'
-        myWidth = document.documentElement.clientWidth;
-    }
-    else
-    if( document.body && document.body.clientWidth )
-    {
-        //IE 4 compatible
-        myWidth = document.body.clientWidth;
-    }
-
-    return(myWidth);
-}
-
-function toggleCatTags(postid, type)
+//------------------------------------------------------------------------------
+function ahimsa_toggle_cattags(postid, type)
 {
     var postsel = '#post-'+postid;
     var boxsel  = '#post-'+postid+' .cattagsbox';
 
     var catsVisible = jQuery(postsel+' .postcats').is(':visible');
     var tagsVisible = jQuery(postsel+' .posttags').is(':visible');
-
-    console.log("cats: " + catsVisible + " tags: " + tagsVisible);
 
     if( ! catsVisible && ! tagsVisible )
         jQuery(boxsel).show();
@@ -229,7 +210,6 @@ function toggleCatTags(postid, type)
         jQuery(boxsel).fadeOut(500);
 
     var sel = postsel+' .post'+type;
-    console.log("Type sel: " + sel);
     if( jQuery(sel).is(':visible') )
         jQuery(sel).fadeOut(500);
     else

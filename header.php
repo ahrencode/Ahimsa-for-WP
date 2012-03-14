@@ -1,48 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
+<?php // chunks of HEAD lifted from TwentyEleven ?>
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html <?php language_attributes(); ?>>
+<!--<![endif]-->
 
 <head profile="http://gmpg.org/xfn/11">
 
-    <meta
-        http-equiv="Content-Type"
-        content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>"
-    />
+    <meta charset="<?php bloginfo('charset'); ?>" />
 
     <title>
         <?php
-            bloginfo('name');
-            if ( is_single() )
-                print '&raquo; ' . __('Blog Archive', 'ahimsa');
-            wp_title();
+            // more code from TwentyEleven
+
+            wp_title( '|', true, 'right' );
+
+            // Add the blog name.
+            bloginfo( 'name' );
+
+            // Add the blog description for the home/front page.
+            $site_description = get_bloginfo( 'description', 'display' );
+            if ( $site_description && ( is_home() || is_front_page() ) )
+                echo " | $site_description";
+
+            // Add a page number if necessary:
+            if ( $paged >= 2 || $page >= 2 )
+                echo ' | ' . sprintf( __( 'Page %s', 'ahimsa' ), max( $paged, $page ) );
+
         ?>
     </title>
 
-    <meta
-        name="generator"
-        content="WordPress <?php bloginfo('version'); ?>"
-    /> <!-- leave this for stats -->
-
-    <?php 
-        global $options;
-        if( $options['googlefonts'] != "" )
-        {
-            foreach( preg_split('/,[ ]*/', $options['googlefonts']) as $gfont )
-            {
-                $gfont = str_replace(' ', '+', $gfont);
-    ?>
-        <link href='http://fonts.googleapis.com/css?family=<?php print $gfont; ?>'
-            rel='stylesheet' type='text/css'>
-    <?
-            }
-        }
-    ?>
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
 
     <link
         rel="stylesheet"
         href="<?php bloginfo('stylesheet_url'); ?>"
         type="text/css" media="screen"
     />
+
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+
+    <meta
+        name="generator"
+        content="WordPress <?php bloginfo('version'); ?>"
+    /> <!-- leave this for stats -->
 
     <link
         rel="alternate"
@@ -51,25 +60,39 @@
         href="<?php bloginfo('rss2_url'); ?>"
     />
 
-    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+    <?php 
+        global $ahimsa_options;
+        if( $ahimsa_options['googlefonts'] != "" )
+        {
+            foreach( preg_split('/,[ ]*/', $ahimsa_options['googlefonts']) as $gfont )
+            {
+                $gfont = str_replace(' ', '+', $gfont);
+    ?>
+                <link
+                     href='http://fonts.googleapis.com/css?family=<?php print $gfont; ?>'
+                    rel='stylesheet' type='text/css'>
+    <?php
+            }
+        }
+    ?>
 
     <!-- inlude jQuery before we call wp_head(); -->
     <?php wp_enqueue_script("jquery"); ?>
 
     <?php
-        if ( is_singular() )
+	    if ( is_singular() && get_option( 'thread_comments' ) )
             wp_enqueue_script('comment-reply');
         wp_head();
     ?>
 
     <script
         type="text/javascript"
-        src="<?php print get_bloginfo('template_url').'/lib/jquery-ui/jquery-ui.min.js'; ?>"></script>
+        src="<?php print get_template_directory_uri() . '/lib/jquery-ui/jquery-ui.min.js'; ?>"></script>
 
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/ahimsa.js'; ?>"></script>
 
     <!-- render some corners in IE using jQuery plugins -->
-    <?php global $options; if( $options['iecorners'] == 1 ) : ?>
+    <?php global $ahimsa_options; if( $ahimsa_options['iecorners'] == 1 ) : ?>
         <script type="text/javascript"
             src="<?php print get_bloginfo('template_url').'/lib/jquery.corner.js'; ?>"></script>
         <script type="text/javascript"
@@ -84,45 +107,48 @@
 
 </head>
 
-<body onload='recalcBlocks();' onresize='recalcBlocks();' <?php body_class(); ?>>
+<body onload='ahimsa_recalc_block();' onresize='ahimsa_recalc_block();' <?php body_class(); ?>>
 
-<?php global $options; ?>
+<?php global $ahimsa_options; ?>
 
 <div id='bgtop'>
 <br clear='all'/>
 </div>
 
-<div id='rsslinks'>
-    <div class='capsule'>
-        <a href='<?php bloginfo('comments_rss2_url'); ?>'>
-        <img border='0' align='top' alt='<?php _e('Comments RSS', 'ahimsa'); ?>'
-            src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
-        <span title='<?php _e('Subscribe to the RSS feed for the comments on this site', 'ahimsa'); ?>'>
-            <?php
-                /* translators: this is the text of the comments RSS link at top right */
-                _e('Comments', 'ahimsa');
-            ?>
-        </span>
-        </a>
+<?php if( $ahimsa_options['showtopmenu'] == 1 ) : ?>
+
+    <div id='rsslinks'>
+        <div class='capsule'>
+            <a href='<?php bloginfo('comments_rss2_url'); ?>'>
+            <img border='0' align='top' alt='<?php _e('Comments RSS', 'ahimsa'); ?>'
+                src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
+            <span title='<?php _e('Subscribe to the RSS feed for the comments on this site', 'ahimsa'); ?>'>
+                <?php
+                    /* translators: this is the text of the comments RSS link at top right */
+                    _e('Comments', 'ahimsa');
+                ?>
+            </span>
+            </a>
+        </div>
+        <div class='capsule'>
+            <a href='<?php bloginfo("rss2_url"); ?>'>
+            <img border='0' align='top' alt='<?php _e('Site RSS', 'ahimsa'); ?>'
+                src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
+            <span title='<?php _e('Subscribe to the RSS feed for the posts on this site', 'ahimsa'); ?>'>
+                <?php
+                    /* translators: this is the text of the site RSS link at top right */
+                    _e('Site', 'ahimsa');
+                ?>
+            </span>
+            </a>
+        </div>
+        <?php if( $ahimsa_options['showloginout'] == 1 ) : ?>
+            <div class='capsule'>
+                <?php wp_loginout(); ?>
+            </div>
+        <?php endif; ?>
     </div>
-    <div class='capsule'>
-        <a href='<?php bloginfo("rss2_url"); ?>'>
-        <img border='0' align='top' alt='<?php _e('Site RSS', 'ahimsa'); ?>'
-            src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
-        <span title='<?php _e('Subscribe to the RSS feed for the posts on this site', 'ahimsa'); ?>'>
-            <?php
-                /* translators: this is the text of the site RSS link at top right */
-                _e('Site', 'ahimsa');
-            ?>
-        </span>
-        </a>
-    </div>
-    <?php if( $options['showloginout'] == 1 ) { ?>
-    <div class='capsule'>
-    <?php wp_loginout(); ?>
-    </div>
-    <?php } ?>
-</div>
+<?php endif; ?>
 
 <table id='container' cellpadding='0' cellspacing='0'>
 
@@ -141,9 +167,9 @@
 
     <table border='0' cellpadding='0' cellspacing='0'>
         <tr>
-            <?php if( $options['logourl'] != "" ) : ?>
+            <?php if( $ahimsa_options['logourl'] != "" ) : ?>
                 <td id='tdlogo'>
-                    <img id='logo' alt='' title='' src='<?php print $options['logourl']; ?>' />
+                    <img id='logo' alt='' title='' src='<?php print $ahimsa_options['logourl']; ?>' />
                 </td>
             <?php endif; ?>
             <td id='title'>
@@ -152,7 +178,7 @@
                 </a>
             </td>
             <td id='description'><?php bloginfo('description'); ?></td>
-            <td id='search' valign='middle'><?php include (TEMPLATEPATH . "/searchform.php"); ?> </td>
+            <td id='search' valign='middle'><?php get_search_form(); ?> </td>
         </tr>
     </table>
 

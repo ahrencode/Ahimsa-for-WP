@@ -1,4 +1,3 @@
-<?php global $options; ?>
 
 <link
     rel='stylesheet'

@@ -5,13 +5,13 @@
 <?php get_footer(); ?>
 
 <?php
-    if( (is_home() && $options['defhidesidebar'] == 1 ) ||
-        (is_singular() && $options['defhidesbpages'] == 1 ) ) :
+    if( (is_home() && $ahimsa_options['defhidesidebar'] == 1 ) ||
+        (is_singular() && $ahimsa_options['defhidesbpages'] == 1 ) ) :
 ?>
 
     <script language='JavaScript'>
-        slideSideBar('left');
-        slideSideBar('right');
+        ahimsa_slide_sidebar('left');
+        ahimsa_slide_sidebar('right');
     </script>
 
 <?php endif; ?>

@@ -41,7 +41,12 @@
         
             #title
             {
-                border-right-color: #883300;
+                border-right-color: #830;
+            }
+        
+            .sidebar, .tdsidebar
+            {
+                background-color: #FCE8BB;
             }
         
             .sidebar, .tdsidebar
@@ -59,17 +64,17 @@
                 color: #000000;
             }
         
-            .sidebarlist > legend
+            .sidebarlist .title
             {
                 background-color: #7D735C;
             }
         
-            .sidebarlist > legend
+            .sidebarlist .title
             {
                 color: #ffffff;
             }
         
-            .sidebarlist li, #postaction li
+            .sidebarlist li
             {
                 border-top-color: #BDAD8C;
             }
@@ -119,7 +124,7 @@
                 background-color: #FCE8BB;
             }
         
-            .post > fieldset
+            .entrybox
             {
                 background-color: #E3D0A8;
             }
@@ -129,12 +134,12 @@
                 color: #442200;
             }
         
-            .post .title, #comments > legend, .comment > legend, #responsebox > legend
+            .title
             {
                 background-color: #7D735C;
             }
         
-            .post .title, .post .title a, #comments > legend, .comment > legend, #responsebox > legend
+            .title, .title a
             {
                 color: #ffffff;
             }
@@ -144,24 +149,9 @@
                 background-color: #E3D0A8;
             }
         
-            .postcattags
-            {
-                background-color: inherit;
-            }
-        
             .postcattags, .postcattags a
             {
                 color: #664422;
-            }
-        
-            #single .postcattags .capsule
-            {
-                background-color: #eeeeee;
-            }
-        
-            #single .postcattags .capsule, #single .postcattags .capsule a
-            {
-                color: #000000;
             }
         
             blockquote
@@ -204,12 +194,12 @@
                 background-color: #BDAD8C;
             }
         
-            fieldset.comment, fieldset.comment .commenttext
+            .comment, .commenttext
             {
                 background-color: #E3D0A8;
             }
         
-            fieldset.comment .commenttext
+            .commenttext
             {
                 color: #333333;
             }
@@ -217,5 +207,20 @@
             #responsebox
             {
                 background-color: #BDAD8C;
+            }
+        
+            #headermenu, #headermenu UL UL
+            {
+                background-color: #e3d0a8;
+            }
+        
+            #headermenu li:hover
+            {
+                background-color: #c1b086;
+            }
+        
+            #headermenu a
+            {
+                color: #830;
             }
         

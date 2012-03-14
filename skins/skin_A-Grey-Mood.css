@@ -41,7 +41,22 @@
         
             #title
             {
-                border-right-color: #333333;
+                border-right-color: #620;
+            }
+        
+            .sidebartab
+            {
+                background-color: #d42;
+            }
+        
+            .sidebartab
+            {
+                color: #fff;
+            }
+        
+            .sidebar, .tdsidebar
+            {
+                background-color: #555555;
             }
         
             .sidebar, .tdsidebar
@@ -59,17 +74,17 @@
                 color: #000000;
             }
         
-            .sidebarlist > legend
+            .sidebarlist .title
             {
-                background-color: #333333;
+                background-color: #333;
             }
         
-            .sidebarlist > legend
+            .sidebarlist .title
             {
                 color: #dd4422;
             }
         
-            .sidebarlist li, #postaction li
+            .sidebarlist li
             {
                 border-top-color: #aaaaaa;
             }
@@ -119,7 +134,7 @@
                 background-color: #777777;
             }
         
-            .post > fieldset
+            .entrybox
             {
                 background-color: #cccccc;
             }
@@ -129,39 +144,19 @@
                 color: #000000;
             }
         
-            .post .title, #comments > legend, .comment > legend, #responsebox > legend
+            .title
             {
-                background-color: #333333;
+                background-color: #333;
             }
         
-            .post .title, .post .title a, #comments > legend, .comment > legend, #responsebox > legend
+            .title, .title a
             {
                 color: #dd4422;
-            }
-        
-            .postmetadata
-            {
-                border-top: 1px solid #aaaaaa;
-            }
-        
-            .postcattags
-            {
-                background-color: #aaaaaa;
             }
         
             .postcattags, .postcattags a
             {
                 color: #664422;
-            }
-        
-            #single .postcattags .capsule
-            {
-                background-color: #eeeeee;
-            }
-        
-            #single .postcattags .capsule, #single .postcattags .capsule a
-            {
-                color: #000000;
             }
         
             blockquote
@@ -204,12 +199,12 @@
                 background-color: #999999;
             }
         
-            fieldset.comment, fieldset.comment .commenttext
+            .comment, .commenttext
             {
                 background-color: #cccccc;
             }
         
-            fieldset.comment .commenttext
+            .commenttext
             {
                 color: #333333;
             }
@@ -219,8 +214,18 @@
                 background-color: #aaaaaa;
             }
         
-            .sidebartab
+            #headermenu, #headermenu UL UL
             {
-                background-color: #dd4422;
-                color: #ffffff;
+                background-color: #830;
             }
+        
+            #headermenu li:hover
+            {
+                background-color: #a40;
+            }
+        
+            #headermenu a
+            {
+                color: #fff;
+            }
+        

@@ -1,6 +1,6 @@
 <?php
 
-global $options;
+global $ahimsa_options;
 
 if (!empty($_SERVER['SCRIPT_FILENAME']) &&
         'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
@@ -19,7 +19,7 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
 
     <fieldset id='comments'>
 
-        <legend>
+        <legend class='title'>
         <?php comments_number(
                 __('No Responses', 'ahimsa'),
                 __('One Response', 'ahimsa'),
@@ -46,13 +46,13 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
         <?php endif ?>
 
         <ul>
-            <?php wp_list_comments('type=all&style=ul&callback=custom_comment'); ?>
+            <?php wp_list_comments('type=all&style=ul&callback=ahimsa_custom_comment'); ?>
         </ul>
 
         <br clear='all' />
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-        
+
             <div class="postmetadata">
                 <?php
                     previous_comments_link('<span class="capsule actbubble" style="float: left;">' .
@@ -82,10 +82,10 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
  ?>
 
     <fieldset id='responsebox'>
-        <legend><?php _e('Leave a Reply', 'ahimsa'); ?></legend>
-        <?php if( $options['commentguide'] != "" ) : ?>
+        <legend class='title'><?php _e('Leave a Reply', 'ahimsa'); ?></legend>
+        <?php if( $ahimsa_options['commentguide'] != "" ) : ?>
             <div id='commentguide'>
-                <?php print stripslashes($options['commentguide']); ?>
+                <?php print stripslashes($ahimsa_options['commentguide']); ?>
             </div>
         <?php endif; ?>
     </fieldset>
@@ -93,7 +93,7 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
 <?php else : ?>
 
     <!-- If comments are closed. -->
-    <div class='capsule nocomments'><?php _e('Comments are closed', 'ahimsa'); ?></div>
+    <div class='capsule nocomments rounded-big'><?php _e('Comments are closed', 'ahimsa'); ?></div>
     <div style='height: 1px; clear: both;'></div>
 
 <?php endif; ?>

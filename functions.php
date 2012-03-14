@@ -2,109 +2,116 @@
 
 include_once("utils.php");
 
+// not a fan of fixed widths, but WP.org folks reject themes if this is not set
+if ( ! isset( $content_width ) )
+    $content_width = 600;
+
 // i18n
 load_theme_textdomain('ahimsa');
 
 // required by WP
 add_theme_support('automatic-feed-links');
+// post thumbnails
+add_theme_support('post-thumbnails');
+set_post_thumbnail_size( 300, 300);
 
 // support for post formats -- not ready yet!
 //add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'video', 'chat'));
 
-read_init_options();
+ahimsa_read_init_options();
 
 // setup admin menu
 add_action('admin_menu', 'ahimsa_admin_menu');
 
 // add sidebars
 if ( function_exists('register_sidebar') )
-    add_sidebars();
+    ahimsa_add_sidebars();
 
 // if you can't win 'em...! nav menus!
-add_action( 'init', 'add_menus' );
+add_action( 'init', 'ahimsa_add_menus' );
 
 // expose options to JavaScript
 // let's not do this for now... not sure about json_encode()
 // support across sites...
-//options_js();
+//ahimsa_options_js();
 
 
 #-------------------------------------------------------------------------------
-function read_init_options()
+function ahimsa_read_init_options()
 {
-    global $options;
+    global $ahimsa_options;
 
     if( ! is_array(get_option('ahimsa')) )
         add_option('ahimsa', array('init' => 1));
 
-    $options = get_option('ahimsa');
+    $ahimsa_options = get_option('ahimsa');
 
     # Ahimsa 3.4 only. TODO: remove for Ahimsa 3.5? (what about non-sequential updaters?)
-    if( isset($options['showdelic'          ]) ) delete_option('showdelic');
-    if( isset($options['delicid'            ]) ) delete_option('delicid');
-    if( isset($options['delictitle'         ]) ) delete_option('delictitle');
-    if( isset($options['showpageactions'    ]) ) delete_option('showpageactions');
+    if( isset($ahimsa_options['showdelic'          ]) ) delete_option('showdelic');
+    if( isset($ahimsa_options['delicid'            ]) ) delete_option('delicid');
+    if( isset($ahimsa_options['delictitle'         ]) ) delete_option('delictitle');
+    if( isset($ahimsa_options['showpageactions'    ]) ) delete_option('showpageactions');
 
     # defaults
-    if( ! isset($options['showloginout'     ]) ) $options['showloginout'    ] = 1;
-    if( ! isset($options['showauthors'      ]) ) $options['showauthors'     ] = 1;
-    if( ! isset($options['defhidesidebar'   ]) ) $options['defhidesidebar'  ] = 0;
-    if( ! isset($options['defhidesbpages'   ]) ) $options['defhidesbpages'  ] = 1;
-    if( ! isset($options['sectprefix'       ]) ) $options['sectprefix'      ] = 1;
-    if( ! isset($options['idxfadepmeta'     ]) ) $options['idxfadepmeta'    ] = 0;
-    if( ! isset($options['showpagemeta'     ]) ) $options['showpagemeta'    ] = 1;
-    if( ! isset($options['iecorners'        ]) ) $options['iecorners'       ] = 0;
-    if( ! isset($options['googlefonts'      ]) ) $options['googlefonts'     ] = "";
-    if( ! isset($options['copyright'        ]) ) $options['copyright'       ] = "";
-    if( ! isset($options['skin'             ]) ) $options['skin'            ] = "none";
-    if( ! isset($options['logourl'          ]) ) $options['logourl'         ] = "";
-    if( ! isset($options['commentguide'     ]) ) $options['commentguide'    ] = "";
+    if( ! isset($ahimsa_options['showtopmenu'      ]) ) $ahimsa_options['showtopmenu'     ] = 1;
+    if( ! isset($ahimsa_options['showloginout'     ]) ) $ahimsa_options['showloginout'    ] = 1;
+    if( ! isset($ahimsa_options['showauthors'      ]) ) $ahimsa_options['showauthors'     ] = 1;
+    if( ! isset($ahimsa_options['defhidesidebar'   ]) ) $ahimsa_options['defhidesidebar'  ] = 0;
+    if( ! isset($ahimsa_options['defhidesbpages'   ]) ) $ahimsa_options['defhidesbpages'  ] = 1;
+    if( ! isset($ahimsa_options['sectprefix'       ]) ) $ahimsa_options['sectprefix'      ] = 1;
+    if( ! isset($ahimsa_options['idxfadepmeta'     ]) ) $ahimsa_options['idxfadepmeta'    ] = 0;
+    if( ! isset($ahimsa_options['showpagemeta'     ]) ) $ahimsa_options['showpagemeta'    ] = 1;
+    if( ! isset($ahimsa_options['iecorners'        ]) ) $ahimsa_options['iecorners'       ] = 0;
+    if( ! isset($ahimsa_options['googlefonts'      ]) ) $ahimsa_options['googlefonts'     ] = "";
+    if( ! isset($ahimsa_options['copyright'        ]) ) $ahimsa_options['copyright'       ] = "";
+    if( ! isset($ahimsa_options['skin'             ]) ) $ahimsa_options['skin'            ] = "none";
+    if( ! isset($ahimsa_options['logourl'          ]) ) $ahimsa_options['logourl'         ] = "";
+    if( ! isset($ahimsa_options['commentguide'     ]) ) $ahimsa_options['commentguide'    ] = "";
     # end defaults
 
-    update_option('ahimsa', $options);
+    update_option('ahimsa', $ahimsa_options);
 }
 
 #-------------------------------------------------------------------------------
 # populate a JavaScript object with the options for use
 # in browser side implementation of user preferences
-function options_js()
+function ahimsa_options_js()
 {
-    global $options;
+    global $ahimsa_options;
 
     print
     "
         <script type='text/javascript'>
-            var options = " . json_encode($options) . ";
-            console.log(options);
+            var options = " . json_encode($ahimsa_options) . ";
         </script>
     ";
 }
 
 #-------------------------------------------------------------------------------
-function add_sidebars()
+function ahimsa_add_sidebars()
 {
-    global $options;
+    global $ahimsa_options;
 
-    $sectprefix = $options['sectprefix'] ? "&sect;&nbsp;" : "";
+    $sectprefix = $ahimsa_options['sectprefix'] ? "&sect;&nbsp;" : "";
 
     register_sidebar(array(
         'name' => 'leftbar',
         'before_widget' => "<fieldset class='sidebarlist'>",
         'after_widget' => "</fieldset>",
-        'before_title' => "<legend>$sectprefix",
+        'before_title' => "<legend class='title'>$sectprefix",
         'after_title' => "</legend>",
     ));
     register_sidebar(array(
         'name' => 'rightbar',
         'before_widget' => "<fieldset class='sidebarlist'>",
         'after_widget' => "</fieldset>",
-        'before_title' => "<legend>$sectprefix",
+        'before_title' => "<legend class='title'>$sectprefix",
         'after_title' => "</legend>",
     ));
 }
 
 #-------------------------------------------------------------------------------
-function add_menus()
+function ahimsa_add_menus()
 {
     // let's start with one for now
     register_nav_menus(array('header-menu' => __('Header Menu', 'ahimsa')));
@@ -119,13 +126,13 @@ function ahimsa_admin_menu()
 #-------------------------------------------------------------------------------
 function ahimsa_options()
 {
-    global $options, $sectprefix;
+    global $ahimsa_options;
 
     // TODO: sneak this in here for now
-    check_store_mksymlinks();
+    ahimsa_check_store_mksymlinks();
 
     if( isset($_POST['action']) && $_POST['action'] == 'save' )
-        save_options();
+        ahimsa_save_options();
 
     print
     "
@@ -203,19 +210,24 @@ function ahimsa_options()
 
             <input type='hidden' id='action' name='action' value='save'>
 
+            <input type='checkbox' name='showtopmenu' id='showtopmenu'" .
+                ($ahimsa_options['showtopmenu'] == 1 ? ' checked' : '') . " />
+            <label style='margin-left: 5px;' for='showtopmenu'>
+                Show Feeds/Login/Logout Top Menu</label><br />
+
             <input type='checkbox' name='showloginout' id='showloginout'" .
-                ($options['showloginout'] == 1 ? ' checked' : '') . " />
+                ($ahimsa_options['showloginout'] == 1 ? ' checked' : '') . " />
             <label style='margin-left: 5px;' for='showloginout'>
                 Show Login/Logout option in Top Menu</label><br />
 
             <input type='checkbox' name='idxfadepmeta' id='idxfadepmeta'" .
-                ($options['idxfadepmeta'] == 1 ? ' checked' : '') .  " />
+                ($ahimsa_options['idxfadepmeta'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='idxfadepmeta'>
                 In index/home page, fade category, tag, comment links
                 unless hovered over</label> (does not work in IE)</label><br />
 
             <input type='checkbox' name='iecorners' id='iecorners'" .
-                ($options['iecorners'] == 1 ? ' checked' : '') .  " />
+                ($ahimsa_options['iecorners'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='iecorners'>
                 Turn on <b>experimental</b> and <b>partial</b> support for
                 rounded corners in IE
@@ -229,7 +241,7 @@ function ahimsa_options()
                 (use them in your <code>custom.css</code>):
             </label><br />
             <input type='text' size='50' name='googlefonts' id='googlefonts'
-                value='$options[googlefonts]' />
+                value='$ahimsa_options[googlefonts]' />
 
             <br />
 
@@ -237,7 +249,7 @@ function ahimsa_options()
                 Copyright text:
             </label><br />
             <input type='text' size='50' name='copyright' id='copyright'
-                value='$options[copyright]' />
+                value='$ahimsa_options[copyright]' />
 
             <br />
 
@@ -245,26 +257,26 @@ function ahimsa_options()
                 URL for logo:
             </label><br />
             <input type='text' size='50' name='logourl' id='logourl'
-                value='$options[logourl]' />
+                value='$ahimsa_options[logourl]' />
 
             <h3>Sidebar</h3>
 
             <input type='checkbox' name='showauthors' id='showauthors'" .
-                ($options['showauthors'] == 1 ? ' checked' : '') . " />
+                ($ahimsa_options['showauthors'] == 1 ? ' checked' : '') . " />
             <label style='margin-left: 5px;' for='showauthors'>Show Authors in Sidebar</label><br />
 
             <input type='checkbox' name='defhidesidebar' id='defhidesidebar'" .
-                ($options['defhidesidebar'] == 1 ? ' checked' : '') .  " />
+                ($ahimsa_options['defhidesidebar'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='defhidesidebar'>
                 Hide Sidebar by default in Main/Home page</label><br />
 
             <input type='checkbox' name='defhidesbpages' id='defhidesbpages'" .
-                ($options['defhidesbpages'] == 1 ? ' checked' : '') .  " />
+                ($ahimsa_options['defhidesbpages'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='defhidesbpages'>
                 Hide Sidebar by default in posts and pages</label><br />
 
             <input type='checkbox' name='sectprefix' id='sectprefix'" .
-                ($options['sectprefix'] == 1 ? ' checked' : '') .  " />
+                ($ahimsa_options['sectprefix'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='sectprefix'>
                 Show &sect; symbol as prefix for section headers in sidebar</label><br />
 
@@ -275,7 +287,7 @@ function ahimsa_options()
             <br />
 
             <input type='checkbox' name='showpagemeta' id='showpagemeta'" .
-                ($options['showpagemeta'] == 1 ? ' checked' : '') .  " />
+                ($ahimsa_options['showpagemeta'] == 1 ? ' checked' : '') .  " />
             <label style='margin-left: 5px;' for='showpagemeta'>
                 Show author and date information for pages</label><br />
 
@@ -283,7 +295,7 @@ function ahimsa_options()
 
             Custom text (instructions) to display next to comment box: <br />
             <textarea name='commentguide' id='commentguide' rows=5 cols=60>" .
-                stripslashes($options['commentguide']) . "</textarea>
+                stripslashes($ahimsa_options['commentguide']) . "</textarea>
 
             <br/>
             <br/>
@@ -338,7 +350,7 @@ function ahimsa_options()
             <br />
             <br />
 
-            " . skins_menu() . "
+            " . ahimsa_skins_menu() . "
 
             <br />
             <br clear='all' />
@@ -350,27 +362,27 @@ function ahimsa_options()
     ";
 }
 
-$skin_fields =
+$ahimsa_skin_fields =
 array
 (
     array
     (
         'name'      => "skinpagebgtopbg",
-        'desc'      => "Page Background Top",
+        'desc'      => "Site Background Top",
         'csssel'    => "#bgtop",
         'attr'      => "background-color"
     ),
     array
     (
         'name'      => "skinpagediv",
-        'desc'      => "Page Background Divider Colour",
+        'desc'      => "Site Background Divider Colour",
         'csssel'    => "#bgtop",
         'attr'      => "border-bottom-color"
     ),
     array
     (
         'name'      => "skinpagebgbotbg",
-        'desc'      => "Page Background Bottom",
+        'desc'      => "Site Background Bottom",
         'csssel'    => "BODY",
         'attr'      => "background-color"
     ),
@@ -418,6 +430,27 @@ array
     ),
     array
     (
+        'name'      => "skinsbtabbg",
+        'desc'      => "Sidebar Tab Background",
+        'csssel'    => ".sidebartab",
+        'attr'      => "background-color"
+    ),
+    array
+    (
+        'name'      => "skinsbtabfg",
+        'desc'      => "Sidebar Tab Text Colour",
+        'csssel'    => ".sidebartab",
+        'attr'      => "color"
+    ),
+    array
+    (
+        'name'      => "skinsidebarbg",
+        'desc'      => "Sidebar Background",
+        'csssel'    => ".sidebar, .tdsidebar",
+        'attr'      => "background-color"
+    ),
+    array
+    (
         'name'      => "skinsidebarbg",
         'desc'      => "Sidebar Background",
         'csssel'    => ".sidebar, .tdsidebar",
@@ -441,14 +474,14 @@ array
     (
         'name'      => "skinsblegendbg",
         'desc'      => "Sidebar Widget Title Background",
-        'csssel'    => ".sidebarlist > legend",
+        'csssel'    => ".sidebarlist .title",
         'attr'      => "background-color"
     ),
     array
     (
         'name'      => "skinsblegendfg",
         'desc'      => "Sidebar Widget Title Text Colour",
-        'csssel'    => ".sidebarlist > legend",
+        'csssel'    => ".sidebarlist .title",
         'attr'      => "color"
     ),
     array
@@ -525,7 +558,7 @@ array
     (
         'name'      => "skinpostpagebg",
         'desc'      => "Post or Page Entry Background",
-        'csssel'    => ".post > fieldset",
+        'csssel'    => ".entrybox",
         'attr'      => "background-color"
     ),
     array
@@ -539,15 +572,14 @@ array
     (
         'name'      => "skinpptitlebg",
         'desc'      => "Post, Page, Comments Title Background",
-        'csssel'    => ".post .title, #comments > legend, .comment > legend, #responsebox > legend",
+        'csssel'    => ".title",
         'attr'      => "background-color"
     ),
     array
     (
         'name'      => "skinpptitlefg",
         'desc'      => "Post, Page, Comments Title Text Colour",
-        'csssel'    => ".post .title, .post .title a, " .
-                    "#comments > legend, .comment > legend, #responsebox > legend",
+        'csssel'    => ".title, .title a",
         'attr'      => "color"
     ),
     array
@@ -559,30 +591,9 @@ array
     ),
     array
     (
-        'name'      => "skincattagbg",
-        'desc'      => "Category/Tag Lists Background",
-        'csssel'    => ".postcattags",
-        'attr'      => "background-color"
-    ),
-    array
-    (
         'name'      => "skincattagfg",
         'desc'      => "Category/Tag Lists Text/Link Colour",
         'csssel'    => ".postcattags, .postcattags a",
-        'attr'      => "color"
-    ),
-    array
-    (
-        'name'      => "skin1cattagbubblebg",
-        'desc'      => "Single Post Cat/Tag Bubble Background",
-        'csssel'    => "#single .postcattags .capsule",
-        'attr'      => "background-color"
-    ),
-    array
-    (
-        'name'      => "skin1cattagbubblefg",
-        'desc'      => "Single Post Cat/Tag Bubble Text/Link Colour",
-        'csssel'    => "#single .postcattags .capsule, #single .postcattags .capsule a",
         'attr'      => "color"
     ),
     array
@@ -645,14 +656,14 @@ array
     (
         'name'      => "skincommentbg",
         'desc'      => "Comment Background",
-        'csssel'    => "fieldset.comment, fieldset.comment .commenttext",
+        'csssel'    => ".comment, .commenttext",
         'attr'      => "background-color"
     ),
     array
     (
         'name'      => "skincommentfg",
         'desc'      => "Comment Text Colour",
-        'csssel'    => "fieldset.comment .commenttext",
+        'csssel'    => ".commenttext",
         'attr'      => "color"
     ),
     array
@@ -661,21 +672,42 @@ array
         'desc'      => "Response Box Background",
         'csssel'    => "#responsebox",
         'attr'      => "background-color"
+    ),
+    array
+    (
+        'name'      => "skinheadermenubg",
+        'desc'      => "Header Menu Background",
+        'csssel'    => "#headermenu, #headermenu UL UL",
+        'attr'      => "background-color"
+    ),
+    array
+    (
+        'name'      => "skinheadermenuhover",
+        'desc'      => "Header Menu Hover Background",
+        'csssel'    => "#headermenu li:hover",
+        'attr'      => "background-color"
+    ),
+    array
+    (
+        'name'      => "skinheadermenufg",
+        'desc'      => "Header Menu Text Colour",
+        'csssel'    => "#headermenu a",
+        'attr'      => "color"
     )
 );
 
-
-function skins_menu()
+#-------------------------------------------------------------------------------
+function ahimsa_skins_menu()
 {
-    global $skin_fields, $options;
+    global $ahimsa_skin_fields, $ahimsa_options;
 
     $html = "";
-    $curskin = $options['skin'];
+    $curskin = $ahimsa_options['skin'];
 
     $checked = ($curskin == 'none') ? 'checked' : "";
     $html .= "<input type=radio name=skin value=none $checked> None <br/>\n";
 
-    $skinfiles = util_get_skin_files();
+    $skinfiles = ahimsa_util_get_skin_files();
     foreach( $skinfiles as $skinfile )
     {
         $filename = basename($skinfile);
@@ -684,19 +716,37 @@ function skins_menu()
         $html .=
         "
             <input type=radio name=skin value='$skinname' $checked> $skinname
-            (<a href='" . get_bloginfo("url") . "?ahimsaskin=$skinname' target=_new>Preview</a>)
+            (<a href='" . home_url() . "?ahimsaskin=$skinname' target=_new>Preview</a>)
             <br/>
         ";
     }
 
     if( $curskin != 'none' )
-        $skinfile_array = read_skin_file(util_get_skin_path($curskin));
+        $skinfile_array = ahimsa_read_skin_file(util_get_skin_path($curskin));
     else
         $skinfile_array = array();
 
     $html .=
     "
         <br/>
+
+        <div style='
+                width: 50%;
+                margin: 10px 10px 30px 0px;
+                padding: 20px;
+                border: 2px solid #400;
+                background-color: #920;
+                color: #fff;
+                '>
+            WARNING: This update includes significant style changes. Before
+            you edit any existing skins below, you should first run a couple of
+            updates to them by selecting the Update checkbox above and
+            saving the options. Ideally you should also save any skins you
+            have created. If you have any questions contact me on
+            <a href='http://twitter.com/ahrencode'>Twitter</a> or the
+            <a href='http://help.ahren.org/'>Help Site</a>
+        </div>
+
 
         <input id='skindo' type='hidden' name='skindo' value='0'/>
 
@@ -726,19 +776,25 @@ function skins_menu()
         <br/>
         <br/>
 
+        Enter colours in hex, including a hash prefix (e.g: #f0d000)
+
+        <br/>
+        <br/>
+
         <table border=0 cellspacing=0>
 
     ";
 
-    foreach( $skin_fields as $style )
-        $html .= get_skin_field_html($style, $skinfile_array);
+    foreach( $ahimsa_skin_fields as $style )
+        $html .= ahimsa_get_skin_field_html($style, $skinfile_array);
 
     $html .= "</table>\n</div>\n";
 
     return($html);
 }
 
-function get_skin_field_html($style, $skinfile_array)
+#-------------------------------------------------------------------------------
+function ahimsa_get_skin_field_html($style, $skinfile_array)
 {
     if( isset($skinfile_array[$style['csssel']][$style['attr']]) )
         $value = $skinfile_array[$style['csssel']][$style['attr']];
@@ -766,33 +822,35 @@ function get_skin_field_html($style, $skinfile_array)
     ");
 }
 
-function save_options()
+#-------------------------------------------------------------------------------
+function ahimsa_save_options()
 {
-    global $_POST, $options;
+    global $_POST, $ahimsa_options;
 
     if( isset($_POST['skinupdate']) && $_POST['skinupdate'] == 'on' )
-        if( ! update_skins() )
+        if( ! ahimsa_update_skins() )
             return;
 
     if( $_POST['skindo'] == '1' )
-        if( ! save_skin() )
+        if( ! ahimsa_save_skin() )
             return;
 
-    $options['showauthors']     = ( isset($_POST['showauthors']) ) ? 1 : 0;
-    $options['showloginout']    = ( isset($_POST['showloginout']) ) ? 1 : 0;
-    $options['defhidesidebar']  = ( isset($_POST['defhidesidebar']) ) ? 1 : 0;
-    $options['defhidesbpages']  = ( isset($_POST['defhidesbpages']) ) ? 1 : 0;
-    $options['sectprefix']      = ( isset($_POST['sectprefix']) ) ? 1 : 0;
-    $options['idxfadepmeta']    = ( isset($_POST['idxfadepmeta']) ) ? 1 : 0;
-    $options['showpagemeta']    = ( isset($_POST['showpagemeta']) ) ? 1 : 0;
-    $options['iecorners']       = ( isset($_POST['iecorners']) ) ? 1 : 0;
-    $options['copyright']       = ( isset($_POST['copyright']) ) ? $_POST['copyright'] : "";
-    $options['googlefonts']     = ( isset($_POST['googlefonts']) ) ? $_POST['googlefonts'] : "";
-    $options['skin']            = ( isset($_POST['skin']) ) ? $_POST['skin'] : "none";
-    $options['logourl']         = ( isset($_POST['logourl']) ) ? $_POST['logourl'] : "";
-    $options['commentguide']    = ( isset($_POST['commentguide']) ) ? $_POST['commentguide'] : "";
+    $ahimsa_options['showauthors']     = ( isset($_POST['showauthors']) ) ? 1 : 0;
+    $ahimsa_options['showtopmenu']     = ( isset($_POST['showtopmenu']) ) ? 1 : 0;
+    $ahimsa_options['showloginout']    = ( isset($_POST['showloginout']) ) ? 1 : 0;
+    $ahimsa_options['defhidesidebar']  = ( isset($_POST['defhidesidebar']) ) ? 1 : 0;
+    $ahimsa_options['defhidesbpages']  = ( isset($_POST['defhidesbpages']) ) ? 1 : 0;
+    $ahimsa_options['sectprefix']      = ( isset($_POST['sectprefix']) ) ? 1 : 0;
+    $ahimsa_options['idxfadepmeta']    = ( isset($_POST['idxfadepmeta']) ) ? 1 : 0;
+    $ahimsa_options['showpagemeta']    = ( isset($_POST['showpagemeta']) ) ? 1 : 0;
+    $ahimsa_options['iecorners']       = ( isset($_POST['iecorners']) ) ? 1 : 0;
+    $ahimsa_options['copyright']       = ( isset($_POST['copyright']) ) ? $_POST['copyright'] : "";
+    $ahimsa_options['googlefonts']     = ( isset($_POST['googlefonts']) ) ? $_POST['googlefonts'] : "";
+    $ahimsa_options['skin']            = ( isset($_POST['skin']) ) ? $_POST['skin'] : "none";
+    $ahimsa_options['logourl']         = ( isset($_POST['logourl']) ) ? $_POST['logourl'] : "";
+    $ahimsa_options['commentguide']    = ( isset($_POST['commentguide']) ) ? $_POST['commentguide'] : "";
 
-    update_option('ahimsa', $options);
+    update_option('ahimsa', $ahimsa_options);
 
     print
     "
@@ -807,26 +865,26 @@ function save_options()
 }
 
 //------------------------------------------------------------------------------
-function save_skin()
+function ahimsa_save_skin()
 {
-    global $_POST, $options, $skin_fields;
+    global $_POST, $ahimsa_options, $ahimsa_skin_fields;
 
     if( ! isset($_POST['skinname']) || $_POST['skinname'] == '' )
     {
-        ah_admin_error("Oops! Need a name to save a skin!");
+        ahimsa_admin_error("Oops! Need a name to save a skin!");
         return(false);
     }
 
     $skinname = $_POST['skinname'];
     if( ! preg_match("/^[a-zA-Z0-9]+(\-[a-zA-Z0-9]+)*$/", $skinname) || $skinname == "none" )
     {
-        ah_admin_error("Name ($skinname) should be alphabets, numbers, and embedded hyphens.\n");
+        ahimsa_admin_error("Name ($skinname) should be alphabets, numbers, and embedded hyphens.\n");
         return(false);
     }
 
     $skincss = "";
 
-    foreach( $skin_fields as $field )
+    foreach( $ahimsa_skin_fields as $field )
     {
         $name = $field['name'];
 
@@ -842,15 +900,15 @@ function save_skin()
         ";
     }
 
-    return(write_skin_file(WP_CONTENT_DIR . "/themestore/ahimsa/skin_$skinname.css", $skincss));
+    return(ahimsa_write_skin_file(WP_CONTENT_DIR . "/themestore/ahimsa/skin_$skinname.css", $skincss));
 }
 
 //------------------------------------------------------------------------------
-function read_skin_file($skinfile)
+function ahimsa_read_skin_file($skinfile)
 {
     if( ! ($styles = @file("$skinfile", FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES)) )
     {
-        ah_admin_error("Unable to read skin file: $skinfile");
+        ahimsa_admin_error("Unable to read skin file: $skinfile");
         return(false);
     }
 
@@ -869,7 +927,7 @@ function read_skin_file($skinfile)
         if( $state == "ENDBLOCK" )
         {
             $cursel = $style;
-            if( ! is_array($cssarray[$cursel]) )
+            if( ! isset($cssarray[$cursel]) || ! is_array($cssarray[$cursel]) )
                 $cssarray[$cursel] = array();
             $state = "STARTBLOCK";
             continue;
@@ -895,17 +953,17 @@ function read_skin_file($skinfile)
 }
 
 //------------------------------------------------------------------------------
-function write_skin_file($filepath, $skincss)
+function ahimsa_write_skin_file($filepath, $skincss)
 {
-    if( !$skinfile = fopen($filepath, 'w') )
+    if( !$skinfile = @fopen($filepath, 'w') )
     {
-         ah_admin_error("Could not create skin file: $filepath");
+         ahimsa_admin_error("Could not create skin file: $filepath");
          return(false);
     }
 
     if( fwrite($skinfile, $skincss) === FALSE )
     {
-        ah_admin_error("Cannot write to skin file: $filepath");
+        ahimsa_admin_error("Cannot write to skin file: $filepath");
         return(false);
     }
 
@@ -915,7 +973,7 @@ function write_skin_file($filepath, $skincss)
 }
 
 //------------------------------------------------------------------------------
-function update_skins()
+function ahimsa_update_skins()
 {
     $sel_update_map = array
     (
@@ -960,19 +1018,25 @@ function update_skins()
         "#replytext"                                => "#comment",
         // Ahimsa 4.0
         ".post > fieldset"                          => ".entrybox",
-        ".post .title"                              => ".title",
         ".post .title, .post .title a,"             => ".title, .title a",
-        ".post .title, #comments > legend, .comment > legend, #responsebox > legend"
-            => ".title, #comments > legend, .comment > legend, #responsebox > legend"
+        ".post .title, #comments > legend, .comment > legend, #responsebox > legend" => ".title",
+        ".post .title, .post .title a, #comments > legend, .comment > legend, #responsebox > legend"
+            => ".title, .title a",
+        "fieldset.comment, fieldset.comment .commenttext" => ".comment, .commenttext",
+        "fieldset.comment .commenttext"             => ".commenttext",
+        ".sidebarlist > legend"                     => ".sidebarlist .title",
+        ".postcattags"                              => "REMOVE",
+        "#single .postcattags .capsule"             => "REMOVE",
+        "#single .postcattags .capsule, #single .postcattags .capsule a" => "REMOVE"
     );
 
-    // TODO: some of this code is common to skins_menu() and should be
+    // TODO: some of this code is common to ahimsa_skins_menu() and should be
     // abstracted rather than duplicated.
 
-    $skinfiles = util_get_skin_files();
+    $skinfiles = ahimsa_util_get_skin_files();
     if( ! sizeof($skinfiles) )
     {
-        ah_admin_error("No skins!");
+        ahimsa_admin_error("No skins!");
         return(false);
     }
 
@@ -982,7 +1046,7 @@ function update_skins()
         if( ! preg_match("/^skin_(.+)\.css$/", $filename, $matches) )
             continue;
 
-        if( ($skinfile_array = read_skin_file($skinfile)) == false )
+        if( ($skinfile_array = ahimsa_read_skin_file($skinfile)) == false )
             return(false);
 
         $newskin = "";
@@ -1000,13 +1064,13 @@ function update_skins()
             $newskin .= "}\n";
         }
 
-        if( ! write_skin_file($skinfile, $newskin) )
+        if( ! ahimsa_write_skin_file($skinfile, $newskin) )
             return(false);
     }
 }
 
 //------------------------------------------------------------------------------
-function check_store_mksymlinks()
+function ahimsa_check_store_mksymlinks()
 {
     $themestore = WP_CONTENT_DIR . "/themestore";
     $ahimsastore = $themestore . "/ahimsa";
@@ -1016,7 +1080,7 @@ function check_store_mksymlinks()
             continue;
         if( ! @mkdir($dir) )
         {
-            ah_admin_error(
+            ahimsa_admin_error(
                 "
                     A bit of a problem has occurred. I could not create: $dir.
                     This is probably because your WordPress or WebServer (Apache?)
@@ -1048,7 +1112,7 @@ function check_store_mksymlinks()
 }
 
 //------------------------------------------------------------------------------
-function ah_admin_error($msg)
+function ahimsa_admin_error($msg)
 {
         print
         "
@@ -1068,27 +1132,33 @@ function ah_admin_error($msg)
 }
 
 //------------------------------------------------------------------------------
-function custom_comment($comment, $args, $depth)
+function ahimsa_custom_comment($comment, $args, $depth)
 {
     $GLOBALS['comment'] = $comment;
 
     ?>
 
     <!-- WP automatically closes this tag below in wp_list_comments -->
-    <li  <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
+    <li>
 
-    <fieldset class='comment'>
+    <fieldset <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?>
+        id="comment-<?php comment_ID() ?>">
 
-        <legend><?php printf(__('%s writes:', "ahimsa"), comment_author_link()); ?></legend>
+        <legend class='title'>
+            <?php printf(__('%s writes:', "ahimsa"), comment_author_link()); ?>
+        </legend>
 
         <div class="capsule dateauthor">
             <small>
+            <a href='<?php print esc_url(get_comment_link($comment->comment_ID)); ?>'>
             <?php
                 /* translators: this is the comment date/time format. See http://php.net/date */
-                $comment_date_format = __('F jS, Y');
+                $comment_date_format = __('F jS, Y', 'ahimsa');
                 /* translators: this is the comment date bubble */
-                printf(__('%1$s at %2$s', 'ahimsa'), get_comment_date($comment_date_format), get_comment_time());
+                printf(__('%1$s at %2$s', 'ahimsa'),
+                     get_comment_date($comment_date_format), get_comment_time());
             ?>
+            </a>
             </small>
         </div>
 
@@ -1099,41 +1169,49 @@ function custom_comment($comment, $args, $depth)
 
         <div class='commenttext'>
 
-        <?php if($comment->comment_approved == '0') : ?>
-            <span class='capsule'><?php _e("Your comment is awaiting moderation.", "ahimsa"); ?></span>
-            <br />
-        <?php endif; ?>
+            <?php if($comment->comment_approved == '0') : ?>
+                <span class='capsule'>
+                    <?php _e("Your comment is awaiting moderation.", "ahimsa"); ?>
+                </span>
+                <br />
+            <?php endif; ?>
 
-        <?php comment_text() ?>
+            <?php comment_text() ?>
 
         </div>
 
-        <?php global $user_ID; if( $user_ID || get_option('thread_comments') ) : ?>
+        <?php global $user_ID; if( $user_ID ) : ?>
 
             <div class='postmetadata replybuttonbox'>
 
-                <?php global $user_ID; if( $user_ID ) : ?>
-                    &nbsp;&nbsp;
-                    <span class='capsule actbubble'>
-                        <?php
+                <?php
+
+                    global $user_ID;
+
+                    if( $user_ID )
+                        edit_comment_link(
                             /* translators: this is the comment edit button/link */
-                            edit_comment_link(__('Edit', "ahimsa"),'&nbsp;','');
-                        ?>
-                    </span>
-                <?php endif; ?>
+                            __('Edit', "ahimsa"),
+                            "<div class='capsule actbubble commentactions'>",
+                            "</div>"
+                        );
 
-                &nbsp; &nbsp;
+                    comment_reply_link(
+                        array_merge(
+                            $args,
+                            array
+                            (
+                                'reply_text'    => __('Reply', 'ahimsa'),
+                                'depth'         => $depth,
+                                'max_depth'     => $args['max_depth'],
+                                'before'        => '<div class="capsule actbubble commentactions">',
+                                'after'         => '</div>'
+                            )
+                        )
+                    );
+                ?>
 
-               <?php if( get_option('thread_comments') ) : ?>
-                    <span class="capsule actbubble">
-                        <!-- spaces needed for Safari to render rounded corners! -->
-                        &nbsp;
-                        <?php comment_reply_link(
-                                array_merge( $args, array('depth' => $depth,
-                                            'max_depth' => $args['max_depth']))) ?>
-                        &nbsp;
-                    </span>
-                <?php endif; ?>
+                <div style='height: 1px; clear: both;'></div>
 
             </div>
 

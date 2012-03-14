@@ -12,7 +12,7 @@
                         <?php the_title(); ?></a>
                 </legend>
 
-                <?php if( !is_page() || $options['showpagemeta'] == 1 ) : ?>
+                <?php if( !is_page() || $ahimsa_options['showpagemeta'] == 1 ) : ?>
                     <!-- wrap the date author in a div so that it sits by itself with a bottom margin -->
                     <div>
                         <div class='capsule dateauthor'>
@@ -28,7 +28,19 @@
                 <?php endif; ?>
 
                 <div class="entry">
-                    <?php the_content(__('Read the rest of this entry', 'ahimsa') . ' &raquo;'); ?>
+
+                    <?php
+                        if( has_post_thumbnail() )
+                        {
+                            $thumbnail_url = array_shift(wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'));
+                            print "<a href='$thumbnail_url' title='" . the_title_attribute('echo=0') . "' >";
+                            the_post_thumbnail('medium');
+                            print "</a>\n";
+                        }
+
+                        the_content(__('Read the rest of this entry', 'ahimsa') . ' &raquo;');
+                    ?>
+
                 </div>
 
                 <?php
@@ -36,7 +48,7 @@
                         wp_link_pages(
                             array
                             (
-                                'before' => '<div id="subpagelinks" class="capsule">
+                                'before' => '<div id="subpagelinks" class="capsule rounded-big">
                                                 <span>' . __('Pages:', 'ahimsa') . '</span> ',
                                 'after' => '</div>',
                                 'next_or_number' => 'number'
@@ -69,7 +81,7 @@
                     "</span>"); ?>
         </div>
 
-    <? endif; ?>
+    <?php endif; ?>
 
 <?php else: // have_posts() ?>
 

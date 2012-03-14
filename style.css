@@ -5,7 +5,9 @@ Description: Ahimsa -- customisable collapsible sidebars, skinnable colour schem
 Version: 3.3
 Author: Ravi Sarma
 Author URI: http://code.ahren.org/
-Tags: one-column, two-columns, three-columns, flexible-width, left-sidebar, right-sidebar, theme-options, threaded-comments, orange, red, white, yellow, custom-colors, translation-ready
+License: GNU General Public License
+License URI: license.txt
+Tags: dark, light, white, black, gray, orange, red, white, yellow, one-column, two-columns, three-columns, left-sidebar, right-sidebar, flexible-width, custom-colors, custom-menu, featured-images, theme-options, translation-ready, threaded-comments
 
 	 Ahimsa 3.3
 	 http://code.ahren.org/ahimsa
@@ -120,11 +122,13 @@ BLOCKQUOTE OL
 .actbubble
 {
     background-color: #dd6f06;
+    font-size: 1.1em;
 }
 
-.actbubble a
+.capsule A,
+.actbubble A
 {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 #bgtop
@@ -190,8 +194,8 @@ BLOCKQUOTE OL
 }
 
 #title,
-LEGEND,
-LEGEND A
+.title,
+.title A
 {
     font-family: "Trebuchet MS", sans-serif;
     color: #ffffff;
@@ -458,18 +462,13 @@ LEGEND A
     -moz-border-radius: 10px; 
 }
 
-.sidebarlist > LEGEND
+.sidebarlist .title
 {
-    font-size: 10pt;
-    font-weight: normal;
-    color: #ffffff;
     background-color: #846d21;
     padding: 5px 10px;
     margin: 0;
     margin-left: 5px;
-    border-radius: 10px; 
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px; 
+    font-size: 1.1em;
 }
 
 .sidebarlist A
@@ -620,23 +619,16 @@ LEGEND A
     -moz-border-radius: 20px; 
 }
 
-.title,
-#comments > LEGEND,
-.comment > LEGEND,
-#responsebox > LEGEND
+.title
 {
     background-color: #6f900d;
     border: 0px solid #666666;
     font-size: 1.6em;
+    font-weight: normal;
     padding: 4px 20px;
     border-radius: 8px; 
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px; 
-}
-
-.title
-{
-    padding: 4px 20px;
     /* TODO: Firefox uses padding-left to determine Fieldset Legend margin!!! */
 }
 
@@ -652,7 +644,7 @@ LEGEND A
     padding-top: 10px;
     padding-bottom: 30px;
     line-height: 180%;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .entry,
@@ -661,23 +653,21 @@ LEGEND A
     color: #444444;
 }
 
-.entry A
-{
-    text-decoration: none;
-}
-
 .entry A:hover
 {
-    text-decoration: none;
     color: #b20;
 }
 
-#subpagelinks
+.entry IMG
 {
-    float: left;
-    margin: 40px 0px;
-    padding: 8px 15px;
-    font-size: 1.2em;
+    padding: 10px;
+    border: 1px solid #aaa;
+}
+
+.wp-post-image
+{
+    float: right;
+    margin: 20px 0px 20px 30px;
 }
 
 #subpagelinks SPAN
@@ -685,9 +675,18 @@ LEGEND A
     margin-right: 10px;
 }
 
+#subpagelinks
+{
+    float: right;
+    margin: 40px 0px;
+    padding: 8px 15px;
+    font-size: 1.2em;
+}
+
 #subpagelinks A
 {
     background-color: #fff;
+    color: #555;
     padding: 1px 5px;
     margin: 0px 2px;
     border-radius: 8px;
@@ -701,13 +700,21 @@ LEGEND A
     padding: 15px 30px;
     background-color: #eeeeee;
     margin: 0px -50px;
-    font-size: 1.1em;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     -webkit-border-bottom-left-radius: 20px;
     -webkit-border-bottom-right-radius: 20px;
     -moz-border-radius-bottomleft: 20px;
     -moz-border-radius-bottomright: 20px;
+}
+
+.comment .postmetadata,
+.trackback .postmetadata,
+.pingback .postmetadata
+{
+    padding: 8px 20px;
+    margin: 0px -30px !important;
+    visibility: hidden;
 }
 
 .fadedbottombar
@@ -720,7 +727,6 @@ LEGEND A
 {
     float: right;
     padding: 5px 8px;
-    font-size: 9pt;
 }
 
 .postmetadata .cattrigger
@@ -747,7 +753,6 @@ LEGEND A
     padding: 5px 0px 5px 40px;
     background-repeat: no-repeat;
     border-top: 1px dashed #ccc;
-    font-size: 0.9em;
 }
 
 .postcats
@@ -766,59 +771,68 @@ LEGEND A
 {
     float: left;
     font-size: 14pt !important;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 /*--- container ---*/
 #comments
 {
-    background-color: #c9ba90;
-    padding: 0px 40px;
     margin-bottom: 20px;
+    padding: 20px 50px;
+    padding-bottom: 0px;
     border-style: none;
+    background-color: #c9ba90;
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px; 
 }
 
 #comments > UL,
-#comments UL.children,
-#comments > LI.comment
+#comments > UL > LI,
+#comments .children,
+#comments .children > LI
 {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
 }
 
-#comments UL.children
+#comments .children
 {
     margin-left: 40px;
 }
 
-FIELDSET.comment
+.comment,
+.trackback,
+.pingback
 {
     border: none;
     background-color: #ffffff;
     margin: 30px 0px;
-    padding: 0px;
-    padding-top: 10px;
-    padding-left: 15px;
+    padding: 10px 30px;
+    padding-bottom: 0px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px; 
 }
 
-FIELDSET.comment > LEGEND
+.comment .title,
+.trackback .title,
+.pingback .title
 {
-    font-size: 10pt !important;
+    font-size: 1.1em !important;
 }
 
-FIELDSET.comment IMG.avatar,
-FIELDSET.comment .commenttext
+.comment IMG.avatar,
+.trackback IMG.avatar,
+.pingback IMG.avatar,
+.commenttext
 {
     padding-top: 5px;
 }
 
-FIELDSET.comment .commenttext
+.commenttext
 {
     padding-right: 30px;
     padding-left: 30px;
@@ -826,12 +840,10 @@ FIELDSET.comment .commenttext
     font-size: 9pt;
 }
 
-#comments .postmetadata,
-.replybuttonbox
+.commentactions
 {
-    padding: 10px 25px;
-    text-align: right;
-    visibility: hidden;
+    float: right;
+    margin-left: 10px;
 }
 
 /*--- Comment Form Related ---------------------*/
@@ -1116,6 +1128,12 @@ OL.nostyle
     -moz-border-radius: 4px;
 }
 
+.rounded-big
+{
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
 
 /* required as per wordpress.org */
 
@@ -1129,11 +1147,13 @@ OL.nostyle
 .alignleft
 {
    float: left;
+   margin: 10px 20px 10px 0px;
 }
 
 .alignright
 {
    float: right;
+   margin: 10px 0px 10px 20px;
 }
 
 .wp-caption
@@ -1161,5 +1181,20 @@ OL.nostyle
    line-height: 17px;
    padding: 0 4px 5px;
    margin: 0;
+}
+
+.gallery-caption
+{
+    /* no special styling */
+}
+
+.bypostauthor
+{
+    /* no special styling */
+}
+
+.sticky
+{
+    /* no special styling */
 }
 

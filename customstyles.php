@@ -4,8 +4,8 @@
 
     // Load custom skin stylesheet and then the final custom stylesheet
 
-    global $options, $current_user;
-    $skin = $options['skin'];
+    global $ahimsa_options, $current_user;
+    $skin = $ahimsa_options['skin'];
     get_currentuserinfo();
     if( isset($current_user) && $current_user->user_level == 10 && 
             isset($_GET['ahimsaskin']) && $_GET['ahimsaskin'] != "" )
@@ -16,11 +16,11 @@
         "
             <link
                 rel='stylesheet'
-                href='" . util_get_skin_url($skin) . "'
+                href='" . ahimsa_util_get_skin_url($skin) . "'
                 type='text/css' media='screen' />
         ";
 
-    if( ($customstylesheet = util_get_customss_url()) != "" )
+    if( ($customstylesheet = ahimsa_util_get_customss_url()) != "" )
         print "<link rel='stylesheet' href='$customstylesheet' type='text/css' media='screen' />\n";
 
     // finally, if we are in skin edit mode, then load up the JavaScript for customisation

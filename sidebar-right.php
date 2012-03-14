@@ -1,6 +1,4 @@
 
-<?php global $options, $sectprefix; ?>
-
 <td id='tdsidebarright' class='tdsidebar'  valign='top'>
     <!-- inline style required for easy JavaScript mods, without getting computed styles -->
     <div id='sidebarright' class='sidebar' style='display: block; opacity: 1.0;'>
@@ -10,7 +8,7 @@
 </td>
 
 <td valign='top' class='tdsidetabs'>
-    <div id='sidebartabright' class='sidebartab' onclick='slideSideBar("right");'>
+    <div id='sidebartabright' class='sidebartab' onclick='ahimsa_slide_sidebar("right");'>
         <div class='sidebartabrotatedtext'><?php _e('SIDEBAR', 'ahimsa'); ?></div>
         <div class='sidebartabnorotatetext'>
             <font color='#22bb00'>&raquo;</font><br/>
@@ -19,5 +17,4 @@
         </div>
     </div>
 </td>
-
 

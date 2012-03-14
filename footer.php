@@ -22,9 +22,9 @@
 </div>
 
 <?php
-global $options;
-if( $options['copyright'] != "" )
-    print "&copy; " . $options['copyright'];
+global $ahimsa_options;
+if( $ahimsa_options['copyright'] != "" )
+    print "&copy; " . $ahimsa_options['copyright'];
 ?>
 
 </td> <!-- end of credits -->
