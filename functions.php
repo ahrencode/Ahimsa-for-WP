@@ -120,11 +120,11 @@ function ahimsa_add_menus()
 #-------------------------------------------------------------------------------
 function ahimsa_admin_menu()
 {
-    add_theme_page('Ahimsa Options', 'Ahimsa Options', 'edit_themes', "Ahimsa", 'ahimsa_options');
+    add_theme_page('Ahimsa Options', 'Ahimsa Options', 'edit_themes', "Ahimsa", 'ahimsa_settings');
 }
 
 #-------------------------------------------------------------------------------
-function ahimsa_options()
+function ahimsa_settings()
 {
     global $ahimsa_options;
 
@@ -133,48 +133,62 @@ function ahimsa_options()
 
     if( isset($_POST['action']) && $_POST['action'] == 'save' )
         ahimsa_save_options();
+    ?>
 
-    print
-    "
-        <form id='settings' action='' method='post' class='themeform' style='margin: 20px;'>
+    <form id='settings' action='' method='post' class='themeform' style='margin: 20px;'>
+
+    <div style=
+            '
+                clear: right;
+                float: right;
+                margin: 30px;
+                background-color: #fff3cc;
+                color: #000000;
+                padding: 10px 20px;
+                border: 1px solid #ddc055;
+                width: 250px;
+            '>
+
+        <h3>Keep up with Ahimsa For WordPress</h3>
+
+        <p>
+            Follow on Twitter, or join the Facebook Page. Subscribe to the blog.
+            Create bug/feature requests, download the latest code, and more!
+        </p>
 
         <div style=
-                '
-                    clear: right;
-                    float: right;
-                    margin: 30px;
-                    background-color: #fff3cc;
-                    color: #000000;
-                    padding: 10px 20px;
-                    border: 1px solid #ddc055;
-                    width: 250px;
-                '
-        >
-            <h3>Keep up with Ahimsa For WordPress</h3>
+            '
+                float: right;
+                margin-left: 15px;
+                width: 50px;
+                text-align: center;
+                border-top: 2px solid #ddc055;
+                border-bottom: 2px solid #ddc055;
+            '>
+            <h4 style='margin: 3px 0px; color: #860;'>DONATE</h4>
+            <a target='_new' href='https://flattr.com/thing/231042/ahrencode-on-Flattr'>
+            <img src='<?php print get_template_directory_uri(); ?>/images/flattr.png' alt='Flattr This' title='Donate' /></a>
+        </div>
 
-            <p>
-                Follow on Twitter, or join the Facebook Page. Subscribe to the blog.
-                Create bug/feature requests, download the latest code, and more!
-            </p>
+        <ul>
+        <li style='list-style-type: circle; margin-left: 10px;'>
+            Twitter:
+            <a href='http://twitter.com/ahrencode/'>Ahren Code</a>
+        </li>
+        <li style='list-style-type: circle;  margin-left: 10px;'>
+            <a
+            href='http://www.facebook.com/ahrencode'>Facebook</a>
+        </li>
+        <li style='list-style-type: circle;  margin-left: 10px;'>
+            <a href='http://code.ahren.org/tag/ahimsa'>Blog</a>
+        </li>
+        <li style='list-style-type: circle;  margin-left: 10px;'>
+            GitHub:
+            <a href='http://github.com/ahrencode/Ahimsa-for-WP/'>Home</a> |
+            <a href='http://github.com/ahrencode/Ahimsa-for-WP/issues'>Issues</a>
+        </li>
+        </ul>
 
-            <ul>
-            <li style='list-style-type: circle; margin-left: 10px;'>
-                Twitter:
-                <a href='http://twitter.com/ahrencode/'>Ahren Code</a>
-            </li>
-            <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a
-                href='http://www.facebook.com/ahrencode'>Facebook</a>
-            </li>
-            <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://code.ahren.org/tag/ahimsa'>Blog</a>
-            </li>
-            <li style='list-style-type: circle;  margin-left: 10px;'>
-                GitHub:
-                <a href='http://github.com/ahrencode/Ahimsa-for-WP/'>Home</a> |
-                <a href='http://github.com/ahrencode/Ahimsa-for-WP/issues'>Issues</a>
-            </li>
-            </ul>
         </div>
 
         <div style=
@@ -187,25 +201,22 @@ function ahimsa_options()
                     padding: 10px 20px;
                     border: 1px solid #ddc055;
                     width: 250px;
-                '
-        >
+                '>
             Want to add your own funky JavaScript or some such in the footer?
-            Create a file <code>" .
-            WP_CONTENT_DIR . "/themestore/ahimsa/footer-custom.php</code>
+            Create a file <code>
+            <?php print WP_CONTENT_DIR; ?>/themestore/ahimsa/footer-custom.php</code>
             and put your code in there.
-        ";
         
-        if( file_exists(TEMPLATEPATH . "/footer-custom.php") )
-            print
-            "
+            <?php if( file_exists(TEMPLATEPATH . "/footer-custom.php") ) : ?>
                 <b>You can do that by using the Theme Editor</b>
                 (<i>Dashboard->Appearance->Editor</i>).
-            ";
+            <?php endif; ?>
 
-        print
-        "
         </div>
 
+        <?php
+        print
+        "
             <h3>General</h3>
 
             <input type='hidden' id='action' name='action' value='save'>
@@ -213,7 +224,7 @@ function ahimsa_options()
             <input type='checkbox' name='showtopmenu' id='showtopmenu'" .
                 ($ahimsa_options['showtopmenu'] == 1 ? ' checked' : '') . " />
             <label style='margin-left: 5px;' for='showtopmenu'>
-                Show Feeds/Login/Logout Top Menu</label><br />
+                Show Top Menu (Feeds/Login/Logout)</label><br />
 
             <input type='checkbox' name='showloginout' id='showloginout'" .
                 ($ahimsa_options['showloginout'] == 1 ? ' checked' : '') . " />
@@ -734,14 +745,17 @@ function ahimsa_skins_menu()
                 width: 50%;
                 margin: 10px 10px 30px 0px;
                 padding: 20px;
-                border: 2px solid #400;
-                background-color: #920;
-                color: #fff;
+                background-color: #fc8;
+                color: #111;
+                font-size: 1.2em;
+                border-top: 5px solid #b20;
+                border-bottom: 5px solid #b20;
+                line-height: 150%;
                 '>
             WARNING: This update includes significant style changes. Before
             you edit any existing skins below, you should first run a couple of
-            updates to them by selecting the Update checkbox above and
-            saving the options. Ideally you should also save any skins you
+            updates to them by selecting the Update Skins checkbox above and
+            Saving Changes (below). Ideally you should also backup any skins you
             have created. If you have any questions contact me on
             <a href='http://twitter.com/ahrencode'>Twitter</a> or the
             <a href='http://help.ahren.org/'>Help Site</a>
@@ -1180,47 +1194,41 @@ function ahimsa_custom_comment($comment, $args, $depth)
 
         </div>
 
-        <?php global $user_ID; if( $user_ID ) : ?>
+        <div class='postmetadata replybuttonbox'>
 
-            <div class='postmetadata replybuttonbox'>
+            <?php
 
-                <?php
+                global $user_ID;
 
-                    global $user_ID;
-
-                    if( $user_ID )
-                        edit_comment_link(
-                            /* translators: this is the comment edit button/link */
-                            __('Edit', "ahimsa"),
-                            "<div class='capsule actbubble commentactions'>",
-                            "</div>"
-                        );
-
-                    comment_reply_link(
-                        array_merge(
-                            $args,
-                            array
-                            (
-                                'reply_text'    => __('Reply', 'ahimsa'),
-                                'depth'         => $depth,
-                                'max_depth'     => $args['max_depth'],
-                                'before'        => '<div class="capsule actbubble commentactions">',
-                                'after'         => '</div>'
-                            )
-                        )
+                if( $user_ID )
+                    edit_comment_link(
+                        /* translators: this is the comment edit button/link */
+                        __('Edit', "ahimsa"),
+                        "<div class='capsule actbubble commentactions'>",
+                        "</div>"
                     );
-                ?>
 
-                <div style='height: 1px; clear: both;'></div>
+                comment_reply_link(
+                    array_merge(
+                        $args,
+                        array
+                        (
+                            'reply_text'    => __('Reply', 'ahimsa'),
+                            'depth'         => $depth,
+                            'max_depth'     => $args['max_depth'],
+                            'before'        => '<div class="capsule actbubble commentactions">',
+                            'after'         => '</div>'
+                        )
+                    )
+                );
+            ?>
 
-            </div>
+            <div style='height: 1px; clear: both;'></div>
 
-        <?php endif; ?>
+        </div>
 
     </fieldset>
 
 <?php
-
 }
-
 ?>

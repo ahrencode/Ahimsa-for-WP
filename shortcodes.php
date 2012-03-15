@@ -1,7 +1,7 @@
 
 <link
     rel='stylesheet'
-    href='<?php bloginfo('template_url'); ?>/shortcodes.css'
+    href='<?php print get_template_directory_uri(); ?>/shortcodes.css'
     type='text/css'
     media='screen' />
 
@@ -15,18 +15,18 @@ add_shortcode('qfgallery', 'qfgallery_handler');
 
 <link
     rel='stylesheet'
-    href='<?php bloginfo('template_url'); ?>/lib/jquery.fancybox/jquery.fancybox.css'
+    href='<?php print get_template_directory_uri(); ?>/lib/jquery.fancybox/jquery.fancybox.css'
     type='text/css'
     media='screen' />
 
 <script
     type="text/javascript"
-    src="<?php bloginfo('template_url'); ?>/lib/jquery.fancybox/jquery.easing.1.3.js">
+    src="<?php print get_template_directory_uri(); ?>/lib/jquery.fancybox/jquery.easing.1.3.js">
 </script>
 
 <script
     type="text/javascript"
-    src="<?php bloginfo('template_url'); ?>/lib/jquery.fancybox/jquery.fancybox-1.2.1.js">
+    src="<?php print get_template_directory_uri(); ?>/lib/jquery.fancybox/jquery.fancybox-1.2.1.js">
 </script>
 
 <?php

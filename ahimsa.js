@@ -24,7 +24,7 @@ jQuery(document).ready
                     jQuery('.replybuttonbox').css('visibility', 'hidden');
                     jQuery(this).children('.replybuttonbox').css('visibility', 'visible');
                 },
-                function() { jQuery('.replybuttonbux').css('visibility', 'hidden'); }
+                function() { jQuery('.replybuttonbox').css('visibility', 'hidden'); }
         );
 
         // display tags permitted in comments when focus is on response box
@@ -40,8 +40,20 @@ jQuery(document).ready
 
         // style and add prefix text for sourcelink
         ahimsa_sourcelink_setup();
+
+        // comment form input elements styling on focus
+        ahimsa_reply_focus_setup();
     }
 );
+
+//------------------------------------------------------------------------------
+function ahimsa_reply_focus_setup()
+{
+    jQuery('.comment-form-author, .comment-form-email, .comment-form-url, .comment-form-comment')
+        .focusin(function() { jQuery(this).addClass('comment-field-focused'); });
+    jQuery('.comment-form-author, .comment-form-email, .comment-form-url, .comment-form-comment')
+        .focusout(function() { jQuery(this).removeClass('comment-field-focused'); });
+}
 
 //------------------------------------------------------------------------------
 function ahimsa_reclass_wp_elements()

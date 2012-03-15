@@ -20,20 +20,21 @@
     <title>
         <?php
             // more code from TwentyEleven
+            global $paged, $page;
 
-            wp_title( '|', true, 'right' );
+            wp_title('|', true, 'right');
 
             // Add the blog name.
-            bloginfo( 'name' );
+            bloginfo('name');
 
             // Add the blog description for the home/front page.
-            $site_description = get_bloginfo( 'description', 'display' );
-            if ( $site_description && ( is_home() || is_front_page() ) )
+            $site_description = get_bloginfo('description', 'display');
+            if( $site_description && ( is_home() || is_front_page() ) )
                 echo " | $site_description";
 
             // Add a page number if necessary:
-            if ( $paged >= 2 || $page >= 2 )
-                echo ' | ' . sprintf( __( 'Page %s', 'ahimsa' ), max( $paged, $page ) );
+            if( $paged >= 2 || $page >= 2 )
+                echo ' | ' . sprintf( __( 'Page %s', 'ahimsa' ), max( $paged, $page ));
 
         ?>
     </title>
@@ -89,16 +90,16 @@
         type="text/javascript"
         src="<?php print get_template_directory_uri() . '/lib/jquery-ui/jquery-ui.min.js'; ?>"></script>
 
-    <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/ahimsa.js'; ?>"></script>
+    <script type="text/javascript" src="<?php print get_template_directory_uri().'/ahimsa.js'; ?>"></script>
 
     <!-- render some corners in IE using jQuery plugins -->
     <?php global $ahimsa_options; if( $ahimsa_options['iecorners'] == 1 ) : ?>
         <script type="text/javascript"
-            src="<?php print get_bloginfo('template_url').'/lib/jquery.corner.js'; ?>"></script>
+            src="<?php print get_template_directory_uri().'/lib/jquery.corner.js'; ?>"></script>
         <script type="text/javascript"
-            src="<?php print get_bloginfo('template_url').'/lib/jquery.corners.min.js'; ?>"></script>
+            src="<?php print get_template_directory_uri().'/lib/jquery.corners.min.js'; ?>"></script>
         <script type="text/javascript"
-            src="<?php print get_bloginfo('template_url').'/iecorners.js'; ?>"></script>
+            src="<?php print get_template_directory_uri().'/iecorners.js'; ?>"></script>
     <?php endif; ?>
 
     <?php include_once("shortcodes.php"); // load shortcode handlers ?>
@@ -121,7 +122,7 @@
         <div class='capsule'>
             <a href='<?php bloginfo('comments_rss2_url'); ?>'>
             <img border='0' align='top' alt='<?php _e('Comments RSS', 'ahimsa'); ?>'
-                src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
+                src='<?php print get_template_directory_uri() . "/images/rss-icon.gif"; ?>' />
             <span title='<?php _e('Subscribe to the RSS feed for the comments on this site', 'ahimsa'); ?>'>
                 <?php
                     /* translators: this is the text of the comments RSS link at top right */
@@ -133,7 +134,7 @@
         <div class='capsule'>
             <a href='<?php bloginfo("rss2_url"); ?>'>
             <img border='0' align='top' alt='<?php _e('Site RSS', 'ahimsa'); ?>'
-                src='<?php print bloginfo('template_directory') . "/images/rss-icon.gif"; ?>' />
+                src='<?php print get_template_directory_uri() . "/images/rss-icon.gif"; ?>' />
             <span title='<?php _e('Subscribe to the RSS feed for the posts on this site', 'ahimsa'); ?>'>
                 <?php
                     /* translators: this is the text of the site RSS link at top right */
@@ -173,7 +174,7 @@
                 </td>
             <?php endif; ?>
             <td id='title'>
-                <a href="<?php print get_option('home'); ?>/">
+                <a href="<?php print home_url(); ?>/">
                     <?php bloginfo('name'); ?>
                 </a>
             </td>

@@ -33,7 +33,7 @@ BODY
     border-style: none;
     background-color: #6f900d;
     font-size: 90%;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 A
@@ -335,7 +335,7 @@ BLOCKQUOTE OL
     padding: 7px 0px;
     background-color: #111111;
     color: #cccccc;
-    font-size: 8pt;
+    font-size: 0.95em;
     cursor: pointer;
     opacity: 0.8;
     filter: alpha(opacity = 80);
@@ -451,7 +451,6 @@ BLOCKQUOTE OL
 
 .sidebarlist
 {
-    font-size: small;
     border: none;
     padding: 0px;
     margin: 20px 12px 40px 12px;
@@ -636,7 +635,6 @@ BLOCKQUOTE OL
 {
     float: right;
     margin: 0px;
-    font-size: 9pt;
 }
 
 .entry
@@ -749,8 +747,8 @@ BLOCKQUOTE OL
 {
     display: none;
     clear: both;
-    background-position: 1% 80%;
-    padding: 5px 0px 5px 40px;
+    background-position: 1% 60%;
+    padding: 5px 0px 5px 30px;
     background-repeat: no-repeat;
     border-top: 1px dashed #ccc;
 }
@@ -770,7 +768,7 @@ BLOCKQUOTE OL
 .nocomments
 {
     float: left;
-    font-size: 14pt !important;
+    font-size: 1.5em !important;
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -837,7 +835,6 @@ BLOCKQUOTE OL
     padding-right: 30px;
     padding-left: 30px;
     line-height: 150%;
-    font-size: 9pt;
 }
 
 .commentactions
@@ -854,7 +851,7 @@ BLOCKQUOTE OL
     background-color: #ddd;
 	color: #333;
     margin: 50px 0px 30px 0px !important;
-    padding: 10px 30px;
+    padding: 10px 40px 40px 40px;
     border-style: none;
     border-radius: 25px;
     -webkit-border-radius: 25px;
@@ -874,7 +871,7 @@ BLOCKQUOTE OL
 {
     width: 70%;
     background-color: #eee;
-    padding: 2px 0px;
+    padding: 2px 0px 2px 5px;
     border: 1px inset #fff;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -886,7 +883,7 @@ BLOCKQUOTE OL
     width: 20%;
     text-transform: uppercase;
     font-family: Helvetica, "Century Gothic", sans-serif;
-    font-size: 12px;
+    font-size: 1.1em;
 }
 
 #commentform LABEL,
@@ -907,6 +904,14 @@ BLOCKQUOTE OL
     width: 80%;
 }
 
+#commentform #author:focus,
+#commentform #email:focus,
+#commentform #url:focus,
+#comment:focus
+{
+    outline: none !important;
+}
+
 #comment
 {
     display: block;
@@ -919,7 +924,7 @@ BLOCKQUOTE OL
 
 #respond INPUT#submit
 {
-    font-size: 11pt;
+    font-size: 1.2em;
     cursor: pointer;
 	border: none !important;
 	padding: 4px 15px;
@@ -934,7 +939,6 @@ BLOCKQUOTE OL
 .form-allowed-tags
 {
     display: none;
-    font-size: 13px;
     color: #666;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -942,16 +946,14 @@ BLOCKQUOTE OL
 
 .form-allowed-tags CODE
 {
-    font-size: 12px;
-    color: #884;
+    color: #380;
 }
 
 #commentguide
 {
     float: right;
     width: 16%;
-    font-size: 1em;
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 30px;
     text-align: left;
     background-color: #eee;
@@ -962,12 +964,17 @@ BLOCKQUOTE OL
     border-radius: 10px;
 }
 
+.comment-field-focused
+{
+    border: 2px solid #9cf !important;
+}
+
 /*--- END: Comment Form Related ----------------*/
 /*--- END: Comment Related ------------------------------------------------*/
 
 .navigation .capsule
 {
-    font-size: 12pt;
+    font-size: 1.5em;
 }
 
 #rsslinks
