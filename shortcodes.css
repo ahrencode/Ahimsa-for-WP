@@ -5,38 +5,48 @@
 
 .qfcontainer
 {
-    background-color: #999999;
-    padding: 20px 20px;
+    margin: 15px 20px;
+    text-align: center;
     overflow: auto;
+}
+
+.qfcontainer-matte
+{
+    padding: 15px;
+    background-color: #ccc;
+    border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
 
-.qfcontainer H2
+.qfcontainer H3
 {
-    margin: 0px;
+    margin: 5px;
     margin-bottom: 10px;
     padding-bottom: 8px;
-    border-bottom: 1px solid #999999;
-    font-size: x-large;
+    border-bottom: 1px solid #999;
+    font-size: 1.6em;
     font-weight: normal;
-    color: #333333;
+    color: #333;
     text-align: center;
 }
 
 .qfgallerytnail
 {
-    float: left;
-    /*margin: 10px;*/
+    margin: 10px;
     height: 128px;
     width: 128px;
     overflow: hidden;
-    /*
-    padding: 5px;
-    background-color: #333333;
-    */
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+    border: 1px solid #777;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+
+.qfgallerytnail IMG
+{
+    padding: 0px;
+    border: 0px none;
 }
 
 /*** faqinway ***/
@@ -48,7 +58,7 @@
 
 .faqinwayqa
 {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #ccc;
 }
 
 .faqinwayq

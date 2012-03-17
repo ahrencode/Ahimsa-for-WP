@@ -171,7 +171,6 @@ BLOCKQUOTE OL
 {
     background-color: #b70100;
     color: #ffffff;
-    margin: 0;
     text-align: left;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
@@ -181,14 +180,18 @@ BLOCKQUOTE OL
     -moz-border-radius-topright: 30px; 
 }
 
-#header TABLE
+#headerfields
 {
-    color: #ffffff;
     padding: 40px 30px;
+    color: #ffffff;
+}
+
+#headerfields TABLE
+{
     width: 100%;
 }
 
-#header TABLE TD
+#headerfields TABLE TD
 {
     vertical-align: middle;
 }
@@ -264,17 +267,20 @@ BLOCKQUOTE OL
 #headermenu UL
 {
 	list-style: none;
-	margin: 0;
-	padding: 0;
+	list-style-type: none;
+	margin: 0 !important;
+	padding: 0 !important;
     border: 0px none;
 }
 
-#headermenu LI
+#headermenu UL LI
 {
 	float: left;
+    clear: right;
 	position: relative;
     line-height: 2.1em;
-    padding: 0px;
+	margin: 0 !important;
+    padding: 0px !important;
     border: 0px none;
 }
 
@@ -301,10 +307,10 @@ BLOCKQUOTE OL
     background-color: #ddd;
     padding: 0;
 	z-index: 99999;
-    box-shadow: 2px 3px 4px #333;
-    -o-box-shadow: 2px 3px 4px #333;
-    -moz-box-shadow: 2px 3px 4px #333;
-    -webkit-box-shadow: 2px 3px 4px #333;
+    box-shadow: 2px 2px 2px #888;
+    -o-box-shadow: 2px 2px 2px #888;
+    -moz-box-shadow: 2px 2px 2px #888;
+    -webkit-box-shadow: 2px 2px 2px #888;
 }
 
 #headermenu UL UL UL {
@@ -869,7 +875,6 @@ BLOCKQUOTE OL
 .comment-form-url,
 .comment-form-comment
 {
-    width: 70%;
     background-color: #eee;
     padding: 2px 0px 2px 5px;
     border: 1px inset #fff;
@@ -920,6 +925,12 @@ BLOCKQUOTE OL
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
+}
+
+#oldrespond
+{
+    float: left;
+    width: 70%;
 }
 
 #respond INPUT#submit

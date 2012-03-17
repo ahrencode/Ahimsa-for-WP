@@ -166,6 +166,7 @@
 
 <td colspan='<?php print (is_active_sidebar(1)?1:0)+(is_active_sidebar(2)?1:0)+1; ?>' id='header'>
 
+    <div id='headerfields'> <!-- needed because IE won't do CSS padding for TABLEs -->
     <table border='0' cellpadding='0' cellspacing='0'>
         <tr>
             <?php if( $ahimsa_options['logourl'] != "" ) : ?>
@@ -182,6 +183,7 @@
             <td id='search' valign='middle'><?php get_search_form(); ?> </td>
         </tr>
     </table>
+    </div>
 
     <div id='headermenu'>
         <?php wp_nav_menu(array('theme_location' => 'header-menu')); ?>

@@ -68,27 +68,24 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) &&
 
 <?php endif; ?>
 
-<?php
-    if( comments_open() && ! post_password_required()
-        && post_type_supports(get_post_type(), 'comments') ) :
+<?php if( comments_open() && ! post_password_required()
+        && post_type_supports(get_post_type(), 'comments') ) : ?>
 
-    // below we use the WP generated reply template form by calling
-    // the WP function comment_form(). In our JS (currently ahimsa.js)
-    // this WP generated form is then moved into our responsebox
-    // fielset below. See relevant comments in ahimsa.js. This is a
-    // hack but I cannot think of any other way to style the reply form.
- 
-    comment_form();
- ?>
-
+    <div id='newrespond'>
     <fieldset id='responsebox'>
+
         <legend class='title'><?php _e('Leave a Reply', 'ahimsa'); ?></legend>
+ 
+        <?php comment_form(); ?>
+
         <?php if( $ahimsa_options['commentguide'] != "" ) : ?>
             <div id='commentguide'>
                 <?php print stripslashes($ahimsa_options['commentguide']); ?>
             </div>
         <?php endif; ?>
+
     </fieldset>
+    </div>
 
 <?php else : ?>
 

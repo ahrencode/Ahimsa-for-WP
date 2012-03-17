@@ -9,7 +9,7 @@
 
 // [qfgallery]
 // add if for option check for qfgallery activation
-add_shortcode('qfgallery', 'qfgallery_handler');
+add_shortcode('qfgallery', 'ahimsa_qfgallery_handler');
 
 ?>
 
@@ -31,11 +31,13 @@ add_shortcode('qfgallery', 'qfgallery_handler');
 
 <?php
 
-$galleryctr = 0;
+$ahimsa_galleryctr = 0;
 
-function qfgallery_handler($atts, $content)
+function ahimsa_qfgallery_handler($atts, $content)
 {
-    global $galleryctr;
+    global $ahimsa_galleryctr;
+
+    $newcontent = "";
 
     extract
     (
@@ -43,6 +45,8 @@ function qfgallery_handler($atts, $content)
         (
             array
             (
+                'width'     => 0,
+                'matte'     => 1,
                 'title'     => '',
                 'scale'     => '',
                 'float'     => '',
@@ -52,26 +56,16 @@ function qfgallery_handler($atts, $content)
         )
     );
 
-    $newcontent =
-    "
-        <div
-            class='qfcontainer' " .
-            (
-                $float != "" ?
-                "style=
-                '
-                    float: $float;
-                    margin: 5px 15px;
-                    margin-$float: 0px;
-                    padding: 3px;
-                '"
-                :
-                ""
-            ) . "
-        >
-    ";
+    $boxclass = 'qfcontainer' . ($matte ? ' qfcontainer-matte' : '');
+    $boxstyle = '';
+    if( $width > 0 )            $boxstyle .= "width: ${width}px; ";
+    if( $matte > 1 )            $boxstyle .= "padding: ${matte}px; ";
+    if( $float != '' )          $boxstyle .= "float: $float; margin-${float}: 0px; ";
+    if( $orient == 'portrait' ) $boxstyle .= "width: 160px; padding: 3px; ";
 
-    if( $title != "" ) $newcontent .= "<h2>$title</h2>\n";
+    $newcontent = "<div class='$boxclass' style='$boxstyle'>";
+
+    if( $title != "" ) $newcontent .= "<h3>$title</h3>\n";
     foreach( explode("\n", $content) as $line )
     {
         // strip all HTML tags (such as <br>, <p> and other stuff inserted by wp_autop()
@@ -86,27 +80,35 @@ function qfgallery_handler($atts, $content)
         if( sizeof($matches) < 1 || preg_match("/^\s*$/", $matches[0]) )
             continue;
 
-        $x = $matches[2] or $x = 0;
-        $y = $matches[3] or $y = 0;
+        $alt    = isset($matches[1]) ? $matches[1] : "";
+        $x      = isset($matches[2]) ? $matches[2] : 0;
+        $y      = isset($matches[3]) ? $matches[3] : 0;
+        $clear  = ( $orient == 'portrait' ) ? "clear: both;" : "";
 
         $newcontent .=
         "
-            <div class='qfgallerytnail'>
-            <a class='qfgallery' rel='qfgallery$galleryctr' href='$matches[0]' title='$matches[1]'>
+            <!--[if IE]>
+                <div class='qfgallerytnail' style='float: left; $clear'>
+            <![endif]-->
+            <!--[if !IE]>-->
+            <div class='qfgallerytnail' style='display: inline-block; $clear'>
+            <!--<![endif]-->
+            <a class='qfgallerylink' rel='qfgallery$ahimsa_galleryctr' href='$matches[0]' title='$alt'>
             <img
                 style='margin-left: -${x}px; margin-top: -${y}px;'
                 src='$matches[0]' " . ($scale == 1 ? "width='128' height='128' " : "") . "
-                alt='$matches[1]' />
+                alt='$alt' />
             </a>
             </div>
         ";
-
-        if( $orient == 'portrait' )
-            $newcontent .= "<br/>";
     }
 
-    $newcontent .= "<br clear='all' /></div>\n";
-    $galleryctr++;
+    if( $float )
+        $newcontent .= "<!--[if IE]>\n<div style='height: 1px; clear: both;'></div>\n<![endif]-->\n";
+    
+    $newcontent .= "</div>\n";
+
+    $ahimsa_galleryctr++;
 
     return($newcontent);
 }
@@ -118,7 +120,7 @@ function qfgallery_handler($atts, $content)
 jQuery(document).ready(
     function()
     {
-	    jQuery("a.qfgallery").
+	    jQuery("a.qfgallerylink").
             fancybox
             ({
                 'imageScale':   true,
@@ -136,13 +138,13 @@ jQuery(document).ready(
 <?php
 
 // [faqinway]
-add_shortcode('faqinway', 'faqinway_handler');
+add_shortcode('faqinway', 'ahimsa_faqinway_handler');
 
 ?>
 
 <?php
 
-function faqinway_handler($atts, $content)
+function ahimsa_faqinway_handler($atts, $content)
 {
     extract
     (

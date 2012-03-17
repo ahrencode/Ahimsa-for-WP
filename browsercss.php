@@ -57,21 +57,8 @@
             margin-right: -75px;
         }
 
-        .post fieldset legend.title,
-        fieldset#comments legend,
-        fieldset.comment legend,
-        fieldset#responsebox legend
-        {
-            font-size: 10pt !important;
-        }
-
-        .capsule
-        {
-            font-size: 8pt;
-        }
-
-        fieldset.comment,
-        fieldset#responsebox
+        .comment,
+        #responsebox
         {
             padding-top: 25px;
         }
@@ -79,8 +66,6 @@
         #respond INPUT#submit
         {
             font-weight: normal;
-            font-size: small;
-            padding: 3px 0px;
         }
 
     <?php endif; ?>

@@ -65,11 +65,17 @@ function ahimsa_reclass_wp_elements()
         jQuery('#submit').addClass('actbubble');
     }
 
-    // move the WP inserted comment form container outside ours for custom styling reasons
+    // WP's comment_form() is rendered in a DIV id '#respond', and this
+    // id is used later by WP to move this response form around when a
+    // reader clicks "reply" on a comment. Problem for us is that we want
+    // the response form to be in a FIELDSET. So, in comments.php we
+    // wrap the comment_form() in our FIELDSET, and then here, we move
+    // the id '#respond' to our FIELDSET, so that when WP moves the form
+    // around our FIELDSET moves around with it.
     if( jQuery('#respond').length )
     {
-        var responsebox = jQuery('#responsebox').detach();
-        jQuery('#respond').wrapInner(responsebox);
+        jQuery('#respond').attr('id', 'oldrespond');
+        jQuery('#newrespond').attr('id', 'respond');
 
         var cancel = jQuery('#cancel-comment-reply-link').detach();
         jQuery('#submit').after(cancel);
