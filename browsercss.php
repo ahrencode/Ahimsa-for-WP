@@ -57,6 +57,11 @@
             margin-right: -75px;
         }
 
+        .sidebarlist
+        {
+            padding-top: 30px;
+        }
+
         .comment,
         #responsebox
         {

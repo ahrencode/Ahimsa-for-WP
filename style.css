@@ -1,15 +1,15 @@
 /*  
 Theme Name: Ahimsa
 Theme URI: http://code.ahren.org/ahimsa
-Description: Ahimsa -- customisable collapsible sidebars, skinnable colour schemes, custom CSS and footer, low graphics, minimal distractions, with rounded corners in Firefox, Safari, Chrome (some support in IE). Built-in shortcodes for Fancybox image galleries and simple FAQ posts/pages.
-Version: 3.3
+Description: Ahimsa -- customisable collapsible sidebars, skinnable colour schemes, custom CSS and footer, low graphics, minimal distractions, with rounded corners in Firefox, Safari, Chrome (some support in IE). Built-in shortcodes for Fancybox image galleries and simple FAQ posts/pages. Support for WP menus, post thumbnails.
+Version: 4.0
 Author: Ravi Sarma
 Author URI: http://code.ahren.org/
 License: GNU General Public License
 License URI: license.txt
 Tags: dark, light, white, black, gray, orange, red, white, yellow, one-column, two-columns, three-columns, left-sidebar, right-sidebar, flexible-width, custom-colors, custom-menu, featured-images, theme-options, translation-ready, threaded-comments
 
-	 Ahimsa 3.3
+	 Ahimsa 4.0
 	 http://code.ahren.org/ahimsa
 
 	Theme built for the Ahren Code site but free for all
@@ -590,26 +590,20 @@ BLOCKQUOTE OL
 
 /*--- END SIDEBAR RELATED -------------------------------------------------*/
 
+#contentbox
+{
+    background-color: #aaaaaa;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    -webkit-border-bottom-right-radius: 30px;
+    -moz-border-radius-bottomright: 30px;
+}
+
 #content
 {
     margin: 0px;
     padding: 50px 40px;
     width: 100%;
-    background-color: #aaaaaa;
-}
-
-.contentnoleftsb
-{
-    border-bottom-left-radius: 30px;
-    -webkit-border-bottom-left-radius: 30px;
-    -moz-border-radius-bottomleft: 30px;
-}
-
-.contentnorightsb
-{
-    border-bottom-right-radius: 30px;
-    -webkit-border-bottom-right-radius: 30px;
-    -moz-border-radius-bottomright: 30px;
 }
 
 .entrybox

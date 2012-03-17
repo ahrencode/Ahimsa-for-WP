@@ -1,226 +1,158 @@
-
-            #bgtop
-            {
-                background-color: #333333;
-            }
-        
-            #bgtop
-            {
-                border-bottom-color: #ffffff;
-            }
-        
-            BODY
-            {
-                background-color: #1240ab;
-            }
-        
-            A
-            {
-                color: #002266;
-            }
-        
-            .capsule
-            {
-                background-color: #3050a0;
-            }
-        
-            .capsule
-            {
-                color: #ffffff;
-            }
-        
-            #header
-            {
-                background-color: #dd8800;
-            }
-        
-            #header, #header table, #header a
-            {
-                color: #ffffff;
-            }
-        
-            #title
-            {
-                border-right-color: #fea;
-            }
-        
-            .sidebar, .tdsidebar
-            {
-                background-color: #70a0ff;
-            }
-        
-            .sidebar, .tdsidebar
-            {
-                background-color: #70a0ff;
-            }
-        
-            .sidebarlist
-            {
-                background-color: #ddeeff;
-            }
-        
-            .sidebarlist
-            {
-                color: #000000;
-            }
-        
-            .sidebarlist .title
-            {
-                background-color: #dd8800;
-            }
-        
-            .sidebarlist .title
-            {
-                color: #ffffff;
-            }
-        
-            .sidebarlist li
-            {
-                border-top-color: #a0c0ff;
-            }
-        
-            .sidebarlist a
-            {
-                color: #002266;
-            }
-        
-            #wp-calendar caption
-            {
-                color: #000000;
-            }
-        
-            #wp-calendar thead th, #wp-calendar tfoot td.pad
-            {
-                background-color: #bbccee;
-            }
-        
-            #wp-calendar thead th
-            {
-                color: #000000;
-            }
-        
-            #wp-calendar tbody td
-            {
-                color: #333333;
-            }
-        
-            #wp-calendar #next, #wp-calendar #prev
-            {
-                background-color: #bbccee;
-            }
-        
-            #wp-calendar #next, #wp-calendar #prev, #wp-calendar tfoot a
-            {
-                color: #002266;
-            }
-        
-            .textwidget
-            {
-                color: #000000;
-            }
-        
-            #content
-            {
-                background-color: #aaaaaa;
-            }
-        
-            .entrybox
-            {
-                background-color: #ddeeff;
-            }
-        
-            .entry
-            {
-                color: #000000;
-            }
-        
-            .title
-            {
-                background-color: #dd9900;
-            }
-        
-            .title, .title a
-            {
-                color: #ffffff;
-            }
-        
-            .postmetadata
-            {
-                background-color: #ccddff;
-            }
-        
-            .postcattags, .postcattags a
-            {
-                color: #ffffff;
-            }
-        
-            blockquote
-            {
-                background-color: #ffffff;
-            }
-        
-            blockquote
-            {
-                color: #222222;
-            }
-        
-            .entry UL, .entry OL
-            {
-                background-color: #ffffff;
-            }
-        
-            .entry UL, .entry OL
-            {
-                color: #222222;
-            }
-        
-            .entry > P:first-child:first-letter
-            {
-                color: #000000;
-            }
-        
-            .actbubble
-            {
-                background-color: #99aadd;
-            }
-        
-            .actbubble, .actbubble a
-            {
-                color: #002266;
-            }
-        
-            #comments
-            {
-                background-color: #7799bb;
-            }
-        
-            .comment, .commenttext
-            {
-                background-color: #ddeeff;
-            }
-        
-            .commenttext
-            {
-                color: #111111;
-            }
-        
-            #responsebox
-            {
-                background-color: #99aadd;
-            }
-        
-            #headermenu, #headermenu UL UL
-            {
-                background-color: #a50;
-            }
-        
-            #headermenu li:hover
-            {
-                background-color: #c73;
-            }
-        
-            #headermenu a
-            {
-                color: #fff;
-            }
-        
+#bgtop
+{
+background-color: #333333;
+border-bottom-color: #ffffff;
+}
+BODY
+{
+background-color: #1240ab;
+}
+A
+{
+color: #002266;
+}
+.capsule
+{
+background-color: #3050a0;
+color: #ffffff;
+}
+#header
+{
+background-color: #dd8800;
+}
+#header, #header table, #header a
+{
+color: #ffffff;
+}
+#title
+{
+border-right-color: #fea;
+}
+.sidebar, .tdsidebar
+{
+background-color: #70a0ff;
+}
+.sidebarlist
+{
+background-color: #ddeeff;
+color: #000000;
+}
+.sidebarlist .title
+{
+background-color: #dd8800;
+color: #ffffff;
+}
+.sidebarlist li
+{
+border-top-color: #a0c0ff;
+}
+.sidebarlist a
+{
+color: #002266;
+}
+#wp-calendar caption
+{
+color: #000000;
+}
+#wp-calendar thead th, #wp-calendar tfoot td.pad
+{
+background-color: #bbccee;
+}
+#wp-calendar thead th
+{
+color: #000000;
+}
+#wp-calendar tbody td
+{
+color: #333333;
+}
+#wp-calendar #next, #wp-calendar #prev
+{
+background-color: #bbccee;
+}
+#wp-calendar #next, #wp-calendar #prev, #wp-calendar tfoot a
+{
+color: #002266;
+}
+.textwidget
+{
+color: #000000;
+}
+contentbox
+{
+background-color: #aaaaaa;
+}
+.entrybox
+{
+background-color: #ddeeff;
+}
+.entry
+{
+color: #000000;
+}
+.title
+{
+background-color: #dd9900;
+}
+.title, .title a
+{
+color: #ffffff;
+}
+.postmetadata
+{
+background-color: #ccddff;
+}
+.postcattags, .postcattags a
+{
+color: #ffffff;
+}
+blockquote
+{
+background-color: #ffffff;
+color: #222222;
+}
+.entry UL, .entry OL
+{
+background-color: #ffffff;
+color: #222222;
+}
+.entry > P:first-child:first-letter
+{
+color: #000000;
+}
+.actbubble
+{
+background-color: #99aadd;
+}
+.actbubble, .actbubble a
+{
+color: #002266;
+}
+#comments
+{
+background-color: #7799bb;
+}
+.comment, .commenttext
+{
+background-color: #ddeeff;
+}
+.commenttext
+{
+color: #111111;
+}
+#responsebox
+{
+background-color: #99aadd;
+}
+#headermenu, #headermenu UL UL
+{
+background-color: #a50;
+}
+#headermenu li:hover
+{
+background-color: #c73;
+}
+#headermenu a
+{
+color: #fff;
+}

@@ -43,4 +43,25 @@ function ahimsa_util_get_customss_url()
         return("");
 }
 
+function ahimsa_util_sidebartab_html($num, $side)
+{
+    if( ! is_active_sidebar($num) )
+        return;
+    ?>
+    <td valign='top' class='tdsidetabs'>
+        <?php if( $side != 'filler' ) : ?>
+            <div id='sidebartab<?php print $side; ?>' class='sidebartab'
+                onclick='ahimsa_slide_sidebar("<?php print $side; ?>");'>
+                <div class='sidebartabrotatedtext'><?php _e('SIDEBAR', 'ahimsa'); ?></div>
+                <div class='sidebartabnorotatetext'>
+                    <font color='#22bb00'>&raquo;</font><br/>
+                    <?php _e('S<br/>I<br/>D<br/>E<br/>B<br/>A<br/>R', 'ahimsa'); ?><br/>
+                    <font color='#22bb00'>&laquo;</font>
+                </div>
+            </div>
+        <?php endif; ?>
+    </td>
+    <?php
+}
+
 ?>

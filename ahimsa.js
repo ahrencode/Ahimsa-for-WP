@@ -142,40 +142,17 @@ function ahimsa_slide_sidebar(side)
     if( ! document.getElementById('sidebar'+side) )
         return;
 
-    var tdid = '#tdsidebar'+side;
-    var sbid = '#sidebar'+side;
+    var tdid    = '#tdsidebar'+side;
+    var sbid    = '#sidebar'+side;
 
     if( jQuery(sbid).is(':visible') )
     {
-        ahimsa_content_curve(side, '30px');
-        //jQuery(tdid).css('background-color', jQuery('#content').css('background-color'));
-        jQuery(sbid).hide("slide", { direction: side }, 600, function() { jQuery(tdid).hide(); });
-
+        jQuery(tdid).hide("slide", { direction: side }, 600, function() { jQuery(sbid).hide(); });
     }
     else
     {
-        ahimsa_content_curve(side, '0px');
-        jQuery(tdid).show();
-        //jQuery(tdid).css('background-color', jQuery(sbid).css('background-color'));
-        jQuery(sbid).show("slide", { direction: side }, 600);
-    }
-}
-
-//------------------------------------------------------------------------------
-function ahimsa_content_curve(side, size)
-{
-    divcont = document.getElementById('content');
-    if( side == 'left' )
-    {
-        divcont.style.borderRadiusBottomleft = size;
-        divcont.style.webkitBorderBottomLeftRadius = size;
-        divcont.style.MozBorderRadiusBottomleft = size;
-    }
-    else
-    {
-        divcont.style.borderRadiusBottomright = size;
-        divcont.style.webkitBorderBottomRightRadius = size;
-        divcont.style.MozBorderRadiusBottomright = size;
+        jQuery(sbid).show();
+        jQuery(tdid).show("slide", { direction: side }, 600);
     }
 }
 

@@ -562,7 +562,7 @@ array
     (
         'name'      => "skincontentbg",
         'desc'      => "Main Content Background",
-        'csssel'    => "#content",
+        'csssel'    => "#contentbox",
         'attr'      => "background-color"
     ),
     array
@@ -1031,6 +1031,7 @@ function ahimsa_update_skins()
         "#sidebar, #tdsidebar"                      => ".sidebar, .tdsidebar",
         "#replytext"                                => "#comment",
         // Ahimsa 4.0
+        "#content"                                  => "contentbox",
         ".post > fieldset"                          => ".entrybox",
         ".post .title, .post .title a,"             => ".title, .title a",
         ".post .title, #comments > legend, .comment > legend, #responsebox > legend" => ".title",
